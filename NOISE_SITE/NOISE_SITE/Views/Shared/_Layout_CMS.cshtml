@@ -1,0 +1,202 @@
+﻿<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<!-- BEGIN HEAD -->
+
+<head>
+    <meta charset="utf-8" />
+    <title>Hệ thống quan trắc tiếng ồn</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet"
+          type="text/css" />
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="//cdn.materialdesignicons.com/3.8.95/css/materialdesignicons.min.css">
+
+    <link href="~/Content/cms/simple-line-icons.min.css" rel="stylesheet" />
+    <link href="~/Content/cms/bootstrap.min.css" rel="stylesheet" />
+
+    <link href="~/Content/cms/bootstrap-switch.min.css" rel="stylesheet" />
+
+    <!-- END GLOBAL MANDATORY STYLES -->
+    <!-- BEGIN PAGE LEVEL PLUGINS -->
+    @RenderSection("PageLevelPlugins", false)
+    <!-- END PAGE LEVEL PLUGINS -->
+    <!-- BEGIN THEME GLOBAL STYLES -->
+
+    <link href="~/Content/cms/components-rounded.min.css" rel="stylesheet" />
+    <link href="~/Content/cms/plugins.min.css" rel="stylesheet" />
+    <!-- END THEME GLOBAL STYLES -->
+    <!-- BEGIN THEME LAYOUT STYLES -->
+
+    <link href="~/Content/cms/layout.min.css" rel="stylesheet" />
+    <link href="~/Content/cms/darkblue.min.css" rel="stylesheet" id="style_color" />
+    <link href="~/Content/cms/custom.min.css" rel="stylesheet" />
+    @RenderSection("PageStyles", false)
+    <!-- END THEME LAYOUT STYLES -->
+    <link rel="shortcut icon" href="/favicon.ico" />
+</head>
+<!-- END HEAD -->
+
+<body class="page-sidebar-closed-hide-logo page-content-white page-header-fixed page-sidebar-fixed page-footer-fixed">
+    <div class="page-wrapper">
+        <!-- BEGIN HEADER -->
+        <div class="page-header navbar navbar-fixed-top">
+            <!-- BEGIN HEADER INNER -->
+            <div class="page-header-inner ">
+                <!-- BEGIN LOGO -->
+                <div class="page-logo">
+                    <a href="/">
+                        <img src="/Content/images/vigac.svg" alt="logo" class="logo-default" style="margin:5px;width:40px" />
+                    </a>
+                    <div class="menu-toggler sidebar-toggler"> </div>
+                </div>
+                <!-- END LOGO -->
+                <!-- BEGIN RESPONSIVE MENU TOGGLER -->
+                <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse"
+                   data-target=".navbar-collapse"></a>
+                <!-- END RESPONSIVE MENU TOGGLER -->
+                <!-- BEGIN TOP NAVIGATION MENU -->
+                <div class="top-menu">
+                    <ul class="nav navbar-nav pull-right">
+                        <li class="dropdown">
+                            <a href="/" class="dropdown-toggle">
+                                <i class="icon-home"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-default"></ul>
+                        </li>
+                        <!-- BEGIN USER LOGIN DROPDOWN -->
+                        <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
+                        <li class="dropdown dropdown-user dropdown-dark">
+                            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
+                               data-close-others="true">
+                                <img alt="" class="img-circle"
+                                     src="/styles/admin/assets/layouts/layout/img/avatar3_small.jpg" />
+                                <span class="username username-hide-on-mobile"> @User.Identity.Name </span>
+                                <i class="fa fa-angle-down"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-default">
+                                <li>
+                                    <a href="#">
+                                        <i class="icon-user"></i> Thông tin cá nhân
+                                    </a>
+                                </li>
+                                <li class="divider"> </li>
+                                <li>
+                                    <a href="javascript:document.getElementById('logoutForm').submit()">
+                                        <i class="icon-key"></i> Đăng xuất
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- END USER LOGIN DROPDOWN -->
+                    </ul>
+                </div>
+                <!-- END TOP NAVIGATION MENU -->
+            </div>
+            <!-- END HEADER INNER -->
+        </div>
+        <!-- END HEADER -->
+        <!-- BEGIN HEADER & CONTENT DIVIDER -->
+        <div class="clearfix"> </div>
+        <!-- END HEADER & CONTENT DIVIDER -->
+        <!-- BEGIN CONTAINER -->
+        <div class="page-container">
+            <!-- BEGIN SIDEBAR -->
+            <div class="page-sidebar-wrapper">
+                <!-- BEGIN SIDEBAR -->
+                <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
+                <!-- DOC: Change data-auto-speed="200" to adjust the sub menu slide up/down speed -->
+                <div class="page-sidebar navbar-collapse collapse">
+                    <!-- BEGIN SIDEBAR MENU -->
+                    <!-- DOC: Apply "page-sidebar-menu-light" class right after "page-sidebar-menu" to enable light sidebar menu style(without borders) -->
+                    <!-- DOC: Apply "page-sidebar-menu-hover-submenu" class right after "page-sidebar-menu" to enable hoverable(hover vs accordion) sub menu mode -->
+                    <!-- DOC: Apply "page-sidebar-menu-closed" class right after "page-sidebar-menu" to collapse("page-sidebar-closed" class must be applied to the body element) the sidebar sub menu mode -->
+                    <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
+                    <!-- DOC: Set data-keep-expand="true" to keep the submenues expanded -->
+                    <!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
+                    <ul class="page-sidebar-menu  page-header-fixed page-sidebar-menu-light" data-keep-expanded="false"
+                        data-auto-scroll="false" data-slide-speed="200">
+                        <!-- DOC: To remove the sidebar toggler from the sidebar you just need to completely remove the below "sidebar-toggler-wrapper" LI element -->
+                        <li class="sidebar-toggler-wrapper hide">
+                            <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+                            <div class="sidebar-toggler"> </div>
+                            <!-- END SIDEBAR TOGGLER BUTTON -->
+                        </li>
+                        @Html.Partial("_Sidebar")
+                    </ul>
+                    <!-- END SIDEBAR MENU -->
+                    <!-- END SIDEBAR MENU -->
+                </div>
+                <!-- END SIDEBAR -->
+            </div>
+            <!-- END SIDEBAR -->
+            <!-- BEGIN CONTENT -->
+            <div class="page-content-wrapper">
+                <!-- BEGIN CONTENT BODY -->
+                <div class="page-content">
+                    @RenderBody()
+                </div>
+                <!-- END CONTENT BODY -->
+            </div>
+            <!-- END CONTENT -->
+        </div>
+        <!-- END CONTAINER -->
+        <!-- BEGIN FOOTER -->
+        <div class="page-footer">
+            <p class="text-left" style="color:white;margin:0px">&copy; Bản quyền thuộc Viện Khoa Học Đo Đạc và Bản Đồ</p>
+            <div class="scroll-to-top">
+                <i class="icon-arrow-up"></i>
+            </div>
+        </div>
+        <!-- END FOOTER -->
+    </div>
+    <!--[if lt IE 9]>
+    <![endif]-->
+    <!-- BEGIN CORE PLUGINS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.js"></script>
+
+    <script src="~/Scripts/cms/jquery.min.js"></script>
+    <script src="~/Scripts/cms/jquery.form.js"></script>
+    <script src="~/Scripts/cms/bootstrap.min.js"></script>
+    <script src="~/Scripts/cms/bootbox.min.js"></script>
+    <script src="~/Scripts/cms/js.cookie.min.js"></script>
+    <script src="~/Scripts/cms/bootstrap-hover-dropdown.min.js"></script>
+    <script src="~/Scripts/cms/jquery.slimscroll.min.js"></script>
+    <script src="~/Scripts/cms/jquery.blockui.min.js"></script>
+    <script src="~/Scripts/cms/bootstrap-switch.min.js"></script>
+    <script src="~/Scripts/cms/moment.min.js"></script>
+    <script src="~/Scripts/cms/daterangepicker.min.js"></script>
+    <script src="~/Scripts/cms/bootstrap-datepicker.min.js"></script>
+    <script src="~/Scripts/cms/bootstrap-timepicker.min.js"></script>
+    <script src="~/Scripts/cms/bootstrap-datetimepicker.min.js"></script>
+
+    <!-- END CORE PLUGINS -->
+    <!-- BEGIN PAGE LEVEL PLUGINS -->
+    @RenderSection("PagePlugins", false)
+    <!-- END PAGE LEVEL PLUGINS -->
+    <!-- BEGIN THEME GLOBAL SCRIPTS -->
+    <script src="~/Scripts/cms/app.js"></script>
+    @*<script src="/styles/admin/assets/global/scripts/app.js" type="text/javascript"></script>*@
+    <!-- END THEME GLOBAL SCRIPTS -->
+    <!-- BEGIN PAGE LEVEL SCRIPTS -->
+    <!-- END PAGE LEVEL SCRIPTS -->
+    <!-- BEGIN THEME LAYOUT SCRIPTS -->
+    <script src="~/Scripts/cms/layout.js"></script>
+    <!-- <script src="/styles/admin/assets/layouts/layout/scripts/demo.min.js" type="text/javascript"></script> -->
+    <!-- <script src="/styles/admin/assets/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script> -->
+    <!-- END THEME LAYOUT SCRIPTS -->
+    @*
+        <script src="/styles/admin/assets/global/scripts/base.js" type="text/javascript"></script>*@
+    @RenderSection("PageScripts", false)
+</body>
+
+</html>

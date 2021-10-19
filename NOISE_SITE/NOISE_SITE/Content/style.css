@@ -1,0 +1,56 @@
+﻿
+#viewDiv {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+}
+/*#info-div {
+    background-color: white;
+    border-radius: 8px;
+    padding: 8px;
+    opacity: 0.92;
+}*/
+#map-option {
+    /*position: absolute;
+    z-index: 90;
+    top: 200px;
+    left: 0;*/
+    background: #fff;
+    padding: 15px;
+}
+
+.action-button {
+    font-size: 16px;
+    background-color: transparent;
+    border: 1px solid #d3d3d3;
+    color: #6e6e6e;
+    height: 32px;
+   width: 100px;
+    text-align: center;
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.3);
+   
+}
+    .action-button:hover,
+    .action-button:focus {
+        background: #0079c1;
+        color: #e4e4e4;
+    }
+
+.active {
+    background: #0079c1;
+    color: #e4e4e4;
+}
+.update:before {
+    content: "\e90b";
+    color: inherit
+}
+.loginControl {
+    background-color: #F7F7DE;
+    border-color: #CCCC99;
+    border-style: solid;
+    border-width: 1px;
+    font-family: Verdana;
+    font-size: 10px;
+}
+ 

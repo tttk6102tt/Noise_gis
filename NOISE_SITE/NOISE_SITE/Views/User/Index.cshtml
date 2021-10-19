@@ -1,0 +1,560 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout_CMS.cshtml";
+}
+
+@section PageStyles
+    {
+    <link href="~/Content/cms/datatables.min.css" rel="stylesheet" />
+    <link href="~/Content/cms/datatables.bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/cms/sweetalert.css" rel="stylesheet" />
+}
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <i class="icon-home"></i>
+            <a href="/">Quản lý người dùng</a>
+            <i class="fa fa-circle"></i>
+        </li>
+    </ul>
+</div>
+
+<h1 class="page-title"> Quản lý người dùng </h1>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="portlet light bordered">
+            <div class="portlet-body">
+                <div class="table-container">
+                    <div class="table-actions-wrapper" style="padding-bottom:10px">
+                        <span> </span>
+                        <button class="btn btn-sm green table-group-action-submit">
+                            <i class="fa fa-plus"></i> Tạo mới
+                        </button>
+                    </div>
+                    <table class="table table-striped table-bordered table-hover table-checkable order-column"
+                           id="tbl_users">
+                        <thead>
+                            <tr>
+                                <th class="no-sort"> STT </th>
+                                <th class="no-sort"> Tài khoản </th>
+                                <th class="no-sort"> Họ và tên </th>
+                                <th class="no-sort"> Trạng thái </th>
+                                <th class="no-sort"> Email </th>
+                                <th class="no-sort"></th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="detailUserModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-sm">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Thông tin người dùng</h4>
+            </div>
+            <div class="modal-body" style="padding-left:0;padding-right:0">
+                <div class="form-group">
+                    <label for="" class="control-label col-sm-6 bold">Tài khoản: </label>
+                    <label class="control-label" name="UserName" readonly data-model="UserName" />
+                </div>
+                <div class="form-group">
+                    <label for="" class="control-label col-sm-6 bold">Họ và tên: </label>
+                    <label class="control-label" name="FullName" readonly data-model="FullName" />
+                </div>
+                <div class="form-group">
+                    <label for="" class="control-label col-sm-6 bold">Email:</label>
+                    <label class="control-label" name="Email" data-model="Email" />
+                </div>
+                <div class="form-group">
+                    <label for="" class="control-label col-sm-6 bold">Quyền:</label>
+                    <label class="control-label" name="Role" data-model="Role" />
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary btn-submit" id="edit-user">Sửa thông tin</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="updateUserModal" class="modal fade" data-width="300" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Cập nhật thông tin người dùng</h4>
+            </div>
+            <div class="modal-body">
+                <form action="/User/Update" method="post">
+                    <div class="form-group">
+                        <label for="" class="control-label">Tài khoản</label>
+                        <div class="input-icon ">
+                            <i class="fa"></i>
+                            <input type="hidden" name="ID" data-model="ID" />
+                            <input type="text" class="form-control" name="UserName" readonly data-model="UserName" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="control-label">Email</label>
+                        <div class="input-icon ">
+                            <i class="fa"></i>
+                            <input type="email" class="form-control" name="Email" data-model="Email" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="control-label">Họ tên</label>
+                        <div class="input-icon ">
+                            <i class="fa"></i>
+                            <input type="text" class="form-control" name="FullName" data-model="FullName" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="control-label">Số điện thoại</label>
+                        <div class="input-icon ">
+                            <i class="fa"></i>
+                            <input type="text" class="form-control" name="PhoneNumber" data-model="PhoneNumber" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="" class="control-label">Quyền</label>
+                        <select name="Role" class="form-control" data-model="Role">
+                            <option value="user">Người dùng</option>
+                            <option value="administrator">Nhân viên quản lý</option>
+                            <option value="sa">Quản trị viên</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary btn-submit">Lưu thông tin</button>
+                <button type="button" class="btn btn-default close-edit" data-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
+@section PagePlugins
+    {
+
+    <script src="~/Scripts/cms/jquery.binding.js"></script>
+    <script src="~/Scripts/cms/datatables.min.js"></script>
+    <script src="~/Scripts/cms/datatables.bootstrap.js"></script>
+    <script src="~/Scripts/cms/jquery.validate.js"></script>
+    <script src="~/Scripts/cms/sweetalert.js"></script>
+}
+@section PageScripts{
+    <script>
+
+        var GROUP_ROLES = {
+            user: 'Người dùng',
+            administrator: 'Nhân viên quản lý',
+            sa: "Quản trị viên"
+        };
+        $(".nav-item").removeClass("active");
+        $(".user-manager").addClass("active");
+
+        (function () {
+            var initTable = function () {
+                var table = $("#tbl_users");
+                var user = null;
+                var userOld = null;
+                table.dataTable({
+                    "ajax": {
+                        "url": "/User/List",
+                        "type": "post"
+                    },
+                    "columns": [
+                        {
+                            "searchable": false,
+                            "sortable": false,
+                            "render": function (data, type, full, meta) {
+                                return meta.row + 1;
+                            }
+                        },
+                        //{
+                        //    "data": "ID",
+
+                        //},
+                        {
+                            "data": "UserName",
+
+                        },
+                        {
+                            "data": "FullName"
+                        },
+                        {
+                            "data": "LockoutEnabled",
+                            "render": function (data, type, row, meta) {
+                                if (type === 'display') {
+                                    console.log(data)
+                                    return data === 1 ?
+                                        '<span class="label label-sm label-success"> Đang hoạt động </span>' :
+                                        '<span class="label label-sm label-danger"> Bị khóa </span>'
+                                }
+                                return data;
+                            }
+                        },
+                        {
+                            "data": "Email"
+                        },
+                        {
+                            "data": "ID",
+                            "render": function (data, type, row, meta) {
+                                return '<div class="btn-group ' + data + '" > \
+                                                                         <button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"> \
+                                                                            Thao tác \
+                                                                            <i class="fa fa-angle-down"></i> \
+                                                                            </button> \
+                                                                            <ul class="dropdown-menu pull-right" role="menu"> \
+                                                                           <li> \
+                                                                            <a href="javascript:;" class="action-detail">\
+                                                                                <i class="icon-eye"></i> Thông tin tài khoản \
+                                                                            </a>\
+                                                                            </li> \
+                                                                            <li> \
+                                                                            <a href="javascript:;" class="action-edit">\
+                                                                                <i class="icon-pencil"></i> Chỉnh sửa thông tin \
+                                                                            </a>\
+                                                                            </li> \
+                                                                            <li class="divider"></li>\
+                                                                            <li> \
+                                                                             <a href="javascript:;" class="action-unlock">\
+                                                                                <i class="fa fa-unlock"></i> Mở khóa tài khoản\
+                                                                            </a>\
+                                                                            </li> \
+                                                                            <li> \
+                                                                             <a href="javascript:;" class="action-lock">\
+                                                                                <i class="icon-lock"></i> Khóa tài khoản\
+                                                                            </a>\
+                                                                            </li> \
+                                                                            <li class="divider"></li>\
+                                                                            <li> \
+                                                                             <a href="javascript:;" class="action-delete">\
+                                                                                <i class="icon-trash"></i> Xóa tài khoản\
+                                                                            </a>\
+                                                                            </li> \
+                                                                            </ul> \
+                                                                            </div>';
+                            }
+                        }
+                    ],
+                    "language": {
+                        "aria": {
+                            "sortAscending": ": activate to sort column ascending",
+                            "sortDescending": ": activate to sort column descending"
+                        },
+                        "emptyTable": "Không có dữ liệu",
+                        "info": "Hiển thị _START_ đến _END_ trên _TOTAL_ bản ghi",
+                        "infoEmpty": "Không tìm thấy bản ghi",
+                        "infoFiltered": "(Lọc từ _MAX_ tổng số bản ghi)",
+                        "lengthMenu": "_MENU_ bản ghi",
+                        "search": "Tìm kiếm",
+                        "zeroRecords": "Không có bản ghi phù hợp",
+                        "processing": "Đang xử lý dữ liệu ..."
+                    },
+                    "dom": "<'row'<'col-md-6 col-sm-12'l><'col-md-6 col-sm-12'f>r>t<'row'<'col-md-5 col-sm-12'i><'col-md-7 col-sm-12'p>>",
+                    //"bStateSave": true,
+                    "lengthMenu": [
+                        [5, 15, 20, -1],
+                        [5, 15, 20, "All"] // change per page values here
+                    ],
+                    "pageLength": 5,
+                    "pagingType": "bootstrap_full_number",
+                    "columnDefs": [
+                       
+                        {
+                            "targets": 'no-sort',
+                            "orderable": false,
+                        }
+                    ],
+                });
+
+                table.on('click', ".action-delete", function (e) {
+                    e.preventDefault();
+                    var tr = $(this).closest('tr');
+                    data = table.fnGetData(tr);
+                    if (data) {
+                        bootbox.confirm("Xác nhận xóa tài khoản này", function (result) {
+                            if (result) {
+                                $.post("/User/Delete", {
+                                    user: data,
+                                    locked: true
+                                }).done(function (xhr) {
+                                    table.DataTable().ajax.reload();
+                                    if (xhr.status == 'OK') {
+                                        bootbox.alert("Xóa người dùng thành công");
+                                    } else {
+                                        bootbox.alert("Xóa người dùng thất bại, vui lòng thử lại!");
+                                    }
+                                });
+                            }
+                        });
+                    }
+                });
+                table.on('click', ".action-edit", function (e) {
+                    e.preventDefault();
+                    var tr = $(this).closest('tr');
+                    var data = table.fnGetData(tr);
+                    if (data) {
+                        oneWayBinding($("#updateUserModal form"), data);
+                        $("#updateUserModal").modal({
+                            backdrop: "static",
+                            keyboard: false
+                        });
+                    }
+
+                });
+                function oneWayBinding($form, data) {
+                    $form.find("[name]").each(function (index, input) {
+                        if (data[$(input).attr('data-model')]) {
+                            $(input).val(data[$(input).attr('data-model')]);
+                        }
+                    });
+                }
+                table.on('click', ".action-lock", function (e) {
+                    e.preventDefault();
+                    var tr = $(this).closest('tr');
+                    var data = table.fnGetData(tr);
+                    console.log(data);
+                    if (data) {
+                        bootbox.confirm("Xác nhận khóa tài khoản này", function (result) {
+                            if (result) {
+                                $.post("/User/SetLock", {
+                                    user: data,
+                                    locked: true
+                                }).done(function (xhr) {
+                                    table.DataTable().ajax.reload();
+                                    if (xhr.status == 'OK') {
+                                        bootbox.alert("Khóa người dùng thành công");
+                                    } else {
+                                        bootbox.alert("Khóa người dùng thất bại, vui lòng thử lại!");
+                                    }
+                                });
+                            }
+                        });
+                    }
+                });
+
+                table.on('click', ".action-unlock", function (e) {
+                    e.preventDefault();
+                    var tr = $(this).closest('tr');
+                    var data = table.fnGetData(tr);
+                    if (data) {
+                        bootbox.confirm("Xác nhận khóa tài khoản này", function (result) {
+                            if (result) {
+                                $.post("/User/SetLock", {
+                                    user: data,
+                                    locked: false
+                                }).done(function (xhr) {
+                                    if (xhr.status == 'OK') {
+                                        bootbox.alert("Mở khóa người dùng thành công");
+                                    } else {
+                                        bootbox.alert("Mở khóa người dùng thất bại, vui lòng thử lại!");
+                                    }
+                                    table.DataTable().ajax.reload();
+                                });
+                            }
+                        });
+                    }
+                });
+                table.on('click', ".action-detail", function (e) {
+                    e.preventDefault();
+                    var tr = $(this).closest('tr');
+                    var data = table.fnGetData(tr);
+                    userOld = data;
+                    if (data) {
+                        $("#detailUserModal").find("label[name]").each(function (index, input) {
+                            if (data[$(input).attr('data-model')]) {
+                                $(input).text(data[$(input).attr('data-model')]);
+                            }
+                        });
+
+                        $("#detailUserModal").find("label[name=Role]").text(GROUP_ROLES[data['role']]);
+
+                        $("#detailUserModal").modal({
+                            backdrop: "static",
+                            keyboard: false
+                        });
+                    }
+                });
+                var createUserForm = $('#createUserModal form');
+                createUserForm.validate({
+                    errorElement: 'span', //default input error message container
+                    errorClass: 'help-block help-block-error', // default input error message class
+                    focusInvalid: true, // do not focus the last invalid input
+                    ignore: "", // validate all fields including form hidden input
+                    rules: {
+                        UserName: {
+                            minlength: 2,
+                            required: true
+                        },
+                        Email: {
+                            required: true,
+                            email: true
+                        },
+                        FullName: {
+                            required: true,
+                            // email: true
+                        },
+                        PhoneNumber: {
+                            required: false
+                        },
+                        Password: {
+                            required: true
+                        },
+                        Role: {
+                            required: true
+                        }
+                    },
+
+                    invalidHandler: function (event, validator) { //display error alert on form submit
+                    },
+
+                    errorPlacement: function (error, element) { // render error placement for each input type
+                        var icon = $(element).parent('.input-icon').children('i');
+                        icon.removeClass('fa-check').addClass("fa-warning");
+                        icon.attr("data-original-title", error.text()).tooltip({
+                            'container': 'body'
+                        });
+                    },
+
+                    highlight: function (element) { // hightlight error inputs
+                        $(element).closest('.form-group').removeClass("has-success").addClass(
+                            'has-error'); // set error class to the control group
+                    },
+
+                    unhighlight: function (element) { // revert the change done by hightlight
+
+                    },
+
+                    success: function (label, element) {
+                        var icon = $(element).parent('.input-icon').children('i');
+                        $(element).closest('.form-group').removeClass('has-error').addClass(
+                            'has-success'); // set success class to the control group
+                        icon.removeClass("fa-warning").addClass("fa-check");
+                    },
+
+                    submitHandler: function (form) {
+                        $(form).ajaxSubmit({
+                            success: function (xhr) {
+                                if (xhr.status === "OK") {
+                                    table.DataTable().ajax.reload();
+                                    //
+                                    $('#createUserModal').modal('hide');
+                                    //
+                                    swal({
+                                        title: 'Thông báo',
+                                        text: 'Tạo mới người dùng thành công!',
+                                        type: 'success',
+                                        confirmButtonText: "Đồng ý"
+                                    }, function () { });
+                                }
+                            }
+                        })
+                        // form[0].submit(); // submit the form
+                    }
+                });
+                $('#createUserModal .btn-submit').on('click', function () {
+                    createUserForm.trigger('submit');
+                });
+
+                var updateUserForm = $('#updateUserModal form');
+                updateUserForm.validate({
+                    errorElement: 'span', //default input error message container
+                    errorClass: 'help-block help-block-error', // default input error message class
+                    focusInvalid: true, // do not focus the last invalid input
+                    ignore: "", // validate all fields including form hidden input
+                    rules: {
+                        Username: {
+                            // minlength: 2,
+                            required: true
+                        },
+                        Email: {
+                            required: true,
+                            email: true
+                        },
+                        FullName: {
+                            required: true,
+                            // email: true
+                        },
+                        PhoneNumber: {
+                            required: false
+                        },
+                        Role: {
+                            required: true
+                        }
+                    },
+
+                    invalidHandler: function (event, validator) { //display error alert on form submit
+                    },
+
+                    errorPlacement: function (error, element) { // render error placement for each input type
+                        var icon = $(element).parent('.input-icon').children('i');
+                        icon.removeClass('fa-check').addClass("fa-warning");
+                        icon.attr("data-original-title", error.text()).tooltip({
+                            'container': 'body'
+                        });
+                    },
+
+                    highlight: function (element) { // hightlight error inputs
+                        $(element).closest('.form-group').removeClass("has-success").addClass(
+                            'has-error'); // set error class to the control group
+                    },
+
+                    unhighlight: function (element) { // revert the change done by hightlight
+
+                    },
+
+                    success: function (label, element) {
+                        var icon = $(element).parent('.input-icon').children('i');
+                        $(element).closest('.form-group').removeClass('has-error').addClass(
+                            'has-success'); // set success class to the control group
+                        icon.removeClass("fa-warning").addClass("fa-check");
+                    },
+
+                    submitHandler: function (form) {
+                        $(form).ajaxSubmit({
+                            success: function (xhr) {
+                                if (xhr.status === "OK") {
+                                    table.DataTable().ajax.reload();
+                                    //
+                                    $('#updateUserModal').modal('hide');
+                                    //
+                                    bootbox.alert("Cập nhật người dùng thành công");
+                                }
+                            }
+                        })
+                        // form[0].submit(); // submit the form
+                    }
+                });
+                $('#updateUserModal .btn-submit').on('click', function () {
+                    updateUserForm.trigger('submit');
+                });
+
+                $("#edit-user").on('click', function () {
+                    $('#detailUserModal').modal('hide');
+                    if (userOld) {
+                        //  console.log(userOld);
+                        //userOld.role == "Quản trị viên" ? userOld.role = "administrator" : userOld.role = "user";
+                        oneWayBinding($("#updateUserModal form"), userOld);
+                        $("#updateUserModal").modal({
+                            backdrop: "static",
+                            keyboard: false
+                        });
+                    }
+                });
+            }();
+        })();
+
+    </script>
+}
+

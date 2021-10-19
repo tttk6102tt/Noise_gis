@@ -1,0 +1,494 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="author" content="Hệ thống quan trắc tiếng ồn (PHIÊN BẢN THỬ NGHIỆM)" />
+    <meta name="description" content="Hệ thống quan trắc tiếng ồn (PHIÊN BẢN THỬ NGHIỆM)" />
+    <!-- Document title -->
+    <title>
+        Hệ thống quan trắc tiếng ồn (PHIÊN BẢN THỬ NGHIỆM)
+    </title>
+    <!-- Stylesheets & Fonts -->
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    @*<link rel="stylesheet" href="//cdn.materialdesignicons.com/3.8.95/css/materialdesignicons.min.css" />*@
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.9.55/css/materialdesignicons.min.css" />
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i&display=swap&subset=vietnamese"
+          rel="stylesheet">
+
+    <link href="~/Content/front/css/common.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-theme/0.1.0-beta.10/select2-bootstrap.css">
+
+    <link href="~/Content/front/css/components-md.css" rel="stylesheet" />
+
+    <link href="~/Content/front/css/plugins.css" rel="stylesheet" />
+    <link href="~/Content/front/css/style.css" rel="stylesheet" />
+    <link href="~/Content/front/css/responsive.css" rel="stylesheet" />
+    <link href="~/Content/front/css/custom.css" rel="stylesheet" />
+
+    @RenderSection("PageStyles", false)
+    <style>
+
+        body {
+            ` padding: 0px;
+            margin: 0px;
+        }
+
+        .fancybox-prev {
+            left: -60px !important;
+        }
+
+        .fancybox-next {
+            right: -60px !important;
+        }
+
+        .fancybox-title-float-wrap {
+            bottom: -20px;
+        }
+
+        #btn-choose-file-img {
+            margin-right: 0px !important;
+        }
+
+        #btn-cancel-file-img {
+            margin-left: 0px !important;
+        }
+
+        #filelist {
+            padding-left: 11px !important;
+            margin-top: 20px;
+        }
+
+            #filelist .pip {
+                width: 24%;
+                margin: 3px;
+                list-style-type: none;
+                display: inline-block;
+                text-align: center;
+                border: 1px solid;
+                border-radius: 5px;
+                overflow: hidden;
+                position: relative;
+            }
+
+                #filelist .pip img {
+                    width: 100%;
+                    height: 134px;
+                }
+
+                #filelist .pip span {
+                    transition: 0.5s;
+                    margin-top: 5px;
+                    position: absolute;
+                    top: -7px;
+                    right: -1px;
+                    display: none;
+                    transition: 0.5s;
+                    padding: 5px;
+                    border-radius: -5px;
+                    background-color: #ea1a1a;
+                    border-color: #ea1a1a;
+                }
+
+                #filelist .pip:hover span {
+                    transition: 0.5s;
+                    display: inline-block;
+                }
+
+        .fileinput-button {
+            background-color: #2bcedd !important;
+            border-color: #2bcedd !important;
+        }
+
+        #display {
+            margin-top: 20px;
+        }
+
+        .image {
+            width: 100%;
+            position: relative;
+            height: 100%;
+            transition: 0.5s;
+        }
+
+        .item-image {
+            position: relative;
+            height: 130px;
+            padding: 5px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border: 1px dotted;
+            transition: 0.5s;
+        }
+
+        .bg-color {
+            width: 100%;
+            height: 100%;
+            background-color: #d2d2d278;
+            transition: 0.5s;
+            position: absolute;
+            z-index: 5;
+            top: 0;
+            left: 0;
+            opacity: 0;
+        }
+
+        .container-btn {
+            position: absolute;
+            z-index: 10;
+            top: 44%;
+            width: 100%;
+            text-align: center;
+            opacity: 0;
+            transition: 0.5s;
+            left: 0px;
+        }
+
+            .container-btn .btn-primary, .container-btn .btn-danger {
+                padding: 11px;
+                font-size: 17px;
+            }
+
+            .container-btn .btn-primary {
+                margin-right: 1px;
+                padding: 11px 10px !important;
+            }
+
+        .item-image:hover .bg-color, .item-image:hover .container-btn {
+            opacity: 1;
+        }
+
+        .item-image:hover {
+            border: 1px solid black;
+            border-radius: 2px;
+            transform: scale3d(1.03,1.05,1.05) translate3d(1px,-5px,1px);
+        }
+
+        .progress-bar {
+            background-color: #d5cdcd;
+            padding: 5px 3px;
+        }
+    </style>
+    <style>
+        .content {
+            margin-bottom: 0px;
+        }
+
+        .calcite .esriPopup .contentPane {
+            padding: 0px;
+        }
+
+        body {
+            font-family: "Open Sans", sans-serif;
+        }
+
+        h3:not(:last-child),
+        .h3:not(:last-child) {
+            margin-bottom: 0px;
+        }
+
+        p {
+            margin-bottom: 0px;
+        }
+
+        .checkbox label:after,
+        .radio label:after {
+            content: '';
+            display: table;
+            clear: both;
+        }
+
+        .checkbox .cr,
+        .radio .cr {
+            position: relative;
+            display: inline-block;
+            border: 1px solid #a9a9a9;
+            border-radius: .25em;
+            width: 1.3em;
+            height: 1.3em;
+            float: left;
+            margin-right: .5em;
+        }
+
+        .radio .cr {
+            border-radius: 50%;
+        }
+
+            .checkbox .cr .cr-icon,
+            .radio .cr .cr-icon {
+                position: absolute;
+                font-size: .8em;
+                line-height: 0;
+                top: 50%;
+                left: 20%;
+            }
+
+            .radio .cr .cr-icon {
+                margin-left: 0.04em;
+            }
+
+        .checkbox label input[type="checkbox"],
+        .radio label input[type="radio"] {
+            display: none;
+        }
+
+            .checkbox label input[type="checkbox"] + .cr > .cr-icon,
+            .radio label input[type="radio"] + .cr > .cr-icon {
+                transform: scale(3) rotateZ(-20deg);
+                opacity: 0;
+                transition: all .3s ease-in;
+            }
+
+            .checkbox label input[type="checkbox"]:checked + .cr > .cr-icon,
+            .radio label input[type="radio"]:checked + .cr > .cr-icon {
+                transform: scale(1) rotateZ(0deg);
+                opacity: 1;
+            }
+
+            .checkbox label input[type="checkbox"]:disabled + .cr,
+            .radio label input[type="radio"]:disabled + .cr {
+                opacity: .5;
+            }
+
+        p {
+            font-family: "robotoregular";
+            font-style: normal;
+            font-weight: 400;
+            text-transform: none;
+            line-height: 28px;
+            letter-spacing: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Wrapper -->
+
+    <div id="wrapper">
+        <div id="logo-box">
+            <div class="container" style="width:100%" id="header2">
+                <!--Logo-->
+                <div id="logo">
+                    <a href="/" class="logo" data-dark-logo="/Content/images/vigac.svg">
+                        <img src="/Content/images/vigac.svg" alt="Logo" />
+                    </a>
+                </div>
+
+                <!--End: Logo-->
+                <div class="slogan hidden-xs">
+                    <p class="main" style="text-align:center; font-size:20px;font-weight:bold;color:dodgerblue;margin-top:15px">
+                        HỆ THỐNG QUAN TRẮC
+                        TIẾNG ỒN TRỰC TUYẾN
+                        (PHIÊN BẢN THỬ NGHIỆM)
+                    </p>
+                </div>
+                @*@if (User.Identity.IsAuthenticated)
+                    {
+                        <div class="account">
+                            Xin chào
+                            <span>
+                                @User.FindFirst(x => x.Type == "preferred_username")?.Value
+                            </span>
+                            <a href="/front/home/logout">[ Thoát ]</a><br />
+                            <a href="/trangchu/taikhoan/doimatkhau">Đổi mật khẩu</a>
+                            @if (User.FindFirst(x => x.Type == "preferred_username")?.Value == "admin")
+                            {
+                                <span>|</span> <a href="/admin"> Quản trị </a><br />
+                            }
+                            <a href="/Content/upload/documents/HuongDanSuDung.pdf">Hướng dẫn sử dụng</a> <br />
+                        </div>
+                    }
+                    else
+                    {
+
+                    }*@
+            <div class="account">
+                @if (Session["FullName"] != null)
+                {
+                    <a>
+                        @Html.Label(Session["FullName"].ToString().ToUpper())
+                    </a>
+                    if (Session["Role"] != null && Session["Role"].ToString() == "sa")
+                    {
+                        <a>
+                            @Html.ActionLink("QUẢN TRỊ", "Index", "CMS")
+                        </a>
+                    }
+                    <a>
+                        @Html.ActionLink("ĐĂNG XUẤT", "Logout", "Home")
+                    </a>
+                }
+                else
+                {
+                    <a>
+                        @Html.ActionLink("ĐĂNG NHẬP", "Login", "Home")
+                    </a>
+                    <a> @Html.ActionLink("ĐĂNG KÝ", "Register", "Home")</a>
+                }
+
+
+            </div>
+            </div>
+        </div>
+        <!-- Header -->
+        @*<header id="header">
+                <div id="header-wrap">
+                    <!--Navigation Resposnive Trigger-->
+                    <div id="mainMenu-trigger">
+                        <button class="lines-button x">
+                            <span class="lines"></span>
+                        </button>
+                    </div>
+                    <!--end: Navigation Resposnive Trigger-->
+                    <!--Navigation-->
+                    <div id="mainMenu" class="light">
+                        <nav>
+                            <ul>
+                                <li class="active">
+                                    <a href="/"><i class="fa fa-home ico-home"></i></a>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="/Home/About"> GIỚI THIỆU </a>
+                                </li>
+                                @if (Session["username"] != null && Session["username"].ToString() == "admin")
+                                {
+                                    <li class="dropdown">
+                                        <a href="/Home/connectdb"> ĐỒNG BỘ DỮ LIỆU</a>
+                                    </li>
+                                    <li> @Html.ActionLink("CẤU HÌNH HỆ THỐNG", "Configsys", "Home") </li>
+                                    <li class="dropdown">
+                                        <a href="/Home/manageruser"> QUẢN TRỊ NGƯỜI DÙNG </a>
+                                    </li>
+                                }
+
+
+
+                            </ul>
+                        </nav>
+                    </div>
+                    <!--end: Navigation-->
+                </div>
+            </header>*@
+        <!-- end: Header -->
+        <!-- Inspiro Slider -->
+        @RenderBody()
+        <!-- Footer -->
+        <footer class="footer">
+            <table>
+                <tr>
+                    <td>
+                        <div class="footer-info">
+                            <p class="text-left">&copy; Bản quyền thuộc Viện Khoa Học Đo Đạc và Bản Đồ</p>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="text-center">
+                            <div class="footer-info">
+                                <p id="mouse-coord"></p>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="dropdown-scale-container text-right"></div>
+                    </td>
+                </tr>
+            </table>
+        </footer>
+
+        <!-- end: Footer -->
+    </div>
+    <!-- end: Wrapper -->
+    <!-- Go to top button -->
+    <a id="goToTop"><i class="fa fa-angle-up top-icon"></i><i class="fa fa-angle-up"></i></a>
+    <!--Plugins-->
+    @*<div class="modal fade" id="registerModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog">
+                <form method="post" id="registerForm" action="/front/home/register">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                            <h4 class="modal-title">Đăng kí tài khoản</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="portlet-search" style="margin:0;padding:0;border:none;">
+                                <div class="form-group col-md-6" style="margin-bottom:0px !important">
+                                    <label style="font-size:13px">Tên đăng nhập <span class="text-danger">*</span></label>
+                                    <input class="form-control" type="text" autocomplete="off" name="Username" id="userName" />
+                                    <input type="hidden" name="__ssacidRegister2" value="@ViewBag.__ssacidRegister2" />
+                                    <span class="text-danger" id="error-username-register">&nbsp;</span>
+                                </div>
+                                <div class="form-group col-md-6" style="margin-bottom:0px !important">
+                                    <label style="font-size:13px">Địa chỉ Email <span class="text-danger">*</span></label>
+                                    <input class="form-control" type="text" autocomplete="off" name="email" id="email" />
+                                    <span class="text-danger" id="error-email-register">&nbsp;</span>
+                                </div>
+                                <div class="form-group col-md-6" style="margin-bottom:0px !important">
+                                    <label style="font-size:13px">Số điện thoại </label>
+                                    <input class="form-control" type="text" autocomplete="off" name="PhoneNumber" />
+                                    <span class="text-danger" id="error-phone-register">&nbsp;</span>
+                                </div>
+                                <div class="form-group col-md-6" style="margin-bottom:0px !important">
+                                    <label style="font-size:13px">Mật khẩu <span class="text-danger">*</span></label>
+                                    <input class="form-control" type="password" autocomplete="off" name="Password" id="Password" />
+                                    <span class="text-danger" id="error-password-register">&nbsp;</span>
+                                </div>
+                                <div class="form-group col-md-6" style="margin-bottom:0px !important">
+                                    <label style="font-size:13px">Xác nhận mật khẩu <span class="text-danger">*</span></label>
+                                    <input class="form-control" type="password" autocomplete="off" id="ConfirmPassword"
+                                           name="ConfirmPassword" />
+                                    <span class="text-danger" id="error-confirm-register">&nbsp;</span>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="message">Mã xác nhận <span class="text-danger">*</span></label>
+                                    <div class="control-input">
+                                        <div class="confirm-code" style="padding-top:8px">
+                                            <span>
+                                                <a class="image-code" id="captcha-register" onclick="document.getElementById('__captcha_img_register').src='/front/home/Captcha?__ssacid2=@ViewBag.__ssacidRegister2&__rd='+new Date().getTime();">
+                                                    <img src="/front/home/Captcha?__ssacid2=@ViewBag.__ssacidRegister2&__rn=false" alt="" id="__captcha_img_register" style="height:38px; border:1px solid #c2cad8;">
+                                                </a>
+                                            </span>
+                                            <input type="number" style="width:110px;box-shadow: none;border-radius: 4px;height: auto;line-height: 1.33333;padding: 8px 18px;border: 2px solid #ebebeb;" class="ma-xn" name="__submit_captcha_register" autocomplete="false" />
+                                        </div>
+                                        <span class="text-danger" id="error-captcha-register" style="padding-right:10px">* Vui lòng nhập lại mã xác nhận</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer" style="padding-top:10px">
+                            <button type="submit" style="margin-bottom:0px" class="btn btn-default">Xác nhận</button>
+                            <button type="button" style="margin-bottom:0px" class="btn btn-danger" data-dismiss="modal">
+                                Hủy
+                            </button>
+                        </div>
+                    </div>
+                </form>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>*@
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/js/select2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/oidc-client/1.8.2/oidc-client.js"></script>
+    <script src="~/Scripts/front/jquery.js"></script>
+    <script src="~/Scripts/front/plugins.js"></script>
+
+    <script src="~/Scripts/front/functions.js"></script>
+    <script src="~/Scripts/front/template.engine.js"></script>
+    <script src="~/Scripts/front/bootbox.min.js"></script>
+    <script src="~/Scripts/front/app.js"></script>
+    <script>
+
+    </script>
+    @RenderSection("PageScripts", false)
+
+</body>
+
+</html>

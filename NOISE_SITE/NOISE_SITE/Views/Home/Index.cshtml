@@ -1,0 +1,701 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section PageStyles{
+    @*<link rel="stylesheet" href="~/Content/bootstrap.min.css" />
+    @*<link rel="stylesheet" href="https://js.arcgis.com/4.19/dijit/themes/claro/claro.css" />
+        @*<link rel="stylesheet" href="https://js.arcgis.com/3.27/esri/css/esri.css">
+    <link rel="stylesheet" href="https://js.arcgis.com/4.19/esri/themes/light/main.css">*@
+    <link href="~/Scripts/datetime-picker/bootstrap-datetimepicker.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://js.arcgis.com/3.27/esri/themes/calcite/dijit/calcite.css">
+    <link rel="stylesheet" href="https://js.arcgis.com/3.27/esri/themes/calcite/esri/esri.css">
+
+
+    <style>
+        /*.esri-ui-manual-container > .esri-component {
+            position: absolute;
+            display: none;
+        }*/
+
+        /*.content {
+            z-index: 1;
+            float: right;
+            padding-left: 25px;
+            margin-bottom: 26px;
+        }
+
+        .esriPopup .sizer {
+            position: relative;
+            width: 270px;
+        }*/
+        p, ul, ol, pre, table {
+            margin-bottom: unset;
+        }
+
+        #measurementDiv {
+            width: 200px;
+            height: 200px;
+            top: 60px;
+            position: absolute;
+            right: 25px;
+            z-index: 99;
+            background: #fff;
+            padding: 15px;
+            display: none;
+            font-family: inherit;
+            border: 1px solid lightgrey;
+        }
+
+        #dv-filter {
+            width: 200px;
+            top: 60px;
+            position: absolute;
+            right: 25px;
+            z-index: 99;
+            background: #fff;
+            padding: 15px;
+            display: none;
+            font-family: inherit;
+            border: 1px solid lightgrey;
+        }
+
+        #dv-report {
+            width: 200px;
+            top: 60px;
+            position: absolute;
+            right: 25px;
+            z-index: 99;
+            background: #fff;
+            padding: 15px;
+            display: none;
+            font-family: inherit;
+            border: 1px solid lightgrey;
+        }
+
+        #controls {
+            width: 50vw;
+            /*height: 60vh;*/
+            bottom: 30px;
+            position: absolute;
+            left: 15px;
+            z-index: 99;
+            background: #fff;
+            display: none;
+            font-family: inherit;
+            border: 1px solid lightgrey;
+            opacity: 0.8;
+        }
+
+        #legend {
+            overflow: auto;
+            width: 25vw;
+            height: 200px;
+            max-height: 250px;
+            bottom: 30px;
+            position: absolute;
+            right: 15px;
+            z-index: 99;
+            background: #fff;
+            display: none;
+            font-family: inherit;
+            border: 1px solid lightgrey;
+            opacity: 0.8;
+        }
+
+        #BasemapToggle {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            z-index: 50;
+        }
+    </style>
+}
+@*<div class="page-sidebar-wrapper">
+        <div class="page-sidebar navbar-collapse collapse ">
+            <div class="page-sidebar-menu page-header-fixed page-sidebar-menu-light">
+
+            </div>
+        </div>
+        <!-- END SIDEBAR -->
+    </div>*@
+
+<div id="slider">
+    <div class="map-box calcite" id="map">
+        <aside id="aside" class="page-sidebar"></aside>
+        <div id="BasemapToggle"></div>
+        <div id="measurementDiv"></div>
+        @*@if (Session["Role"] != null && (Session["Role"].ToString() == "sa" || Session["Role"].ToString() == "admin"))
+            {*@
+        <div id="dv-filter" class="esri-widget" style="width:25vw;background:none">
+            <div id="info">
+                <div class="form-group" style="padding-left:30px;padding-right:30px;padding-top:10px">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <input type="text" id="ngaydo" class="form-control date-picker">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group" style="padding-left:30px;padding-right:30px">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <select name="method" id="khunggio" class="form-control">
+                                @for (int i = 0; i <= 23; i++)
+                                {
+                                    if (i < 23)
+                                    {
+                                        <option value="@i">@string.Format("{0}h - {1}h", i, i + 1)</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="23">23h - 0h</option>
+                                    }
+                                }
+                                @*<option value="6h-9h">6h-9h</option>
+                                    <option value="9h-11h" selected="selected">9h-11h</option>
+                                    <option value="11h-13h">11h-13h</option>*@
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group" style="padding-left:30px;padding-right:30px">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="checkRas" checked>
+                                <label class="form-check-label" for="checkRas">
+                                    Lớp dữ liệu độ ồn
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="checkTram" checked>
+                                <label class="form-check-label" for="checkTram">
+                                    Lớp dữ liệu trạm đo
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @*@if (Session["username"] != null && Session["username"].ToString() == "admin")
+                    {
+                        <div class="form-group" style="padding-left:30px;padding-right:30px">
+                            <div class="row">
+                                <label class="control-label col-sm-6" style="box-shadow:none" for="method">Phương pháp nội suy</label>
+                                <div class="col-sm-6">
+                                    <select name="method" id="method" class="form-control">
+                                        <option value="distance" selected="selected">Theo khoảng cách</option>
+                                        <option value="barrier">Theo vật cản</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    }*@
+                <div class="form-group" style=" padding-right:15px;text-align:right">
+                    <button id="noisuy" class="btn btn-primary btn-sm"><i class="glyphicon glyphicon-search"></i></button>
+                </div>
+            </div>
+        </div>
+        @*}*@
+        <div id="dv-report" class="esri-widget" style="width:25vw;background:none">
+
+        </div>
+        @*<div id="controls">
+                <div id="chartdiv" style="width:100%"></div>
+            </div>*@
+        <div id="printButton"></div>
+        <div id="control-container"></div>
+        <div id="legend">
+            <div id="legendContent"></div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade modal-lg" id="infoModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" style="min-width:800px">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title">Nhập thông tin phản hồi</h4>
+            </div>
+            <div class="modal-body" style="max-height:450px;overflow:auto">
+                @*  <form method="post" id="form-info" action="/api/FileUpload/Post" enctype="multipart/form-data">*@
+                @*<input type="hidden" name="__captcha_img" value="@ViewBag.__ssacid2" />*@
+                @if (Session["UserName"] != null && Session["UserName"].ToString() != "")
+                {
+                    <input type="hidden" id="thongTinNguoiDung" name="thongTinNguoiDung" value="@Session["UserName"].ToString()" />
+                }
+                <div class="col-sm-6">
+                    <label id="toaDoX">Tọa độ X: </label>
+                </div>
+                <div class="col-sm-6">
+                    <label id="toaDoY">Tọa độ Y :</label>
+                </div>
+                @*<div class="col-sm-6">
+                        <label id="district_name"></label>
+                    </div>
+                    <div class="col-sm-6">
+                        <label id="commune_name"></label>
+                    </div>*@
+                @*<div class="col-sm-6">
+                        <label>Loại tài sản trên đất</label>
+                        <select class="select2" id="loaiTaiSanGanLienVoiDat">
+                            <option value="0" selected>Chọn loại tài sản </option>
+                            <option value="1">Công trình xây dựng.</option>
+                            <option value="2">Công trình ngầm.</option>
+                            <option value="3">Hạng mục công trình xây dựng.</option>
+                            <option value="4">Rừng sản xuất là rừng trồng.</option>
+                            <option value="10">Cây lâu năm</option>
+                        </select>
+                    </div>*@
+                <div class="col-sm-12">
+                    <label>Nội dung phản hồi*</label>
+                    <input type="text" id="phanHoi" name="phanHoi" class="form-control">
+                </div>
+                @*<div class="col-sm-6">
+                        <label>Người cung cấp thông tin*</label>
+                        <input type="text" id="doiTuongPhatHien" name="doiTuongPhatHien" class="form-control">
+                    </div>
+                    <div class="col-sm-6">
+                        <label>Vị trí vi phạm*</label>
+                        <input type="text" id="diaDiemBienDong" name="diaDiemBienDong" class="form-control">
+                    </div>
+                    <div class="col-sm-6">
+                        <label>Ghi chú*</label>
+                        <input type="text" id="thongTinKhac" name="thongTinKhac" class="form-control">
+                    </div>*@
+                @*<div class="col-sm-12" id="file-import">
+                        <label>Tệp đính kèm</label>
+                        <div class="fileinput fileinput-new" data-provides="fileinput">
+                            <div class="input-group">
+                                <div class="form-control uneditable-input input-fixed p-t-10 p-b-10" data-trigger="fileinput">
+                                    <i class="fa fa-file fileinput-exists"></i>&nbsp;
+                                    <span class="fileinput-filename" style="width:200px"> </span>
+                                </div>
+                                <span class="input-group-addon btn default btn-file">
+                                    <span class="fileinput-new"> Chọn tệp </span>
+                                    <span class="fileinput-exists"> Thay đổi </span>
+                                    <input type="file" name="file" accept="image/png, image/jpeg, .zip,.rar,.7zip, audio/*,video/*,image/*">
+                                </span>
+                                <a href="javascript:;" class="input-group-addon btn red fileinput-exists" data-dismiss="fileinput"> Hủy bỏ </a>
+                            </div>
+                        </div>
+                    </div>*@
+                @*@if (ViewBag.Role)
+                    {
+                        <div class="col-sm-12" id="accept-info">
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="o1" value="" id="DaDuyet">
+                                    <span class="cr"><i class="cr-icon fa fa-circle"></i></span>
+                                    Đã xác minh
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="o1" value="" id="ChuaDuyet">
+                                    <span class="cr"><i class="cr-icon fa fa-circle"></i></span>
+                                    Đang xác minh
+                                </label>
+                            </div>
+                        </div>
+                    }*@
+                <div class="form-group col-sm-12">
+                    <label for="message">Mã xác nhận*</label>
+                    <div class="control-input">
+                        <div class="confirm-code">
+                            <span>
+                                <a class="image-code" id="captcha" onclick="document.getElementById('__captcha_img').src='/home/Captcha?__ssacid2=@ViewBag.__ssacidRegister2&__rd='+new Date().getTime();">
+                                    <img src="/home/Captcha?__ssacid2=@ViewBag.__ssacidRegister2&__rn=false" alt="" id="__captcha_img" style="border:1px solid #c2cad8;">
+                                </a>
+                            </span>
+                            <input type="number" style="width:174px;box-shadow: none;border-radius: 4px;height: auto;line-height: 1.33333;padding: 8px 18px;border: 2px solid #ebebeb;" class="ma-xn" name="__submit_captcha" autocomplete="false" />
+                        </div>
+                        <span class="text-danger" id="error-captcha" style="padding-right:10px">* Vui lòng nhập lại mã xác nhận</span>
+                    </div>
+                </div>
+                @*</form>*@
+
+            </div>
+            <div class="modal-footer">
+                <div class="col-sm-12">
+                    @if (Session["Role"] != null && (Session["Role"].ToString() == "sa" || Session["Role"].ToString() == "admin"))
+                    {
+                        <button class="btn btn-success" style="margin-bottom:0px" type="button" id="form-accept"><i class="fa fa-check"></i>&nbsp;Xác nhận thông tin</button>
+                        <button class="btn btn-danger" style="margin-bottom:0px" type="button" id="form-delete"><i class="fa fa-trash"></i>&nbsp;Xóa thông tin</button>
+                    }
+                    <button class="btn btn-info" style="margin-bottom:0px" type="button" id="form-submit"><i class="fa fa-map"></i>&nbsp;Gửi thông tin</button>
+                    <button class="btn btn-default" style="margin-bottom:0px" id="form-dismiss" data-dismiss="modal"><i class="fa fa-close"></i>&nbsp; Đóng</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="tansuatlaymau">
+    <input type="hidden" value="30" id="tan_suat_lay_mau" />
+    @*@Html.HiddenFor(c => c.tan_suat_lay_mau)*@
+</div>
+
+<!-- end: Services -->
+@section PageScripts{
+    @if (ViewBag.Message != null)
+    {
+        <script>
+            alert("@ViewBag.Message");
+        </script>
+    }
+    @if (ViewBag.error != null)
+    {
+        <script>
+            alert("@ViewBag.error");
+        </script>
+    }
+
+    <script src="~/Scripts/datetime-picker/bootstrap-datetimepicker.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <script src="~/Scripts/front/kendo.all.min.js"></script>
+    <script src="https://js.arcgis.com/3.27/"></script>
+    @*<script src="https://js.arcgis.com/3.37/"></script>*@
+
+    <script src="~/Scripts/map/map.namespace.js"></script>
+    <script src="~/Scripts/map/map.core.js"></script>
+    <script src="~/Scripts/map/map.toolbar.js"></script>
+    <script src="~/Scripts/map/map.sidebar.js"></script>
+
+    @*<script src="~/Scripts/map.js"></script>*@
+
+    <script>
+
+        setHeightForMap();
+
+        function setHeightForMap() {
+            var wh = window.innerHeight;
+            var lh = $('#logo-box').height();
+            var hh = 0;
+            var fh = $('#footer').height();
+            var mh = wh - lh - hh - fh - 10;
+
+            $('#map').height(mh);
+        }
+    </script>
+    <script>
+        document.body.className += 'format-top';
+
+        var map;
+        $(document).on('ready', function () {
+
+            kendo.culture("vi-VN ");
+            $("#aside").attr("style", "top:" + $("#header2").outerHeight() + "px;height:400px");
+
+            $("#ngaydo").kendoDatePicker({
+                value: new Date(),
+                format: 'dd/MM/yyyy'
+            });
+
+            var defaultControls = [
+                vgsMap.MapToolBar.DEFAULT,
+                vgsMap.MapToolBar.FULL_EXTENT,
+                vgsMap.MapToolBar.ZOOM_IN,
+                vgsMap.MapToolBar.ZOOM_OUT,
+                vgsMap.MapToolBar.MEASUREMENT_AREA,
+                //vgsMap.MapToolBar.SHOW_CHART,
+                //vgsMap.MapToolBar.REPORT,
+                //vgsMap.MapToolBar.FILTER
+            ];
+            //
+
+            var role = '@Request.RequestContext.HttpContext.Session["Role"]';
+
+            var userName = '@Request.RequestContext.HttpContext.Session["UserName"]';
+            if (role == "admin" || role == "sa") {
+                defaultControls.push(vgsMap.MapToolBar.FILTER);
+                defaultControls.push(vgsMap.MapToolBar.EDITOR);
+            }
+            if (userName != "") {
+                defaultControls.push(vgsMap.MapToolBar.DRAW_POLYGON_LAND_USING)
+            }
+            map = $('#map').vgsMapView({
+                mapView: {
+                    saveLastExtent: true,
+                    overViewMap: false,
+                    webServiceType: 'both',
+                    defaultWebService: 'wms'
+                }
+            }).data('vgsMapView');
+            //
+
+
+           var layer;
+            var mapControls = $("#control-container").vgsMapToolBar({
+                map: map,
+                controls: defaultControls,
+                select: function (e) {
+                    //e.sender.preventDefault();
+                },
+                change: function (e) {
+
+                }
+            }).data('vgsMapToolbar');
+
+            var mapSidebar = $('.page-sidebar').vgsMapSidebar({
+                // layerGroups: [AppModule.DUONG_BO, AppModule.DUONG_SAT, AppModule.DUONG_THUY],
+                bars: [
+                    //vgsMap.MapSidebar.REGION,
+                    //vgsMap.MapSidebar.BASE_LAYER,
+                    //vgsMap.MapSidebar.PROTECT_LAND_RESOURCES,
+                    // vgsMap.MapSidebar.LAYER,
+                    vgsMap.MapSidebar.REPORT,
+                    vgsMap.MapSidebar.REPORT_MONTH,
+                    vgsMap.MapSidebar.REPORT_YEAR,
+                    vgsMap.MapSidebar.REPORT_MIN,
+                    vgsMap.MapSidebar.REPORT_MIN_MONTH,
+                    vgsMap.MapSidebar.REPORT_MIN_YEAR,
+                    vgsMap.MapSidebar.CHART,
+                    vgsMap.MapSidebar.CHART_VIEW,
+                    // vgsMap.MapSidebar.IMPORT,
+                    // vgsMap.MapSidebar.INFO,
+                    //vgsMap.MapSidebar.HELPER,
+                    //vgsMap.MapSidebar.LEGEND,
+
+                ],
+                vgsMap: $('#map').data('vgsMapView')
+            }).data('vgsMapSidebar');
+
+        });
+    </script>
+
+    <script>
+        /*
+        function pad2(n) { return n < 10 ? '0' + n : n }
+
+        var interval;
+
+        var pattern = /(\d{4})(\d{2})(\d{2})(\d{2})(\d{2})(\d{2})/;
+        var chart;
+        var IDs = [];
+        $.ajax({
+            url: "/Home/GetData",
+            type: 'get',
+            contentType: 'application/json'
+        }).done((xhr) => {
+
+            var seriesChart = [];
+
+            var chartOption = xhr.data.series;
+            var colors = ["#f40000", "#00ff01", "#ffff11", "#ff6400", "#0000ee", "#ff00fe", "#632a9f", "#652700", "#000000"];
+            var colorIdx = 0;
+            $.each(chartOption, (idx, item) => {
+                var color = colors[colorIdx++];
+                var series = {};
+                series.name = item.name;
+                var data = [];
+                $.each(item.data.reverse(), (i, ser) => {//
+                    if (data.length <= 10) {
+                        var timeOfItem = new Date(ser.time.replace(pattern, '$1/$2/$3 $4:$5:$6'));
+
+                        timeOfItem.setHours(timeOfItem.getHours() + 7);
+
+                        data.push({
+                            time: ser.time.replace(pattern, '$3/$2/$1 $4:$5:$6'),
+                            x: timeOfItem.getTime(),//.getTime(),//Date.UTC(timeOfItem.getFullYear(), timeOfItem.getMonth(), timeOfItem.getDate(), timeOfItem.getHours(), timeOfItem.getMinutes(), timeOfItem.getSeconds()),//
+                            y: ser.y,
+                        });
+                    }
+                });
+                series.color = color;
+                series.data = data;
+                seriesChart.push(series);
+            });
+
+            chart = Highcharts.chart('chartdiv', {
+                chart: {
+                    zoomType: 'x',
+                    type: 'spline',
+                    scrollablePlotArea: {
+                        minWidth: 700,
+                        scrollPositionX: 1
+                    },
+                    animation: Highcharts.svg, // don't animate in old IE
+                    marginRight: 10,
+                    events: {
+                        load: function () {
+                            // set up the updating of the chart each second
+                            //var series = this.series[0];
+                            setInterval(function () {
+                                $.ajax({
+                                    url: "/Home/GetAllDataNoise",
+                                    type: 'get',
+                                    contentType: 'application/json'
+                                }).done((result) => {
+
+                                    var currentData = result.data;
+                                    for (var i = 0; i < chart.series.length; i++) {
+                                        var series = chart.series[i];
+
+                                        var idSer = chart.series[i].name;
+                                        var currentById = currentData.filter(s => s.DiaDiem == idSer);
+                                        var dataNewSer = currentById.reduce(function (prev, current) {
+                                            return (prev.sTT > current.sTT) ? prev : current
+                                        });
+
+                                        var lastSer = chart.series[i].data.reduce(function (prev, current) {
+                                            return (prev.x > current.x) ? prev : current
+                                        });
+
+                                        var lastDate = new Date(lastSer.x);
+
+                                        var lastDateStr = lastDate.getFullYear().toString() + pad2(lastDate.getMonth() + 1) + pad2(lastDate.getDate()) + pad2(lastDate.getHours()) + pad2(lastDate.getMinutes()) + pad2(lastDate.getSeconds());
+
+                                        var newDate = new Date(dataNewSer.TIME.replace(pattern, '$1/$2/$3 $4:$5:$6'));
+                                        //newDate = new Date();
+                                        var dateUTC = Date.UTC(newDate.getFullYear(), newDate.getMonth(), newDate.getDate(), newDate.getHours(), newDate.getMinutes(), newDate.getSeconds())
+                                        newDate.setHours(newDate.getHours() + 7);
+
+                                        var newDateStr = newDate.getFullYear().toString() + pad2(newDate.getMonth() + 1) + pad2(newDate.getDate()) + pad2(newDate.getHours()) + pad2(newDate.getMinutes()) + pad2(newDate.getSeconds());
+                                        //var x = new Date().getTime(),// dateUTC,//.getTime(), // current time
+                                        //    y = parseFloat(dataNewSer.dB);//
+
+
+
+
+                                        if (lastDateStr != newDateStr) {
+                                            var x = newDate.getTime(),// dateUTC,//.getTime(), // current time
+                                                y = parseFloat(dataNewSer.dB);//
+                                            chart.series[i].addPoint([x, y]);
+                                            //chart.series[i].addPoint([x, y], true, true);
+
+                                            chart.series[i].addPoint([x, y], true, chart.series[i].data.length >= 10);
+                                            chart.redraw();
+                                        }
+                                    }
+
+                                });
+                            }, 5000);
+                        }
+                    }
+                },
+                time: {
+                    useUTC: false
+                },
+                title: {
+                    text: 'Biểu đồ dữ liệu thu thập'
+                },
+                accessibility: {
+                    announceNewData: {
+                        enabled: true,
+                        minAnnounceInterval: 5000,
+                        announcementFormatter: function (allSeries, newSeries, newPoint) {
+                            if (newPoint) {
+                                return 'New point added. Value: ' + newPoint.y;
+                            }
+                            return false;
+                        }
+                    }
+                },
+                xAxis: {
+                    type: 'datetime',
+                    labels: {
+                        overflow: 'justify'
+                    },
+                    tickPixelInterval: 100
+                },
+
+                yAxis: {
+                    min: 0,
+                    //max: 90,
+                    title: {
+                        text: 'dB'
+                    },
+                    plotLines: [{
+                        value: 70,
+                        width: 2,
+                        color: 'red',
+                        label: {
+                            text: "70dB",
+                            style: {
+                                color: 'red'
+                            }
+                        }
+                    },
+                    {
+                        value: 55,
+                        width: 2,
+                        color: 'orange',
+                        label: {
+                            text: "55dB",
+                            style: {
+                                color: 'orange'
+                            }
+                        }
+                    },
+                    {
+                        value: 45,
+                        width: 2,
+                        color: 'yellow',
+                        label: {
+                            text: "45dB",
+                            style: {
+                                color: 'yellow'
+                            }
+                        }
+                    }]
+                },
+
+                tooltip: {
+                    useHTML: true,
+                    shared: true,
+                    formatter: function () {
+                        var date = new Date(this.x);
+                        var hour = date.getHours() > 9 ? date.getHours() : "0" + date.getHours();
+                        var minute = date.getMinutes() > 9 ? date.getMinutes() : "0" + date.getMinutes();
+                        var second = date.getSeconds() > 9 ? date.getSeconds() : "0" + date.getSeconds();
+                        var day = date.getDate() > 9 ? date.getDate() : "0" + date.getDate();
+                        var month = (date.getMonth() + 1) > 9 ? (date.getMonth() + 1) : "0" + (date.getMonth() + 1);
+                        var strDate = `${day}/${month}/${date.getFullYear()} ${hour}:${minute}:${second} `
+
+                        var s = '';
+
+                        if (this.points != undefined) {
+                            $.each(this.points, function (i, point) {
+                                s += '<br /><span style="color:' + this.color + '">\u25CF</span> Trạm: ' + this.series.userOptions.name + '<br/>Giá trị: <b>' + this.y + '</b> dB.';
+                            });
+                        }
+                        else if (this.y != undefined) {
+                            s += '<br /><span style="color:' + this.color + '">\u25CF</span>Trạm:  ' + this.series.userOptions.name + '<br/>Giá trị: <b>' + this.y + '</b> dB.';
+                        }
+
+                        return strDate + s;
+                    }
+                },
+
+                legend: {
+                    enabled: true
+                },
+
+                exporting: {
+                    enabled: false
+                },
+                plotOptions: {
+                    spline: {
+                        lineWidth: 3,
+                        states: {
+                            hover: {
+                                lineWidth: 5
+                            }
+                        },
+                        marker: {
+                            //enabled: false
+                        },
+                    }
+                },
+                series: seriesChart
+            });
+        });
+        */
+    </script>
+}

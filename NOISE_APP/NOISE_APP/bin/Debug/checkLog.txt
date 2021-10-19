@@ -1,0 +1,500 @@
+*** Create by DoanhLV ***
+--- Cuộn xuống dưới để thấy được dữ liệu mới nhất -------------------------------------------------
+Content: Lấy config
+ExceptionMessage: A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+ExceptionStackTrace: The network path was not found
+CreateTime: 29/09/2021 10:50:31.906
+-------------------------------------------------------------------------------------------------------
+
+Content: Lấy config
+ExceptionMessage: A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+ExceptionStackTrace: The network path was not found
+CreateTime: 29/09/2021 10:51:58.074
+-------------------------------------------------------------------------------------------------------
+
+Content: Lấy config
+ExceptionMessage: A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+ExceptionStackTrace: The network path was not found
+CreateTime: 29/09/2021 10:53:03.177
+-------------------------------------------------------------------------------------------------------
+
+Content: Lỗi dữ liệu
+ExceptionMessage: Không có dữ liệu
+ExceptionStackTrace: 
+CreateTime: 29/09/2021 10:53:52.446
+-------------------------------------------------------------------------------------------------------
+
+Content: Lỗi dữ liệu
+ExceptionMessage: Không có dữ liệu
+ExceptionStackTrace: 
+CreateTime: 29/09/2021 10:54:15.544
+-------------------------------------------------------------------------------------------------------
+
+Content: Lỗi dữ liệu
+ExceptionMessage: Không có dữ liệu
+ExceptionStackTrace: 
+CreateTime: 29/09/2021 10:55:18.139
+-------------------------------------------------------------------------------------------------------
+
+Content: Lỗi dữ liệu
+ExceptionMessage: Không có dữ liệu
+ExceptionStackTrace: 
+CreateTime: 29/09/2021 10:55:49.277
+-------------------------------------------------------------------------------------------------------
+
+Content: Lỗi dữ liệu
+ExceptionMessage: Không có dữ liệu
+ExceptionStackTrace: 
+CreateTime: 29/09/2021 10:56:35.726
+-------------------------------------------------------------------------------------------------------
+
+Content: Lỗi dữ liệu
+ExceptionMessage: Không có dữ liệu
+ExceptionStackTrace: 
+CreateTime: 29/09/2021 11:29:19.219
+-------------------------------------------------------------------------------------------------------
+
+Content: Lỗi dữ liệu
+ExceptionMessage: Không có dữ liệu
+ExceptionStackTrace: 
+CreateTime: 29/09/2021 11:30:29.752
+-------------------------------------------------------------------------------------------------------
+
+Content: Lỗi dữ liệu
+ExceptionMessage: Không có dữ liệu
+ExceptionStackTrace: 
+CreateTime: 29/09/2021 11:31:29.646
+-------------------------------------------------------------------------------------------------------
+
+Content: Lỗi dữ liệu
+ExceptionMessage: Không có dữ liệu
+ExceptionStackTrace: 
+CreateTime: 29/09/2021 11:32:30.847
+-------------------------------------------------------------------------------------------------------
+
+Content: Lỗi dữ liệu
+ExceptionMessage: Không có dữ liệu
+ExceptionStackTrace: 
+CreateTime: 29/09/2021 11:33:28.166
+-------------------------------------------------------------------------------------------------------
+
+Content: Lỗi dữ liệu
+ExceptionMessage: Không có dữ liệu
+ExceptionStackTrace: 
+CreateTime: 29/09/2021 11:34:13.618
+-------------------------------------------------------------------------------------------------------
+
+Content: Lỗi dữ liệu
+ExceptionMessage: Không có dữ liệu
+ExceptionStackTrace: 
+CreateTime: 29/09/2021 11:35:14.471
+-------------------------------------------------------------------------------------------------------
+
+Content: Lỗi dữ liệu
+ExceptionMessage: Không có dữ liệu
+ExceptionStackTrace: 
+CreateTime: 29/09/2021 11:44:05.294
+-------------------------------------------------------------------------------------------------------
+
+Content: Lỗi dữ liệu
+ExceptionMessage: Không có dữ liệu
+ExceptionStackTrace: 
+CreateTime: 29/09/2021 11:45:06.521
+-------------------------------------------------------------------------------------------------------
+
+Content: Lỗi dữ liệu
+ExceptionMessage: Không có dữ liệu
+ExceptionStackTrace: 
+CreateTime: 29/09/2021 11:46:08.289
+-------------------------------------------------------------------------------------------------------
+
+Content: Lỗi dữ liệu
+ExceptionMessage: Không có dữ liệu
+ExceptionStackTrace: 
+CreateTime: 29/09/2021 11:47:38.033
+-------------------------------------------------------------------------------------------------------
+
+Content: Lỗi dữ liệu
+ExceptionMessage: Không có dữ liệu
+ExceptionStackTrace: 
+CreateTime: 29/09/2021 11:48:37.534
+-------------------------------------------------------------------------------------------------------
+
+Content: Lỗi dữ liệu
+ExceptionMessage: Không có dữ liệu
+ExceptionStackTrace: 
+CreateTime: 29/09/2021 11:49:37.387
+-------------------------------------------------------------------------------------------------------
+
+Content: Lỗi dữ liệu
+ExceptionMessage: Không có dữ liệu
+ExceptionStackTrace: 
+CreateTime: 29/09/2021 11:50:37.663
+-------------------------------------------------------------------------------------------------------
+
+Content: Lỗi dữ liệu
+ExceptionMessage: Không có dữ liệu
+ExceptionStackTrace: 
+CreateTime: 29/09/2021 11:51:44.115
+-------------------------------------------------------------------------------------------------------
+
+Content: Lỗi dữ liệu
+ExceptionMessage: Không có dữ liệu
+ExceptionStackTrace: 
+CreateTime: 29/09/2021 11:52:41.344
+-------------------------------------------------------------------------------------------------------
+
+Content: Lỗi dữ liệu
+ExceptionMessage: Không có dữ liệu
+ExceptionStackTrace: 
+CreateTime: 29/09/2021 11:53:40.841
+-------------------------------------------------------------------------------------------------------
+
+Content: Lỗi dữ liệu
+ExceptionMessage: Không có dữ liệu
+ExceptionStackTrace: 
+CreateTime: 29/09/2021 11:54:38.567
+-------------------------------------------------------------------------------------------------------
+
+Content: Lỗi dữ liệu
+ExceptionMessage: Không có dữ liệu
+ExceptionStackTrace: 
+CreateTime: 29/09/2021 11:55:40.144
+-------------------------------------------------------------------------------------------------------
+
+Content: Lỗi dữ liệu
+ExceptionMessage: Không có dữ liệu
+ExceptionStackTrace: 
+CreateTime: 29/09/2021 11:57:55.654
+-------------------------------------------------------------------------------------------------------
+
+Content: Lỗi dữ liệu
+ExceptionMessage: Không có dữ liệu
+ExceptionStackTrace: 
+CreateTime: 29/09/2021 11:59:47.538
+-------------------------------------------------------------------------------------------------------
+
+Content: Lỗi dữ liệu
+ExceptionMessage: Không có dữ liệu
+ExceptionStackTrace: 
+CreateTime: 29/09/2021 12:00:41.843
+-------------------------------------------------------------------------------------------------------
+
+Content: Lỗi dữ liệu
+ExceptionMessage: Không có dữ liệu
+ExceptionStackTrace: 
+CreateTime: 29/09/2021 12:01:41.345
+-------------------------------------------------------------------------------------------------------
+
+Content: Lỗi dữ liệu
+ExceptionMessage: Không có dữ liệu
+ExceptionStackTrace: 
+CreateTime: 29/09/2021 12:03:34.504
+-------------------------------------------------------------------------------------------------------
+
+Content: Lỗi dữ liệu
+ExceptionMessage: Không có dữ liệu
+ExceptionStackTrace: 
+CreateTime: 29/09/2021 12:04:07.847
+-------------------------------------------------------------------------------------------------------
+
+Content: Lỗi dữ liệu
+ExceptionMessage: Không có dữ liệu
+ExceptionStackTrace: 
+CreateTime: 29/09/2021 12:05:13.792
+-------------------------------------------------------------------------------------------------------
+
+Content: Lỗi dữ liệu
+ExceptionMessage: Không có dữ liệu
+ExceptionStackTrace: 
+CreateTime: 29/09/2021 12:06:08.450
+-------------------------------------------------------------------------------------------------------
+
+Content: Lỗi dữ liệu
+ExceptionMessage: Không có dữ liệu
+ExceptionStackTrace: 
+CreateTime: 29/09/2021 12:07:07.674
+-------------------------------------------------------------------------------------------------------
+
+Content: Lỗi dữ liệu
+ExceptionMessage: Không có dữ liệu
+ExceptionStackTrace: 
+CreateTime: 29/09/2021 12:08:07.645
+-------------------------------------------------------------------------------------------------------
+
+Content: Lỗi dữ liệu
+ExceptionMessage: Không có dữ liệu
+ExceptionStackTrace: 
+CreateTime: 29/09/2021 12:09:08.201
+-------------------------------------------------------------------------------------------------------
+
+Content: Lỗi dữ liệu
+ExceptionMessage: Không có dữ liệu
+ExceptionStackTrace: 
+CreateTime: 29/09/2021 12:10:07.446
+-------------------------------------------------------------------------------------------------------
+
+Content: Lỗi dữ liệu
+ExceptionMessage: Không có dữ liệu
+ExceptionStackTrace: 
+CreateTime: 29/09/2021 12:11:08.140
+-------------------------------------------------------------------------------------------------------
+
+Content: Lỗi dữ liệu
+ExceptionMessage: Không có dữ liệu
+ExceptionStackTrace: 
+CreateTime: 29/09/2021 12:12:07.942
+-------------------------------------------------------------------------------------------------------
+
+Content: Lỗi dữ liệu
+ExceptionMessage: Không có dữ liệu
+ExceptionStackTrace: 
+CreateTime: 29/09/2021 12:13:07.913
+-------------------------------------------------------------------------------------------------------
+
+Content: Lỗi dữ liệu
+ExceptionMessage: Không có dữ liệu
+ExceptionStackTrace: 
+CreateTime: 29/09/2021 12:14:07.651
+-------------------------------------------------------------------------------------------------------
+
+Content: Lỗi dữ liệu
+ExceptionMessage: Không có dữ liệu
+ExceptionStackTrace: 
+CreateTime: 29/09/2021 12:16:09.362
+-------------------------------------------------------------------------------------------------------
+
+Content: Lỗi dữ liệu
+ExceptionMessage: Không có dữ liệu
+ExceptionStackTrace: 
+CreateTime: 29/09/2021 12:17:03.582
+-------------------------------------------------------------------------------------------------------
+
+Content: Lỗi dữ liệu
+ExceptionMessage: Không có dữ liệu
+ExceptionStackTrace: 
+CreateTime: 29/09/2021 12:17:15.711
+-------------------------------------------------------------------------------------------------------
+
+Content: Lỗi dữ liệu
+ExceptionMessage: Không có dữ liệu
+ExceptionStackTrace: 
+CreateTime: 29/09/2021 12:18:13.421
+-------------------------------------------------------------------------------------------------------
+
+Content: Lỗi dữ liệu
+ExceptionMessage: Không có dữ liệu
+ExceptionStackTrace: 
+CreateTime: 29/09/2021 12:19:10.522
+-------------------------------------------------------------------------------------------------------
+
+Content: Lỗi dữ liệu
+ExceptionMessage: Không có dữ liệu
+ExceptionStackTrace: 
+CreateTime: 29/09/2021 12:20:10.830
+-------------------------------------------------------------------------------------------------------
+
+Content: Lỗi dữ liệu
+ExceptionMessage: Không có dữ liệu
+ExceptionStackTrace: 
+CreateTime: 29/09/2021 12:21:09.561
+-------------------------------------------------------------------------------------------------------
+
+Content: Lỗi dữ liệu
+ExceptionMessage: Không có dữ liệu
+ExceptionStackTrace: 
+CreateTime: 29/09/2021 12:22:11.171
+-------------------------------------------------------------------------------------------------------
+
+Content: Lỗi dữ liệu
+ExceptionMessage: Không có dữ liệu
+ExceptionStackTrace: 
+CreateTime: 29/09/2021 12:23:16.981
+-------------------------------------------------------------------------------------------------------
+
+Content: Lỗi dữ liệu
+ExceptionMessage: Không có dữ liệu
+ExceptionStackTrace: 
+CreateTime: 29/09/2021 12:24:10.618
+-------------------------------------------------------------------------------------------------------
+
+Content: Lỗi dữ liệu
+ExceptionMessage: Không có dữ liệu
+ExceptionStackTrace: 
+CreateTime: 29/09/2021 12:25:13.690
+-------------------------------------------------------------------------------------------------------
+
+Content: Lỗi dữ liệu
+ExceptionMessage: Không có dữ liệu
+ExceptionStackTrace: 
+CreateTime: 29/09/2021 12:26:16.461
+-------------------------------------------------------------------------------------------------------
+
+Content: Lỗi dữ liệu
+ExceptionMessage: Không có dữ liệu
+ExceptionStackTrace: 
+CreateTime: 29/09/2021 12:27:15.420
+-------------------------------------------------------------------------------------------------------
+
+Content: Lỗi dữ liệu
+ExceptionMessage: Không có dữ liệu
+ExceptionStackTrace: 
+CreateTime: 29/09/2021 12:28:17.313
+-------------------------------------------------------------------------------------------------------
+
+Content: Lỗi dữ liệu
+ExceptionMessage: Không có dữ liệu
+ExceptionStackTrace: 
+CreateTime: 29/09/2021 12:29:17.180
+-------------------------------------------------------------------------------------------------------
+
+Content: Lỗi dữ liệu
+ExceptionMessage: Không có dữ liệu
+ExceptionStackTrace: 
+CreateTime: 29/09/2021 12:30:14.888
+-------------------------------------------------------------------------------------------------------
+
+Content: Lỗi dữ liệu
+ExceptionMessage: Không có dữ liệu
+ExceptionStackTrace: 
+CreateTime: 29/09/2021 12:31:14.614
+-------------------------------------------------------------------------------------------------------
+
+Content: Lỗi dữ liệu
+ExceptionMessage: Không có dữ liệu
+ExceptionStackTrace: 
+CreateTime: 29/09/2021 12:32:12.224
+-------------------------------------------------------------------------------------------------------
+
+Content: Lỗi dữ liệu
+ExceptionMessage: Không có dữ liệu
+ExceptionStackTrace: 
+CreateTime: 29/09/2021 12:33:16.487
+-------------------------------------------------------------------------------------------------------
+
+Content: Lỗi dữ liệu
+ExceptionMessage: Không có dữ liệu
+ExceptionStackTrace: 
+CreateTime: 29/09/2021 12:34:17.103
+-------------------------------------------------------------------------------------------------------
+
+Content: Lỗi dữ liệu
+ExceptionMessage: Không có dữ liệu
+ExceptionStackTrace: 
+CreateTime: 29/09/2021 12:35:15.988
+-------------------------------------------------------------------------------------------------------
+
+Content: Tính toán
+ExceptionMessage: Error HRESULT E_FAIL has been returned from a call to a COM component.
+ExceptionStackTrace: 
+CreateTime: 29/09/2021 13:09:06.615
+-------------------------------------------------------------------------------------------------------
+
+Content: Tính toán
+ExceptionMessage: ERROR 010067: Error in executing grid expression. 
+ExceptionStackTrace: 
+CreateTime: 29/09/2021 14:41:59.567
+-------------------------------------------------------------------------------------------------------
+
+Content: Tính toán
+ExceptionMessage: Cannot acquire a schema lock because of an existing lock.
+ExceptionStackTrace: 
+CreateTime: 29/09/2021 20:03:43.986
+-------------------------------------------------------------------------------------------------------
+
+Content: Tính toán
+ExceptionMessage: Cannot acquire a schema lock because of an existing lock.
+ExceptionStackTrace: 
+CreateTime: 29/09/2021 20:04:43.924
+-------------------------------------------------------------------------------------------------------
+
+Content: Tính toán
+ExceptionMessage: Error HRESULT E_FAIL has been returned from a call to a COM component.
+ExceptionStackTrace: 
+CreateTime: 29/09/2021 20:28:14.917
+-------------------------------------------------------------------------------------------------------
+
+Content: Tính toán
+ExceptionMessage: The table was not found. [VAT_Raster_2021092919_30_59]
+ExceptionStackTrace: 
+CreateTime: 29/09/2021 20:30:18.483
+-------------------------------------------------------------------------------------------------------
+
+Content: Tính toán
+ExceptionMessage: Error HRESULT E_FAIL has been returned from a call to a COM component.
+ExceptionStackTrace: 
+CreateTime: 30/09/2021 08:51:40.597
+-------------------------------------------------------------------------------------------------------
+
+Content: Tính toán
+ExceptionMessage: Error HRESULT E_FAIL has been returned from a call to a COM component.
+ExceptionStackTrace: 
+CreateTime: 30/09/2021 19:16:29.700
+-------------------------------------------------------------------------------------------------------
+
+Content: Tính toán
+ExceptionMessage: Error HRESULT E_FAIL has been returned from a call to a COM component.
+ExceptionStackTrace: 
+CreateTime: 01/10/2021 08:52:21.246
+-------------------------------------------------------------------------------------------------------
+
+Content: Tính toán
+ExceptionMessage: Error HRESULT E_FAIL has been returned from a call to a COM component.
+ExceptionStackTrace: 
+CreateTime: 02/10/2021 08:51:48.869
+-------------------------------------------------------------------------------------------------------
+
+Content: Tính toán
+ExceptionMessage: Item not found in this collection.
+ExceptionStackTrace: 
+CreateTime: 02/10/2021 12:06:06.962
+-------------------------------------------------------------------------------------------------------
+
+Content: Lỗi dữ liệu
+ExceptionMessage: Không có dữ liệu
+ExceptionStackTrace: 
+CreateTime: 04/10/2021 22:17:46.459
+-------------------------------------------------------------------------------------------------------
+
+Content: Lỗi dữ liệu
+ExceptionMessage: Không có dữ liệu
+ExceptionStackTrace: 
+CreateTime: 04/10/2021 22:46:48.287
+-------------------------------------------------------------------------------------------------------
+
+Content: Lỗi dữ liệu
+ExceptionMessage: Không có dữ liệu
+ExceptionStackTrace: 
+CreateTime: 05/10/2021 21:22:56.022
+-------------------------------------------------------------------------------------------------------
+
+Content: Lỗi dữ liệu
+ExceptionMessage: Không có dữ liệu
+ExceptionStackTrace: 
+CreateTime: 05/10/2021 21:25:58.119
+-------------------------------------------------------------------------------------------------------
+
+Content: Tính toán
+ExceptionMessage: ERROR 010067: Error in executing grid expression. 
+ExceptionStackTrace: 
+CreateTime: 06/10/2021 22:27:46.662
+-------------------------------------------------------------------------------------------------------
+
+Content: Tính toán
+ExceptionMessage: ERROR 010067: Error in executing grid expression. 
+ExceptionStackTrace: 
+CreateTime: 10/10/2021 20:28:06.010
+-------------------------------------------------------------------------------------------------------
+
+Content: Tính toán
+ExceptionMessage: ERROR 010067: Error in executing grid expression. 
+ExceptionStackTrace: 
+CreateTime: 10/10/2021 20:33:10.074
+-------------------------------------------------------------------------------------------------------
+
+Content: Tính toán
+ExceptionMessage: Error HRESULT E_FAIL has been returned from a call to a COM component.
+ExceptionStackTrace: 
+CreateTime: 15/10/2021 19:53:42.747
+-------------------------------------------------------------------------------------------------------
+

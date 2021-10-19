@@ -1,0 +1,1042 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MicroOrm.Dapper.Repositories</name>
+    </assembly>
+    <members>
+        <member name="T:MicroOrm.Dapper.Repositories.DapperRepository`1">
+            <summary>
+            Base Repository
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.DapperRepository`1.#ctor(System.Data.IDbConnection,System.Data.IDbTransaction)">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.DapperRepository`1.#ctor(System.Data.IDbConnection,MicroOrm.Dapper.Repositories.SqlGenerator.ESqlConnector,System.Data.IDbTransaction)">
+             <summary>
+            
+             </summary>
+             <param name="connection"></param>
+             <param name="sqlConnector"></param>
+             <param name="transaction"></param>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.DapperRepository`1.#ctor(System.Data.IDbConnection,MicroOrm.Dapper.Repositories.SqlGenerator.ISqlGenerator{`0},System.Data.IDbTransaction)">
+             <summary>
+            
+             </summary>
+             <param name="connection"></param>
+             <param name="sqlGenerator"></param>
+             <param name="transaction"></param>
+        </member>
+        <member name="P:MicroOrm.Dapper.Repositories.DapperRepository`1.Connection">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:MicroOrm.Dapper.Repositories.DapperRepository`1.Transaction">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:MicroOrm.Dapper.Repositories.DapperRepository`1.SqlGenerator">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.DapperRepository`1.Find">
+             <summary>
+            
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.DapperRepository`1.Find(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+             <summary>
+            
+             </summary>
+             <param name="expression"></param>
+             <returns></returns>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.DapperRepository`1.Find``1(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,System.Object}})">
+             <summary>
+            
+             </summary>
+             <typeparam name="TChild1"></typeparam>
+             <param name="expression"></param>
+             <param name="tChild1"></param>
+             <returns></returns>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.DapperRepository`1.FindAsync``1(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})">
+             <summary>
+            
+             </summary>
+             <typeparam name="TChild1"></typeparam>
+             <param name="tChild1"></param>
+             <returns></returns>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.DapperRepository`1.FindAsync``1(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,System.Object}})">
+             <summary>
+            
+             </summary>
+             <typeparam name="TChild1"></typeparam>
+             <param name="expression"></param>
+             <param name="tChild1"></param>
+             <returns></returns>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.DapperRepository`1.FindAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+             <summary>
+            
+             </summary>
+             <param name="expression"></param>
+             <returns></returns>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.DapperRepository`1.FindAsync">
+             <summary>
+            
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.DapperRepository`1.FindAll">
+             <summary>
+            
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.DapperRepository`1.FindAll(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+             <summary>
+            
+             </summary>
+             <param name="expression"></param>
+             <returns></returns>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.DapperRepository`1.FindAll(MicroOrm.Dapper.Repositories.SqlGenerator.SqlQuery)">
+             <summary>
+            
+             </summary>
+             <param name="sqlQuery"></param>
+             <returns></returns>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.DapperRepository`1.FindAll``1(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})">
+             <summary>
+            
+             </summary>
+             <typeparam name="TChild1"></typeparam>
+             <param name="tChild1"></param>
+             <returns></returns>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.DapperRepository`1.FindAll``1(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,System.Object}})">
+             <summary>
+            
+             </summary>
+             <typeparam name="TChild1"></typeparam>
+             <param name="expression"></param>
+             <param name="tChild1"></param>
+             <returns></returns>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.DapperRepository`1.FindAll``1(MicroOrm.Dapper.Repositories.SqlGenerator.SqlQuery,System.Linq.Expressions.Expression{System.Func{`0,System.Object}})">
+             <summary>
+            
+             </summary>
+             <typeparam name="TChild1"></typeparam>
+             <param name="sqlQuery"></param>
+             <param name="tChild1"></param>
+             <returns></returns>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.DapperRepository`1.FindAllAsync">
+             <summary>
+            
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.DapperRepository`1.FindAllAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+             <summary>
+            
+             </summary>
+             <param name="expression"></param>
+             <returns></returns>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.DapperRepository`1.FindAllAsync(MicroOrm.Dapper.Repositories.SqlGenerator.SqlQuery)">
+             <summary>
+            
+             </summary>
+             <param name="sqlQuery"></param>
+             <returns></returns>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.DapperRepository`1.FindAllAsync``1(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})">
+             <summary>
+            
+             </summary>
+             <typeparam name="TChild1"></typeparam>
+             <param name="tChild1"></param>
+             <returns></returns>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.DapperRepository`1.FindAllAsync``1(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,System.Object}})">
+             <summary>
+            
+             </summary>
+             <typeparam name="TChild1"></typeparam>
+             <param name="expression"></param>
+             <param name="tChild1"></param>
+             <returns></returns>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.DapperRepository`1.FindAllAsync``1(MicroOrm.Dapper.Repositories.SqlGenerator.SqlQuery,System.Linq.Expressions.Expression{System.Func{`0,System.Object}})">
+             <summary>
+            
+             </summary>
+             <typeparam name="TChild1"></typeparam>
+             <param name="sqlQuery"></param>
+             <param name="tChild1"></param>
+             <returns></returns>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.DapperRepository`1.Insert(`0)">
+             <summary>
+            
+             </summary>
+             <param name="instance"></param>
+             <returns></returns>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.DapperRepository`1.InsertAsync(`0)">
+             <summary>
+            
+             </summary>
+             <param name="instance"></param>
+             <returns></returns>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.DapperRepository`1.Delete(`0)">
+             <summary>
+            
+             </summary>
+             <param name="instance"></param>
+             <returns></returns>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.DapperRepository`1.DeleteAsync(`0)">
+             <summary>
+            
+             </summary>
+             <param name="instance"></param>
+             <returns></returns>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.DapperRepository`1.Update(`0)">
+             <summary>
+            
+             </summary>
+             <param name="instance"></param>
+             <returns></returns>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.DapperRepository`1.UpdateAsync(`0)">
+             <summary>
+            
+             </summary>
+             <param name="instance"></param>
+             <returns></returns>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.DapperRepository`1.FindAllBetween(System.Object,System.Object,System.Linq.Expressions.Expression{System.Func{`0,System.Object}})">
+             <summary>
+            
+             </summary>
+             <param name="from"></param>
+             <param name="to"></param>
+             <param name="btwField"></param>
+             <returns></returns>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.DapperRepository`1.FindAllBetween(System.Object,System.Object,System.Linq.Expressions.Expression{System.Func{`0,System.Object}},System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+             <summary>
+            
+             </summary>
+             <param name="from"></param>
+             <param name="to"></param>
+             <param name="btwField"></param>
+             <param name="expression"></param>
+             <returns></returns>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.DapperRepository`1.FindAllBetween(System.DateTime,System.DateTime,System.Linq.Expressions.Expression{System.Func{`0,System.Object}})">
+             <summary>
+            
+             </summary>
+             <param name="from"></param>
+             <param name="to"></param>
+             <param name="btwField"></param>
+             <returns></returns>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.DapperRepository`1.FindAllBetween(System.DateTime,System.DateTime,System.Linq.Expressions.Expression{System.Func{`0,System.Object}},System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+             <summary>
+            
+             </summary>
+             <param name="from"></param>
+             <param name="to"></param>
+             <param name="btwField"></param>
+             <param name="expression"></param>
+             <returns></returns>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.DapperRepository`1.FindAllBetweenAsync(System.Object,System.Object,System.Linq.Expressions.Expression{System.Func{`0,System.Object}})">
+             <summary>
+            
+             </summary>
+             <param name="from"></param>
+             <param name="to"></param>
+             <param name="btwField"></param>
+             <returns></returns>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.DapperRepository`1.FindAllBetweenAsync(System.Object,System.Object,System.Linq.Expressions.Expression{System.Func{`0,System.Object}},System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+             <summary>
+            
+             </summary>
+             <param name="from"></param>
+             <param name="to"></param>
+             <param name="btwField"></param>
+             <param name="expression"></param>
+             <returns></returns>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.DapperRepository`1.FindAllBetweenAsync(System.DateTime,System.DateTime,System.Linq.Expressions.Expression{System.Func{`0,System.Object}})">
+             <summary>
+            
+             </summary>
+             <param name="from"></param>
+             <param name="to"></param>
+             <param name="btwField"></param>
+             <returns></returns>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.DapperRepository`1.FindAllBetweenAsync(System.DateTime,System.DateTime,System.Linq.Expressions.Expression{System.Func{`0,System.Object}},System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+             <summary>
+            
+             </summary>
+             <param name="from"></param>
+             <param name="to"></param>
+             <param name="btwField"></param>
+             <param name="expression"></param>
+             <returns></returns>
+        </member>
+        <member name="T:MicroOrm.Dapper.Repositories.IDapperRepository`1">
+            <summary>
+            Interface for Repository
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+        </member>
+        <member name="P:MicroOrm.Dapper.Repositories.IDapperRepository`1.Connection">
+            <summary>
+            Connection
+            </summary>
+        </member>
+        <member name="P:MicroOrm.Dapper.Repositories.IDapperRepository`1.Transaction">
+            <summary>
+            Transaction
+            </summary>
+        </member>
+        <member name="P:MicroOrm.Dapper.Repositories.IDapperRepository`1.SqlGenerator">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.IDapperRepository`1.Find(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+             <summary>
+            
+             </summary>
+             <param name="expression"></param>
+             <returns></returns>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.IDapperRepository`1.Find``1(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,System.Object}})">
+             <summary>
+            
+             </summary>
+             <typeparam name="TChild1"></typeparam>
+             <param name="expression"></param>
+             <param name="tChild1"></param>
+             <returns></returns>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.IDapperRepository`1.FindAll">
+             <summary>
+            
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.IDapperRepository`1.FindAll(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+             <summary>
+            
+             </summary>
+             <param name="expression"></param>
+             <returns></returns>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.IDapperRepository`1.FindAll``1(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})">
+             <summary>
+            
+             </summary>
+             <typeparam name="TChild1"></typeparam>
+             <param name="tChild1"></param>
+             <returns></returns>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.IDapperRepository`1.FindAll``1(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,System.Object}})">
+             <summary>
+            
+             </summary>
+             <typeparam name="TChild1"></typeparam>
+             <param name="expression"></param>
+             <param name="tChild1"></param>
+             <returns></returns>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.IDapperRepository`1.FindAllAsync">
+             <summary>
+            
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.IDapperRepository`1.FindAllAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+             <summary>
+            
+             </summary>
+             <param name="expression"></param>
+             <returns></returns>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.IDapperRepository`1.FindAllAsync``1(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})">
+             <summary>
+            
+             </summary>
+             <typeparam name="TChild1"></typeparam>
+             <param name="tChild1"></param>
+             <returns></returns>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.IDapperRepository`1.FindAllAsync``1(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,System.Object}})">
+             <summary>
+            
+             </summary>
+             <typeparam name="TChild1"></typeparam>
+             <param name="expression"></param>
+             <param name="tChild1"></param>
+             <returns></returns>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.IDapperRepository`1.FindAsync``1(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})">
+             <summary>
+            
+             </summary>
+             <typeparam name="TChild1"></typeparam>
+             <param name="tChild1"></param>
+             <returns></returns>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.IDapperRepository`1.FindAsync``1(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,System.Object}})">
+             <summary>
+            
+             </summary>
+             <typeparam name="TChild1"></typeparam>
+             <param name="expression"></param>
+             <param name="tChild1"></param>
+             <returns></returns>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.IDapperRepository`1.FindAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+             <summary>
+            
+             </summary>
+             <param name="expression"></param>
+             <returns></returns>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.IDapperRepository`1.FindAsync">
+             <summary>
+            
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.IDapperRepository`1.Insert(`0)">
+             <summary>
+            
+             </summary>
+             <param name="instance"></param>
+             <returns></returns>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.IDapperRepository`1.InsertAsync(`0)">
+             <summary>
+            
+             </summary>
+             <param name="instance"></param>
+             <returns></returns>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.IDapperRepository`1.Delete(`0)">
+             <summary>
+            
+             </summary>
+             <param name="instance"></param>
+             <returns></returns>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.IDapperRepository`1.DeleteAsync(`0)">
+             <summary>
+            
+             </summary>
+             <param name="instance"></param>
+             <returns></returns>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.IDapperRepository`1.Update(`0)">
+             <summary>
+            
+             </summary>
+             <param name="instance"></param>
+             <returns></returns>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.IDapperRepository`1.UpdateAsync(`0)">
+             <summary>
+            
+             </summary>
+             <param name="instance"></param>
+             <returns></returns>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.IDapperRepository`1.FindAllBetween(System.Object,System.Object,System.Linq.Expressions.Expression{System.Func{`0,System.Object}})">
+             <summary>
+            
+             </summary>
+             <param name="from"></param>
+             <param name="to"></param>
+             <param name="btwField"></param>
+             <returns></returns>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.IDapperRepository`1.FindAllBetween(System.Object,System.Object,System.Linq.Expressions.Expression{System.Func{`0,System.Object}},System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+             <summary>
+            
+             </summary>
+             <param name="from"></param>
+             <param name="to"></param>
+             <param name="btwField"></param>
+             <param name="expression"></param>
+             <returns></returns>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.IDapperRepository`1.FindAllBetweenAsync(System.Object,System.Object,System.Linq.Expressions.Expression{System.Func{`0,System.Object}})">
+             <summary>
+            
+             </summary>
+             <param name="from"></param>
+             <param name="to"></param>
+             <param name="btwField"></param>
+             <returns></returns>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.IDapperRepository`1.FindAllBetweenAsync(System.Object,System.Object,System.Linq.Expressions.Expression{System.Func{`0,System.Object}},System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+             <summary>
+            
+             </summary>
+             <param name="from"></param>
+             <param name="to"></param>
+             <param name="btwField"></param>
+             <param name="expression"></param>
+             <returns></returns>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.IDapperRepository`1.FindAllBetween(System.DateTime,System.DateTime,System.Linq.Expressions.Expression{System.Func{`0,System.Object}})">
+             <summary>
+            
+             </summary>
+             <param name="from"></param>
+             <param name="to"></param>
+             <param name="btwField"></param>
+             <returns></returns>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.IDapperRepository`1.FindAllBetween(System.DateTime,System.DateTime,System.Linq.Expressions.Expression{System.Func{`0,System.Object}},System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+             <summary>
+            
+             </summary>
+             <param name="from"></param>
+             <param name="to"></param>
+             <param name="btwField"></param>
+             <param name="expression"></param>
+             <returns></returns>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.IDapperRepository`1.FindAllBetweenAsync(System.DateTime,System.DateTime,System.Linq.Expressions.Expression{System.Func{`0,System.Object}})">
+             <summary>
+            
+             </summary>
+             <param name="from"></param>
+             <param name="to"></param>
+             <param name="btwField"></param>
+             <returns></returns>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.IDapperRepository`1.FindAllBetweenAsync(System.DateTime,System.DateTime,System.Linq.Expressions.Expression{System.Func{`0,System.Object}},System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+             <summary>
+            
+             </summary>
+             <param name="from"></param>
+             <param name="to"></param>
+             <param name="btwField"></param>
+             <param name="expression"></param>
+             <returns></returns>
+        </member>
+        <member name="T:MicroOrm.Dapper.Repositories.Attributes.IdentityAttribute">
+            <summary>
+            Identity key
+            </summary>
+        </member>
+        <member name="T:MicroOrm.Dapper.Repositories.Attributes.Joins.InnerJoinAttribute">
+            <summary>
+            Generate INNER JOIN
+            </summary>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.Attributes.Joins.InnerJoinAttribute.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.Attributes.Joins.InnerJoinAttribute.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="T:MicroOrm.Dapper.Repositories.Attributes.Joins.JoinAttributeBase">
+            <summary>
+            Base JOIN for LEFT/INNER/RIGHT
+            </summary>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.Attributes.Joins.JoinAttributeBase.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.Attributes.Joins.JoinAttributeBase.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="P:MicroOrm.Dapper.Repositories.Attributes.Joins.JoinAttributeBase.TableName">
+            <summary>
+            Current TableName
+            </summary>
+        </member>
+        <member name="P:MicroOrm.Dapper.Repositories.Attributes.Joins.JoinAttributeBase.Key">
+            <summary>
+            Property for ForeignKey
+            </summary>
+        </member>
+        <member name="P:MicroOrm.Dapper.Repositories.Attributes.Joins.JoinAttributeBase.ExternalKey">
+            <summary>
+            External TableName
+            </summary>
+        </member>
+        <member name="T:MicroOrm.Dapper.Repositories.Attributes.Joins.LeftJoinAttribute">
+            <summary>
+            Generate LEFT JOIN
+            </summary>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.Attributes.Joins.LeftJoinAttribute.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.Attributes.Joins.LeftJoinAttribute.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="T:MicroOrm.Dapper.Repositories.Attributes.Joins.RightJoinAttribute">
+            <summary>
+            Generate RIGHT JOIN
+            </summary>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.Attributes.Joins.RightJoinAttribute.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.Attributes.Joins.RightJoinAttribute.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="tableName"></param>
+            <param name="key"></param>
+            <param name="externalKey"></param>
+        </member>
+        <member name="T:MicroOrm.Dapper.Repositories.Attributes.LogicalDelete.DeletedAttribute">
+            <summary>
+            Use with "Status" for logical delete
+            </summary>
+        </member>
+        <member name="T:MicroOrm.Dapper.Repositories.Attributes.LogicalDelete.StatusAttribute">
+            <summary>
+            Use with "Deleted" for logical delete
+            </summary>
+        </member>
+        <member name="T:MicroOrm.Dapper.Repositories.DbContext.DapperDbContext">
+            <summary>
+            Class is helper for use and close IDbConnection
+            </summary>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.DbContext.DapperDbContext.#ctor(System.Data.IDbConnection,System.Data.IDbTransaction)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:MicroOrm.Dapper.Repositories.DbContext.DapperDbContext.InnerConnection">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:MicroOrm.Dapper.Repositories.DbContext.DapperDbContext.InnerTransaction">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MicroOrm.Dapper.Repositories.DbContext.DapperDbContext.Connection">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MicroOrm.Dapper.Repositories.DbContext.DapperDbContext.Transaction">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.DbContext.DapperDbContext.OpenConnection">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.DbContext.DapperDbContext.BeginTransaction">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.DbContext.DapperDbContext.Dispose">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:MicroOrm.Dapper.Repositories.DbContext.IDapperDbContext">
+            <summary>
+            Class is helper for use and close IDbConnection
+            </summary>
+        </member>
+        <member name="P:MicroOrm.Dapper.Repositories.DbContext.IDapperDbContext.Connection">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MicroOrm.Dapper.Repositories.DbContext.IDapperDbContext.Transaction">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:MicroOrm.Dapper.Repositories.SqlGenerator.ESqlConnector">
+            <summary>
+            Type Sql provider
+            </summary>
+        </member>
+        <member name="F:MicroOrm.Dapper.Repositories.SqlGenerator.ESqlConnector.MSSQL">
+            <summary>
+            MSSQL
+            </summary>
+        </member>
+        <member name="F:MicroOrm.Dapper.Repositories.SqlGenerator.ESqlConnector.MySQL">
+            <summary>
+            MySQL
+            </summary>
+        </member>
+        <member name="F:MicroOrm.Dapper.Repositories.SqlGenerator.ESqlConnector.PostgreSQL">
+            <summary>
+            PostgreSQL
+            </summary>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.SqlGenerator.ExpressionHelper.GetPropertyName(System.Linq.Expressions.BinaryExpression)">
+            <summary>
+            Gets the name of the property.
+            </summary>
+            <param name="body">The body.</param>
+            <returns>The property name for the property expression.</returns>
+        </member>
+        <member name="T:MicroOrm.Dapper.Repositories.SqlGenerator.ISqlGenerator`1">
+            <summary>
+            Universal SqlGenerator for Tables
+            </summary>
+        </member>
+        <member name="P:MicroOrm.Dapper.Repositories.SqlGenerator.ISqlGenerator`1.TableName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MicroOrm.Dapper.Repositories.SqlGenerator.ISqlGenerator`1.IsIdentity">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MicroOrm.Dapper.Repositories.SqlGenerator.ISqlGenerator`1.SqlConnector">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MicroOrm.Dapper.Repositories.SqlGenerator.ISqlGenerator`1.KeySqlProperties">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MicroOrm.Dapper.Repositories.SqlGenerator.ISqlGenerator`1.BaseSqlProperties">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MicroOrm.Dapper.Repositories.SqlGenerator.ISqlGenerator`1.IdentitySqlProperty">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MicroOrm.Dapper.Repositories.SqlGenerator.ISqlGenerator`1.StatusPropertyName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MicroOrm.Dapper.Repositories.SqlGenerator.ISqlGenerator`1.LogicalDeleteValue">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MicroOrm.Dapper.Repositories.SqlGenerator.ISqlGenerator`1.LogicalDelete">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.SqlGenerator.ISqlGenerator`1.GetSelectFirst(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,System.Object}}[])">
+            <summary>
+            
+            </summary>
+            <param name="predicate"></param>
+            <param name="includes"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.SqlGenerator.ISqlGenerator`1.GetSelectAll(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,System.Object}}[])">
+            <summary>
+            
+            </summary>
+            <param name="predicate"></param>
+            <param name="includes"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.SqlGenerator.ISqlGenerator`1.GetSelectBetween(System.Object,System.Object,System.Linq.Expressions.Expression{System.Func{`0,System.Object}},System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            
+            </summary>
+            <param name="from"></param>
+            <param name="to"></param>
+            <param name="btwFiled"></param>
+            <param name="predicate"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.SqlGenerator.ISqlGenerator`1.GetInsert(`0)">
+            <summary>
+            
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.SqlGenerator.ISqlGenerator`1.GetUpdate(`0)">
+            <summary>
+            
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.SqlGenerator.ISqlGenerator`1.GetDelete(`0)">
+            <summary>
+            
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="T:MicroOrm.Dapper.Repositories.SqlGenerator.QueryParameter">
+            <summary>
+            Class that models the data structure in coverting the expression tree into SQL and Params.
+            </summary>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.SqlGenerator.QueryParameter.#ctor(System.String,System.String,System.Object,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MicroOrm.Dapper.Repositories.SqlGenerator.QueryParameter" /> class.
+            </summary>
+            <param name="linkingOperator">The linking operator.</param>
+            <param name="propertyName">Name of the property.</param>
+            <param name="propertyValue">The property value.</param>
+            <param name="queryOperator">The query operator.</param>
+        </member>
+        <member name="T:MicroOrm.Dapper.Repositories.SqlGenerator.SqlGenerator`1">
+            <summary>
+            Universal SqlGenerator for Tables
+            </summary>
+        </member>
+        <member name="P:MicroOrm.Dapper.Repositories.SqlGenerator.SqlGenerator`1.SqlConnector">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MicroOrm.Dapper.Repositories.SqlGenerator.SqlGenerator`1.IsIdentity">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MicroOrm.Dapper.Repositories.SqlGenerator.SqlGenerator`1.TableName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MicroOrm.Dapper.Repositories.SqlGenerator.SqlGenerator`1.AllProperties">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MicroOrm.Dapper.Repositories.SqlGenerator.SqlGenerator`1.IdentitySqlProperty">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MicroOrm.Dapper.Repositories.SqlGenerator.SqlGenerator`1.KeySqlProperties">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MicroOrm.Dapper.Repositories.SqlGenerator.SqlGenerator`1.BaseSqlProperties">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MicroOrm.Dapper.Repositories.SqlGenerator.SqlGenerator`1.LogicalDelete">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MicroOrm.Dapper.Repositories.SqlGenerator.SqlGenerator`1.StatusPropertyName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MicroOrm.Dapper.Repositories.SqlGenerator.SqlGenerator`1.LogicalDeleteValue">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.SqlGenerator.SqlGenerator`1.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.SqlGenerator.SqlGenerator`1.#ctor(MicroOrm.Dapper.Repositories.SqlGenerator.ESqlConnector)">
+            <summary>
+            
+            </summary>
+            <param name="sqlConnector"></param>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.SqlGenerator.SqlGenerator`1.InitSqlConnector(MicroOrm.Dapper.Repositories.SqlGenerator.ESqlConnector)">
+            <summary>
+            Init type Sql provider
+            </summary>
+            <param name="sqlConnector"></param>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.SqlGenerator.SqlGenerator`1.GetInsert(`0)">
+            <summary>
+            
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.SqlGenerator.SqlGenerator`1.GetUpdate(`0)">
+            <summary>
+            
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.SqlGenerator.SqlGenerator`1.GetSelectFirst(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,System.Object}}[])">
+            <summary>
+            
+            </summary>
+            <param name="predicate"></param>
+            <param name="includes"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.SqlGenerator.SqlGenerator`1.GetSelectAll(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,System.Object}}[])">
+            <summary>
+            
+            </summary>
+            <param name="predicate"></param>
+            <param name="includes"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.SqlGenerator.SqlGenerator`1.GetSelectBetween(System.Object,System.Object,System.Linq.Expressions.Expression{System.Func{`0,System.Object}},System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.SqlGenerator.SqlGenerator`1.GetDelete(`0)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.SqlGenerator.SqlGenerator`1.FillQueryProperties(System.Linq.Expressions.BinaryExpression,System.Linq.Expressions.ExpressionType,System.Collections.Generic.List{MicroOrm.Dapper.Repositories.SqlGenerator.QueryParameter}@)">
+            <summary>
+            Fill query properties
+            </summary>
+            <param name="body">The body.</param>
+            <param name="linkingType">Type of the linking.</param>
+            <param name="queryProperties">The query properties.</param>
+        </member>
+        <member name="T:MicroOrm.Dapper.Repositories.SqlGenerator.SqlPropertyMetadata">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MicroOrm.Dapper.Repositories.SqlGenerator.SqlPropertyMetadata.PropertyInfo">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MicroOrm.Dapper.Repositories.SqlGenerator.SqlPropertyMetadata.Alias">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MicroOrm.Dapper.Repositories.SqlGenerator.SqlPropertyMetadata.ColumnName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MicroOrm.Dapper.Repositories.SqlGenerator.SqlPropertyMetadata.Name">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.SqlGenerator.SqlPropertyMetadata.#ctor(System.Reflection.PropertyInfo)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:MicroOrm.Dapper.Repositories.SqlGenerator.SqlQuery">
+            <summary>
+            A object with the generated sql and dynamic params.
+            </summary>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.SqlGenerator.SqlQuery.#ctor(System.String,System.Object)">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+            <param name="sql">The SQL.</param>
+            <param name="param">The param.</param>
+        </member>
+        <member name="P:MicroOrm.Dapper.Repositories.SqlGenerator.SqlQuery.Sql">
+            <summary>
+            Gets the SQL.
+            </summary>
+            <value>
+            The SQL.
+            </value>
+        </member>
+        <member name="P:MicroOrm.Dapper.Repositories.SqlGenerator.SqlQuery.Param">
+            <summary>
+            Gets the param, for Select
+            </summary>
+            <value>
+            The param.
+            </value>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.SqlGenerator.SqlQuery.SetParam(System.Object)">
+            <summary>
+            Set alternative param
+            </summary>
+            <param name="param"></param>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.SqlGenerator.SqlQuery.AppendToSql(System.String)">
+            <summary>
+            Append string in current SQL query
+            </summary>
+        </member>
+        <member name="M:MicroOrm.Dapper.Repositories.SqlGenerator.SqlQuery.AppendToSql(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Append string in current SQL query
+            </summary>
+        </member>
+    </members>
+</doc>

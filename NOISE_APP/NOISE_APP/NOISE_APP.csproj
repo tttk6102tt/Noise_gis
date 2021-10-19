@@ -1,0 +1,615 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{490E1039-5FDD-45C2-9523-5065BA3D29D2}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NOISE_APP</RootNamespace>
+    <AssemblyName>NOISE_APP</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Accessibility" />
+    <Reference Include="DevExpress.BonusSkins.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\DevExpress 16.1\Components\Bin\Framework\DevExpress.BonusSkins.v16.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Charts.v16.1.Core, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\DevExpress 16.1\Components\Bin\Framework\DevExpress.Charts.v16.1.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Data.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\DevExpress 16.1\Components\Bin\Framework\DevExpress.Data.v16.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.DXCore.Controls.Data.v6.3, Version=16.1.5.0, Culture=neutral, PublicKeyToken=35c9f04b7764aa3d" />
+    <Reference Include="DevExpress.DXCore.Controls.Utils.v6.3, Version=16.1.5.0, Culture=neutral, PublicKeyToken=35c9f04b7764aa3d" />
+    <Reference Include="DevExpress.DXCore.Controls.XtraBars.v6.3, Version=16.1.5.0, Culture=neutral, PublicKeyToken=35c9f04b7764aa3d, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.DXCore.Controls.XtraEditors.v6.3, Version=16.1.5.0, Culture=neutral, PublicKeyToken=35c9f04b7764aa3d" />
+    <Reference Include="DevExpress.Images.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\DevExpress 16.1\Components\Bin\Framework\DevExpress.Images.v16.1.dll</HintPath>
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="DevExpress.Printing.v16.1.Core, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Sparkline.v16.1.Core, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\DevExpress 16.1\Components\Bin\Framework\DevExpress.Utils.v16.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraBars.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\DevExpress 16.1\Components\Bin\Framework\DevExpress.XtraEditors.v16.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraGrid.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\DevExpress 16.1\Components\Bin\Framework\DevExpress.XtraGrid.v16.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraLayout.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\DevExpress 16.1\Components\Bin\Framework\DevExpress.XtraLayout.v16.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraNavBar.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraTreeList.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\DevExpress 16.1\Components\Bin\Framework\DevExpress.XtraTreeList.v16.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraTreeMap.v16.1, Version=16.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\DevExpress 16.1\Components\Bin\Framework\DevExpress.XtraTreeMap.v16.1.dll</HintPath>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.3DAnalyst, Version=10.5.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.ADF, Version=10.5.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\ArcGIS\DeveloperKit10.5\DotNet\ESRI.ArcGIS.ADF.dll</HintPath>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.ADF.Connection, Version=10.5.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\ArcGIS\DeveloperKit10.5\DotNet\ESRI.ArcGIS.ADF.Connection.dll</HintPath>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.AnalysisTools, Version=10.5.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\ArcGIS\DeveloperKit10.5\DotNet\Toolboxes\ESRI.ArcGIS.AnalysisTools.dll</HintPath>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.AxControls, Version=10.5.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL" />
+    <Reference Include="ESRI.ArcGIS.Carto, Version=10.5.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Catalog, Version=10.5.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>C:\Program Files (x86)\ArcGIS\DeveloperKit10.5\DotNet\ESRI.ArcGIS.Catalog.dll</HintPath>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.CatalogUI, Version=10.5.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>C:\Program Files (x86)\ArcGIS\DeveloperKit10.5\DotNet\ESRI.ArcGIS.CatalogUI.dll</HintPath>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Controls, Version=10.5.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.ConversionTools, Version=10.5.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\ArcGIS\DeveloperKit10.5\DotNet\Toolboxes\ESRI.ArcGIS.ConversionTools.dll</HintPath>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.DataManagementTools, Version=10.5.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\ArcGIS\DeveloperKit10.5\DotNet\Toolboxes\ESRI.ArcGIS.DataManagementTools.dll</HintPath>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.DataSourcesGDB, Version=10.5.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>C:\Program Files (x86)\ArcGIS\DeveloperKit10.5\DotNet\ESRI.ArcGIS.DataSourcesGDB.dll</HintPath>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.DataSourcesRaster, Version=10.5.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>C:\Program Files (x86)\ArcGIS\DeveloperKit10.5\DotNet\ESRI.ArcGIS.DataSourcesRaster.dll</HintPath>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Display, Version=10.5.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.GeoAnalyst, Version=10.5.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Geodatabase, Version=10.5.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <HintPath>C:\Program Files (x86)\ArcGIS\DeveloperKit10.5\DotNet\ESRI.ArcGIS.Geodatabase.dll</HintPath>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Geometry, Version=10.5.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Geoprocessing, Version=10.5.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <HintPath>C:\Program Files (x86)\ArcGIS\DeveloperKit10.5\DotNet\ESRI.ArcGIS.Geoprocessing.dll</HintPath>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Geoprocessor, Version=10.5.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\ArcGIS\DeveloperKit10.5\DotNet\ESRI.ArcGIS.Geoprocessor.dll</HintPath>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.GISClient, Version=10.5.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <HintPath>C:\Program Files (x86)\ArcGIS\DeveloperKit10.5\DotNet\ESRI.ArcGIS.GISClient.dll</HintPath>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.GlobeCore, Version=10.5.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Output, Version=10.5.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Publisher, Version=10.5.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>C:\Program Files (x86)\ArcGIS\DeveloperKit10.5\DotNet\ESRI.ArcGIS.Publisher.dll</HintPath>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Server, Version=10.5.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <HintPath>C:\Program Files (x86)\ArcGIS\DeveloperKit10.5\DotNet\ESRI.ArcGIS.Server.dll</HintPath>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.System, Version=10.5.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.SystemUI, Version=10.5.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Version, Version=10.5.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL" />
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>ref\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>ref\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="stdole, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Class1.cs" />
+    <Compile Include="Classes\NGUOIDUNG.cs" />
+    <Compile Include="Classes\NOISE.cs" />
+    <Compile Include="Classes\TBLConfig.cs" />
+    <Compile Include="Controls\CtrImport.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\CtrImport.Designer.cs">
+      <DependentUpon>CtrImport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CtrNoiseMapMain.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\CtrNoiseMapMain.Designer.cs">
+      <DependentUpon>CtrNoiseMapMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CtrTOCControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\CtrTOCControl.Designer.cs">
+      <DependentUpon>CtrTOCControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\NoiseMap\CtrIdentify.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\NoiseMap\CtrIdentify.Designer.cs">
+      <DependentUpon>CtrIdentify.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\NoiseMap\Interfaces\IInstructions.cs" />
+    <Compile Include="Controls\NoiseSystem\CtrCategory.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\NoiseSystem\CtrCategory.Designer.cs">
+      <DependentUpon>CtrCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Enums\EnumError.cs" />
+    <Compile Include="Enums\EnumFormat.cs" />
+    <Compile Include="Enums\EnumMap.cs" />
+    <Compile Include="Enums\EnumReport.cs" />
+    <Compile Include="Enums\EnumRoles.cs" />
+    <Compile Include="FormNoise.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormNoise.Designer.cs">
+      <DependentUpon>FormNoise.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormMain.Designer.cs">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmAttributesTable.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmAttributesTable.Designer.cs">
+      <DependentUpon>FrmAttributesTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmExportGDB.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmExportGDB.Designer.cs">
+      <DependentUpon>frmExportGDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmExport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmExport.Designer.cs">
+      <DependentUpon>frmExport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmConfigCreateMap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmConfigCreateMap.Designer.cs">
+      <DependentUpon>frmConfigCreateMap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmIdentify.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmIdentify.Designer.cs">
+      <DependentUpon>frmIdentify.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmConfig.Designer.cs">
+      <DependentUpon>FrmConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLogin.Designer.cs">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMain.Designer.cs">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DTO\RestBase.cs" />
+    <Compile Include="Models\DTO\RestData.cs" />
+    <Compile Include="Models\DTO\RestError.cs" />
+    <Compile Include="Models\NguoiDung.cs" />
+    <Compile Include="Models\ObjectInfo.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserConfig.Designer.cs">
+      <DependentUpon>UserConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_NoiseMesageBox.cs" />
+    <Compile Include="_NoiseProgram.cs" />
+    <Compile Include="_Progress.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="_Progress.Designer.cs">
+      <DependentUpon>_Progress.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_ProgressCancellable.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="_ProgressCancellable.Designer.cs">
+      <DependentUpon>_ProgressCancellable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_Splash.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="_Splash.Designer.cs">
+      <DependentUpon>_Splash.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Controls\CtrImport.resx">
+      <DependentUpon>CtrImport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\CtrNoiseMapMain.resx">
+      <DependentUpon>CtrNoiseMapMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\CtrTOCControl.resx">
+      <DependentUpon>CtrTOCControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\NoiseMap\CtrIdentify.resx">
+      <DependentUpon>CtrIdentify.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormNoise.resx">
+      <DependentUpon>FormNoise.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormMain.resx">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmAttributesTable.resx">
+      <DependentUpon>FrmAttributesTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmExportGDB.resx">
+      <DependentUpon>frmExportGDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmExport.resx">
+      <DependentUpon>frmExport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmConfigCreateMap.resx">
+      <DependentUpon>frmConfigCreateMap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmIdentify.resx">
+      <DependentUpon>frmIdentify.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmConfig.resx">
+      <DependentUpon>FrmConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmLogin.resx">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMain.resx">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="UserConfig.resx">
+      <DependentUpon>UserConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_Progress.resx">
+      <DependentUpon>_Progress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_ProgressCancellable.resx">
+      <DependentUpon>_ProgressCancellable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_Splash.resx">
+      <DependentUpon>_Splash.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Mxd\temp.mxd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Mxd\VN2000.mxd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Noise.Common.GIS\Noise.Common.GIS.csproj">
+      <Project>{db3b8c11-485b-4ccc-a410-c51f87f519c9}</Project>
+      <Name>Noise.Common.GIS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Noise.FrameWork\FrameWork.Core\FrameWork.Core.csproj">
+      <Project>{41a91b6a-ac0c-4066-895c-d9817d6c513f}</Project>
+      <Name>FrameWork.Core</Name>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </ProjectReference>
+    <ProjectReference Include="..\Noise.FrameWork\FrameWork.Data\FrameWork.Data.csproj">
+      <Project>{287fb5f4-c21d-4a80-be63-dcb538a68d1a}</Project>
+      <Name>FrameWork.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Noise.FrameWork\FrameWork.Map\FrameWork.Map.csproj">
+      <Project>{ffaf0517-2ffd-4549-a273-b64c0387697b}</Project>
+      <Name>FrameWork.Map</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Noise.FrameWork\FrameWork\FrameWork.csproj">
+      <Project>{485847f3-6bec-4c53-b8a1-1c2a952162dd}</Project>
+      <Name>FrameWork</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancel_16x162.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\close_16x163.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\checkbox2_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bouser_16x161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user_16x162.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ref\RestSharp.dll" />
+    <None Include="Resources\zoomout_32x32.png" />
+    <None Include="Resources\zoomout_16x16.png" />
+    <None Include="Resources\zoomin_32x32.png" />
+    <None Include="Resources\zoomin_16x16.png" />
+    <None Include="Resources\zoom_16x16.png" />
+    <None Include="Resources\windows_32x322.png" />
+    <None Include="Resources\windows_16x163.png" />
+    <None Include="Resources\viewonweb_32x322.png" />
+    <None Include="Resources\viewonweb_16x16.png" />
+    <None Include="Resources\usergroup_32x321.png" />
+    <None Include="Resources\usergroup_16x163.png" />
+    <None Include="Resources\user_32x322.png" />
+    <None Include="Resources\technology_32x32.png" />
+    <None Include="Resources\technology_16x162.png" />
+    <None Include="Resources\table_32x32.png" />
+    <None Include="Resources\table_16x16.png" />
+    <None Include="Resources\stackedlayout_16x16.png" />
+    <None Include="Resources\signout.png" />
+    <None Include="Resources\showtestreport_32x32.png" />
+    <None Include="Resources\showtestreport_16x16.png" />
+    <None Include="Resources\show_32x321.png" />
+    <None Include="Resources\show_16x162.png" />
+    <None Include="Resources\servermode_16x161.png" />
+    <None Include="Resources\selecttool_32x321.png" />
+    <None Include="Resources\selecttool_16x161.png" />
+    <None Include="Resources\save_16x162.png" />
+    <None Include="Resources\reset_32x32.png" />
+    <None Include="Resources\reset_16x16.png" />
+    <None Include="Resources\recurrence_32x321.png" />
+    <None Include="Resources\recurrence_16x161.png" />
+    <None Include="Resources\reading_16x16.png" />
+    <None Include="Resources\rangearea_32x32.png" />
+    <None Include="Resources\rangearea_16x16.png" />
+    <None Include="Resources\properties_32x32.png" />
+    <None Include="Resources\printer_32x32.png" />
+    <None Include="Resources\printer_16x16.png" />
+    <None Include="Resources\printarea_32x32.png" />
+    <None Include="Resources\printarea_16x16.png" />
+    <None Include="Resources\pointer_32x321.png" />
+    <None Include="Resources\pointer_16x161.png" />
+    <None Include="Resources\piemap_32x322.png" />
+    <None Include="Resources\piemap_16x161.png" />
+    <None Include="Resources\piebubble_32x321.png" />
+    <None Include="Resources\piebubble_16x161.png" />
+    <None Include="Resources\pagesetup_32x32.png" />
+    <None Include="Resources\pagesetup_16x16.png" />
+    <None Include="Resources\outbox_32x32.png" />
+    <None Include="Resources\outbox_16x16.png" />
+    <None Include="Resources\online1.png" />
+    <None Include="Resources\offline1.png" />
+    <None Include="Resources\MOLAR_BG.JPG" />
+    <None Include="Resources\managedatasource_32x32.png" />
+    <None Include="Resources\managedatasource_16x16.png" />
+    <None Include="Resources\lookup&amp;reference_16x161.png" />
+    <None Include="Resources\logout1.png" />
+    <None Include="Resources\logout.png" />
+    <None Include="Resources\loadfrom_16x161.png" />
+    <None Include="Resources\info_32x322.png" />
+    <None Include="Resources\info_16x163.png" />
+    <None Include="Resources\index_32x32.png" />
+    <None Include="Resources\index_16x16.png" />
+    <None Include="Resources\inbox_32x32.png" />
+    <None Include="Resources\inbox_16x16.png" />
+    <None Include="Resources\if_xfce-system-exit_23651.png" />
+    <None Include="Resources\if_lock_50832.png" />
+    <None Include="Resources\if_database_lightning_35957.png" />
+    <None Include="Resources\if_database_35948.png" />
+    <None Include="Resources\handtool_32x32.png" />
+    <None Include="Resources\handtool_16x16.png" />
+    <None Include="Resources\geopointmap_32x32.png" />
+    <None Include="Resources\geopointmap_16x16.png" />
+    <None Include="Resources\forcetesting_32x32.png" />
+    <None Include="Resources\forcetesting_16x16.png" />
+    <None Include="Resources\flag_vn.png" />
+    <None Include="Resources\flag_usa.png" />
+    <None Include="Resources\flag_uk.png" />
+    <None Include="Resources\find_32x32.png" />
+    <None Include="Resources\find_16x161.png" />
+    <None Include="Resources\exporttoxls_16x16.png" />
+    <None Include="Resources\export_32x321.png" />
+    <None Include="Resources\export_16x161.png" />
+    <None Include="Resources\editdatasource_32x321.png" />
+    <None Include="Resources\editdatasource_16x161.png" />
+    <None Include="Resources\edit_16x161.png" />
+    <None Include="Resources\deltacolorizermap_32x32.png" />
+    <None Include="Resources\deltacolorizermap_16x16.png" />
+    <None Include="Resources\deletelist_16x16.png" />
+    <None Include="Resources\delete_32x32.png" />
+    <None Include="Resources\delete_16x16.png" />
+    <None Include="Resources\defaultmap_32x322.png" />
+    <None Include="Resources\defaultmap_16x164.png" />
+    <None Include="Resources\database_32x322.png" />
+    <None Include="Resources\database_16x162.png" />
+    <None Include="Resources\customer_32x32.png" />
+    <None Include="Resources\customer_16x16.png" />
+    <None Include="Resources\close_32x322.png" />
+    <None Include="Resources\checkbuttons_32x325.png" />
+    <None Include="Resources\checkbuttons_16x166.png" />
+    <None Include="Resources\checkbox_16x16.png" />
+    <None Include="Resources\chartsshowlegend_32x32.png" />
+    <None Include="Resources\chartsshowlegend_16x16.png" />
+    <None Include="Resources\changechartseriestype_32x32.png" />
+    <None Include="Resources\changechartseriestype_16x16.png" />
+    <None Include="Resources\cancel_32x32.png" />
+    <None Include="Resources\calculatenow_16x16.png" />
+    <None Include="Resources\bouser_32x322.png" />
+    <None Include="Resources\BACKGROUND1.jpg" />
+    <None Include="Resources\BACKGROUND.jpg" />
+    <None Include="Resources\area_32x32.png" />
+    <None Include="Resources\area_16x16.png" />
+    <None Include="Resources\apply_32x32.png" />
+    <None Include="Resources\apply_16x163.png" />
+    <None Include="Resources\addnewdatasource_32x32.png" />
+    <None Include="Resources\addnewdatasource_16x16.png" />
+    <None Include="Resources\additem_16x16.png" />
+    <None Include="Resources\add_16x162.png" />
+    <None Include="Resources\19. Thành phần đất.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controls\NoiseSupervior\" />
+    <Folder Include="MXD_KQ\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,150 @@
+﻿@model NOISE_SITE.Models.NGUOIDUNG
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section PageStyles{
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <link href="~/Content/style.css" rel="stylesheet" />
+}
+@*@section scripts
+    {
+        @if (ViewBag.error != null)
+        {
+            <script>
+                alert("@ViewBag.error");
+            </script>
+        }
+    }*@
+
+<div class="box-form-login">
+    <div class="content-form">
+        <div class="label">
+            <a style="color:dodgerblue;">
+                ĐĂNG NHẬP VÀO HỆ THỐNG
+            </a>
+        </div>
+        <div class="card-body">
+            @*@using (Html.BeginForm("Login", "Home", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                }*@
+            <form action="/Home/Login" method="post" id="loginForm">
+                <div class="form-group" style="margin-bottom:0px">
+                    @Html.LabelFor(m => m.UserName)
+                    @Html.TextBoxFor(m => m.UserName, "", new { @class = "form-control", @placeholder = "Tên đăng nhập" })
+                    <span class="text-danger" id="error-username-register">&nbsp;</span>
+                </div>
+                <div class="form-group" style="margin-bottom:0px">
+                    @Html.LabelFor(m => m.Password)
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Mật khẩu" })
+                    <span class="text-danger" id="error-password-register">&nbsp;</span>
+                </div>
+                <div class="form-group" style="margin-bottom:0px">
+                    <label for="message">Mã xác nhận <span class="text-danger">*</span></label>
+                    <div class="control-input">
+                        <div class="confirm-code" style="padding-top:8px">
+                            <span>
+                                <a class="image-code" id="captcha-register" onclick="document.getElementById('__captcha_img_register').src='/home/Captcha?__ssacid2=@ViewBag.__ssacidRegister2&__rd='+new Date().getTime();">
+                                    <img src="/home/Captcha?__ssacid2=@ViewBag.__ssacidRegister2&__rn=false" alt="" id="__captcha_img_register" style="height:38px; border:1px solid #c2cad8;">
+                                </a>
+                            </span>
+                            <input type="number" style="width:200px;box-shadow: none;border-radius: 4px;height: auto;line-height: 1.33333;padding: 8px 18px;border: 2px solid #ebebeb;" class="ma-xn" name="__submit_captcha_register" autocomplete="false" />
+                        </div>
+                        <span class="text-danger" id="error-captcha-register" style="padding-right:10px">* Vui lòng nhập lại mã xác nhận</span>
+                    </div>
+                </div>
+
+                <div style="text-align:right" class="form-group">
+                    <input type="submit" name="submit" class="btn btn-primary" value="Đăng nhập" />
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+@section PageScripts{
+    <script src="~/Scripts/cms/bootbox.min.js"></script>
+    <script>
+        $('#loginForm').on('submit', function (e) {
+            e.preventDefault();
+
+            let check = false;
+            if (validateUserName($("#UserName").val())) {
+                $('#error-username-register').html(' '.replace(/ /g, "&nbsp;"));
+            } else {
+                $("#error-username-register").text("* Vui lòng kiểm tra lại tên đăng nhập");
+                check = true;
+            }
+
+            if (validatePassword($("#Password").val())) {
+                $('#error-password-register').html(' '.replace(/ /g, "&nbsp;"));
+            } else {
+                $("#error-password-register").text("* Vui lòng nhập mật khẩu");
+                check = true;
+            }
+
+
+
+            if (check) {
+                $('#captcha-register').click();
+                return;
+            }
+
+            $.get("/home/CheckCaptchaRegister?__submit_captcha_register=" + $("input[name=__submit_captcha_register]").val()).done(function (r) {
+                console.log(r)
+                if (r.toUpperCase() == "FALSE") {
+                    $('#captcha-register').click();
+                    $("#error-captcha-register").show();
+                    return;
+                }
+
+                $("#error-captcha-register").hide();
+                $('#loginForm').ajaxSubmit({
+                    success: function (xhr) {
+                        if (xhr.status == "OK") {
+                            bootbox.alert({
+                                message: "Đăng nhập thành công, đã có thể đăng nhập!",
+                                buttons: {
+                                    ok: {
+                                        label: "Đồng ý"
+                                    }
+                                }
+                            });
+                            window.location = "/Home/Index";
+                        } else {
+                            $('#captcha-register').click();
+                            bootbox.alert({
+                                message: "Đăng nhập thất bại!",
+                                buttons: {
+                                    ok: {
+                                        label: "Đồng ý"
+                                    }
+                                }
+                            });
+                        }
+                    }
+                });
+
+            });
+        });
+        function validateEmail(email) {
+            var reg = /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/;
+            return reg.test(email);
+        }
+
+        function validateUserName(name) {
+            var reg = /^([0-9a-zA-Z_-]{5,})+$/;
+            return reg.test(name);
+        }
+
+
+        function validatePassword(password) {
+            var reg = /^([0-9a-zA-Z@@!#$%^&*_]{5,})+$/;
+            return reg.test(password);
+        }
+
+
+    </script>
+}

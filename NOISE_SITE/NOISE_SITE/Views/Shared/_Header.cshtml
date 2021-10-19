@@ -1,0 +1,202 @@
+﻿@{ Layout = null; }
+<style>
+    div.modal-content {
+        margin-right: 70px;
+        margin-left: 70px;
+    }
+
+    div#dialog.k-window-content.k-content {
+        padding: 20px;
+    }
+</style>
+<header class="header" id="header">
+    <div class="container-fluid">
+        <div class="hlogo">
+            <h1>
+                <a href="#"> </a>
+            </h1>
+            <div class="logo-text hidden-xs">
+                <p class="main">Hệ thống quan trắc tiếng ồn</p>
+            </div>
+        </div>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <div class="menulink menu--collapsed js-menu">
+                <a class="menu__title js-menu-toggle" href="#">
+                    <span class="menu__bar"></span>
+                </a>
+            </div>
+            <div class="account-dropdown">
+                <div class="dropdown">
+                    <a href="#" data-toggle="dropdown">
+                        <span class="account-image">
+                            <i class="glyphicon glyphicon-user"></i>
+                        </span>
+                        <span class="account-name"> @User.Identity.Name </span>
+                        <span class="notification-part">
+                            <i class="icons-bell bell-animation">&nbsp;</i>
+                            <span class="notification-number" id="notification">0</span>
+                        </span>
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a class="signout-link" href="javascript:void(0)">
+                                <span class="align-icons">
+                                    <i class="icons-sign-out">&nbsp;</i>
+                                </span>
+                                <span class="align-nav-text">Đăng xuất</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="account-dropdown">
+                <div class="dropdown">
+                    <a href="/Home/RedirectToLogin">
+                        <span class="account-image">
+                            <i class="glyphicon glyphicon-log-in"></i>
+                        </span>
+                        <span class="account-name"> Đăng nhập </span>
+                    </a>
+                </div>
+            </div>
+            <div class="account-dropdown">
+                <div class="dropdown">
+                    <a href="#registerModal" data-toggle="modal">
+                        <span class="account-image">
+                            <i class="glyphicon glyphicon-user"></i>
+                        </span>
+                        <span class="account-name"> Đăng kí </span>
+                    </a>
+
+                </div>
+            </div>
+        }
+    </div>
+</header>
+<div class="modal fade" id="changePasswdModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <form action="/Account/ChangePassword" method="post" id="changePasswdForm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title">Đổi Mật Khẩu</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="portlet-search" style="margin:0;padding:0;border:none;">
+                        <p class="danger text-danger" id="error"></p>
+                        <div class="form-group">
+                            <label>Mật khẩu cũ</label>
+                            <input class="k-textbox fluid" type="password" autocomplete="off" placeholder="Mật Khẩu Cũ"
+                                name="OldPasswd" />
+                        </div>
+                        <div class="form-group">
+                            <label>Mật khẩu mới</label>
+                            <input class="k-textbox fluid" type="password" autocomplete="off" placeholder="Mật khẩu Mới"
+                                name="NewPasswd" />
+                        </div>
+                        <div class="form-group">
+                            <label>Nhập lại mật khẩu mới</label>
+                            <input class="k-textbox fluid" type="password" autocomplete="off" placeholder="Nhập Lại Mật Khẩu Mới"
+                                name="ConfirmNewPasswd" />
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="k-button" data-dismiss="modal">Hủy</button>
+                    <button type="submit" class="k-button k-primary">Xác nhận</button>
+                </div>
+            </div>
+        </form>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="userInfoModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <form action="/Account/UpdateInfo" method="post" id="userInfoForm">
+            <input type="hidden" name="Id" data-bind="value: sub" />
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title">Thông tin người dùng</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="portlet-search" style="margin:0;padding:0;border:none;">
+                        <div class="form-group">
+                            <label class="control-label">Tài khoản:</label>
+                            <input type="text" name="UserName" data-bind="value: username" class="k-textbox k-state-disabled fluid" />
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Email:</label>
+                            <input type="email" name="Email" data-bind="value: email" class="k-textbox k-state-disabled fluid" />
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Họ tên:</label>
+                            <input type="text" name="GivenName" data-bind="value: givenname" class="k-textbox fluid" />
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Số điện thoại:</label>
+                            <input type="tel" name="PhoneNumber" data-bind="value: phone_number" class="k-textbox fluid" />
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="k-button" data-dismiss="modal">Đóng</button>
+                    <button type="submit" class="k-button k-primary">Cập nhật</button>
+                </div>
+            </div>
+        </form>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="registerModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <form method="post" id="changePasswdForm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title">Đăng kí tài khoản</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="portlet-search" style="margin:0;padding:0;border:none;">
+                        <p class="danger text-danger" id="error"></p>
+                        <div class="form-group">
+                            <label style="font-size:13px">Tên đăng nhập</label>
+                            <input class="k-textbox fluid" type="text" autocomplete="off"
+                                   name="AccountName" />
+                        </div>
+                        <div class="form-group">
+                            <label style="font-size:13px">Địa chỉ Email</label>
+                            <input class="k-textbox fluid" type="text" autocomplete="off"
+                                   name="EmailAddress" />
+                        </div>
+                        <div class="form-group">
+                            <label style="font-size:13px">Mật khẩu </label>
+                            <input class="k-textbox fluid" type="password" autocomplete="off"
+                                   name="NewPasswd" />
+                        </div>
+                        <div class="form-group">
+                            <label style="font-size:13px">Xác nhận mật khẩu </label>
+                            <input class="k-textbox fluid" type="password" autocomplete="off"
+                                   name="ConfirmNewPasswd" />
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="k-button" data-dismiss="modal">Hủy</button>
+                    <button type="submit" class="k-button k-primary">Xác nhận</button>
+                </div>
+            </div>
+        </form>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
