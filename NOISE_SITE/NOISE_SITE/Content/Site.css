@@ -317,6 +317,13 @@ ul.listing li
     margin: auto;
     margin-top: 20px;
 }
+
+.box-form-update {
+    width: 25%;
+    margin: auto;
+    margin-top: 20px;
+}
+
 .box-form-login {
     width: 500px;
     margin: auto;

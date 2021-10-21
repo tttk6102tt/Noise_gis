@@ -56,6 +56,10 @@
     init.HELPER = 'helper';
     init.LANDUSING = 'landusing';
 
+    init.CHART = 'chart';
+
+    init.CHART_VIEW = 'chart_view';
+
     var SidebarConfig = {};
 
     SidebarConfig[init.MANAGEMENT] = {
@@ -109,19 +113,19 @@
         content: '<div class="item-bsqh-layers" />'
     };
     SidebarConfig[init.REPORT_MIN] = {
-        text: 'BC MỨC ĐỘ TIẾNG ỒN CỰC ĐAI, CỰC TIỂU',
+        text: 'BC mức độ tiếng ồn cực đai, cực tiểu',
         imageUrl: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAEl0lEQVRIic2VX2wURRzHR3f35vYi3NHWKgEaBITWa/fA6+1hDQYDIQjBRJI2PggmAk3ZOYyJMZqQmKIJKoHS7rILu7eExAdo+sQDtEt3K6ZYuovF3lIOOHp7iRoSbHtHJVBK6d34QHpt5Z9BEv0m39fPZ2Z+mRkA/i/BPUEPToRW2Sq51uTBzGcL71++ASfCJ3Fi+XVbJQdslfwhphA1AIDnng6IV5I4WVWMr4RqcCIcz11ZjrOXWJyNV2JbpfKNRYmUfZjY0iOD2T0yoJ4MjvtdOBFahRPhvdl4qG8sFhgfOVeKb3UtwH/+OAdn2oumCWyVwnaUzNpR8rJ9+PmmPpVYf7YB0A8HX2Lfu3dx2ek750qv3+ycO36joxhn9CKc1gpwWpuV7wOCfMmsrZKDF1Sy01aJ9/Oi4TMlq291zjNvGMXZqaBH9dGCabJcTCXjtgo2gLT2gj/d6tuVbvMlnp2ASNlRck9MBcsAAADEW4Br+IR3QbrNV5/RfANPK4hFyeGYSn5nHgKvnj4C3NPnAFoIJyh7B5vnLE63eY9lNN9QWvONP1Fwf8gZO0oc791PLW0Btd7TYCU5BVxPpl6PrnBCyrdOWNGTIeXrZGVT+dDJmeG05t07pPmuPUoQU8kBWyXE81Gw4pSrtlR3cTvbIdduUGhfB8mtaQU7IEhWyp+lwso1J6yMO6ySc1jlrsMqqWSlvOfX9V8sGGybsWRI8wlpbdbtCcEFlRy1o4TaFwVlPwVXlxgu7isdco4O0agBuZwOUVaH3B+GC+0CGLQQqUrp3SQrX3RY5bYTVnC+rPJ7ipW3JoJyUeb4SxXpNm+HHSW7e0W6ygCbC9upuk06RP2GG2HDjbAOOWxANKLD7VcNCn3YA2onL58TlL2p0KEPUqxy3GHlkamiFKv0Jll5Z3+QX6iD2hIDcp8abvTzBPg+HN01INeuU3UfaWBLwUNvMsObcy32QKHDyusdVjYdVslN7kYeTbJy0oDcVQOikTwccrkOFzqvE9zGU6CumOb2zZsGLfnmzKzXpO53KkSzOyCZ4xWS2ernzwRqP9e9/ZXKJickX3bCyp0J2QTUgGjUgChpUHUfV79RX+DixDI3Eo7REWGMRkIvjZpqwObdhaDsgLmOEa1fGNHKBiQLByQLM5J5kxGto+Vi98Zja4/MT7Hy1iSraA4rjxoQ3TMg12lQHHfw5U/mQ9S0jkb89x4kDHsiAvZEBExHhCyNhIRre2M1ANUtxBLBeqXigPklI1q3JiVWjpGsNCNZWkVj11t21cHi/pBS006hTRqonT1jW1MVHeFPeCLCAB0RspNwfsSNhN1w277FYGU9Oe24Fu1ufbFCtA4FRGuAkc7ldxSQrLFyyWwu399dBrmGRW4kyDQS7kxdsSciDLk5vhns4Oc+/s2ubiH8/FmWkaw9jGRdnSpiJGvQg/iBPBgJORoJv9FcUyNZJ7z5wIofl6DcQ5WL3WXlotnISNbdCckU+JgbCTLF7V8KdvDwH4MflkV810JGNJsZycx4kDDs5oRWF2rw/yvo3+Ovj7v8ovk25Pg1oLrhwV/rv8pfSDZKZiR2ALMAAAAASUVORK5CYII=',
         content: '<div class="item-report-min" />'
     };
 
     SidebarConfig[init.REPORT_MIN_MONTH] = {
-        text: 'BC MỨC ĐỘ TIẾNG ỒN CỰC ĐAI, CỰC TIỂU THEO THÁNG',
+        text: 'BC mức độ tiếng ồn cực đai, cực tiểu theo tháng',
         imageUrl: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAEl0lEQVRIic2VX2wURRzHR3f35vYi3NHWKgEaBITWa/fA6+1hDQYDIQjBRJI2PggmAk3ZOYyJMZqQmKIJKoHS7rILu7eExAdo+sQDtEt3K6ZYuovF3lIOOHp7iRoSbHtHJVBK6d34QHpt5Z9BEv0m39fPZ2Z+mRkA/i/BPUEPToRW2Sq51uTBzGcL71++ASfCJ3Fi+XVbJQdslfwhphA1AIDnng6IV5I4WVWMr4RqcCIcz11ZjrOXWJyNV2JbpfKNRYmUfZjY0iOD2T0yoJ4MjvtdOBFahRPhvdl4qG8sFhgfOVeKb3UtwH/+OAdn2oumCWyVwnaUzNpR8rJ9+PmmPpVYf7YB0A8HX2Lfu3dx2ek750qv3+ycO36joxhn9CKc1gpwWpuV7wOCfMmsrZKDF1Sy01aJ9/Oi4TMlq291zjNvGMXZqaBH9dGCabJcTCXjtgo2gLT2gj/d6tuVbvMlnp2ASNlRck9MBcsAAADEW4Br+IR3QbrNV5/RfANPK4hFyeGYSn5nHgKvnj4C3NPnAFoIJyh7B5vnLE63eY9lNN9QWvONP1Fwf8gZO0oc791PLW0Btd7TYCU5BVxPpl6PrnBCyrdOWNGTIeXrZGVT+dDJmeG05t07pPmuPUoQU8kBWyXE81Gw4pSrtlR3cTvbIdduUGhfB8mtaQU7IEhWyp+lwso1J6yMO6ySc1jlrsMqqWSlvOfX9V8sGGybsWRI8wlpbdbtCcEFlRy1o4TaFwVlPwVXlxgu7isdco4O0agBuZwOUVaH3B+GC+0CGLQQqUrp3SQrX3RY5bYTVnC+rPJ7ipW3JoJyUeb4SxXpNm+HHSW7e0W6ygCbC9upuk06RP2GG2HDjbAOOWxANKLD7VcNCn3YA2onL58TlL2p0KEPUqxy3GHlkamiFKv0Jll5Z3+QX6iD2hIDcp8abvTzBPg+HN01INeuU3UfaWBLwUNvMsObcy32QKHDyusdVjYdVslN7kYeTbJy0oDcVQOikTwccrkOFzqvE9zGU6CumOb2zZsGLfnmzKzXpO53KkSzOyCZ4xWS2ernzwRqP9e9/ZXKJickX3bCyp0J2QTUgGjUgChpUHUfV79RX+DixDI3Eo7REWGMRkIvjZpqwObdhaDsgLmOEa1fGNHKBiQLByQLM5J5kxGto+Vi98Zja4/MT7Hy1iSraA4rjxoQ3TMg12lQHHfw5U/mQ9S0jkb89x4kDHsiAvZEBExHhCyNhIRre2M1ANUtxBLBeqXigPklI1q3JiVWjpGsNCNZWkVj11t21cHi/pBS006hTRqonT1jW1MVHeFPeCLCAB0RspNwfsSNhN1w277FYGU9Oe24Fu1ufbFCtA4FRGuAkc7ldxSQrLFyyWwu399dBrmGRW4kyDQS7kxdsSciDLk5vhns4Oc+/s2ubiH8/FmWkaw9jGRdnSpiJGvQg/iBPBgJORoJv9FcUyNZJ7z5wIofl6DcQ5WL3WXlotnISNbdCckU+JgbCTLF7V8KdvDwH4MflkV810JGNJsZycx4kDDs5oRWF2rw/yvo3+Ovj7v8ovk25Pg1oLrhwV/rv8pfSDZKZiR2ALMAAAAASUVORK5CYII=',
         content: '<div class="item-report-min-month" />'
     };
 
     SidebarConfig[init.REPORT_MIN_YEAR] = {
-        text: 'BC MỨC ĐỘ TIẾNG ỒN CỰC ĐAI, CỰC TIỂU THEO NĂM',
+        text: 'BC mức độ tiếng ồn cực đai, cực tiểu theo năm',
         imageUrl: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAEl0lEQVRIic2VX2wURRzHR3f35vYi3NHWKgEaBITWa/fA6+1hDQYDIQjBRJI2PggmAk3ZOYyJMZqQmKIJKoHS7rILu7eExAdo+sQDtEt3K6ZYuovF3lIOOHp7iRoSbHtHJVBK6d34QHpt5Z9BEv0m39fPZ2Z+mRkA/i/BPUEPToRW2Sq51uTBzGcL71++ASfCJ3Fi+XVbJQdslfwhphA1AIDnng6IV5I4WVWMr4RqcCIcz11ZjrOXWJyNV2JbpfKNRYmUfZjY0iOD2T0yoJ4MjvtdOBFahRPhvdl4qG8sFhgfOVeKb3UtwH/+OAdn2oumCWyVwnaUzNpR8rJ9+PmmPpVYf7YB0A8HX2Lfu3dx2ek750qv3+ycO36joxhn9CKc1gpwWpuV7wOCfMmsrZKDF1Sy01aJ9/Oi4TMlq291zjNvGMXZqaBH9dGCabJcTCXjtgo2gLT2gj/d6tuVbvMlnp2ASNlRck9MBcsAAADEW4Br+IR3QbrNV5/RfANPK4hFyeGYSn5nHgKvnj4C3NPnAFoIJyh7B5vnLE63eY9lNN9QWvONP1Fwf8gZO0oc791PLW0Btd7TYCU5BVxPpl6PrnBCyrdOWNGTIeXrZGVT+dDJmeG05t07pPmuPUoQU8kBWyXE81Gw4pSrtlR3cTvbIdduUGhfB8mtaQU7IEhWyp+lwso1J6yMO6ySc1jlrsMqqWSlvOfX9V8sGGybsWRI8wlpbdbtCcEFlRy1o4TaFwVlPwVXlxgu7isdco4O0agBuZwOUVaH3B+GC+0CGLQQqUrp3SQrX3RY5bYTVnC+rPJ7ipW3JoJyUeb4SxXpNm+HHSW7e0W6ygCbC9upuk06RP2GG2HDjbAOOWxANKLD7VcNCn3YA2onL58TlL2p0KEPUqxy3GHlkamiFKv0Jll5Z3+QX6iD2hIDcp8abvTzBPg+HN01INeuU3UfaWBLwUNvMsObcy32QKHDyusdVjYdVslN7kYeTbJy0oDcVQOikTwccrkOFzqvE9zGU6CumOb2zZsGLfnmzKzXpO53KkSzOyCZ4xWS2ernzwRqP9e9/ZXKJickX3bCyp0J2QTUgGjUgChpUHUfV79RX+DixDI3Eo7REWGMRkIvjZpqwObdhaDsgLmOEa1fGNHKBiQLByQLM5J5kxGto+Vi98Zja4/MT7Hy1iSraA4rjxoQ3TMg12lQHHfw5U/mQ9S0jkb89x4kDHsiAvZEBExHhCyNhIRre2M1ANUtxBLBeqXigPklI1q3JiVWjpGsNCNZWkVj11t21cHi/pBS006hTRqonT1jW1MVHeFPeCLCAB0RspNwfsSNhN1w277FYGU9Oe24Fu1ufbFCtA4FRGuAkc7ldxSQrLFyyWwu399dBrmGRW4kyDQS7kxdsSciDLk5vhns4Oc+/s2ubiH8/FmWkaw9jGRdnSpiJGvQg/iBPBgJORoJv9FcUyNZJ7z5wIofl6DcQ5WL3WXlotnISNbdCckU+JgbCTLF7V8KdvDwH4MflkV810JGNJsZycx4kDDs5oRWF2rw/yvo3+Ovj7v8ovk25Pg1oLrhwV/rv8pfSDZKZiR2ALMAAAAASUVORK5CYII=',
         content: '<div class="item-report-min-year" />'
     };
@@ -142,6 +146,19 @@
         imageUrl: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAEl0lEQVRIic2VX2wURRzHR3f35vYi3NHWKgEaBITWa/fA6+1hDQYDIQjBRJI2PggmAk3ZOYyJMZqQmKIJKoHS7rILu7eExAdo+sQDtEt3K6ZYuovF3lIOOHp7iRoSbHtHJVBK6d34QHpt5Z9BEv0m39fPZ2Z+mRkA/i/BPUEPToRW2Sq51uTBzGcL71++ASfCJ3Fi+XVbJQdslfwhphA1AIDnng6IV5I4WVWMr4RqcCIcz11ZjrOXWJyNV2JbpfKNRYmUfZjY0iOD2T0yoJ4MjvtdOBFahRPhvdl4qG8sFhgfOVeKb3UtwH/+OAdn2oumCWyVwnaUzNpR8rJ9+PmmPpVYf7YB0A8HX2Lfu3dx2ek750qv3+ycO36joxhn9CKc1gpwWpuV7wOCfMmsrZKDF1Sy01aJ9/Oi4TMlq291zjNvGMXZqaBH9dGCabJcTCXjtgo2gLT2gj/d6tuVbvMlnp2ASNlRck9MBcsAAADEW4Br+IR3QbrNV5/RfANPK4hFyeGYSn5nHgKvnj4C3NPnAFoIJyh7B5vnLE63eY9lNN9QWvONP1Fwf8gZO0oc791PLW0Btd7TYCU5BVxPpl6PrnBCyrdOWNGTIeXrZGVT+dDJmeG05t07pPmuPUoQU8kBWyXE81Gw4pSrtlR3cTvbIdduUGhfB8mtaQU7IEhWyp+lwso1J6yMO6ySc1jlrsMqqWSlvOfX9V8sGGybsWRI8wlpbdbtCcEFlRy1o4TaFwVlPwVXlxgu7isdco4O0agBuZwOUVaH3B+GC+0CGLQQqUrp3SQrX3RY5bYTVnC+rPJ7ipW3JoJyUeb4SxXpNm+HHSW7e0W6ygCbC9upuk06RP2GG2HDjbAOOWxANKLD7VcNCn3YA2onL58TlL2p0KEPUqxy3GHlkamiFKv0Jll5Z3+QX6iD2hIDcp8abvTzBPg+HN01INeuU3UfaWBLwUNvMsObcy32QKHDyusdVjYdVslN7kYeTbJy0oDcVQOikTwccrkOFzqvE9zGU6CumOb2zZsGLfnmzKzXpO53KkSzOyCZ4xWS2ernzwRqP9e9/ZXKJickX3bCyp0J2QTUgGjUgChpUHUfV79RX+DixDI3Eo7REWGMRkIvjZpqwObdhaDsgLmOEa1fGNHKBiQLByQLM5J5kxGto+Vi98Zja4/MT7Hy1iSraA4rjxoQ3TMg12lQHHfw5U/mQ9S0jkb89x4kDHsiAvZEBExHhCyNhIRre2M1ANUtxBLBeqXigPklI1q3JiVWjpGsNCNZWkVj11t21cHi/pBS006hTRqonT1jW1MVHeFPeCLCAB0RspNwfsSNhN1w277FYGU9Oe24Fu1ufbFCtA4FRGuAkc7ldxSQrLFyyWwu399dBrmGRW4kyDQS7kxdsSciDLk5vhns4Oc+/s2ubiH8/FmWkaw9jGRdnSpiJGvQg/iBPBgJORoJv9FcUyNZJ7z5wIofl6DcQ5WL3WXlotnISNbdCckU+JgbCTLF7V8KdvDwH4MflkV810JGNJsZycx4kDDs5oRWF2rw/yvo3+Ovj7v8ovk25Pg1oLrhwV/rv8pfSDZKZiR2ALMAAAAASUVORK5CYII=',
         content: '<div class="item-report-year" />'
     };
+
+    SidebarConfig[init.CHART] = {
+        text: 'Biểu đồ quan trắc',
+        imageUrl: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAEl0lEQVRIic2VX2wURRzHR3f35vYi3NHWKgEaBITWa/fA6+1hDQYDIQjBRJI2PggmAk3ZOYyJMZqQmKIJKoHS7rILu7eExAdo+sQDtEt3K6ZYuovF3lIOOHp7iRoSbHtHJVBK6d34QHpt5Z9BEv0m39fPZ2Z+mRkA/i/BPUEPToRW2Sq51uTBzGcL71++ASfCJ3Fi+XVbJQdslfwhphA1AIDnng6IV5I4WVWMr4RqcCIcz11ZjrOXWJyNV2JbpfKNRYmUfZjY0iOD2T0yoJ4MjvtdOBFahRPhvdl4qG8sFhgfOVeKb3UtwH/+OAdn2oumCWyVwnaUzNpR8rJ9+PmmPpVYf7YB0A8HX2Lfu3dx2ek750qv3+ycO36joxhn9CKc1gpwWpuV7wOCfMmsrZKDF1Sy01aJ9/Oi4TMlq291zjNvGMXZqaBH9dGCabJcTCXjtgo2gLT2gj/d6tuVbvMlnp2ASNlRck9MBcsAAADEW4Br+IR3QbrNV5/RfANPK4hFyeGYSn5nHgKvnj4C3NPnAFoIJyh7B5vnLE63eY9lNN9QWvONP1Fwf8gZO0oc791PLW0Btd7TYCU5BVxPpl6PrnBCyrdOWNGTIeXrZGVT+dDJmeG05t07pPmuPUoQU8kBWyXE81Gw4pSrtlR3cTvbIdduUGhfB8mtaQU7IEhWyp+lwso1J6yMO6ySc1jlrsMqqWSlvOfX9V8sGGybsWRI8wlpbdbtCcEFlRy1o4TaFwVlPwVXlxgu7isdco4O0agBuZwOUVaH3B+GC+0CGLQQqUrp3SQrX3RY5bYTVnC+rPJ7ipW3JoJyUeb4SxXpNm+HHSW7e0W6ygCbC9upuk06RP2GG2HDjbAOOWxANKLD7VcNCn3YA2onL58TlL2p0KEPUqxy3GHlkamiFKv0Jll5Z3+QX6iD2hIDcp8abvTzBPg+HN01INeuU3UfaWBLwUNvMsObcy32QKHDyusdVjYdVslN7kYeTbJy0oDcVQOikTwccrkOFzqvE9zGU6CumOb2zZsGLfnmzKzXpO53KkSzOyCZ4xWS2ernzwRqP9e9/ZXKJickX3bCyp0J2QTUgGjUgChpUHUfV79RX+DixDI3Eo7REWGMRkIvjZpqwObdhaDsgLmOEa1fGNHKBiQLByQLM5J5kxGto+Vi98Zja4/MT7Hy1iSraA4rjxoQ3TMg12lQHHfw5U/mQ9S0jkb89x4kDHsiAvZEBExHhCyNhIRre2M1ANUtxBLBeqXigPklI1q3JiVWjpGsNCNZWkVj11t21cHi/pBS006hTRqonT1jW1MVHeFPeCLCAB0RspNwfsSNhN1w277FYGU9Oe24Fu1ufbFCtA4FRGuAkc7ldxSQrLFyyWwu399dBrmGRW4kyDQS7kxdsSciDLk5vhns4Oc+/s2ubiH8/FmWkaw9jGRdnSpiJGvQg/iBPBgJORoJv9FcUyNZJ7z5wIofl6DcQ5WL3WXlotnISNbdCckU+JgbCTLF7V8KdvDwH4MflkV810JGNJsZycx4kDDs5oRWF2rw/yvo3+Ovj7v8ovk25Pg1oLrhwV/rv8pfSDZKZiR2ALMAAAAASUVORK5CYII=',
+        content: '<div class="item-chart" />'
+    };
+
+    SidebarConfig[init.CHART_VIEW] = {
+        text: 'Biểu đồ quan trắc theo thời gian',
+        imageUrl: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAEl0lEQVRIic2VX2wURRzHR3f35vYi3NHWKgEaBITWa/fA6+1hDQYDIQjBRJI2PggmAk3ZOYyJMZqQmKIJKoHS7rILu7eExAdo+sQDtEt3K6ZYuovF3lIOOHp7iRoSbHtHJVBK6d34QHpt5Z9BEv0m39fPZ2Z+mRkA/i/BPUEPToRW2Sq51uTBzGcL71++ASfCJ3Fi+XVbJQdslfwhphA1AIDnng6IV5I4WVWMr4RqcCIcz11ZjrOXWJyNV2JbpfKNRYmUfZjY0iOD2T0yoJ4MjvtdOBFahRPhvdl4qG8sFhgfOVeKb3UtwH/+OAdn2oumCWyVwnaUzNpR8rJ9+PmmPpVYf7YB0A8HX2Lfu3dx2ek750qv3+ycO36joxhn9CKc1gpwWpuV7wOCfMmsrZKDF1Sy01aJ9/Oi4TMlq291zjNvGMXZqaBH9dGCabJcTCXjtgo2gLT2gj/d6tuVbvMlnp2ASNlRck9MBcsAAADEW4Br+IR3QbrNV5/RfANPK4hFyeGYSn5nHgKvnj4C3NPnAFoIJyh7B5vnLE63eY9lNN9QWvONP1Fwf8gZO0oc791PLW0Btd7TYCU5BVxPpl6PrnBCyrdOWNGTIeXrZGVT+dDJmeG05t07pPmuPUoQU8kBWyXE81Gw4pSrtlR3cTvbIdduUGhfB8mtaQU7IEhWyp+lwso1J6yMO6ySc1jlrsMqqWSlvOfX9V8sGGybsWRI8wlpbdbtCcEFlRy1o4TaFwVlPwVXlxgu7isdco4O0agBuZwOUVaH3B+GC+0CGLQQqUrp3SQrX3RY5bYTVnC+rPJ7ipW3JoJyUeb4SxXpNm+HHSW7e0W6ygCbC9upuk06RP2GG2HDjbAOOWxANKLD7VcNCn3YA2onL58TlL2p0KEPUqxy3GHlkamiFKv0Jll5Z3+QX6iD2hIDcp8abvTzBPg+HN01INeuU3UfaWBLwUNvMsObcy32QKHDyusdVjYdVslN7kYeTbJy0oDcVQOikTwccrkOFzqvE9zGU6CumOb2zZsGLfnmzKzXpO53KkSzOyCZ4xWS2ernzwRqP9e9/ZXKJickX3bCyp0J2QTUgGjUgChpUHUfV79RX+DixDI3Eo7REWGMRkIvjZpqwObdhaDsgLmOEa1fGNHKBiQLByQLM5J5kxGto+Vi98Zja4/MT7Hy1iSraA4rjxoQ3TMg12lQHHfw5U/mQ9S0jkb89x4kDHsiAvZEBExHhCyNhIRre2M1ANUtxBLBeqXigPklI1q3JiVWjpGsNCNZWkVj11t21cHi/pBS006hTRqonT1jW1MVHeFPeCLCAB0RspNwfsSNhN1w277FYGU9Oe24Fu1ufbFCtA4FRGuAkc7ldxSQrLFyyWwu399dBrmGRW4kyDQS7kxdsSciDLk5vhns4Oc+/s2ubiH8/FmWkaw9jGRdnSpiJGvQg/iBPBgJORoJv9FcUyNZJ7z5wIofl6DcQ5WL3WXlotnISNbdCckU+JgbCTLF7V8KdvDwH4MflkV810JGNJsZycx4kDDs5oRWF2rw/yvo3+Ovj7v8ovk25Pg1oLrhwV/rv8pfSDZKZiR2ALMAAAAASUVORK5CYII=',
+        content: '<div class="item-chart-view" />'
+    };
+
     SidebarConfig[init.LAYER] = {
         text: 'Lớp dữ liệu',
         imageUrl: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAEl0lEQVRIic2VX2wURRzHR3f35vYi3NHWKgEaBITWa/fA6+1hDQYDIQjBRJI2PggmAk3ZOYyJMZqQmKIJKoHS7rILu7eExAdo+sQDtEt3K6ZYuovF3lIOOHp7iRoSbHtHJVBK6d34QHpt5Z9BEv0m39fPZ2Z+mRkA/i/BPUEPToRW2Sq51uTBzGcL71++ASfCJ3Fi+XVbJQdslfwhphA1AIDnng6IV5I4WVWMr4RqcCIcz11ZjrOXWJyNV2JbpfKNRYmUfZjY0iOD2T0yoJ4MjvtdOBFahRPhvdl4qG8sFhgfOVeKb3UtwH/+OAdn2oumCWyVwnaUzNpR8rJ9+PmmPpVYf7YB0A8HX2Lfu3dx2ek750qv3+ycO36joxhn9CKc1gpwWpuV7wOCfMmsrZKDF1Sy01aJ9/Oi4TMlq291zjNvGMXZqaBH9dGCabJcTCXjtgo2gLT2gj/d6tuVbvMlnp2ASNlRck9MBcsAAADEW4Br+IR3QbrNV5/RfANPK4hFyeGYSn5nHgKvnj4C3NPnAFoIJyh7B5vnLE63eY9lNN9QWvONP1Fwf8gZO0oc791PLW0Btd7TYCU5BVxPpl6PrnBCyrdOWNGTIeXrZGVT+dDJmeG05t07pPmuPUoQU8kBWyXE81Gw4pSrtlR3cTvbIdduUGhfB8mtaQU7IEhWyp+lwso1J6yMO6ySc1jlrsMqqWSlvOfX9V8sGGybsWRI8wlpbdbtCcEFlRy1o4TaFwVlPwVXlxgu7isdco4O0agBuZwOUVaH3B+GC+0CGLQQqUrp3SQrX3RY5bYTVnC+rPJ7ipW3JoJyUeb4SxXpNm+HHSW7e0W6ygCbC9upuk06RP2GG2HDjbAOOWxANKLD7VcNCn3YA2onL58TlL2p0KEPUqxy3GHlkamiFKv0Jll5Z3+QX6iD2hIDcp8abvTzBPg+HN01INeuU3UfaWBLwUNvMsObcy32QKHDyusdVjYdVslN7kYeTbJy0oDcVQOikTwccrkOFzqvE9zGU6CumOb2zZsGLfnmzKzXpO53KkSzOyCZ4xWS2ernzwRqP9e9/ZXKJickX3bCyp0J2QTUgGjUgChpUHUfV79RX+DixDI3Eo7REWGMRkIvjZpqwObdhaDsgLmOEa1fGNHKBiQLByQLM5J5kxGto+Vi98Zja4/MT7Hy1iSraA4rjxoQ3TMg12lQHHfw5U/mQ9S0jkb89x4kDHsiAvZEBExHhCyNhIRre2M1ANUtxBLBeqXigPklI1q3JiVWjpGsNCNZWkVj11t21cHi/pBS006hTRqonT1jW1MVHeFPeCLCAB0RspNwfsSNhN1w277FYGU9Oe24Fu1ufbFCtA4FRGuAkc7ldxSQrLFyyWwu399dBrmGRW4kyDQS7kxdsSciDLk5vhns4Oc+/s2ubiH8/FmWkaw9jGRdnSpiJGvQg/iBPBgJORoJv9FcUyNZJ7z5wIofl6DcQ5WL3WXlotnISNbdCckU+JgbCTLF7V8KdvDwH4MflkV810JGNJsZycx4kDDs5oRWF2rw/yvo3+Ovj7v8ovk25Pg1oLrhwV/rv8pfSDZKZiR2ALMAAAAASUVORK5CYII=',
@@ -229,6 +246,8 @@
     var navActionClass = 'nav-action';
     var instance;
     var m_Map;
+
+    var _timeInterval;
 
     function init(element, extendOptions) {
         if (!element)
@@ -356,6 +375,12 @@
             mList[init.REPORT_MIN] = mPanel.wrapper.find('.item-report-min').closest('li');
             mList[init.REPORT_MIN_MONTH] = mPanel.wrapper.find('.item-report-min-month').closest('li');
             mList[init.REPORT_MIN_YEAR] = mPanel.wrapper.find('.item-report-min-year').closest('li');
+
+
+            mList[init.CHART] = mPanel.wrapper.find('.item-chart').closest('li');
+
+            mList[init.CHART_VIEW] = mPanel.wrapper.find('.item-chart-view').closest('li');
+
             //ksdd layer
             mList[init.VLAND_USE] = mPanel.wrapper.find('.item-vland-layers').closest('li');
             //
@@ -693,68 +718,6 @@
                         value:new Date()
                     });
 
-
-                //var $winEle, win;
-                //var $gridEle, grid;
-                //$winEle = $('<div style="overflow:hidden !important;display:none;padding:0;"></div>').appendTo('body');
-                //$gridEle = $('<div style="border-radius:unset;border-width:0;"></div>').appendTo($winEle);
-                //win = $winEle.kendoWindow({
-                //    width: "500px",
-                //    minWidth: "420px",
-                //    height: "400px",
-                //    modal: false,
-                //    resizable: true,
-                //    scrollable: false,
-                //    title: "Báo cáo",
-                //    actions: [
-                //        "Close"
-                //    ],
-                //    visible: false,
-                //    resize: function () {
-                //        $gridEle.height($winEle.height());
-                //    },
-                //    close: function (e) {
-                //        if (grid)
-                //            grid.dataSource.data([]);
-                //        e.sender.wrapper.height(400);
-                //    },
-                //    open: function () {
-                //        if (this.isMinimized() || this.isMaximized())
-                //            this.restore();
-                //    }
-                //}).data('kendoWindow');
-                //win.wrapper.css("border", "1px solid #eee");
-                //grid = $gridEle.kendoGrid({
-                //    dataSource: {
-                //        transport: {
-                //            read: '/Home/Items'
-                //        }
-                //    },
-                //    resizable: true,
-                //    autoBind: false,
-                //    sortable: true,
-                //    height: "396px",
-                //    selectable: true,
-                //    pageable: {
-                //        pageSize: 50,
-                //        pageSizes: [25, 50, 75, 100],
-                //        buttonCount: 5,
-                //        messages: {
-                //            //display: "{0} - {1} / {2}",
-                //            display: 'Tổng số: {2}',
-                //            empty: "Không có dữ liệu",
-                //            page: "Trang",
-                //            of: "của {0}",
-                //            itemsPerPage: "bản ghi / trang",
-                //            first: "Đầu tiên",
-                //            previous: "Trước",
-                //            next: "Sau",
-                //            last: "Cuối cùng",
-                //            refresh: "Làm mới"
-                //        }
-                //    }
-                //}).data('kendoGrid');
-
                 $('<div class="form-actions"><button class="k-button k-primary k-search"><i class="fa fa-search">&nbsp;</i> Xem báo cáo</button></div>')
                     .appendTo($container).click(function () {
                         var dpVal = $(dp).val();
@@ -768,6 +731,9 @@
                         //xhr.setRequestHeader('Authorization', user.token_type + " " + user.access_token);
                         xhr.responseType = 'blob';
                         xhr.onloadstart = function () {
+                            App.startPageLoading({
+                                message: "Đang xử lý dữ liệu ..."
+                            });
                             //kendo.ui.progress($('body'), true);
                         };
                         xhr.onload = function (e) {
@@ -785,19 +751,21 @@
                             }
                         };
                         xhr.onloadend = function () {
+                            App.stopPageLoading();
                             //kendo.ui.progress($('body'), false);
                         }
                         xhr.send();
                         
-                        win.center().open();
+                        //win.center().open();
                     });
             }
             if (mList[init.REPORT_MIN].length > 0) {
                 var $container = $('<div class="portlet-search" />')
                     .appendTo(mList[init.REPORT_MIN].find('.item-report-min'));
-                var dp = $('<div class="form-group"><label for="" class="col-md-4">Thời điểm</label><div class="dropdown-list col-md-8"><input /></div></div>')
+                var dpMin = $('<div class="form-group"><label for="" class="col-md-4">Thời điểm</label><div class="dropdown-list col-md-8"><input /></div></div>')
                     .appendTo($container).find('input').kendoDatePicker({
-                        format: "dd/MM/yyyy"
+                        format: "dd/MM/yyyy",
+                        value: new Date()
                     });
 
 
@@ -863,16 +831,52 @@
                 //}).data('kendoGrid');
                 $('<div class="form-actions"><button class="k-button k-primary k-search"><i class="fa fa-search">&nbsp;</i> Xem báo cáo</button></div>')
                     .appendTo($container).click(function () {
-                        alert('abc')
-                        //win.center().open();
+                        var dpVal = $(dpMin).val();
+                        var param = dpVal.split("/")[2] + dpVal.split("/")[1] + dpVal.split("/")[0];
+
+                        var user = JSON.parse(localStorage.getItem('user'));
+                        var xhr = new XMLHttpRequest();
+                        xhr.open('GET', "/Report/GetReportMin?dateReport=" + param, true);
+                        xhr.responseType = 'blob';
+                        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                        //xhr.setRequestHeader('Authorization', user.token_type + " " + user.access_token);
+                        xhr.responseType = 'blob';
+                        xhr.onloadstart = function () {
+                            App.startPageLoading({
+                                message: "Đang xử lý dữ liệu ..."
+                            });
+                            //kendo.ui.progress($('body'), true);
+                        };
+                        xhr.onload = function (e) {
+                            if (this.status === 200) {
+                                var blob = xhr.response;
+                                var disposition = xhr.getResponseHeader('Content-Disposition');
+                                var reg = /filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/;
+                                var a = document.createElement("a");
+                                a.href = window.URL.createObjectURL(blob);
+                                a.download = reg.exec(disposition)[1] || "";
+                                a.click();
+                                a.remove();
+                            } else {
+                                alert('Không thể tạo đường dẫn tới tệp tin!');
+                            }
+                        };
+                        xhr.onloadend = function () {
+                            App.stopPageLoading()
+                            //kendo.ui.progress($('body'), false);
+                        }
+                        xhr.send();
+
                     });
             }
             if (mList[init.REPORT_MIN_MONTH].length > 0) {
                 var $container = $('<div class="portlet-search" />')
                     .appendTo(mList[init.REPORT_MIN_MONTH].find('.item-report-min-month'));
-                var dp = $('<div class="form-group"><label for="" class="col-md-4">Thời điểm</label><div class="dropdown-list col-md-8"><input /></div></div>')
+                var dpMinMonth = $('<div class="form-group"><label for="" class="col-md-4">Thời điểm</label><div class="dropdown-list col-md-8"><input /></div></div>')
                     .appendTo($container).find('input').kendoDatePicker({
-                        format: "MM/yyyy"
+                        format: "MM/yyyy",
+                        value:new Date()
+
                     });
 
 
@@ -938,16 +942,50 @@
                 //}).data('kendoGrid');
                 $('<div class="form-actions"><button class="k-button k-primary k-search"><i class="fa fa-search">&nbsp;</i> Xem báo cáo</button></div>')
                     .appendTo($container).click(function () {
-                        alert('abc')
-                        //win.center().open();
+                        var dpVal = $(dpMinMonth).val();
+                        var param = dpVal.split("/")[1] + dpVal.split("/")[0];
+
+                        var user = JSON.parse(localStorage.getItem('user'));
+                        var xhr = new XMLHttpRequest();
+                        xhr.open('GET', "/Report/GetReportForMonthMin?dateReport=" + param, true);
+                        xhr.responseType = 'blob';
+                        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                        //xhr.setRequestHeader('Authorization', user.token_type + " " + user.access_token);
+                        xhr.responseType = 'blob';
+                        xhr.onloadstart = function () {
+                            App.startPageLoading({
+                                message: "Đang xử lý dữ liệu ..."
+                            });
+                            //kendo.ui.progress($('body'), true);
+                        };
+                        xhr.onload = function (e) {
+                            if (this.status === 200) {
+                                var blob = xhr.response;
+                                var disposition = xhr.getResponseHeader('Content-Disposition');
+                                var reg = /filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/;
+                                var a = document.createElement("a");
+                                a.href = window.URL.createObjectURL(blob);
+                                a.download = reg.exec(disposition)[1] || "";
+                                a.click();
+                                a.remove();
+                            } else {
+                                alert('Không thể tạo đường dẫn tới tệp tin!');
+                            }
+                        };
+                        xhr.onloadend = function () {
+                            App.stopPageLoading();
+                            //kendo.ui.progress($('body'), false);
+                        }
+                        xhr.send();
                     });
             }
             if (mList[init.REPORT_MIN_YEAR].length > 0) {
                 var $container = $('<div class="portlet-search" />')
                     .appendTo(mList[init.REPORT_MIN_YEAR].find('.item-report-min-year'));
-                var dp = $('<div class="form-group"><label for="" class="col-md-4">Thời điểm</label><div class="dropdown-list col-md-8"><input /></div></div>')
+                var dpYearMin = $('<div class="form-group"><label for="" class="col-md-4">Thời điểm</label><div class="dropdown-list col-md-8"><input /></div></div>')
                     .appendTo($container).find('input').kendoDatePicker({
-                        format: "MM/yyyy"
+                        format: "yyyy",
+                        value: new Date()
                     });
 
 
@@ -1013,16 +1051,50 @@
                 //}).data('kendoGrid');
                 $('<div class="form-actions"><button class="k-button k-primary k-search"><i class="fa fa-search">&nbsp;</i> Xem báo cáo</button></div>')
                     .appendTo($container).click(function () {
-                        alert('abc')
-                        //win.center().open();
+                        var dpVal = $(dpYearMin).val();
+                        var param = dpVal.split("/")[0];
+
+                        var user = JSON.parse(localStorage.getItem('user'));
+                        var xhr = new XMLHttpRequest();
+                        xhr.open('GET', "/Report/GetReportForYearMin?dateReport=" + param, true);
+                        xhr.responseType = 'blob';
+                        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                        //xhr.setRequestHeader('Authorization', user.token_type + " " + user.access_token);
+                        xhr.responseType = 'blob';
+                        xhr.onloadstart = function () {
+                            App.startPageLoading({
+                                message: "Đang xử lý dữ liệu ..."
+                            });
+                            //kendo.ui.progress($('body'), true);
+                        };
+                        xhr.onload = function (e) {
+                            if (this.status === 200) {
+                                var blob = xhr.response;
+                                var disposition = xhr.getResponseHeader('Content-Disposition');
+                                var reg = /filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/;
+                                var a = document.createElement("a");
+                                a.href = window.URL.createObjectURL(blob);
+                                a.download = reg.exec(disposition)[1] || "";
+                                a.click();
+                                a.remove();
+                            } else {
+                                alert('Không thể tạo đường dẫn tới tệp tin!');
+                            }
+                        };
+                        xhr.onloadend = function () {
+                            App.stopPageLoading();
+                            //kendo.ui.progress($('body'), false);
+                        }
+                        xhr.send();
                     });
             }
             if (mList[init.REPORT_MONTH].length > 0) {
                 var $container = $('<div class="portlet-search" />')
                     .appendTo(mList[init.REPORT_MONTH].find('.item-report-month'));
-                var dp = $('<div class="form-group"><label for="" class="col-md-4">Thời điểm</label><div class="dropdown-list col-md-8"><input /></div></div>')
+                var dpMonth = $('<div class="form-group"><label for="" class="col-md-4">Thời điểm</label><div class="dropdown-list col-md-8"><input id="month" /></div></div>')
                     .appendTo($container).find('input').kendoDatePicker({
-                        format: "MM/yyyy"
+                        format: "MM/yyyy",
+                        value : new Date()
                     });
 
 
@@ -1088,18 +1160,52 @@
                 //}).data('kendoGrid');
                 $('<div class="form-actions"><button class="k-button k-primary k-search"><i class="fa fa-search">&nbsp;</i> Xem báo cáo</button></div>')
                     .appendTo($container).click(function () {
-                        alert('abc')
-                        //win.center().open();
+                        var dpVal = $(dpMonth).val();
+                        var param = dpVal.split("/")[1] + dpVal.split("/")[0];
+
+                        var user = JSON.parse(localStorage.getItem('user'));
+                        var xhr = new XMLHttpRequest();
+                        xhr.open('GET', "/Report/GetReportForMonth?dateReport=" + param, true);
+                        xhr.responseType = 'blob';
+                        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                        //xhr.setRequestHeader('Authorization', user.token_type + " " + user.access_token);
+                        xhr.responseType = 'blob';
+                        xhr.onloadstart = function () {
+                            App.startPageLoading({
+                                message: "Đang xử lý dữ liệu ..."
+                            });
+                            //kendo.ui.progress($('body'), true);
+                        };
+                        xhr.onload = function (e) {
+                            if (this.status === 200) {
+                                var blob = xhr.response;
+                                var disposition = xhr.getResponseHeader('Content-Disposition');
+                                var reg = /filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/;
+                                var a = document.createElement("a");
+                                a.href = window.URL.createObjectURL(blob);
+                                a.download = reg.exec(disposition)[1] || "";
+                                a.click();
+                                a.remove();
+                            } else {
+                                alert('Không thể tạo đường dẫn tới tệp tin!');
+                            }
+                        };
+                        xhr.onloadend = function () {
+                            App.stopPageLoading()
+                            //kendo.ui.progress($('body'), false);
+                        }
+                        xhr.send();
                     });
             }
             if (mList[init.REPORT_YEAR].length > 0) {
                 var $container = $('<div class="portlet-search" />')
                     .appendTo(mList[init.REPORT_YEAR].find('.item-report-year'));
-                var dp = $('<div class="form-group"><label for="" class="col-md-4">Thời điểm</label><div class="dropdown-list col-md-8"><input /></div></div>')
+                var dpYear = $('<div class="form-group"><label for="" class="col-md-4">Thời điểm</label><div class="dropdown-list col-md-8"><input id="year" /></div></div>')
                     .appendTo($container).find('input').kendoDatePicker({
-                        format: "MM/yyyy"
+                        format: "yyyy",
+                        value: new Date()
                     });
-
+                
 
                 //var $winEle, win;
                 //var $gridEle, grid;
@@ -1163,8 +1269,41 @@
                 //}).data('kendoGrid');
                 $('<div class="form-actions"><button class="k-button k-primary k-search"><i class="fa fa-search">&nbsp;</i> Xem báo cáo</button></div>')
                     .appendTo($container).click(function () {
-                        alert('abc')
-                        //win.center().open();
+                        var dpVal = $(dpYear).val();
+                        var param = dpVal.split("/")[0];
+
+                        var user = JSON.parse(localStorage.getItem('user'));
+                        var xhr = new XMLHttpRequest();
+                        xhr.open('GET', "/Report/GetReportForYear?dateReport=" + param, true);
+                        xhr.responseType = 'blob';
+                        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                        //xhr.setRequestHeader('Authorization', user.token_type + " " + user.access_token);
+                        xhr.responseType = 'blob';
+                        xhr.onloadstart = function () {
+                            App.startPageLoading({
+                                message: "Đang xử lý dữ liệu ..."
+                            });
+                            //kendo.ui.progress($('body'), true);
+                        };
+                        xhr.onload = function (e) {
+                            if (this.status === 200) {
+                                var blob = xhr.response;
+                                var disposition = xhr.getResponseHeader('Content-Disposition');
+                                var reg = /filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/;
+                                var a = document.createElement("a");
+                                a.href = window.URL.createObjectURL(blob);
+                                a.download = reg.exec(disposition)[1] || "";
+                                a.click();
+                                a.remove();
+                            } else {
+                                alert('Không thể tạo đường dẫn tới tệp tin!');
+                            }
+                        };
+                        xhr.onloadend = function () {
+                            App.stopPageLoading();
+                            //kendo.ui.progress($('body'), false);
+                        }
+                        xhr.send();
                     });
             }
             if (mList[init.MANAGEMENT].length > 0) {
@@ -1722,6 +1861,586 @@
                         mMap.loadBoundary(22505);
                     });
             }
+
+            if (mList[init.CHART].length > 0) {
+                var $container = $('<div class="portlet-search" />')
+                    .appendTo(mList[init.CHART].find('.item-chart'));
+                var dp2 = $('<div >')//class="form-group"><label for="" class="col-md-4">Thời điểm</label><div class="dropdown-list col-md-8" <input /></div></div>
+                    .appendTo($container);
+                //.find('input').kendoDatePicker({
+                //        format: "dd/MM/yyyy",
+                //        value: new Date()
+                //    });
+
+
+                var $winEle, win1;
+                var $gridEle, grid;
+                $winEle = $('<div style="overflow:hidden !important;display:none;padding:0;"></div>').appendTo('body');
+                //.$gridEle = $('<div style="border-radius:unset;border-width:0;"></div>').appendTo($winEle);
+                $gridEle = $('<div style="border-radius:unset;border-width:0;"> <div id="chartdiv" style="width:100%"></div></div>').appendTo($winEle);
+                win1 = $winEle.kendoWindow({
+                    width: '50vw',//"500px",
+                    minWidth: "420px",
+                    height: "600px",
+                    modal: false,
+                    resizable: true,
+                    scrollable: false,
+                    title: "Biểu đồ",
+                    actions: [
+                        "Close"
+                    ],
+                    visible: false,
+                    resize: function () {
+                        //$gridEle.height($winEle.height());
+                    },
+                    close: function (e) {
+                        if (_timeInterval) {
+                            clearInterval(_timeInterval);
+                        }
+                        //if (grid)
+                        //    grid.dataSource.data([]);
+                        //e.sender.wrapper.height(400);
+                    },
+                    open: function () {
+                        function pad2(n) { return n < 10 ? '0' + n : n }
+
+                        var interval;
+
+                        var pattern = /(\d{4})(\d{2})(\d{2})(\d{2})(\d{2})(\d{2})/;
+                        var chart;
+                        var IDs = [];
+                        $.ajax({
+                            url: "/Home/GetData",
+                            type: 'get',
+                            contentType: 'application/json'
+                        }).done((xhr) => {
+
+                            var seriesChart = [];
+
+                            var chartOption = xhr.data.series;
+                            var colors = ["#f40000", "#00ff01", "#ffff11", "#ff6400", "#0000ee", "#ff00fe", "#632a9f", "#652700", "#000000"];
+                            var colorIdx = 0;
+                            $.each(chartOption, (idx, item) => {
+                                var color = colors[colorIdx++];
+                                var series = {};
+                                series.name = item.name;
+                                var data = [];
+                                $.each(item.data.reverse(), (i, ser) => {//
+                                    if (data.length <= 10) {
+                                        var timeOfItem = new Date(ser.time.replace(pattern, '$1/$2/$3 $4:$5:$6'));
+
+                                        timeOfItem.setHours(timeOfItem.getHours() + 7);
+
+                                        data.push({
+                                            time: ser.time.replace(pattern, '$3/$2/$1 $4:$5:$6'),
+                                            x: timeOfItem.getTime(),//.getTime(),//Date.UTC(timeOfItem.getFullYear(), timeOfItem.getMonth(), timeOfItem.getDate(), timeOfItem.getHours(), timeOfItem.getMinutes(), timeOfItem.getSeconds()),//
+                                            y: ser.y,
+                                        });
+                                    }
+                                });
+                                series.color = color;
+                                series.data = data;
+                                seriesChart.push(series);
+                            });
+
+                            chart = Highcharts.chart('chartdiv', {
+                                chart: {
+                                    height: 600,
+                                    zoomType: 'x',
+                                    type: 'spline',
+                                    scrollablePlotArea: {
+                                        minWidth: 700,
+                                        scrollPositionX: 1
+                                    },
+                                    animation: Highcharts.svg, // don't animate in old IE
+                                    marginRight: 10,
+                                    events: {
+                                        load: function () {
+                                            // set up the updating of the chart each second
+                                            //var series = this.series[0];
+                                            _timeInterval = setInterval(function () {
+                                                $.ajax({
+                                                    url: "/Home/GetAllDataNoise",
+                                                    type: 'get',
+                                                    contentType: 'application/json'
+                                                }).done((result) => {
+
+                                                    var currentData = result.data;
+                                                    for (var i = 0; i < chart.series.length; i++) {
+                                                        var series = chart.series[i];
+
+                                                        var idSer = chart.series[i].name;
+                                                        var currentById = currentData.filter(s => s.DiaDiem == idSer);
+
+                                                        if (currentById && currentById.length > 0) {
+                                                            var dataNewSer = currentById.reduce(function (prev, current) {
+                                                                return (prev.sTT > current.sTT) ? prev : current
+                                                            });
+
+                                                            var lastSer = chart.series[i].data.reduce(function (prev, current) {
+                                                                return (prev.x > current.x) ? prev : current
+                                                            });
+
+                                                            var lastDate = new Date(lastSer.x);
+
+                                                            var lastDateStr = lastDate.getFullYear().toString() + pad2(lastDate.getMonth() + 1) + pad2(lastDate.getDate()) + pad2(lastDate.getHours()) + pad2(lastDate.getMinutes()) + pad2(lastDate.getSeconds());
+
+                                                            var newDate = new Date(dataNewSer.TIME.replace(pattern, '$1/$2/$3 $4:$5:$6'));
+                                                            //newDate = new Date();
+                                                            var dateUTC = Date.UTC(newDate.getFullYear(), newDate.getMonth(), newDate.getDate(), newDate.getHours(), newDate.getMinutes(), newDate.getSeconds())
+                                                            newDate.setHours(newDate.getHours() + 7);
+
+                                                            var newDateStr = newDate.getFullYear().toString() + pad2(newDate.getMonth() + 1) + pad2(newDate.getDate()) + pad2(newDate.getHours()) + pad2(newDate.getMinutes()) + pad2(newDate.getSeconds());
+
+                                                            if (lastDateStr != newDateStr) {
+                                                                var x = newDate.getTime(),// dateUTC,//.getTime(), // current time
+                                                                    y = parseFloat(dataNewSer.dB);//
+                                                                chart.series[i].addPoint([x, y]);
+                                                                //chart.series[i].addPoint([x, y], true, true);
+
+                                                                chart.series[i].addPoint([x, y], true, chart.series[i].data.length >= 10);
+                                                                chart.redraw();
+                                                            }
+                                                        }
+                                                        
+                                                    }
+
+                                                });
+                                            }, 5000);
+                                        }
+                                    }
+                                },
+                                time: {
+                                    useUTC: false
+                                },
+                                title: {
+                                    text: 'Biểu đồ dữ liệu thu thập'
+                                },
+                                accessibility: {
+                                    announceNewData: {
+                                        enabled: true,
+                                        minAnnounceInterval: 5000,
+                                        announcementFormatter: function (allSeries, newSeries, newPoint) {
+                                            if (newPoint) {
+                                                return 'New point added. Value: ' + newPoint.y;
+                                            }
+                                            return false;
+                                        }
+                                    }
+                                },
+                                xAxis: {
+                                    type: 'datetime',
+                                    labels: {
+                                        overflow: 'justify'
+                                    },
+                                    tickPixelInterval: 100
+                                },
+
+                                yAxis: {
+                                    min: 0,
+                                    //max: 90,
+                                    title: {
+                                        text: 'dBA'
+                                    },
+                                    plotLines: [{
+                                        value: 70,
+                                        width: 1,
+                                        color: 'red',
+                                        dashStyle:'shortdash',
+                                        label: {
+                                            text: "70dBA",
+                                            style: {
+                                                color: 'red'
+                                            }
+                                        }
+                                    },
+                                        ,
+                                        {
+                                            value: 55,
+                                            width: 1,
+                                            color: 'orange',
+                                            dashStyle: 'shortdash',
+                                            label: {
+                                                text: "55dBA",
+                                                style: {
+                                                    color: 'orange'
+                                                }
+                                            }
+                                        },
+                                        {
+                                            value: 45,
+                                            width: 1,
+                                            color: 'green',
+                                            dashStyle: 'shortdash',
+                                            label: {
+                                                text: "45dBA",
+                                                style: {
+                                                    color: 'green'
+                                                }
+                                            }
+                                        }]
+                                },
+
+                                tooltip: {
+                                    useHTML: true,
+                                    shared: true,
+                                    formatter: function () {
+                                        var date = new Date(this.x);
+                                        var hour = date.getHours() > 9 ? date.getHours() : "0" + date.getHours();
+                                        var minute = date.getMinutes() > 9 ? date.getMinutes() : "0" + date.getMinutes();
+                                        var second = date.getSeconds() > 9 ? date.getSeconds() : "0" + date.getSeconds();
+                                        var day = date.getDate() > 9 ? date.getDate() : "0" + date.getDate();
+                                        var month = (date.getMonth() + 1) > 9 ? (date.getMonth() + 1) : "0" + (date.getMonth() + 1);
+                                        var strDate = `${day}/${month}/${date.getFullYear()} ${hour}:${minute}:${second} `
+
+                                        var s = '';
+
+                                        if (this.points != undefined) {
+                                            $.each(this.points, function (i, point) {
+                                                s += '<br /><span style="color:' + this.color + '">\u25CF</span> Trạm: ' + this.series.userOptions.name + '<br/>Giá trị: <b>' + this.y + '</b> dB.';
+                                            });
+                                        }
+                                        else if (this.y != undefined) {
+                                            s += '<br /><span style="color:' + this.color + '">\u25CF</span>Trạm:  ' + this.series.userOptions.name + '<br/>Giá trị: <b>' + this.y + '</b> dB.';
+                                        }
+
+                                        return strDate + s;
+                                    }
+                                },
+
+                                legend: {
+                                    enabled: true
+                                },
+
+                                exporting: {
+                                    enabled: false
+                                },
+                                plotOptions: {
+                                    spline: {
+                                        lineWidth: 1,
+                                        states: {
+                                            hover: {
+                                                lineWidth: 2
+                                            }
+                                        },
+                                        marker: {
+                                            //enabled: false
+                                        },
+                                    }
+                                },
+                                series: seriesChart
+                            });
+                        });
+
+                        if (this.isMinimized() || this.isMaximized())
+                            this.restore();
+                    }
+                }).data('kendoWindow');
+                win1.wrapper.css("border", "1px solid #eee");
+              
+
+                $('<div class="form-actions"><button class="k-button k-primary k-search"><i class="fa fa-search">&nbsp;</i> Xem biểu đồ</button></div>')
+                    .appendTo($container).click(function () {
+                        win1.center().open();
+                    });
+            }
+
+            if (mList[init.CHART_VIEW].length > 0) {
+                var $container = $('<div class="portlet-search" />')
+                    .appendTo(mList[init.CHART_VIEW].find('.item-chart-view'));
+                var dp3 = $('<div class="form-group"><label for="" class="col-md-4">Từ Ngày</label><div class="col-md-8" ><input /></div></div>')
+                    .appendTo($container).find('input').kendoDatePicker({
+                        format: "dd/MM/yyyy",
+                        value: new Date()
+                    });
+                var dp4 = $('<div class="form-group"><label for="" class="col-md-4">Giờ</label><div class="col-md-8"> <input /></div></div>')
+                    .appendTo($container).find('input');
+
+                var $winEle, win;
+                var $gridEle, grid;
+                $winEle = $('<div style="overflow:hidden !important;display:none;padding:0;"></div>').appendTo('body');
+                $gridEle = $('<div style="border-radius:unset;border-width:0;"> <div id="chartdiv2" style="width:100%"></div></div>').appendTo($winEle);
+                win = $winEle.kendoWindow({
+                    width: '50vw',//"500px",
+                    minWidth: "420px",
+                    height: "600px",
+                    modal: false,
+                    resizable: true,
+                    scrollable: false,
+                    title: "Biểu đồ",
+                    actions: [
+                        "Close"
+                    ],
+                    visible: false,
+                    resize: function () {
+                        //$gridEle.height($winEle.height());
+                    },
+                    close: function (e) {
+                        if (_timeInterval) {
+                            clearInterval(_timeInterval);
+                        }
+                        //if (grid)
+                        //    grid.dataSource.data([]);
+                        //e.sender.wrapper.height(400);
+                    },
+                    open: function () {
+                        function pad2(n) { return n < 10 ? '0' + n : n }
+
+                        var interval;
+
+                        var pattern = /(\d{4})(\d{2})(\d{2})(\d{2})(\d{2})(\d{2})/;
+                        var chart;
+                        var IDs = [];
+
+                        var ngayTinh = dp3.val().split('/');
+                        var gioTInh = dp4.val();
+                        if (gioTInh >= 0 && gioTInh <= 23) {
+
+                        } else {
+                            alert("Vui lòng chọn đúng định dạng giờ");
+                            return;
+                        }
+                        var gioTinhStr = gioTInh + "";
+                        if (gioTInh < 10) {
+                            gioTinhStr = "0" + gioTInh;
+                        }
+
+                        var thoiDiem = ngayTinh[2] + ngayTinh[1] + ngayTinh[0] + gioTinhStr;
+                        $.ajax({
+                            url: "/Home/GetDataStatic?ngayTinh=" + dp3.val() + "&gioTInh=" + gioTinhStr,
+                            type: 'get',
+                            contentType: 'application/json'
+                        }).done((xhr) => {
+
+                            var seriesChart = [];
+
+                            var chartOption = xhr.data.series;
+                            var colors = ["#f40000", "#00ff01", "#ffff11", "#ff6400", "#0000ee", "#ff00fe", "#632a9f", "#652700", "#000000"];
+                            var colorIdx = 0;
+                            $.each(chartOption, (idx, item) => {
+                                var color = colors[colorIdx++];
+                                var series = {};
+                                series.name = item.name;
+                                var data = [];
+                                $.each(item.data.reverse(), (i, ser) => {//
+                                    if (data.length <= 10) {
+                                        var timeOfItem = new Date(ser.time.replace(pattern, '$1/$2/$3 $4:$5:$6'));
+
+                                        timeOfItem.setHours(timeOfItem.getHours() + 7);
+
+                                        data.push({
+                                            time: ser.time.replace(pattern, '$3/$2/$1 $4:$5:$6'),
+                                            x: timeOfItem.getTime(),//.getTime(),//Date.UTC(timeOfItem.getFullYear(), timeOfItem.getMonth(), timeOfItem.getDate(), timeOfItem.getHours(), timeOfItem.getMinutes(), timeOfItem.getSeconds()),//
+                                            y: ser.y,
+                                        });
+                                    }
+                                });
+                                series.color = color;
+                                series.data = data;
+                                seriesChart.push(series);
+                            });
+
+                            chart = Highcharts.chart('chartdiv2', {
+                                chart: {
+                                    height: 600,
+                                    zoomType: 'x',
+                                    type: 'spline',
+                                    scrollablePlotArea: {
+                                        minWidth: 700,
+                                        scrollPositionX: 1
+                                    },
+                                    animation: Highcharts.svg, // don't animate in old IE
+                                    marginRight: 10,
+                                    events: {
+                                        load: function () {
+                                            // set up the updating of the chart each second
+                                            //var series = this.series[0];
+                                            //_timeInterval = setInterval(function () {
+                                            //    $.ajax({
+                                            //        url: "/Home/GetAllDataNoise",
+                                            //        type: 'get',
+                                            //        contentType: 'application/json'
+                                            //    }).done((result) => {
+
+                                            //        var currentData = result.data;
+                                            //        for (var i = 0; i < chart.series.length; i++) {
+                                            //            var series = chart.series[i];
+
+                                            //            var idSer = chart.series[i].name;
+                                            //            var currentById = currentData.filter(s => s.DiaDiem == idSer);
+
+                                            //            if (currentById && currentById.length > 0) {
+                                            //                var dataNewSer = currentById.reduce(function (prev, current) {
+                                            //                    return (prev.sTT > current.sTT) ? prev : current
+                                            //                });
+
+                                            //                var lastSer = chart.series[i].data.reduce(function (prev, current) {
+                                            //                    return (prev.x > current.x) ? prev : current
+                                            //                });
+
+                                            //                var lastDate = new Date(lastSer.x);
+
+                                            //                var lastDateStr = lastDate.getFullYear().toString() + pad2(lastDate.getMonth() + 1) + pad2(lastDate.getDate()) + pad2(lastDate.getHours()) + pad2(lastDate.getMinutes()) + pad2(lastDate.getSeconds());
+
+                                            //                var newDate = new Date(dataNewSer.TIME.replace(pattern, '$1/$2/$3 $4:$5:$6'));
+                                            //                //newDate = new Date();
+                                            //                var dateUTC = Date.UTC(newDate.getFullYear(), newDate.getMonth(), newDate.getDate(), newDate.getHours(), newDate.getMinutes(), newDate.getSeconds())
+                                            //                newDate.setHours(newDate.getHours() + 7);
+
+                                            //                var newDateStr = newDate.getFullYear().toString() + pad2(newDate.getMonth() + 1) + pad2(newDate.getDate()) + pad2(newDate.getHours()) + pad2(newDate.getMinutes()) + pad2(newDate.getSeconds());
+
+                                            //                if (lastDateStr != newDateStr) {
+                                            //                    var x = newDate.getTime(),// dateUTC,//.getTime(), // current time
+                                            //                        y = parseFloat(dataNewSer.dB);//
+                                            //                    chart.series[i].addPoint([x, y]);
+                                            //                    //chart.series[i].addPoint([x, y], true, true);
+
+                                            //                    chart.series[i].addPoint([x, y], true, chart.series[i].data.length >= 10);
+                                            //                    chart.redraw();
+                                            //                }
+                                            //            }
+
+                                            //        }
+
+                                            //    });
+                                            //}, 5000);
+                                        }
+                                    }
+                                },
+                                time: {
+                                    useUTC: false
+                                },
+                                title: {
+                                    text: 'Biểu đồ dữ liệu thu thập'
+                                },
+                                accessibility: {
+                                    announceNewData: {
+                                        enabled: true,
+                                        minAnnounceInterval: 5000,
+                                        announcementFormatter: function (allSeries, newSeries, newPoint) {
+                                            if (newPoint) {
+                                                return 'New point added. Value: ' + newPoint.y;
+                                            }
+                                            return false;
+                                        }
+                                    }
+                                },
+                                xAxis: {
+                                    type: 'datetime',
+                                    labels: {
+                                        overflow: 'justify'
+                                    },
+                                    tickPixelInterval: 100
+                                },
+
+                                yAxis: {
+                                    min: 0,
+                                    //max: 90,
+                                    title: {
+                                        text: 'dBA'
+                                    },
+                                    plotLines: [{
+                                        value: 70,
+                                        width: 1,
+                                        color: 'red',
+                                        dashStyle: 'shortdash',
+                                        label: {
+                                            text: "70dBA",
+                                            style: {
+                                                color: 'red'
+                                            }
+                                        }
+                                    },
+                                        ,
+                                    {
+                                        value: 55,
+                                        width: 1,
+                                        color: 'orange',
+                                        dashStyle: 'shortdash',
+                                        label: {
+                                            text: "55dBA",
+                                            style: {
+                                                color: 'orange'
+                                            }
+                                        }
+                                    },
+                                    {
+                                        value: 45,
+                                        width: 1,
+                                        color: 'green',
+                                        dashStyle: 'shortdash',
+                                        label: {
+                                            text: "45dBA",
+                                            style: {
+                                                color: 'green'
+                                            }
+                                        }
+                                    }]
+                                },
+
+                                tooltip: {
+                                    useHTML: true,
+                                    shared: true,
+                                    formatter: function () {
+                                        var date = new Date(this.x);
+                                        var hour = date.getHours() > 9 ? date.getHours() : "0" + date.getHours();
+                                        var minute = date.getMinutes() > 9 ? date.getMinutes() : "0" + date.getMinutes();
+                                        var second = date.getSeconds() > 9 ? date.getSeconds() : "0" + date.getSeconds();
+                                        var day = date.getDate() > 9 ? date.getDate() : "0" + date.getDate();
+                                        var month = (date.getMonth() + 1) > 9 ? (date.getMonth() + 1) : "0" + (date.getMonth() + 1);
+                                        var strDate = `${day}/${month}/${date.getFullYear()} ${hour}:${minute}:${second} `
+
+                                        var s = '';
+
+                                        if (this.points != undefined) {
+                                            $.each(this.points, function (i, point) {
+                                                s += '<br /><span style="color:' + this.color + '">\u25CF</span> Trạm: ' + this.series.userOptions.name + '<br/>Giá trị: <b>' + this.y + '</b> dB.';
+                                            });
+                                        }
+                                        else if (this.y != undefined) {
+                                            s += '<br /><span style="color:' + this.color + '">\u25CF</span>Trạm:  ' + this.series.userOptions.name + '<br/>Giá trị: <b>' + this.y + '</b> dB.';
+                                        }
+
+                                        return strDate + s;
+                                    }
+                                },
+
+                                legend: {
+                                    enabled: true
+                                },
+
+                                exporting: {
+                                    enabled: false
+                                },
+                                plotOptions: {
+                                    spline: {
+                                        lineWidth: 1,
+                                        states: {
+                                            hover: {
+                                                lineWidth: 2
+                                            }
+                                        },
+                                        marker: {
+                                            //enabled: false
+                                        },
+                                    }
+                                },
+                                series: seriesChart
+                            });
+                        });
+
+                        if (this.isMinimized() || this.isMaximized())
+                            this.restore();
+                    }
+                }).data('kendoWindow');
+                win.wrapper.css("border", "1px solid #eee");
+
+                $('<div class="form-actions"><button class="k-button k-primary k-search"><i class="fa fa-search">&nbsp;</i> Xem biểu đồ</button></div>')
+                    .appendTo($container).click(function () {
+                        win.center().open();
+                    });
+            }
+
             return $(this.element);
         }
     };

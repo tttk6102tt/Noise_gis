@@ -287,94 +287,96 @@
                     </p>
                 </div>
                 @*@if (User.Identity.IsAuthenticated)
-                    {
-                        <div class="account">
-                            Xin chào
-                            <span>
-                                @User.FindFirst(x => x.Type == "preferred_username")?.Value
-                            </span>
-                            <a href="/front/home/logout">[ Thoát ]</a><br />
-                            <a href="/trangchu/taikhoan/doimatkhau">Đổi mật khẩu</a>
-                            @if (User.FindFirst(x => x.Type == "preferred_username")?.Value == "admin")
-                            {
-                                <span>|</span> <a href="/admin"> Quản trị </a><br />
-                            }
-                            <a href="/Content/upload/documents/HuongDanSuDung.pdf">Hướng dẫn sử dụng</a> <br />
-                        </div>
-                    }
-                    else
-                    {
-
-                    }*@
-            <div class="account">
-                @if (Session["FullName"] != null)
                 {
-                    <a>
-                        @Html.Label(Session["FullName"].ToString().ToUpper())
-                    </a>
-                    if (Session["Role"] != null && Session["Role"].ToString() == "sa")
-                    {
-                        <a>
-                            @Html.ActionLink("QUẢN TRỊ", "Index", "CMS")
-                        </a>
-                    }
-                    <a>
-                        @Html.ActionLink("ĐĂNG XUẤT", "Logout", "Home")
-                    </a>
+                    <div class="account">
+                        Xin chào
+                        <span>
+                            @User.FindFirst(x => x.Type == "preferred_username")?.Value
+                        </span>
+                        <a href="/front/home/logout">[ Thoát ]</a><br />
+                        <a href="/trangchu/taikhoan/doimatkhau">Đổi mật khẩu</a>
+                        @if (User.FindFirst(x => x.Type == "preferred_username")?.Value == "admin")
+                        {
+                            <span>|</span> <a href="/admin"> Quản trị </a><br />
+                        }
+                        <a href="/Content/upload/documents/HuongDanSuDung.pdf">Hướng dẫn sử dụng</a> <br />
+                    </div>
                 }
                 else
                 {
-                    <a>
-                        @Html.ActionLink("ĐĂNG NHẬP", "Login", "Home")
-                    </a>
-                    <a> @Html.ActionLink("ĐĂNG KÝ", "Register", "Home")</a>
-                }
+
+                }*@
+                <div class="account">
+                    @if (Session["FullName"] != null)
+                    {
+                        <a>
+                            @Html.Label(Session["FullName"].ToString().ToUpper())
+                        </a>
+                        if (Session["Role"] != null && Session["Role"].ToString() == "sa")
+                        {
+                            <a>
+                                @Html.ActionLink("QUẢN TRỊ", "Index", "CMS")
+                            </a>
+                        }
+                        <a>
+                            @Html.ActionLink("ĐĂNG XUẤT", "Logout", "Home")
+                        </a>
+                    }
+                    else
+                    {
+                        <a>
+                            @Html.ActionLink("ĐĂNG NHẬP", "Login", "Home")
+                        </a>
+                        <a> @Html.ActionLink("ĐĂNG KÝ", "Register", "Home")</a>
+                    }
 
 
-            </div>
+                </div>
             </div>
         </div>
         <!-- Header -->
         @*<header id="header">
-                <div id="header-wrap">
-                    <!--Navigation Resposnive Trigger-->
-                    <div id="mainMenu-trigger">
-                        <button class="lines-button x">
-                            <span class="lines"></span>
-                        </button>
-                    </div>
-                    <!--end: Navigation Resposnive Trigger-->
-                    <!--Navigation-->
-                    <div id="mainMenu" class="light">
-                        <nav>
-                            <ul>
-                                <li class="active">
-                                    <a href="/"><i class="fa fa-home ico-home"></i></a>
-                                </li>
-                                <li class="dropdown">
-                                    <a href="/Home/About"> GIỚI THIỆU </a>
-                                </li>
-                                @if (Session["username"] != null && Session["username"].ToString() == "admin")
-                                {
-                                    <li class="dropdown">
-                                        <a href="/Home/connectdb"> ĐỒNG BỘ DỮ LIỆU</a>
-                                    </li>
-                                    <li> @Html.ActionLink("CẤU HÌNH HỆ THỐNG", "Configsys", "Home") </li>
-                                    <li class="dropdown">
-                                        <a href="/Home/manageruser"> QUẢN TRỊ NGƯỜI DÙNG </a>
-                                    </li>
-                                }
-
-
-
-                            </ul>
-                        </nav>
-                    </div>
-                    <!--end: Navigation-->
+            <div id="header-wrap">
+                <!--Navigation Resposnive Trigger-->
+                <div id="mainMenu-trigger">
+                    <button class="lines-button x">
+                        <span class="lines"></span>
+                    </button>
                 </div>
-            </header>*@
+                <!--end: Navigation Resposnive Trigger-->
+                <!--Navigation-->
+                <div id="mainMenu" class="light">
+                    <nav>
+                        <ul>
+                            <li class="active">
+                                <a href="/"><i class="fa fa-home ico-home"></i></a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="/Home/About"> GIỚI THIỆU </a>
+                            </li>
+                            @if (Session["username"] != null && Session["username"].ToString() == "admin")
+                            {
+                                <li class="dropdown">
+                                    <a href="/Home/connectdb"> ĐỒNG BỘ DỮ LIỆU</a>
+                                </li>
+                                <li> @Html.ActionLink("CẤU HÌNH HỆ THỐNG", "Configsys", "Home") </li>
+                                <li class="dropdown">
+                                    <a href="/Home/manageruser"> QUẢN TRỊ NGƯỜI DÙNG </a>
+                                </li>
+                            }
+
+
+
+                        </ul>
+                    </nav>
+                </div>
+                <!--end: Navigation-->
+            </div>
+        </header>*@
         <!-- end: Header -->
         <!-- Inspiro Slider -->
+        <div id="container">
+        </div>
         @RenderBody()
         <!-- Footer -->
         <footer class="footer">
@@ -382,7 +384,7 @@
                 <tr>
                     <td>
                         <div class="footer-info">
-                            <p class="text-left">&copy; Bản quyền thuộc Viện Khoa Học Đo Đạc và Bản Đồ</p>
+                            <p class="text-left">&copy; Bản quyền thuộc Viện Khoa học Đo đạc và Bản đồ  </p>
                         </div>
                     </td>
                     <td>

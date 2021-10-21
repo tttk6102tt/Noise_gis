@@ -721,11 +721,29 @@
                 $('<div class="form-actions"><button class="k-button k-primary k-search"><i class="fa fa-search">&nbsp;</i> Xem báo cáo</button></div>')
                     .appendTo($container).click(function () {
                         var dpVal = $(dp).val();
+
+                        //var dReportDate = new Date(dpVal.split("/")[2], parseInt(dpVal.split("/")[1]) - 1, dpVal.split("/")[0]);
+
+                        //var startTimeDate = new Date(new Date(dpVal.split("/")[2], parseInt(dpVal.split("/")[1]) - 1, dpVal.split("/")[0]).setDate(dReportDate.getDate() - 1));
+                        
+                        //var startTimeDateStr = startTimeDate.getFullYear() + '' + (startTimeDate.getMonth() +1) + '' + startTimeDate.getDate() + "17";
+                        ////dReportDate.setHours(dReportDate.getHours() + 7);
+
+
+                        ////var param = dpVal.split("/")[2] + dpVal.split("/")[1] + dpVal.split("/")[0];
+                        //var param = dReportDate.getFullYear() + '' + (dReportDate.getMonth()+1) + '' + dReportDate.getDate() + "17";
+                        //var user = JSON.parse(localStorage.getItem('user'));
+                        //var xhr = new XMLHttpRequest();
+                        ////xhr.open('GET', "/Report/GetReport?dateReport=" + param, true);
+                        //xhr.open('GET', "/Report/GetReport?startTime=" + startTimeDateStr + "&endTime=" + param, true);
+
                         var param = dpVal.split("/")[2] + dpVal.split("/")[1] + dpVal.split("/")[0];
+
 
                         var user = JSON.parse(localStorage.getItem('user'));
                         var xhr = new XMLHttpRequest();
                         xhr.open('GET', "/Report/GetReport?dateReport=" + param, true);
+
                         xhr.responseType = 'blob';
                         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
                         //xhr.setRequestHeader('Authorization', user.token_type + " " + user.access_token);
@@ -768,67 +786,6 @@
                         value: new Date()
                     });
 
-
-                //var $winEle, win;
-                //var $gridEle, grid;
-                //$winEle = $('<div style="overflow:hidden !important;display:none;padding:0;"></div>').appendTo('body');
-                //$gridEle = $('<div style="border-radius:unset;border-width:0;"></div>').appendTo($winEle);
-                //win = $winEle.kendoWindow({
-                //    width: "500px",
-                //    minWidth: "420px",
-                //    height: "400px",
-                //    modal: false,
-                //    resizable: true,
-                //    scrollable: false,
-                //    title: "Báo cáo",
-                //    actions: [
-                //        "Close"
-                //    ],
-                //    visible: false,
-                //    resize: function () {
-                //        $gridEle.height($winEle.height());
-                //    },
-                //    close: function (e) {
-                //        if (grid)
-                //            grid.dataSource.data([]);
-                //        e.sender.wrapper.height(400);
-                //    },
-                //    open: function () {
-                //        if (this.isMinimized() || this.isMaximized())
-                //            this.restore();
-                //    }
-                //}).data('kendoWindow');
-                //win.wrapper.css("border", "1px solid #eee");
-                //grid = $gridEle.kendoGrid({
-                //    dataSource: {
-                //        transport: {
-                //            read: '/Home/Items'
-                //        }
-                //    },
-                //    resizable: true,
-                //    autoBind: false,
-                //    sortable: true,
-                //    height: "396px",
-                //    selectable: true,
-                //    pageable: {
-                //        pageSize: 50,
-                //        pageSizes: [25, 50, 75, 100],
-                //        buttonCount: 5,
-                //        messages: {
-                //            //display: "{0} - {1} / {2}",
-                //            display: 'Tổng số: {2}',
-                //            empty: "Không có dữ liệu",
-                //            page: "Trang",
-                //            of: "của {0}",
-                //            itemsPerPage: "bản ghi / trang",
-                //            first: "Đầu tiên",
-                //            previous: "Trước",
-                //            next: "Sau",
-                //            last: "Cuối cùng",
-                //            refresh: "Làm mới"
-                //        }
-                //    }
-                //}).data('kendoGrid');
                 $('<div class="form-actions"><button class="k-button k-primary k-search"><i class="fa fa-search">&nbsp;</i> Xem báo cáo</button></div>')
                     .appendTo($container).click(function () {
                         var dpVal = $(dpMin).val();
@@ -1584,7 +1541,7 @@
                     <button class="k-button k-primary k-report-landuse"><i class="fa fa-paper-plane-o">&nbsp;</i> Gửi báo cáo</button>
                 </div>`)
                     .appendTo($container).click(function () {
-                        win.center().open();
+                        winChart2.center().open();
                     });
             }
 
@@ -1873,12 +1830,12 @@
                 //    });
 
 
-                var $winEle, win1;
+                var $winEle, winChartLive;
                 var $gridEle, grid;
                 $winEle = $('<div style="overflow:hidden !important;display:none;padding:0;"></div>').appendTo('body');
                 //.$gridEle = $('<div style="border-radius:unset;border-width:0;"></div>').appendTo($winEle);
                 $gridEle = $('<div style="border-radius:unset;border-width:0;"> <div id="chartdiv" style="width:100%"></div></div>').appendTo($winEle);
-                win1 = $winEle.kendoWindow({
+                winChartLive = $winEle.kendoWindow({
                     width: '50vw',//"500px",
                     minWidth: "420px",
                     height: "600px",
@@ -1907,7 +1864,7 @@
                         var interval;
 
                         var pattern = /(\d{4})(\d{2})(\d{2})(\d{2})(\d{2})(\d{2})/;
-                        var chart;
+                        var chartLive;
                         var IDs = [];
                         $.ajax({
                             url: "/Home/GetData",
@@ -1943,7 +1900,7 @@
                                 seriesChart.push(series);
                             });
 
-                            chart = Highcharts.chart('chartdiv', {
+                            chartLive = Highcharts.chart('chartdiv', {
                                 chart: {
                                     height: 600,
                                     zoomType: 'x',
@@ -1966,10 +1923,10 @@
                                                 }).done((result) => {
 
                                                     var currentData = result.data;
-                                                    for (var i = 0; i < chart.series.length; i++) {
-                                                        var series = chart.series[i];
+                                                    for (var i = 0; i < chartLive.series.length; i++) {
+                                                        var series = chartLive.series[i];
 
-                                                        var idSer = chart.series[i].name;
+                                                        var idSer = chartLive.series[i].name;
                                                         var currentById = currentData.filter(s => s.DiaDiem == idSer);
 
                                                         if (currentById && currentById.length > 0) {
@@ -1977,7 +1934,7 @@
                                                                 return (prev.sTT > current.sTT) ? prev : current
                                                             });
 
-                                                            var lastSer = chart.series[i].data.reduce(function (prev, current) {
+                                                            var lastSer = chartLive.series[i].data.reduce(function (prev, current) {
                                                                 return (prev.x > current.x) ? prev : current
                                                             });
 
@@ -1995,11 +1952,11 @@
                                                             if (lastDateStr != newDateStr) {
                                                                 var x = newDate.getTime(),// dateUTC,//.getTime(), // current time
                                                                     y = parseFloat(dataNewSer.dB);//
-                                                                chart.series[i].addPoint([x, y]);
+                                                                chartLive.series[i].addPoint([x, y]);
                                                                 //chart.series[i].addPoint([x, y], true, true);
 
-                                                                chart.series[i].addPoint([x, y], true, chart.series[i].data.length >= 10);
-                                                                chart.redraw();
+                                                                chartLive.series[i].addPoint([x, y], true, chartLive.series[i].data.length >= 10);
+                                                                chartLive.redraw();
                                                             }
                                                         }
                                                         
@@ -2136,12 +2093,12 @@
                             this.restore();
                     }
                 }).data('kendoWindow');
-                win1.wrapper.css("border", "1px solid #eee");
+                winChartLive.wrapper.css("border", "1px solid #eee");
               
 
                 $('<div class="form-actions"><button class="k-button k-primary k-search"><i class="fa fa-search">&nbsp;</i> Xem biểu đồ</button></div>')
                     .appendTo($container).click(function () {
-                        win1.center().open();
+                        winChartLive.center().open();
                     });
             }
 
@@ -2156,11 +2113,11 @@
                 var dp4 = $('<div class="form-group"><label for="" class="col-md-4">Giờ</label><div class="col-md-8"> <input /></div></div>')
                     .appendTo($container).find('input');
 
-                var $winEle, win;
+                var $winEle, winChart2;
                 var $gridEle, grid;
                 $winEle = $('<div style="overflow:hidden !important;display:none;padding:0;"></div>').appendTo('body');
                 $gridEle = $('<div style="border-radius:unset;border-width:0;"> <div id="chartdiv2" style="width:100%"></div></div>').appendTo($winEle);
-                win = $winEle.kendoWindow({
+                winChart2 = $winEle.kendoWindow({
                     width: '50vw',//"500px",
                     minWidth: "420px",
                     height: "600px",
@@ -2184,6 +2141,9 @@
                         //e.sender.wrapper.height(400);
                     },
                     open: function () {
+                        if (winChartLive) {
+                            winChartLive.close();
+                        }
                         function pad2(n) { return n < 10 ? '0' + n : n }
 
                         var interval;
@@ -2223,7 +2183,7 @@
                                 series.name = item.name;
                                 var data = [];
                                 $.each(item.data.reverse(), (i, ser) => {//
-                                    if (data.length <= 10) {
+                                    //if (data.length <= 10) {
                                         var timeOfItem = new Date(ser.time.replace(pattern, '$1/$2/$3 $4:$5:$6'));
 
                                         timeOfItem.setHours(timeOfItem.getHours() + 7);
@@ -2233,7 +2193,7 @@
                                             x: timeOfItem.getTime(),//.getTime(),//Date.UTC(timeOfItem.getFullYear(), timeOfItem.getMonth(), timeOfItem.getDate(), timeOfItem.getHours(), timeOfItem.getMinutes(), timeOfItem.getSeconds()),//
                                             y: ser.y,
                                         });
-                                    }
+                                    //}
                                 });
                                 series.color = color;
                                 series.data = data;
@@ -2253,57 +2213,7 @@
                                     marginRight: 10,
                                     events: {
                                         load: function () {
-                                            // set up the updating of the chart each second
-                                            //var series = this.series[0];
-                                            //_timeInterval = setInterval(function () {
-                                            //    $.ajax({
-                                            //        url: "/Home/GetAllDataNoise",
-                                            //        type: 'get',
-                                            //        contentType: 'application/json'
-                                            //    }).done((result) => {
-
-                                            //        var currentData = result.data;
-                                            //        for (var i = 0; i < chart.series.length; i++) {
-                                            //            var series = chart.series[i];
-
-                                            //            var idSer = chart.series[i].name;
-                                            //            var currentById = currentData.filter(s => s.DiaDiem == idSer);
-
-                                            //            if (currentById && currentById.length > 0) {
-                                            //                var dataNewSer = currentById.reduce(function (prev, current) {
-                                            //                    return (prev.sTT > current.sTT) ? prev : current
-                                            //                });
-
-                                            //                var lastSer = chart.series[i].data.reduce(function (prev, current) {
-                                            //                    return (prev.x > current.x) ? prev : current
-                                            //                });
-
-                                            //                var lastDate = new Date(lastSer.x);
-
-                                            //                var lastDateStr = lastDate.getFullYear().toString() + pad2(lastDate.getMonth() + 1) + pad2(lastDate.getDate()) + pad2(lastDate.getHours()) + pad2(lastDate.getMinutes()) + pad2(lastDate.getSeconds());
-
-                                            //                var newDate = new Date(dataNewSer.TIME.replace(pattern, '$1/$2/$3 $4:$5:$6'));
-                                            //                //newDate = new Date();
-                                            //                var dateUTC = Date.UTC(newDate.getFullYear(), newDate.getMonth(), newDate.getDate(), newDate.getHours(), newDate.getMinutes(), newDate.getSeconds())
-                                            //                newDate.setHours(newDate.getHours() + 7);
-
-                                            //                var newDateStr = newDate.getFullYear().toString() + pad2(newDate.getMonth() + 1) + pad2(newDate.getDate()) + pad2(newDate.getHours()) + pad2(newDate.getMinutes()) + pad2(newDate.getSeconds());
-
-                                            //                if (lastDateStr != newDateStr) {
-                                            //                    var x = newDate.getTime(),// dateUTC,//.getTime(), // current time
-                                            //                        y = parseFloat(dataNewSer.dB);//
-                                            //                    chart.series[i].addPoint([x, y]);
-                                            //                    //chart.series[i].addPoint([x, y], true, true);
-
-                                            //                    chart.series[i].addPoint([x, y], true, chart.series[i].data.length >= 10);
-                                            //                    chart.redraw();
-                                            //                }
-                                            //            }
-
-                                            //        }
-
-                                            //    });
-                                            //}, 5000);
+                                         
                                         }
                                     }
                                 },
@@ -2433,11 +2343,11 @@
                             this.restore();
                     }
                 }).data('kendoWindow');
-                win.wrapper.css("border", "1px solid #eee");
+                winChart2.wrapper.css("border", "1px solid #eee");
 
                 $('<div class="form-actions"><button class="k-button k-primary k-search"><i class="fa fa-search">&nbsp;</i> Xem biểu đồ</button></div>')
                     .appendTo($container).click(function () {
-                        win.center().open();
+                        winChart2.center().open();
                     });
             }
 

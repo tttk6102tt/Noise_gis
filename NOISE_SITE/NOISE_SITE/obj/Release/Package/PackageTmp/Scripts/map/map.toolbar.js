@@ -33,6 +33,8 @@
 
     var _measurement;
 
+    var _timeInterval;
+
     var defControls = [{
         name: MapControls.DEFAULT,
         title: 'Mặc định'
@@ -442,8 +444,8 @@
                     mMap.startDraw('point', false, function (graphic) {
                         mMap.getAgsMap().graphics.add(graphic);
                         $("#infoModal").modal();
-                        $("#toaDoX").html("Tọa độ X: " + graphic.geometry.getLongitude());
-                        $("#toaDoY").html("Tọa độ Y: " + graphic.geometry.getLatitude());
+                        $("#toaDoX").html("Tọa độ X: " + graphic.geometry.x);// graphic.geometry.getLongitude());
+                        $("#toaDoY").html("Tọa độ Y: " + graphic.geometry.y);//graphic.geometry.getLatitude());
 
                         $("#form-submit").on('click', function (e) {
                             App.startPageLoading({
@@ -472,8 +474,8 @@
                                     thoiGianPhanHoi: strDate,
                                     phanHoi: $("#phanHoi").val(),
                                     thongTinNguoiDung: $("#thongTinNguoiDung").val(),
-                                    toaDoX: graphic.geometry.getLongitude(),
-                                    toaDoY: graphic.geometry.getLatitude(),
+                                    toaDoX: graphic.geometry.x,//graphic.geometry.getLongitude(),
+                                    toaDoY: graphic.geometry.y,//graphic.geometry.getLatitude(),
                                 });
                                 mMap.getAgsMap().getLayer('doiTuongVung').applyEdits([graphic], null, null, function () {
                                     $("#infoModal").modal('hide');

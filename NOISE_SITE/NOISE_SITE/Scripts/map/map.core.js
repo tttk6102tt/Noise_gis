@@ -410,13 +410,13 @@ c-3 -13 -10 -20 -15 -17 -5 3 -9 1 -9 -5 0 -21 19 -20 26 1 l7 23 8 -23 c10
                         var template = new InfoTemplate();
                         template.setContent(getTextContent);
                         template.setTitle("Trạm quan trắc");
-                        var featureLayer = new FeatureLayer("http://tiengontructuyen.vn/arcgis/rest/services/DuLieuChuyenDe/TramQuanTracCoDinh/FeatureServer/0", {
-                            //mode: FeatureLayer.MODE_SELECTION,
-                            outFields: ["*"],
-                            infoTemplate: template,
-                            id: "TramDo",
-                            definitionExpression: time_filter,
-                        });
+                        //var featureLayer = new FeatureLayer("http://tiengontructuyen.vn/arcgis/rest/services/DuLieuChuyenDe/TramQuanTracCoDinh/FeatureServer/0", {
+                        //    //mode: FeatureLayer.MODE_SELECTION,
+                        //    outFields: ["*"],
+                        //    infoTemplate: template,
+                        //    id: "TramDo",
+                        //    definitionExpression: time_filter,
+                        //});
 
                      
 

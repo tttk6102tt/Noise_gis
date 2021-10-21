@@ -5,8 +5,11 @@ using NOISE_APP.Models.DTO;
 using RestSharp;
 using System;
 using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.IO;
 using System.Net;
+using System.Security.Cryptography;
 using System.Web.Script.Serialization;
 using System.Windows.Forms;
 
@@ -14,6 +17,7 @@ namespace NOISE_APP
 {
     public partial class FrmLogin : DevExpress.XtraEditors.XtraForm
     {
+        private string _ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
         //private string FileSaveName = System.IO.Path.Combine(Application.StartupPath, ConfigurationManager.AppSettings["FileJsonDatabase"]);//"database.json";
         public FrmLogin()
         {
@@ -86,83 +90,126 @@ namespace NOISE_APP
             public NguoiDung NguoiDung { get; set; }
         }
 
+        //private bool Login(string userName, string password)
+        //{
+        //    try
+        //    {
+        //        //RestClient restClient = new RestClient("http://localhost:44373");
+        //        RestClient restClient = new RestClient("http://tiengontructuyen.vn");
+        //        RestRequest restRequest = new RestRequest("/Home/LoginUser");
+        //        restRequest.RequestFormat = DataFormat.Json;
+        //        restRequest.Method = Method.POST;
+        //        restRequest.AddHeader("Authorization", "Authorization");
+        //        restRequest.AddHeader("Content-Type", "multipart/form-data");
+        //        restRequest.AddBody(new NguoiDung()
+        //        {
+        //            UserName = userName,
+        //            Password = password
+        //        });
+
+        //        var response = restClient.Execute(restRequest);
+        //        var result = JsonConvert.DeserializeObject<RestDataUser>(response.Content);
+        //        if (result.status == Enums.EnumError.OK)
+        //        {
+        //            return true;
+        //        }
+        //        //if (response.StatusCode == HttpStatusCode.OK)
+        //        //{
+        //        //    return true;
+        //        //}
+        //    }
+        //    catch (Exception ex)
+        //    {
+
+        //    }
+        //    return false;
+        //}
+
+        public string GetMD5(string str)
+        {
+            MD5 md5 = new MD5CryptoServiceProvider();
+            byte[] fromData = System.Text.Encoding.UTF8.GetBytes(str);
+            byte[] targetData = md5.ComputeHash(fromData);
+            string byte2String = null;
+
+            for (int i = 0; i < targetData.Length; i++)
+            {
+                byte2String += targetData[i].ToString("x2");
+
+            }
+            return byte2String;
+        }
+
         private bool Login(string userName, string password)
         {
-            try
-            {
-                //RestClient restClient = new RestClient("http://localhost:44373");
-                RestClient restClient = new RestClient("http://tiengontructuyen.vn");
-                RestRequest restRequest = new RestRequest("/Home/LoginUser");
-                restRequest.RequestFormat = DataFormat.Json;
-                restRequest.Method = Method.POST;
-                restRequest.AddHeader("Authorization", "Authorization");
-                restRequest.AddHeader("Content-Type", "multipart/form-data");
-                restRequest.AddBody(new NguoiDung()
-                {
-                    UserName = userName,
-                    Password = password
-                });
 
-                var response = restClient.Execute(restRequest);
-                var result = JsonConvert.DeserializeObject<RestDataUser>(response.Content);
-                if (result.status == Enums.EnumError.OK)
+            using (var conn = new SqlConnection(_ConnectionString))
+            {
+                try
                 {
-                    return true;
+                    if (conn.State == System.Data.ConnectionState.Closed)
+                    {
+                        conn.Open();
+                    }
+
+                    using (var cmd = new SqlCommand())
+                    {
+                        cmd.Connection = conn;
+                        cmd.CommandText = string.Format(@"select  * from users where username = '{0}'", txtUname.Text);
+                        cmd.ExecuteNonQuery();
+
+                        var ds = new DataSet();
+                        var dap = new SqlDataAdapter(cmd);
+                        dap.Fill(ds);
+
+                        if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                        {
+                            if (txtPasswd.Text == "")
+                            {
+                                if (ds.Tables[0].Rows[0]["Password"].ToString() == "")
+                                {
+                                    frmChangePassword frm = new frmChangePassword();
+                                    if (frm.ShowDialog() == DialogResult.OK)
+                                    {
+                                        return true;
+                                    }
+                                }
+                            }
+                            var f_password = GetMD5(txtPasswd.Text);
+                            if (ds.Tables[0].Rows[0]["Password"].ToString() == f_password)
+                            {
+                                return true;
+                            }
+                        }
+                    }
                 }
-                //if (response.StatusCode == HttpStatusCode.OK)
-                //{
-                //    return true;
-                //}
-            }
-            catch (Exception ex)
-            {
-
+                catch (Exception ex)
+                {
+                    return false;
+                }
+                finally
+                {
+                    conn.Close();
+                }
             }
             return false;
         }
 
-        //private ResponseData Login(string userName, string password)
-        //{
-        //    try
-        //    {
-        //        RestClient restClient = new RestClient("http://localhost:44373");
-        //        RestRequest restRequest = new RestRequest("/Home/Login");
-        //        restRequest.RequestFormat = DataFormat.Json;
-        //        restRequest.Method = Method.GET;
-        //        //restRequest.AddHeader("Authorization", "Authorization");
-        //        //restRequest.AddHeader("Content-Type", "multipart/form-data");
-        //        restRequest.AddParameter("username", userName);
-        //        restRequest.AddParameter("password", password);
-
-        //        var response = restClient.Execute(restRequest);
-
-        //        var result = JsonConvert.DeserializeObject<ResponseData>(response.Content);
-
-        //        return result;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return new ResponseData()
-        //        {
-
-        //        };
-        //    }
-        //}
-
         private void btnOk_Click(object sender, EventArgs e)
         {
+
             if (string.IsNullOrWhiteSpace(txtUname.Text))
             {
                 _NoiseMesageBox.ShowErrorMessage("Vui lòng nhập tên đăng nhập!");
                 txtUname.Focus();
                 return;
             }
-            if (string.IsNullOrWhiteSpace(txtPasswd.Text))
-            {
-                _NoiseMesageBox.ShowErrorMessage("Vui lòng nhập mật khẩu!");
-                txtPasswd.Focus();
-                return;
-            }
+            //if (string.IsNullOrWhiteSpace(txtPasswd.Text))
+            //{
+            //    _NoiseMesageBox.ShowErrorMessage("Vui lòng nhập mật khẩu!");
+            //    txtPasswd.Focus();
+            //    return;
+            //}
             //
             _NoiseMesageBox.ShowSplash(this, "", "Đang đăng nhập");
 
@@ -176,23 +223,6 @@ namespace NOISE_APP
 
             }
             _NoiseMesageBox.HideSplash();
-            //Login("admin","123321");
-
-            //if (await _MolarMain.Identity.SignIn(txtUname.Text, txtPasswd.Text))//)
-            //{
-            //    var jsonData = System.IO.File.ReadAllText(FileSaveName);
-            //    JavaScriptSerializer jss = new JavaScriptSerializer();
-            //    var mKhuVucLamViec = JsonHelper.GetDatabaseJson(FileSaveName);
-            //    mKhuVucLamViec.AutoLogin.Remember = checkSavePasswd.Checked;
-            //    mKhuVucLamViec.AutoLogin.Account.Password = txtPasswd.Text;
-            //    mKhuVucLamViec.AutoLogin.Account.UserName = txtUname.Text;
-            //    var stringObj = jss.Serialize(mKhuVucLamViec);
-            //    File.WriteAllText(FileSaveName, stringObj);
-            //    this.DialogResult = DialogResult.OK;
-
-            //}
-            //else
-
         }
     }
 }

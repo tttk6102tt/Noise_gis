@@ -34,28 +34,28 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmLogin));
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.checkSavePasswd = new DevExpress.XtraEditors.CheckEdit();
-            this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
-            this.btnOk = new DevExpress.XtraEditors.SimpleButton();
             this.txtPasswd = new DevExpress.XtraEditors.ButtonEdit();
             this.txtUname = new DevExpress.XtraEditors.ButtonEdit();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
+            this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
+            this.btnOk = new DevExpress.XtraEditors.SimpleButton();
+            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.checkSavePasswd.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPasswd.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtUname.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
@@ -84,32 +84,6 @@
             this.checkSavePasswd.Size = new System.Drawing.Size(204, 19);
             this.checkSavePasswd.StyleController = this.layoutControl1;
             this.checkSavePasswd.TabIndex = 12;
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.btnCancel.Appearance.Options.UseFont = true;
-            this.btnCancel.Image = global::NOISE_APP.Properties.Resources.close_16x16;
-            this.btnCancel.Location = new System.Drawing.Point(120, 104);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Padding = new System.Windows.Forms.Padding(3);
-            this.btnCancel.Size = new System.Drawing.Size(93, 28);
-            this.btnCancel.StyleController = this.layoutControl1;
-            this.btnCancel.TabIndex = 10;
-            this.btnCancel.Text = "Hủy bỏ";
-            // 
-            // btnOk
-            // 
-            this.btnOk.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.btnOk.Appearance.Options.UseFont = true;
-            this.btnOk.Image = global::NOISE_APP.Properties.Resources.checkbox2_16x16;
-            this.btnOk.Location = new System.Drawing.Point(15, 104);
-            this.btnOk.Name = "btnOk";
-            this.btnOk.Padding = new System.Windows.Forms.Padding(3);
-            this.btnOk.Size = new System.Drawing.Size(95, 28);
-            this.btnOk.StyleController = this.layoutControl1;
-            this.btnOk.TabIndex = 9;
-            this.btnOk.Text = "Đăng nhập";
             // 
             // txtPasswd
             // 
@@ -160,31 +134,6 @@
             this.layoutControlGroup1.Size = new System.Drawing.Size(228, 147);
             this.layoutControlGroup1.TextVisible = false;
             // 
-            // layoutControlItem3
-            // 
-            this.layoutControlItem3.Control = this.btnCancel;
-            this.layoutControlItem3.ControlAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.layoutControlItem3.Location = new System.Drawing.Point(105, 89);
-            this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Padding = new DevExpress.XtraLayout.Utils.Padding(5, 5, 5, 5);
-            this.layoutControlItem3.Size = new System.Drawing.Size(103, 38);
-            this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem3.TextVisible = false;
-            // 
-            // layoutControlItem4
-            // 
-            this.layoutControlItem4.Control = this.btnOk;
-            this.layoutControlItem4.ControlAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.layoutControlItem4.Location = new System.Drawing.Point(0, 89);
-            this.layoutControlItem4.MaxSize = new System.Drawing.Size(105, 38);
-            this.layoutControlItem4.MinSize = new System.Drawing.Size(105, 38);
-            this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Padding = new DevExpress.XtraLayout.Utils.Padding(5, 5, 5, 5);
-            this.layoutControlItem4.Size = new System.Drawing.Size(105, 38);
-            this.layoutControlItem4.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
-            this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem4.TextVisible = false;
-            // 
             // layoutControlItem1
             // 
             this.layoutControlItem1.Control = this.txtPasswd;
@@ -228,6 +177,57 @@
             // 
             this.defaultLookAndFeel1.LookAndFeel.SkinName = "Office 2007 Blue";
             // 
+            // btnCancel
+            // 
+            this.btnCancel.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btnCancel.Appearance.Options.UseFont = true;
+            this.btnCancel.Image = global::NOISE_APP.Properties.Resources.close_16x16;
+            this.btnCancel.Location = new System.Drawing.Point(120, 104);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Padding = new System.Windows.Forms.Padding(3);
+            this.btnCancel.Size = new System.Drawing.Size(93, 28);
+            this.btnCancel.StyleController = this.layoutControl1;
+            this.btnCancel.TabIndex = 10;
+            this.btnCancel.Text = "Hủy bỏ";
+            // 
+            // btnOk
+            // 
+            this.btnOk.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btnOk.Appearance.Options.UseFont = true;
+            this.btnOk.Image = global::NOISE_APP.Properties.Resources.checkbox2_16x16;
+            this.btnOk.Location = new System.Drawing.Point(15, 104);
+            this.btnOk.Name = "btnOk";
+            this.btnOk.Padding = new System.Windows.Forms.Padding(3);
+            this.btnOk.Size = new System.Drawing.Size(95, 28);
+            this.btnOk.StyleController = this.layoutControl1;
+            this.btnOk.TabIndex = 9;
+            this.btnOk.Text = "Đăng nhập";
+            // 
+            // layoutControlItem3
+            // 
+            this.layoutControlItem3.Control = this.btnCancel;
+            this.layoutControlItem3.ControlAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.layoutControlItem3.Location = new System.Drawing.Point(105, 89);
+            this.layoutControlItem3.Name = "layoutControlItem3";
+            this.layoutControlItem3.Padding = new DevExpress.XtraLayout.Utils.Padding(5, 5, 5, 5);
+            this.layoutControlItem3.Size = new System.Drawing.Size(103, 38);
+            this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem3.TextVisible = false;
+            // 
+            // layoutControlItem4
+            // 
+            this.layoutControlItem4.Control = this.btnOk;
+            this.layoutControlItem4.ControlAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.layoutControlItem4.Location = new System.Drawing.Point(0, 89);
+            this.layoutControlItem4.MaxSize = new System.Drawing.Size(105, 38);
+            this.layoutControlItem4.MinSize = new System.Drawing.Size(105, 38);
+            this.layoutControlItem4.Name = "layoutControlItem4";
+            this.layoutControlItem4.Padding = new DevExpress.XtraLayout.Utils.Padding(5, 5, 5, 5);
+            this.layoutControlItem4.Size = new System.Drawing.Size(105, 38);
+            this.layoutControlItem4.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
+            this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem4.TextVisible = false;
+            // 
             // FrmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -248,11 +248,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtPasswd.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtUname.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -4,13 +4,14 @@
 }
 
 @section PageStyles{
-    @*<link rel="stylesheet" href="~/Content/bootstrap.min.css" />*@
+    @*<link rel="stylesheet" href="~/Content/bootstrap.min.css" />
     @*<link rel="stylesheet" href="https://js.arcgis.com/4.19/dijit/themes/claro/claro.css" />
-
-        <link rel="stylesheet" href="https://js.arcgis.com/4.19/esri/themes/light/main.css">*@
+        @*<link rel="stylesheet" href="https://js.arcgis.com/3.27/esri/css/esri.css">
+    <link rel="stylesheet" href="https://js.arcgis.com/4.19/esri/themes/light/main.css">*@
+    <link href="~/Scripts/datetime-picker/bootstrap-datetimepicker.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://js.arcgis.com/3.27/esri/themes/calcite/dijit/calcite.css">
     <link rel="stylesheet" href="https://js.arcgis.com/3.27/esri/themes/calcite/esri/esri.css">
-    @*<link rel="stylesheet" href="https://js.arcgis.com/3.27/esri/css/esri.css">*@
+
 
     <style>
         /*.esri-ui-manual-container > .esri-component {
@@ -132,7 +133,7 @@
                 <div class="form-group" style="padding-left:30px;padding-right:30px;padding-top:10px">
                     <div class="row">
                         <div class="col-sm-12">
-                            <input type="date" id="ngaydo" value="2021-05-10" class="form-control">
+                            <input type="text" id="ngaydo" class="form-control date-picker">
                         </div>
                     </div>
                 </div>
@@ -140,9 +141,20 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <select name="method" id="khunggio" class="form-control">
-                                <option value="6h-9h">6h-9h</option>
-                                <option value="9h-11h" selected="selected">9h-11h</option>
-                                <option value="11h-13h">11h-13h</option>
+                                @for (int i = 0; i <= 23; i++)
+                                {
+                                    if (i < 23)
+                                    {
+                                        <option value="@i">@string.Format("{0}h - {1}h", i, i + 1)</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="23">23h - 0h</option>
+                                    }
+                                }
+                                @*<option value="6h-9h">6h-9h</option>
+                                    <option value="9h-11h" selected="selected">9h-11h</option>
+                                    <option value="11h-13h">11h-13h</option>*@
                             </select>
                         </div>
                     </div>
@@ -188,9 +200,9 @@
         <div id="dv-report" class="esri-widget" style="width:25vw;background:none">
 
         </div>
-        <div id="controls">
-            <div id="chartdiv" style="width:100%"></div>
-        </div>
+        @*<div id="controls">
+                <div id="chartdiv" style="width:100%"></div>
+            </div>*@
         <div id="printButton"></div>
         <div id="control-container"></div>
         <div id="legend">
@@ -341,6 +353,7 @@
         </script>
     }
 
+    <script src="~/Scripts/datetime-picker/bootstrap-datetimepicker.js"></script>
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
@@ -348,7 +361,7 @@
     <script src="~/Scripts/front/kendo.all.min.js"></script>
     <script src="https://js.arcgis.com/3.27/"></script>
     @*<script src="https://js.arcgis.com/3.37/"></script>*@
-   
+
     <script src="~/Scripts/map/map.namespace.js"></script>
     <script src="~/Scripts/map/map.core.js"></script>
     <script src="~/Scripts/map/map.toolbar.js"></script>
@@ -376,8 +389,13 @@
         var map;
         $(document).on('ready', function () {
 
-
+            kendo.culture("vi-VN ");
             $("#aside").attr("style", "top:" + $("#header2").outerHeight() + "px;height:400px");
+
+            $("#ngaydo").kendoDatePicker({
+                value: new Date(),
+                format: 'dd/MM/yyyy'
+            });
 
             var defaultControls = [
                 vgsMap.MapToolBar.DEFAULT,
@@ -385,8 +403,8 @@
                 vgsMap.MapToolBar.ZOOM_IN,
                 vgsMap.MapToolBar.ZOOM_OUT,
                 vgsMap.MapToolBar.MEASUREMENT_AREA,
-                vgsMap.MapToolBar.SHOW_CHART,
-                vgsMap.MapToolBar.REPORT,
+                //vgsMap.MapToolBar.SHOW_CHART,
+                //vgsMap.MapToolBar.REPORT,
                 //vgsMap.MapToolBar.FILTER
             ];
             //
@@ -428,15 +446,17 @@
                 // layerGroups: [AppModule.DUONG_BO, AppModule.DUONG_SAT, AppModule.DUONG_THUY],
                 bars: [
                     //vgsMap.MapSidebar.REGION,
-                    vgsMap.MapSidebar.BASE_LAYER,
+                    //vgsMap.MapSidebar.BASE_LAYER,
                     //vgsMap.MapSidebar.PROTECT_LAND_RESOURCES,
                     // vgsMap.MapSidebar.LAYER,
                     vgsMap.MapSidebar.REPORT,
-                    //vgsMap.MapSidebar.REPORT_MONTH,
-                    //vgsMap.MapSidebar.REPORT_YEAR,
-                    //vgsMap.MapSidebar.REPORT_MIN,
-                    //vgsMap.MapSidebar.REPORT_MIN_MONTH,
-                    //vgsMap.MapSidebar.REPORT_MIN_YEAR,
+                    vgsMap.MapSidebar.REPORT_MONTH,
+                    vgsMap.MapSidebar.REPORT_YEAR,
+                    vgsMap.MapSidebar.REPORT_MIN,
+                    vgsMap.MapSidebar.REPORT_MIN_MONTH,
+                    vgsMap.MapSidebar.REPORT_MIN_YEAR,
+                    vgsMap.MapSidebar.CHART,
+                    vgsMap.MapSidebar.CHART_VIEW,
                     // vgsMap.MapSidebar.IMPORT,
                     // vgsMap.MapSidebar.INFO,
                     //vgsMap.MapSidebar.HELPER,
@@ -450,7 +470,7 @@
     </script>
 
     <script>
-
+        /*
         function pad2(n) { return n < 10 ? '0' + n : n }
 
         var interval;
@@ -586,7 +606,7 @@
                 },
 
                 yAxis: {
-                    //min: 30,
+                    min: 0,
                     //max: 90,
                     title: {
                         text: 'dB'
@@ -599,6 +619,28 @@
                             text: "70dB",
                             style: {
                                 color: 'red'
+                            }
+                        }
+                    },
+                    {
+                        value: 55,
+                        width: 2,
+                        color: 'orange',
+                        label: {
+                            text: "55dB",
+                            style: {
+                                color: 'orange'
+                            }
+                        }
+                    },
+                    {
+                        value: 45,
+                        width: 2,
+                        color: 'yellow',
+                        label: {
+                            text: "45dB",
+                            style: {
+                                color: 'yellow'
                             }
                         }
                     }]
@@ -653,7 +695,7 @@
                 },
                 series: seriesChart
             });
-        })
-
+        });
+        */
     </script>
 }

@@ -57,10 +57,10 @@ namespace NOISE_SITE.Controllers
                         cmd.CommandTimeout = 5 * 60 * 60;
                         cmd.CommandText = string.Format(@"select id, 
                                                         LOCATION as DiaDiem,
-                                                        SUBSTRING(dbo.fn_convert_datetime2text(TIME),9,2) as hour2,
-                                                        SUBSTRING(dbo.fn_convert_datetime2text(TIME),7,2) as day2,
-                                                        SUBSTRING(dbo.fn_convert_datetime2text(TIME),5,2) as month2,
-                                                        SUBSTRING(dbo.fn_convert_datetime2text(TIME),1,4)as year2,
+                                                        SUBSTRING(TIME,9,2) as hour2,
+                                                        SUBSTRING(TIME,7,2) as day2,
+                                                        SUBSTRING(TIME,5,2) as month2,
+                                                        SUBSTRING(TIME,1,4)as year2,
                                                         sum(cast(dB as float)) as Total,
                                                         count(ID) as soluong,
                                                         sum(cast(dB as float)) /count(ID) as trungbinh,
@@ -68,13 +68,13 @@ namespace NOISE_SITE.Controllers
                                                         max(db) as max2
                                                         from noise n
                                                         --inner join DMTramDo d on d.MaTramDo = n.ID
-                                                        where dbo.fn_convert_datetime2text(TIME) LIKE '{0}%' and ISNUMERIC(TIME) = 1
+                                                        where TIME LIKE '{0}%' 
                                                         group by id,
-                                                        SUBSTRING(dbo.fn_convert_datetime2text(TIME),9,2),
-                                                        SUBSTRING(dbo.fn_convert_datetime2text(TIME),7,2),
+                                                        SUBSTRING(TIME,9,2),
+                                                        SUBSTRING(TIME,7,2),
                                                         LOCATION,
-                                                        SUBSTRING(dbo.fn_convert_datetime2text(TIME),5,2),
-                                                        SUBSTRING(dbo.fn_convert_datetime2text(TIME),1,4)
+                                                        SUBSTRING(TIME,5,2),
+                                                        SUBSTRING(TIME,1,4)
                                                         ", dateReport); ;//order by id
 
                         var dap = new SqlDataAdapter(cmd);
@@ -152,9 +152,9 @@ namespace NOISE_SITE.Controllers
                         cmd.CommandTimeout = 5 * 60 * 60;
                         cmd.CommandText = string.Format(@"select id, 
                                                         LOCATION as DiaDiem,
-                                                        SUBSTRING(dbo.fn_convert_datetime2text(TIME),9,2) as hour2,
-                                                        SUBSTRING(dbo.fn_convert_datetime2text(TIME),5,2) as month2,
-                                                        SUBSTRING(dbo.fn_convert_datetime2text(TIME),1,4)as year2,
+                                                        SUBSTRING(TIME,9,2) as hour2,
+                                                        SUBSTRING(TIME,5,2) as month2,
+                                                        SUBSTRING(TIME,1,4)as year2,
                                                         sum(cast(dB as float)) as Total,
                                                         count(ID) as soluong,
                                                         sum(cast(dB as float)) /count(ID) as trungbinh,
@@ -162,12 +162,12 @@ namespace NOISE_SITE.Controllers
                                                         max(db) as max2
                                                         from noise n
                                                         --inner join DMTramDo d on d.MaTramDo = n.ID
-                                                        where dbo.fn_convert_datetime2text(TIME) LIKE '{0}%' and ISNUMERIC(TIME) = 1
+                                                        where TIME LIKE '{0}%' 
                                                         group by id,
-                                                        SUBSTRING(dbo.fn_convert_datetime2text(TIME),9,2),
+                                                        SUBSTRING(TIME,9,2),
                                                         LOCATION,
-                                                        SUBSTRING(dbo.fn_convert_datetime2text(TIME),5,2),
-                                                        SUBSTRING(dbo.fn_convert_datetime2text(TIME),1,4)
+                                                        SUBSTRING(TIME,5,2),
+                                                        SUBSTRING(TIME,1,4)
                                                         ", dateReport); //order by id
 
                         var dap = new SqlDataAdapter(cmd);
@@ -243,8 +243,8 @@ namespace NOISE_SITE.Controllers
                         cmd.CommandTimeout = 5 * 60 * 60;
                         cmd.CommandText = string.Format(@"select id, 
                                                         LOCATION as DiaDiem,
-                                                        SUBSTRING(dbo.fn_convert_datetime2text(TIME),9,2) as hour2,
-                                                        SUBSTRING(dbo.fn_convert_datetime2text(TIME),1,4)as year2,
+                                                        SUBSTRING(TIME,9,2) as hour2,
+                                                        SUBSTRING(TIME,1,4)as year2,
                                                         sum(cast(dB as float)) as Total,
                                                         count(ID) as soluong,
                                                         sum(cast(dB as float)) /count(ID) as trungbinh,
@@ -252,11 +252,11 @@ namespace NOISE_SITE.Controllers
                                                         max(db) as max2
                                                         from noise n
                                                        -- inner join DMTramDo d on d.MaTramDo = n.ID
-                                                        where dbo.fn_convert_datetime2text(TIME) LIKE '{0}%' and ISNUMERIC(TIME) = 1
+                                                        where TIME LIKE '{0}%' 
                                                         group by id,
-                                                        SUBSTRING(dbo.fn_convert_datetime2text(TIME),9,2),
+                                                        SUBSTRING(TIME,9,2),
                                                         LOCATION,
-                                                        SUBSTRING(dbo.fn_convert_datetime2text(TIME),1,4)
+                                                        SUBSTRING(TIME,1,4)
                                                         ", dateReport);//order by id
 
                         var dap = new SqlDataAdapter(cmd);
@@ -342,10 +342,10 @@ namespace NOISE_SITE.Controllers
                         cmd.CommandTimeout = 5 * 60 * 60;
                         cmd.CommandText = string.Format(@"select id, 
                                                         LOCATION as DiaDiem,
-                                                        SUBSTRING(dbo.fn_convert_datetime2text(TIME),9,2) as hour2,
-                                                        SUBSTRING(dbo.fn_convert_datetime2text(TIME),7,2) as day2,
-                                                        SUBSTRING(dbo.fn_convert_datetime2text(TIME),5,2) as month2,
-                                                        SUBSTRING(dbo.fn_convert_datetime2text(TIME),1,4)as year2,
+                                                        SUBSTRING(TIME,9,2) as hour2,
+                                                        SUBSTRING(TIME,7,2) as day2,
+                                                        SUBSTRING(TIME,5,2) as month2,
+                                                        SUBSTRING(TIME,1,4)as year2,
                                                         sum(cast(dB as float)) as Total,
                                                         count(ID) as soluong,
                                                         sum(cast(dB as float)) /count(ID) as trungbinh,
@@ -353,13 +353,13 @@ namespace NOISE_SITE.Controllers
                                                         max(db) as max2
                                                         from noise n
                                                         --inner join DMTramDo d on d.MaTramDo = n.ID
-                                                        where dbo.fn_convert_datetime2text(TIME) LIKE '{0}%' and ISNUMERIC(TIME) = 1
+                                                        where TIME LIKE '{0}%' 
                                                         group by id,
-                                                        SUBSTRING(dbo.fn_convert_datetime2text(TIME),9,2),
-                                                        SUBSTRING(dbo.fn_convert_datetime2text(TIME),7,2),
+                                                        SUBSTRING(TIME,9,2),
+                                                        SUBSTRING(TIME,7,2),
                                                         LOCATION,
-                                                        SUBSTRING(dbo.fn_convert_datetime2text(TIME),5,2),
-                                                        SUBSTRING(dbo.fn_convert_datetime2text(TIME),1,4)
+                                                        SUBSTRING(TIME,5,2),
+                                                        SUBSTRING(TIME,1,4)
                                                         ", dateReport); ;//order by id
 
 
@@ -470,9 +470,9 @@ namespace NOISE_SITE.Controllers
                         cmd.CommandTimeout = 5 * 60 * 60;
                         cmd.CommandText = string.Format(@"select id, 
                                                         LOCATION AS DiaDiem,
-                                                        SUBSTRING(dbo.fn_convert_datetime2text(TIME),9,2) as hour2,
-                                                        SUBSTRING(dbo.fn_convert_datetime2text(TIME),5,2) as month2,
-                                                        SUBSTRING(dbo.fn_convert_datetime2text(TIME),1,4)as year2,
+                                                        SUBSTRING(TIME,9,2) as hour2,
+                                                        SUBSTRING(TIME,5,2) as month2,
+                                                        SUBSTRING(TIME,1,4)as year2,
                                                         sum(cast(dB as float)) as Total,
                                                         count(ID) as soluong,
                                                         sum(cast(dB as float)) /count(ID) as trungbinh,
@@ -480,12 +480,12 @@ namespace NOISE_SITE.Controllers
                                                         max(db) as max2
                                                         from noise n
                                                         --inner join DMTramDo d on d.MaTramDo = n.ID
-                                                        where dbo.fn_convert_datetime2text(TIME) LIKE '{0}%' and ISNUMERIC(TIME) = 1
+                                                        where TIME LIKE '{0}%' 
                                                         group by id,
-                                                        SUBSTRING(dbo.fn_convert_datetime2text(TIME),9,2),
+                                                        SUBSTRING(TIME,9,2),
                                                         LOCATION,
-                                                        SUBSTRING(dbo.fn_convert_datetime2text(TIME),5,2),
-                                                        SUBSTRING(dbo.fn_convert_datetime2text(TIME),1,4)
+                                                        SUBSTRING(TIME,5,2),
+                                                        SUBSTRING(TIME,1,4)
                                                         ", dateReport); ;//order by id
 
                         var dap = new SqlDataAdapter(cmd);
@@ -541,6 +541,119 @@ namespace NOISE_SITE.Controllers
                 return File(new byte[0], "application/octet-stream");
             }
         }
+
+        public ActionResult GetReport_2(string startTime, string endTime)
+        {
+            var noises = new List<NOISE>();
+            DataSet ds = new DataSet();
+            using (var conn = new SqlConnection(_ConnectionString))
+            {
+                try
+                {
+                    if (conn.State == System.Data.ConnectionState.Closed)
+                    {
+                        conn.Open();
+                    }
+
+                    using (var cmd = new SqlCommand())
+                    {
+                        var today = DateTime.Today;
+                        var yesterday = Convert.ToDouble(today.AddDays(-1).ToString("yyyyMMddhhmmss"));
+                        var tomorow = Convert.ToDouble(today.AddDays(1).ToString("yyyyMMddhhmmss"));
+                        cmd.Connection = conn;
+
+                        cmd.CommandTimeout = 5 * 60 * 60;
+                        cmd.CommandText = string.Format(@"select id, 
+                                                        LOCATION AS DiaDiem,
+                                                        SUBSTRING(TIME,9,2) as hour2,
+                                                        SUBSTRING(TIME,5,2) as month2,
+                                                        SUBSTRING(TIME,1,4)as year2,
+                                                        sum(cast(dB as float)) as Total,
+                                                        count(ID) as soluong,
+                                                        sum(cast(dB as float)) /count(ID) as trungbinh,
+                                                        min(db) as min2,
+                                                        max(db) as max2
+                                                        from noise n
+                                                        --inner join DMTramDo d on d.MaTramDo = n.ID
+                                                        where TIME > '{0}' and TIME < '{1}' 
+                                                        group by id,
+                                                        SUBSTRING(TIME,9,2),
+                                                        LOCATION,
+                                                        SUBSTRING(TIME,5,2),
+                                                        SUBSTRING(TIME,1,4)
+                                                        ", startTime,endTime); ;//order by id
+
+                        var dap = new SqlDataAdapter(cmd);
+                        dap.Fill(ds);
+                        var dataReports = new List<DataReport>();
+                        if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                        {
+                            foreach (DataRow row in ds.Tables[0].Rows)
+                            {
+                                double soluong = 0.0;
+                                double.TryParse(row["soluong"].ToString(), out soluong);
+                                double total = 0.0;
+                                double.TryParse(row["Total"].ToString(), out total);
+                                double minVal = 0.0;
+                                double.TryParse(row["min2"].ToString(), out minVal);
+                                double maxVal = 0.0;
+                                double.TryParse(row["max2"].ToString(), out maxVal);
+                                double average = 0.0;
+                                double.TryParse(row["trungbinh"].ToString(), out average);
+
+                                int hour = 0;
+                                int.TryParse(row["hour2"].ToString(), out hour);
+                            
+                                int month = 0;
+                                int.TryParse(row["month2"].ToString(), out month);
+                                int year = 0;
+                                int.TryParse(row["year2"].ToString(), out year);
+
+                                int day = 0;
+                                var dayold = new DateTime(year, month, 1).AddDays(-1).AddHours(17);
+                                //int.TryParse(row["trungbinh"].ToString(), out day);
+
+                                var date = new DateTime(year,month,day);
+
+                                var dateCur = dayold.AddHours(hour);
+
+                                dataReports.Add(new DataReport()
+                                {
+                                    month = dateCur.Month.ToString(),
+                                    DiaDiem = row["DiaDiem"].ToString(),
+                                    hour = dateCur.Hour.ToString(),
+                                    MaTramDo = row["ID"].ToString(),
+                                    soluong = soluong,
+                                    total = Math.Round(total, 2),
+                                    year = dateCur.Year.ToString(),
+                                    min = Math.Round(minVal, 2),
+                                    max = Math.Round(maxVal, 2),
+                                    average = Math.Round(average, 2)
+                                });
+                            }
+
+                        }
+
+                        dataReports = dataReports.OrderByDescending(s => s.MaTramDo).ToList();
+
+                        //var file = CreateReportForMonth(dataReports, dateReport.Substring(4, 2), dateReport.Substring(0, 4));
+                        var file = CreateReportForMonth(dataReports, endTime.Substring(4, 2), endTime.Substring(0, 4));
+
+                        return File(file, "application/octet-stream", "BaoCaoTiengOn.xlsx");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+                finally
+                {
+                    conn.Close();
+                }
+                return File(new byte[0], "application/octet-stream");
+            }
+        }
+
         public ActionResult GetReportForYear(string dateReport)
         {
             var noises = new List<NOISE>();
@@ -563,8 +676,8 @@ namespace NOISE_SITE.Controllers
                         cmd.CommandTimeout = 5 * 60 * 60;
                         cmd.CommandText = string.Format(@"select id, 
                                                         LOCATION AS DiaDiem,
-                                                        SUBSTRING(dbo.fn_convert_datetime2text(TIME),9,2) as hour2,
-                                                        SUBSTRING(dbo.fn_convert_datetime2text(TIME),1,4)as year2,
+                                                        SUBSTRING(TIME,9,2) as hour2,
+                                                        SUBSTRING(TIME,1,4)as year2,
                                                         sum(cast(dB as float)) as Total,
                                                         count(ID) as soluong,
                                                         sum(cast(dB as float)) /count(ID) as trungbinh,
@@ -572,11 +685,11 @@ namespace NOISE_SITE.Controllers
                                                         max(db) as max2
                                                         from noise n
                                                         --inner join DMTramDo d on d.MaTramDo = n.ID
-                                                        where dbo.fn_convert_datetime2text(TIME) LIKE '{0}%' and ISNUMERIC(TIME) = 1
+                                                        where TIME LIKE '{0}%' 
                                                         group by id,
-                                                        SUBSTRING(dbo.fn_convert_datetime2text(TIME),9,2),
+                                                        SUBSTRING(TIME,9,2),
                                                         LOCATION,
-                                                        SUBSTRING(dbo.fn_convert_datetime2text(TIME),1,4)
+                                                        SUBSTRING(TIME,1,4)
                                                         ", dateReport);//order by id
 
                         var dap = new SqlDataAdapter(cmd);

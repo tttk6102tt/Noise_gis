@@ -98,13 +98,14 @@ namespace NOISE_SITE.Controllers
                         tomorow = Convert.ToDouble(todayNow.ToString("yyyyMMdd") + nowHour + nowMi + nowss);
 
                         cmd.Connection = conn;
+                        cmd.CommandTimeout = 5 * 60 * 60;
                         //cmd.CommandText = string.Format("SELECT * FROM NOISE WHERE CONVERT(float,  TIME) > {0} and CONVERT(float,  TIME) < {1} and ID <> '' AND TIME <> '' AND dB <> ''  order by stt", yesterday,tomorow);
                         //cmd.CommandText = "SELECT n.ID,n.sTT, d.DiaDiem,n.dB,n.TIME FROM NOISE n INNER JOIN DMTramDo d on d.MaTramDo = n.ID  WHERE n.ID <> ''  AND n.dB <> '' AND n.TIME <> '' order by stt desc";
 
                         //cmd.CommandText = string.Format("SELECT n.ID,n.sTT, d.DiaDiem,n.dB, n.TIME FROM NOISE n INNER JOIN DMTramDo d on d.MaTramDo = n.ID  WHERE n.ID <> ''  AND n.dB <> '' AND n.TIME <> '' and ISNUMERIC(n.TIME) = 1 AND n.TIME LIKE '{0}%' order by stt desc", todayNow.ToString("yyyyMMdd") + hour);
 
                         //cmd.CommandText = string.Format("SELECT n.ID,n.sTT, d.DiaDiem,n.dB, n.TIME FROM NOISE n INNER JOIN DMTramDo d on d.MaTramDo = n.ID  WHERE n.TIME > '{0}' and n.TIME < '{1}'  ", yesterday,tomorow);//n.TIME LIKE '{0}%' ---- todayNow.ToString("yyyyMMdd") + hour,
-                        cmd.CommandText = string.Format("SELECT n.ID,n.sTT, n.LOCATION,n.dB, n.TIME FROM NOISE n WHERE n.TIME > '{0}' and n.TIME < '{1}'  ", yesterday, tomorow);//n.TIME LIKE '{0}%' ---- todayNow.ToString("yyyyMMdd") + hour,
+                        cmd.CommandText = string.Format("SELECT n.ID,n.sTT, n.LOCATION,n.dB, n.TIME FROM NOISE n WHERE n.TIME LIKE '{0}%'  ", todayNow.ToString("yyyyMMddHH"));// ---- todayNow.ToString("yyyyMMdd") + hour,
                         //cmd.CommandText = string.Format("SELECT n.ID,n.sTT, d.DiaDiem,n.dB, n.TIME FROM NOISE n INNER JOIN DMTramDo d on d.MaTramDo = n.ID  WHERE n.ID <> ''  AND n.dB <> '' AND n.TIME <> '' and n.TIME LIKE '20210610%' order by stt desc", todayNow.ToString("yyyyMMdd") + hour);
 
                         var dap = new SqlDataAdapter(cmd);
@@ -119,7 +120,7 @@ namespace NOISE_SITE.Controllers
 
                                 //if (doTime && time < tomorow && time > yesterday)
                                 //{
-                                   
+
                                 //}
 
                                 noises.Add(new NOISE()
@@ -174,7 +175,7 @@ namespace NOISE_SITE.Controllers
 
 
         [HttpGet]
-        public ActionResult GetDataStatic(string ngayTinh,string gioTinh)
+        public ActionResult GetDataStatic(string ngayTinh, string gioTinh)
         {
             ChartOption chartOption = new ChartOption();
             DataSet ds = new DataSet();
@@ -191,7 +192,7 @@ namespace NOISE_SITE.Controllers
                     using (var cmd = new SqlCommand())
                     {
                         var dateStrSpl = ngayTinh.Split('/');
-                        var today = new DateTime(Convert.ToInt32(dateStrSpl[2]), Convert.ToInt32(dateStrSpl[1]) , Convert.ToInt32(dateStrSpl[0]));// DateTime.Today;
+                        var today = new DateTime(Convert.ToInt32(dateStrSpl[2]), Convert.ToInt32(dateStrSpl[1]), Convert.ToInt32(dateStrSpl[0]));// DateTime.Today;
                         var todayNow = today.AddHours(Convert.ToInt32(gioTinh)).AddHours(-7);
 
                         var hour = todayNow.Hour > 10 ? todayNow.Hour.ToString() : "0" + todayNow.Hour;
@@ -229,14 +230,14 @@ namespace NOISE_SITE.Controllers
 
                                 //if (doTime && time < tomorow && time > yesterday)
                                 //{
-                                    noises.Add(new NOISE()
-                                    {
-                                        DiaDiem = row["LOCATION"].ToString() == "" ? row["ID"].ToString() : row["LOCATION"].ToString(),
-                                        ID = row["ID"].ToString(),
-                                        dB = row["dB"].ToString(),
-                                        TIME = row["TIME"].ToString(),
-                                        sTT = Convert.ToInt32(row["sTT"].ToString())
-                                    });
+                                noises.Add(new NOISE()
+                                {
+                                    DiaDiem = row["LOCATION"].ToString() == "" ? row["ID"].ToString() : row["LOCATION"].ToString(),
+                                    ID = row["ID"].ToString(),
+                                    dB = row["dB"].ToString(),
+                                    TIME = row["TIME"].ToString(),
+                                    sTT = Convert.ToInt32(row["sTT"].ToString())
+                                });
                                 //}
                             }
 
@@ -332,7 +333,8 @@ namespace NOISE_SITE.Controllers
 
                         //cmd.CommandText = string.Format("SELECT n.ID,n.sTT, d.DiaDiem,n.dB, n.TIME FROM NOISE n INNER JOIN DMTramDo d on d.MaTramDo = n.ID  WHERE n.TIME < '{0}' and n.TIME > '{1}'", tomorow,yesterday);
 
-                        cmd.CommandText = string.Format("SELECT n.ID,n.sTT, n.LOCATION,n.dB, n.TIME FROM NOISE n WHERE n.TIME < '{0}' and n.TIME > '{1}'", tomorow, yesterday);
+                        //cmd.CommandText = string.Format("SELECT n.ID,n.sTT, n.LOCATION,n.dB, n.TIME FROM NOISE n WHERE n.TIME < '{0}' and n.TIME > '{1}'", tomorow, yesterday);
+                        cmd.CommandText = string.Format("SELECT n.ID,n.sTT, n.LOCATION,n.dB, n.TIME FROM NOISE n WHERE  n.TIME LIKE '{0}%' ", todayNow.ToString("yyyyMMddHHmm"));
                         var dap = new SqlDataAdapter(cmd);
                         dap.Fill(ds);
 
@@ -344,7 +346,7 @@ namespace NOISE_SITE.Controllers
                                 //var doTime = double.TryParse(row["TIME"].ToString(), out time);
                                 //if (doTime && time < tomorow && time > yesterday)
                                 //{
-                                    
+
                                 //}
                                 noises.Add(new NOISE()
                                 {
@@ -495,6 +497,12 @@ namespace NOISE_SITE.Controllers
             return View();
         }
 
+        public ActionResult ChangePassword()
+        {
+            
+            return View();
+        }
+
         [HttpPost]
         public ActionResult LoginUser(NGUOIDUNG nguoiDung)
         {
@@ -565,8 +573,6 @@ namespace NOISE_SITE.Controllers
             var f_password = GetMD5(password);
             //var data = _nguoiDungRepository.FindAll().Where(s => s.UserName.Equals(username) && s.Password.Equals(f_password));// _config.Users.Where(s => s.UserName.Equals(username) && s.Password.Equals(f_password)).ToList();
 
-
-
             DataSet ds = new DataSet();
             using (var conn = new SqlConnection(_ConnectionString))
             {
@@ -581,7 +587,7 @@ namespace NOISE_SITE.Controllers
                     {
                         cmd.Connection = conn;
                         cmd.CommandTimeout = 5 * 60 * 60;
-                        cmd.CommandText = string.Format("SELECT * FROM USERS WHERE UserName = '{0}' AND Password='{1}'", username, f_password);
+                        cmd.CommandText = string.Format("SELECT * FROM USERS WHERE UserName = '{0}'", username);
 
 
                         var dap = new SqlDataAdapter(cmd);
@@ -589,17 +595,27 @@ namespace NOISE_SITE.Controllers
 
                         if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
                         {
-                            Session["Role"] = ds.Tables[0].Rows[0]["Role"].ToString();
-                            Session["FullName"] = ds.Tables[0].Rows[0]["FullName"].ToString();// data.FirstOrDefault().FullName;
-                            Session["Email"] = ds.Tables[0].Rows[0]["Email"].ToString();//data.FirstOrDefault().Email;
-                            Session["UserName"] = ds.Tables[0].Rows[0]["UserName"].ToString();//data.FirstOrDefault().UserName;
-                            return Json(new RestBase(NOISE_SITE.Enums.EnumError.OK), JsonRequestBehavior.AllowGet);
+                            if (password == "")
+                            {
+                                if (ds.Tables[0].Rows[0]["Password"].ToString() == "")
+                                {
+                                    Session["UserName"] = username;
+                                    return Json(new RestBase(NOISE_SITE.Enums.EnumError.OK,username), JsonRequestBehavior.AllowGet);
+                                }
+                            }
+
+                            if (ds.Tables[0].Rows[0]["Password"].ToString() == f_password)
+                            {
+                                Session["Role"] = ds.Tables[0].Rows[0]["Role"].ToString();
+                                Session["FullName"] = ds.Tables[0].Rows[0]["FullName"].ToString();// data.FirstOrDefault().FullName;
+                                Session["Email"] = ds.Tables[0].Rows[0]["Email"].ToString();//data.FirstOrDefault().Email;
+                                Session["UserName"] = ds.Tables[0].Rows[0]["UserName"].ToString();//data.FirstOrDefault().UserName;
+                                return Json(new RestBase(NOISE_SITE.Enums.EnumError.OK), JsonRequestBehavior.AllowGet);
+                            }
                         }
-                        else
-                        {
-                            ViewBag.error = "Tên đăng nhập hoặc mật khẩu không đúng";
-                            return Json(new RestBase(NOISE_SITE.Enums.EnumError.ERROR), JsonRequestBehavior.AllowGet);
-                        }
+
+                        ViewBag.error = "Tên đăng nhập hoặc mật khẩu không đúng";
+                        return Json(new RestBase(NOISE_SITE.Enums.EnumError.ERROR), JsonRequestBehavior.AllowGet);
                     }
                 }
                 catch (Exception ex)
@@ -674,6 +690,39 @@ namespace NOISE_SITE.Controllers
             }
         }
 
+        [HttpPost]
+        //[ValidateAntiForgeryToken]
+        public ActionResult ChangePassword(NGUOIDUNG _user)
+        {
+            try
+            {
+                var check = _nguoiDungRepository.FindAll().Where(s => s.UserName == _user.UserName).FirstOrDefault();
+                if (check == null)
+                {
+                    _user.Password = GetMD5(_user.Password);
+                    _user.ID = Guid.NewGuid().ToString();
+                    _user.Role = "user";
+                    _nguoiDungRepository.Update(_user);
+
+                    Session["Role"] = _user.Role;
+                    Session["FullName"] = _user.FullName;
+                    Session["Email"] = _user.Email;
+                    Session["UserName"] = _user.UserName;
+
+                    return Json(new RestBase(NOISE_SITE.Enums.EnumError.OK), JsonRequestBehavior.AllowGet);
+                }
+                else
+                {
+                    ViewBag.error = "Đã tồn tại địa chỉ tên đăng nhập này";
+                    return Json(new RestBase(NOISE_SITE.Enums.EnumError.ERROR), JsonRequestBehavior.AllowGet);
+                }
+                return View();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
         [HttpGet]
         public ActionResult Captcha(string __ssacidRegister2 = "", bool __rn = true)

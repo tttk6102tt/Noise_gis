@@ -104,15 +104,29 @@
                 $('#loginForm').ajaxSubmit({
                     success: function (xhr) {
                         if (xhr.status == "OK") {
-                            bootbox.alert({
-                                message: "Đăng nhập thành công, đã có thể đăng nhập!",
-                                buttons: {
-                                    ok: {
-                                        label: "Đồng ý"
+                            if (xhr.redirect && xhr.redirect != '') {
+                                bootbox.alert({
+                                    message: "Vui lòng tạo mật khẩu!",
+                                    buttons: {
+                                        ok: {
+                                            label: "Đồng ý"
+                                        }
                                     }
-                                }
-                            });
-                            window.location = "/Home/Index";
+                                });
+                                window.location = "/Home/ChangePassword";
+                            } else {
+
+                                bootbox.alert({
+                                    message: "Đăng nhập thành công, đã có thể đăng nhập!",
+                                    buttons: {
+                                        ok: {
+                                            label: "Đồng ý"
+                                        }
+                                    }
+                                });
+                                window.location = "/Home/Index";
+                            }
+                           
                         } else {
                             $('#captcha-register').click();
                             bootbox.alert({

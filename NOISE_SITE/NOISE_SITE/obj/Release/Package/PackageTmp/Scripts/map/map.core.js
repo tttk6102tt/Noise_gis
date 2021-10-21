@@ -11,6 +11,7 @@
     });
     //var urlService = "http://222.252.17.86:6080/arcgis/rest/services/VIGAC_BanDo/";
     //var baseMapUri = urlService + "/Base_QuangNinh/MapServer";
+    var baseMapUriTramDo = "http://tiengontructuyen.vn/arcgis/rest/services/DuLieuChuyenDe/TramQuanTracCoDinh/MapServer"
     var m_BoundaryLayer;
     var m_TempLayer;
     var m_RoundLayer;
@@ -33,6 +34,7 @@
     var m_Measurement;
     var m_PointerStyle = 'default';
     var regionGraphic, regionGL, regionSymbol;
+    var tramDoGraphic, tramDoGL, tramDoSymbol;
     var mMapLoadCb = [];
     var mEditGraphic = [];
     var mDrawer;
@@ -152,14 +154,17 @@
                 "esri/tasks/query",
                 "esri/geometry/Point",
                 "esri/dijit/InfoWindow",
-                'esri/geometry/screenUtils'
+                'esri/geometry/screenUtils',
+                
             ],
                 function (arrayUtils, InfoTemplate, Legend, Extent, esriConfig, Map, BasemapToggle, Navigation, WMSLayer, FeatureLayer, ArcGISTiledMapServiceLayer,
                     ArcGISDynamicMapServiceLayer, GraphicsLayer, SimpleLineSymbol, SimpleFillSymbol, SimpleMarkerSymbol, PictureMarkerSymbol, Color, Geometry, Query, Point,
                     InfoWindow,
-                    screenUtils) {
+                    screenUtils
+                    ) {
 
                     //esriConfig.defaults.geometryService = new esri.tasks.GeometryService("http://222.252.17.86:6080/arcgis/rest/services/Utilities/Geometry/GeometryServer");
+                    esriConfig.defaults.geometryService = new esri.tasks.GeometryService("http://tiengontructuyen.vn/arcgis/rest/services/Utilities/Geometry/GeometryServer");
 
 
                     mLineSymbol = new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID,
@@ -188,12 +193,24 @@
                         18,
                         new SimpleLineSymbol(
                             SimpleLineSymbol.STYLE_SOLID,
-                            new Color([229, 229, 255, .5]),
+                            new Color('red'),
                             2
                         ),
-                        new Color([0, 0, 255, 1])
+                        new Color('red')
                     );
 
+                    mHighLightSymbol.setPath(`M58 164 c-51 -27 -50 -102 2 -129 86 -45 175 17 144 100 -16 40 -96
+56 -146 29z m116 -16 c20 -17 24 -27 16 -38 -9 -13 -11 -13 -20 0 -8 13 -11
+12 -23 -4 -13 -18 -14 -18 -21 5 l-7 24 -11 -23 -12 -23 -13 23 -13 23 -6 -22
+c-3 -13 -10 -20 -15 -17 -5 3 -9 1 -9 -5 0 -21 19 -20 26 1 l7 23 8 -23 c10
+-25 29 -21 29 6 1 12 5 10 15 -8 13 -23 14 -24 21 -6 7 18 7 18 21 0 12 -16
+15 -17 23 -4 6 9 10 10 10 3 0 -6 -12 -21 -26 -32 -56 -44 -147 -11 -140 51 7
+64 89 90 140 46z`);
+                    //xmax: 
+                    //xmin: 
+                    //ymax: 
+                    //ymin:
+                   var customExtentAndSR = new esri.geometry.Extent(5120900, -9998100, -583280.9042999996, 2328200, new esri.SpatialReference({ "wkid": 3405 }));
 
                     mMap = new Map(me.element.attr('id'), {
                         autoResize: true,
@@ -201,16 +218,20 @@
                         showAttribution: false,
                         logo: false,
                         minScale: 600000,
-                        center: [105.79180, 21.05147],
+                        center: [105.790473, 21.046137],
+                        //extent: customExtentAndSR,
+                       
                         //center: [105, 21],
-                        zoom: 15,
-                        basemap: "topo"
+                        zoom: 16,
+                        //basemap: "topo"
                     });
 
-                    var toggle = new BasemapToggle({
-                        map: mMap,
-                        basemap: "satellite"
-                    }, "BasemapToggle").startup();
+                    window.map2 = mMap;
+
+                    //var toggle = new BasemapToggle({
+                    //    map: mMap,
+                    //    basemap: "satellite"
+                    //}, "BasemapToggle").startup();
 
                     //mMap.addLayer(new FeatureLayer(urlRes + `/0`, {
                     //    mode: FeatureLayer.MODE_AUTO,
@@ -219,15 +240,73 @@
                     //    displayOnPan: true,
                     //    id: 'doiTuongVung',
                     //}));
+                    var layerInfo = [];
+                    //var url_map_nen2 = "https://services.arcgisonline.com/ArcGIS/rest/services/Specialty/DeLorme_World_Base_Map/MapServer";
+                 
+
+                    //var layer_nen2 = new ArcGISDynamicMapServiceLayer(url_map_nen2, {
+                    //    id: "BanDoNen2",
+                    //    opacity: 0,
+                    //});
+
+
+                    //// 
+                    //mMap.addLayer(layer_nen2);
+                    //layerInfo.push({
+                    //    layer: layer_nen,
+                    //    title: "Bản đồ nền"
+                    //});
+
+
+
+                    var url_map_nen = "http://tiengontructuyen.vn/arcgis/rest/services/BanDoNen/VN2000_Nen/MapServer";
+                    //var layerInfo = [];
+
+                    var layer_nen = new ArcGISDynamicMapServiceLayer(url_map_nen, {
+                        id: "BanDoNen",
+                        //opacity: $("#checkRas").is(":checked") ? 1 : 0,
+                    });
+
+                    // 
+                    mMap.addLayer(layer_nen);
+                    layerInfo.push({
+                        layer: layer_nen,
+                        title: "Bản đồ nền"
+                    });
 
                     me.initMeasurement(mMap);
-                    me._beginIdentify(mMap);
+
+
+                    //me._beginIdentify(mMap);
                     me._beginDrawer(mMap);
 
                     regionSymbol = new SimpleFillSymbol().setColor(null).outline.setColor("blue");
+
+                    //tramDoSymbol = new SimpleMarkerSymbol();
+
+                    tramDoSymbol = new SimpleMarkerSymbol({
+                        "color": [255, 255, 255, 64],
+                        "size": 12,
+                        "angle": -30,
+                        "xoffset": 0,
+                        "yoffset": 0,
+                        "type": "esriSMS",
+                        "style": "esriSMSCircle",
+                        "outline": {
+                            "color": [0, 0, 0, 255],
+                            "width": 1,
+                            "type": "esriSLS",
+                            "style": "esriSLSSolid"
+                        }
+                    });
+
                     mNavigation = new Navigation(mMap);
 
 
+                    //tramDoGL = new GraphicsLayer({
+                    //    id: "regions"
+                    //});
+                    //mMap.addLayer(tramDoGL);
 
                     // fit boundary
                     function generateUUID() { // Public Domain/MIT
@@ -266,47 +345,61 @@
                             h,
                             time_to;
 
-                        d = new Date(document.getElementById("ngaydo").value);
-                        m = d.getMonth() + 1;
-                        day = d.getDate();
-                        year = d.getFullYear();
-                        ngaydo = m + "/" + day + "/" + year;
+                        var ngaydoStr = $("#ngaydo").val();
+
+                        var ngaydoSplit = ngaydoStr.split("/");
+
+
+                        var ngaydoMMddYYYY = ngaydoSplit[1] + "/" + ngaydoSplit[0] + "/" + ngaydoSplit[2];
+
+
+                        d = new Date(ngaydoSplit[2], parseInt(ngaydoSplit[1]) - 1, ngaydoSplit[0]);
+
                         khunggio = document.getElementById('khunggio').value;
 
-                        if (khunggio === '6h-9h')
-                            thoigian_from = ngaydo + " 06:00:00";
+                        if (khunggio != 23) {
+                            if (khunggio < 10) {
+                                if (khunggio == 9) {
+                                    thoigian_from = ngaydoMMddYYYY + ' 00:00:00';
+                                    thoigian_to = ngaydoMMddYYYY + ' 01:00:00';
+                                } else {
+                                    thoigian_to = ngaydoMMddYYYY + ' 0' + (parseInt(khunggio) + 1) + ':00:00';
+                                    thoigian_from = ngaydoMMddYYYY + ' 0' + khunggio + ':00:00';
+                                }
+                            } else {
+                                if (khunggio == 9) {
+                                    thoigian_from = ngaydoMMddYYYY + ' 09:00:00';
+                                    thoigian_to = ngaydoMMddYYYY + ' 10:00:00';
+                                } else {
+                                    thoigian_to = ngaydoMMddYYYY + ' ' + (parseInt(khunggio) + 1) + ':00:00';
+                                    thoigian_from = ngaydoMMddYYYY + ' ' + khunggio + ':00:00';
+                                }
+                            }
+                        } else {
+                            thoigian_from = ngaydoMMddYYYY + ' 23:00:00';
+                            thoigian_to = ngaydoMMddYYYY + ' 23:59:59';
+                        }
+                        
+                        time_filter = `ngayQuanTrac = '${ngaydoMMddYYYY}' AND thoiGianQuanTrac = ${document.getElementById('khunggio').value}`;
 
-                        else if (khunggio === '9h-11h') {
-                            thoigian_from = ngaydo + " 09:00:00";
-                            thoigian_to = ngaydo + " 11:00:00";
-                        }
+                        //var bando_ngay = m.toString() + day.toString() + year.toString();
+                        //var tenbando = "bando_" + bando_ngay + "_" + khunggio.replace("-", "_");
 
-                        else if (khunggio === '11h-13h') {
-                            thoigian_from = ngaydo + " 11:00:00";
-                            thoigian_to = ngaydo + " 13:00:00";
+                        if (khunggio < 10) {
+                            khunggio = "0" + khunggio
                         }
-                        else if (khunggio === '13h-16h') {
-                            thoigian_from = ngaydo + " 13:00:00";
-                            thoigian_to = ngaydo + " 16:00:00";
-                        }
-                        else if (khunggio === '16h-19h30') {
-                            thoigian_from = ngaydo + " 16:00:00";
-                            thoigian_to = ngaydo + " 19:30:00";
-                        }
-                        else if (khunggio === '0h-6h') {
-                            thoigian_from = ngaydo + " 00:00:00";
-                            thoigian_to = ngaydo + " 06:00:00";
-                        }
-                        else {
-                            thoigian_from = ngaydo + " 06:00:00";
-                            thoigian_to = ngaydo + " 09:00:00";
-                        }
-                        time_filter = ' TIME >=' + "'" + thoigian_from + "'" + ' AND TIME < ' + "'" + thoigian_to + "'";
+                        var month = ngaydoSplit[1];
+                        //if (month < 10) {
+                        //    month = "0" + month;
+                        //}
+                        var day = ngaydoSplit[0];
+                        //if (day < 10) {
+                        //    day = "0" + day;
+                        //}
+                        var tenbando = "bando_" + ngaydoSplit[2] + month + day + "_" + khunggio;
 
-                        var bando_ngay = m.toString() + day.toString() + year.toString();
-                        var tenbando = "bando_" + bando_ngay + "_" + khunggio.replace("-", "_");
                         //  tenbando = "USA";
-                        var url_map = "http://tiengontructuyen.vn/arcgis/rest/services/bando/" + tenbando + "/MapServer";
+                        var url_map = "http://tiengontructuyen.vn/arcgis/rest/services/RasterNoise/" + tenbando + "/MapServer";
 
 
 
@@ -317,47 +410,15 @@
                         var template = new InfoTemplate();
                         template.setContent(getTextContent);
                         template.setTitle("Trạm quan trắc");
-                        var featureLayer = new FeatureLayer("http://tiengontructuyen.vn/arcgis/rest/services/bando/tramdo/FeatureServer/0", {
+                        var featureLayer = new FeatureLayer("http://tiengontructuyen.vn/arcgis/rest/services/DuLieuChuyenDe/TramQuanTracCoDinh/FeatureServer/0", {
                             //mode: FeatureLayer.MODE_SELECTION,
-                            opacity: $("#checkTram").is(":checked") ? 1 : 0,
                             outFields: ["*"],
                             infoTemplate: template,
                             id: "TramDo",
                             definitionExpression: time_filter,
-                            //title: "Trạm quan trắc"
-                            //outFields: ["maTram", "dB", "TIME"],
-                            //popupTemplate: {
-                            //    title: "{Tên trạm đo}",
-                            //    actions: [
-                            //        {
-                            //            id: "find-maTram",
-                            //            //image:
-
-                            //            title: "Thông tin trạm quan trắc"
-                            //        }
-                            //    ],
-                            //    content: [
-                            //        {
-                            //            type: "fields",
-                            //            fieldInfos: [
-                            //                {
-                            //                    fieldName: "maTram",
-                            //                    label: "Mã Trạm đo"
-                            //                },
-                            //                {
-                            //                    fieldName: "dB",
-                            //                    label: "Độ ồn"
-                            //                },
-                            //                {
-                            //                    fieldName: "TIME",
-                            //                    label: "Thời gian đo"
-                            //                }
-
-                            //            ]
-                            //        }
-                            //    ]
-                            //}
                         });
+
+                     
 
                         function pointToExtent(map, point, toleranceInPixel) {
                             var pixelWidth = map.extent.getWidth() / map.width;
@@ -387,44 +448,47 @@
                         }
 
                         mMap.on("click", function (event) {
-                            var query = new Query();
-                            query.geometry = pointToExtent(mMap, event.mapPoint, 10);
-                            var deferred = featureLayer.selectFeatures(query,
-                                FeatureLayer.SELECTION_NEW);
-                            mMap.infoWindow.setFeatures([deferred]);
-                            mMap.infoWindow.show(event.mapPoint);
+                            //var query = new Query();
+                            //query.geometry = pointToExtent(mMap, event.mapPoint, 10);
+                            //var deferred = featureLayer.selectFeatures(query,
+                            //    FeatureLayer.SELECTION_NEW);
+                            //mMap.infoWindow.setFeatures([deferred]);
+                            //mMap.infoWindow.show(event.mapPoint);
                         });
 
-                        //me.removeLayer("BanDoNoiSuy");
-                        //me.removeLayer("TramDo");
                         if (mMap.getLayer('TramDo')) {
                             mMap.removeLayer(mMap.getLayer('TramDo'));
+                           
                         }
                         var layerInfo = [];
                         if ($("#checkTram").is(":checked")) {
+                            //layerInfo = layerInfo.filter(s => s.ID != "TramDo");
+                            //mMap.addLayer(featureLayer);
+                            //layerInfo.push({
+                            //    layer: featureLayer,
+                            //    title: "Trạm đo",
+                            //    ID:"TramDo"
+                            //});
 
-
-                            mMap.addLayer(featureLayer);
-                            layerInfo.push({
-                                layer: featureLayer,
-                                title: "Trạm đo"
-                            });
+                            me.loadTramDo(time_filter);
                         }
-
                         if (mMap.getLayer('BanDoNoiSuy')) {
                             mMap.removeLayer(mMap.getLayer('BanDoNoiSuy'));
+                            
                         }
 
                         if ($("#checkRas").is(":checked")) {
+                            layerInfo = layerInfo.filter(s => s.ID != "BanDoNoiSuy");
                             var layer = new ArcGISDynamicMapServiceLayer(url_map, {
                                 id: "BanDoNoiSuy",
-                                //opacity: $("#checkRas").is(":checked") ? 1 : 0,
+                                opacity: 0.6,
                             });
 
                             mMap.addLayer(layer);
                             layerInfo.push({
                                 layer: layer,
-                                title: "Bản đồ nội suy"
+                                title: "Bản đồ nội suy",
+                                ID:"BanDoNoiSuy"
                             });
                         }
                         var id = generateUUID();
@@ -813,7 +877,6 @@
     };
 
     init.prototype.startDraw = function (tool, onMemory, drawCall) {
-
         return mDrawer.draw(tool, onMemory, drawCall);
     };
     init.prototype.stopDraw = function () {
@@ -888,6 +951,79 @@
 
         return $deferred.promise();
     };
+
+    init.prototype.loadTramDo = function (pQuery, $deferred) {
+        var that = this;
+        var map = mMap;
+        $deferred = $deferred || $.Deferred();
+        //if (map)
+        //    map.graphics.clear();
+
+        require(['esri/tasks/query', 'esri/graphic', 'esri/InfoTemplate',], function (Query, Graphic, InfoTemplate) {
+            var queryTask;
+            var query = new esri.tasks.Query();
+            query.returnGeometry = true;
+            queryTask = new esri.tasks.QueryTask(baseMapUriTramDo + "/0");
+            query.where = pQuery;
+            query.outFields = ["tenDiemQuanTrac"];
+            queryTask.execute(query, function (featureSet) {
+                //console.log(results);
+                //console.log(map.graphics);
+                //if (results) {
+                //    if (tramDoGraphic) {
+                //        tramDoGL.remove(tramDoGraphic);
+                //    }
+                //    for (var i = 0; i < results.features.length; i++) {
+                //        //tramDoGraphic = new esri.Graphic(results.features[i].geometry, tramDoSymbol);
+                //        //tramDoGL.add(tramDoGraphic);
+                //        map.graphics.add(new esri.Graphic(results.features[i].geometry, tramDoSymbol));
+                //    }
+                   
+                   
+                //}
+
+                map.graphics.clear();
+
+                //Performance enhancer - assign featureSet array to a single variable.
+                var resultFeatures = featureSet.features;
+
+                //Loop through each feature returned
+                for (var i = 0, il = resultFeatures.length; i < il; i++) {
+                    //Get the current feature from the featureSet.
+                    //Feature is a graphic
+                    console.log(resultFeatures[i].geometry)
+                    var graphic = resultFeatures[i];
+                    graphic.setSymbol(mHighLightSymbol);
+
+                    var attributes = graphic.attributes;
+                   
+                    //var date = new Date(attributes.ngayQuanTrac);
+                    //var hour = date.getHours() > 9 ? date.getHours() : "0" + date.getHours();
+                    //var minute = date.getMinutes() > 9 ? date.getMinutes() : "0" + date.getMinutes();
+                    //var second = date.getSeconds() > 9 ? date.getSeconds() : "0" + date.getSeconds();
+                    //var day = date.getDate() > 9 ? date.getDate() : "0" + date.getDate();
+                    //var month = (date.getMonth() + 1) > 9 ? (date.getMonth() + 1) : "0" + (date.getMonth() + 1);
+                    //var strDate = `${day}/${month}/${date.getFullYear()} ${hour}:${minute}:${second} `;
+
+
+                    var infoTemplate = new InfoTemplate(`<b>Địa điểm</b> : ${attributes.tenDiemQuanTrac} <br />`);
+                                    //<b>Thời gian thu thập: ${strDate} <br />
+                                    //<b>Giá trị độ ồn</b> : ${attributes.dB}`);
+
+                    //Set the infoTemplate.
+                    graphic.setInfoTemplate(infoTemplate);
+
+                    //Add graphic to the map graphics layer.
+                    map.graphics.add(graphic);
+                }
+               
+            });
+            $deferred.resolve();
+        });
+
+        return $deferred.promise();
+    };
+
     init.prototype.initPrint = (map) => {
         require([
             "dojo/dom",
@@ -911,14 +1047,18 @@
             "dojo/dom",
             "esri/units",
             "esri/dijit/Measurement",
-        ], function (dom, Units, Measurement) {
+            "dojo/parser",
+        ], function (dom, Units, Measurement, parser) {
+
+                parser.parse() 
+
+                window.Unit_1 = Units;
             m_Measurement = new Measurement({
                 map: map,
                 defaultAreaUnit: Units.SQUARE_METERS,
                 defaultLengthUnit: Units.METERS
             }, dom.byId("measurementDiv"));//"measurementDiv"
-            m_Measurement.deactivate = function () {
-                console.log(m_Measurement.activeTool);
+                m_Measurement.deactivate = function () {
                 if (m_Measurement.activeTool) {
                     m_Measurement.setTool(m_Measurement.activeTool, false);
                 }
@@ -937,7 +1077,8 @@
                     if (tool)
                         m_Measurement.setTool(tool.toolName, false);
                 }
-            };
+                };
+                window.measurement = m_Measurement;
             m_Measurement.startup();
         });
     };
@@ -1002,8 +1143,8 @@
                         var graphic = evt.graphic;
                         var attr = graphic.attributes;
 
-                        $("#toaDoX").html("Tọa độ X: " + graphic.geometry.getLongitude());
-                        $("#toaDoY").html("Tọa độ Y: " + graphic.geometry.getLatitude());
+                        $("#toaDoX").html("Tọa độ X: " + graphic.geometry.x);//.getLongitude());
+                        $("#toaDoY").html("Tọa độ Y: " + graphic.geometry.y);//getLatitude());
 
                         $("#phanHoi").val(attr.phanHoi);
 
@@ -1224,7 +1365,7 @@
     };
     init.prototype.viewFullExtent = function () {
         console.log(mMap.getZoom());
-        mMap.setZoom(15);
+        mMap.setZoom(16);
         //console.log(mMap.fullExtent);
         //mNavigation.zoomToFullExtent();
         //this.zoomTo(this.options.mapView.center);
