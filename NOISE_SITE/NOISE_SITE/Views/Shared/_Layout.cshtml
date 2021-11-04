@@ -306,32 +306,35 @@
                 {
 
                 }*@
-                <div class="account">
-                    @if (Session["FullName"] != null)
+            <div class="account">
+                @if (Session["FullName"] != null)
+                {
+                    <a>
+                        @Html.Label(Session["FullName"].ToString().ToUpper())
+                    </a>
+                    if (Session["Role"] != null && Session["Role"].ToString() == "sa")
                     {
                         <a>
-                            @Html.Label(Session["FullName"].ToString().ToUpper())
-                        </a>
-                        if (Session["Role"] != null && Session["Role"].ToString() == "sa")
-                        {
-                            <a>
-                                @Html.ActionLink("QUẢN TRỊ", "Index", "CMS")
-                            </a>
-                        }
-                        <a>
-                            @Html.ActionLink("ĐĂNG XUẤT", "Logout", "Home")
+                            @Html.ActionLink("QUẢN TRỊ", "Index", "CMS")
                         </a>
                     }
-                    else
-                    {
-                        <a>
-                            @Html.ActionLink("ĐĂNG NHẬP", "Login", "Home")
-                        </a>
-                        <a> @Html.ActionLink("ĐĂNG KÝ", "Register", "Home")</a>
-                    }
+                    <a>
+                        @Html.ActionLink("ĐỔI MẬT KHẨU", "ChangePassword", "Home")
+                    </a>
+                    <a>
+                        @Html.ActionLink("ĐĂNG XUẤT", "Logout", "Home")
+                    </a>
+                }
+                else
+                {
+                    <a>
+                        @Html.ActionLink("ĐĂNG NHẬP", "Login", "Home")
+                    </a>
+                    <a> @Html.ActionLink("ĐĂNG KÝ", "Register", "Home")</a>
+                }
 
 
-                </div>
+            </div>
             </div>
         </div>
         <!-- Header -->

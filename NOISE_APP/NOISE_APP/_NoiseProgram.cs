@@ -36,6 +36,8 @@ namespace NOISE_APP
 
         private _NoiseProgram()
         {
+            Application.Run(new ImportExcel());
+            /*
             try
             {
                 SplashScreenManager.ShowForm(typeof(_Splash));
@@ -46,15 +48,15 @@ namespace NOISE_APP
                     SplashScreenManager.CloseForm();
 
                     //Application.Run(new frmExportGDB());
-
+                   
                     //Application.Run(new XtraForm2());
                     //Application.Run(new NOISE_APP.Forms.FormMain());
-                    Application.Run(new FormNoise());
-                    if (new FrmLogin().ShowDialog() == DialogResult.OK)
-                    {
-                        Application.Run(new FrmMain());
-                        //Application.Run(new FormNoise());
-                    }
+                    //Application.Run(new FormNoise());
+                    //if (new FrmLogin().ShowDialog() == DialogResult.OK)
+                    //{
+                    //    Application.Run(new FrmMain());
+                    //    //Application.Run(new FormNoise());
+                    //}
 
                     //Application.Exit();
                 }
@@ -62,6 +64,7 @@ namespace NOISE_APP
                 {
                     _NoiseMesageBox.ShowErrorMessage($"Không thể khởi tạo licence ArcGIS");
                 }
+                
             }
             catch (System.Runtime.InteropServices.COMException COMEx)
             {
@@ -74,6 +77,7 @@ namespace NOISE_APP
             finally
             {
             }
+            */
         }
     }
 }

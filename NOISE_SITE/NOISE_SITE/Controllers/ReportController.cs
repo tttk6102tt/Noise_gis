@@ -57,10 +57,10 @@ namespace NOISE_SITE.Controllers
                         cmd.CommandTimeout = 5 * 60 * 60;
                         cmd.CommandText = string.Format(@"select id, 
                                                         LOCATION as DiaDiem,
-                                                        SUBSTRING(TIME,9,2) as hour2,
-                                                        SUBSTRING(TIME,7,2) as day2,
-                                                        SUBSTRING(TIME,5,2) as month2,
-                                                        SUBSTRING(TIME,1,4)as year2,
+                                                        SUBSTRING(ThoiGianThucTe,9,2) as hour2,
+                                                        SUBSTRING(ThoiGianThucTe,7,2) as day2,
+                                                        SUBSTRING(ThoiGianThucTe,5,2) as month2,
+                                                        SUBSTRING(ThoiGianThucTe,1,4)as year2,
                                                         sum(cast(dB as float)) as Total,
                                                         count(ID) as soluong,
                                                         sum(cast(dB as float)) /count(ID) as trungbinh,
@@ -68,13 +68,13 @@ namespace NOISE_SITE.Controllers
                                                         max(db) as max2
                                                         from noise n
                                                         --inner join DMTramDo d on d.MaTramDo = n.ID
-                                                        where TIME LIKE '{0}%' 
+                                                        where ThoiGianThucTe LIKE '{0}%' 
                                                         group by id,
-                                                        SUBSTRING(TIME,9,2),
-                                                        SUBSTRING(TIME,7,2),
+                                                        SUBSTRING(ThoiGianThucTe,9,2),
+                                                        SUBSTRING(ThoiGianThucTe,7,2),
                                                         LOCATION,
-                                                        SUBSTRING(TIME,5,2),
-                                                        SUBSTRING(TIME,1,4)
+                                                        SUBSTRING(ThoiGianThucTe,5,2),
+                                                        SUBSTRING(ThoiGianThucTe,1,4)
                                                         ", dateReport); ;//order by id
 
                         var dap = new SqlDataAdapter(cmd);
@@ -152,9 +152,9 @@ namespace NOISE_SITE.Controllers
                         cmd.CommandTimeout = 5 * 60 * 60;
                         cmd.CommandText = string.Format(@"select id, 
                                                         LOCATION as DiaDiem,
-                                                        SUBSTRING(TIME,9,2) as hour2,
-                                                        SUBSTRING(TIME,5,2) as month2,
-                                                        SUBSTRING(TIME,1,4)as year2,
+                                                        SUBSTRING(ThoiGianThucTe,9,2) as hour2,
+                                                        SUBSTRING(ThoiGianThucTe,5,2) as month2,
+                                                        SUBSTRING(ThoiGianThucTe,1,4)as year2,
                                                         sum(cast(dB as float)) as Total,
                                                         count(ID) as soluong,
                                                         sum(cast(dB as float)) /count(ID) as trungbinh,
@@ -162,12 +162,12 @@ namespace NOISE_SITE.Controllers
                                                         max(db) as max2
                                                         from noise n
                                                         --inner join DMTramDo d on d.MaTramDo = n.ID
-                                                        where TIME LIKE '{0}%' 
+                                                        where ThoiGianThucTe LIKE '{0}%' 
                                                         group by id,
-                                                        SUBSTRING(TIME,9,2),
+                                                        SUBSTRING(ThoiGianThucTe,9,2),
                                                         LOCATION,
-                                                        SUBSTRING(TIME,5,2),
-                                                        SUBSTRING(TIME,1,4)
+                                                        SUBSTRING(ThoiGianThucTe,5,2),
+                                                        SUBSTRING(ThoiGianThucTe,1,4)
                                                         ", dateReport); //order by id
 
                         var dap = new SqlDataAdapter(cmd);
@@ -243,8 +243,8 @@ namespace NOISE_SITE.Controllers
                         cmd.CommandTimeout = 5 * 60 * 60;
                         cmd.CommandText = string.Format(@"select id, 
                                                         LOCATION as DiaDiem,
-                                                        SUBSTRING(TIME,9,2) as hour2,
-                                                        SUBSTRING(TIME,1,4)as year2,
+                                                        SUBSTRING(ThoiGianThucTe,9,2) as hour2,
+                                                        SUBSTRING(ThoiGianThucTe,1,4)as year2,
                                                         sum(cast(dB as float)) as Total,
                                                         count(ID) as soluong,
                                                         sum(cast(dB as float)) /count(ID) as trungbinh,
@@ -252,11 +252,11 @@ namespace NOISE_SITE.Controllers
                                                         max(db) as max2
                                                         from noise n
                                                        -- inner join DMTramDo d on d.MaTramDo = n.ID
-                                                        where TIME LIKE '{0}%' 
+                                                        where ThoiGianThucTe LIKE '{0}%' 
                                                         group by id,
-                                                        SUBSTRING(TIME,9,2),
+                                                        SUBSTRING(ThoiGianThucTe,9,2),
                                                         LOCATION,
-                                                        SUBSTRING(TIME,1,4)
+                                                        SUBSTRING(ThoiGianThucTe,1,4)
                                                         ", dateReport);//order by id
 
                         var dap = new SqlDataAdapter(cmd);
@@ -332,8 +332,8 @@ namespace NOISE_SITE.Controllers
 
                         var today = new DateTime(year, month, day);
 
-                        var startDay = today.AddHours(-7);
-                        var endDay = today.AddDays(1).AddHours(-7);
+                        //var startDay = today.AddHours(-7);
+                        //var endDay = today.AddDays(1).AddHours(-7);
 
                         var yesterday = Convert.ToDouble(today.AddDays(-1).ToString("yyyyMMddhhmmss"));
                         var tomorow = Convert.ToDouble(today.AddDays(1).ToString("yyyyMMddhhmmss"));
@@ -342,10 +342,10 @@ namespace NOISE_SITE.Controllers
                         cmd.CommandTimeout = 5 * 60 * 60;
                         cmd.CommandText = string.Format(@"select id, 
                                                         LOCATION as DiaDiem,
-                                                        SUBSTRING(TIME,9,2) as hour2,
-                                                        SUBSTRING(TIME,7,2) as day2,
-                                                        SUBSTRING(TIME,5,2) as month2,
-                                                        SUBSTRING(TIME,1,4)as year2,
+                                                        SUBSTRING(ThoiGianThucTe,9,2) as hour2,
+                                                        SUBSTRING(ThoiGianThucTe,7,2) as day2,
+                                                        SUBSTRING(ThoiGianThucTe,5,2) as month2,
+                                                        SUBSTRING(ThoiGianThucTe,1,4)as year2,
                                                         sum(cast(dB as float)) as Total,
                                                         count(ID) as soluong,
                                                         sum(cast(dB as float)) /count(ID) as trungbinh,
@@ -353,26 +353,26 @@ namespace NOISE_SITE.Controllers
                                                         max(db) as max2
                                                         from noise n
                                                         --inner join DMTramDo d on d.MaTramDo = n.ID
-                                                        where TIME LIKE '{0}%' 
+                                                        where ThoiGianThucTe LIKE '{0}%' 
                                                         group by id,
-                                                        SUBSTRING(TIME,9,2),
-                                                        SUBSTRING(TIME,7,2),
+                                                        SUBSTRING(ThoiGianThucTe,9,2),
+                                                        SUBSTRING(ThoiGianThucTe,7,2),
                                                         LOCATION,
-                                                        SUBSTRING(TIME,5,2),
-                                                        SUBSTRING(TIME,1,4)
+                                                        SUBSTRING(ThoiGianThucTe,5,2),
+                                                        SUBSTRING(ThoiGianThucTe,1,4)
                                                         ", dateReport); ;//order by id
 
 
                         //cmd.CommandText = string.Format(@"			   
                         //                                select id, 
                         //                                DiaDiem,
-                        //                                SUBSTRING(TIME,9,2) as hour2,
-                        //                                SUBSTRING(TIME,7,2) as day2,
-                        //                                SUBSTRING(TIME,5,2) as month2,
-                        //                                SUBSTRING(TIME,1,4)as year2,
+                        //                                SUBSTRING(ThoiGianThucTe,9,2) as hour2,
+                        //                                SUBSTRING(ThoiGianThucTe,7,2) as day2,
+                        //                                SUBSTRING(ThoiGianThucTe,5,2) as month2,
+                        //                                SUBSTRING(ThoiGianThucTe,1,4)as year2,
                         //                                from noise n
                         //                                inner join DMTramDo d on d.MaTramDo = n.ID
-                        //                                where TIME > '{0}' and TIME < '{1}'
+                        //                                where ThoiGianThucTe > '{0}' and ThoiGianThucTe < '{1}'
                         //                               ", startDay.ToString("yyyyMMddHHmmss"), endDay.ToString("yyyyMMddHHmmss"));
 
                         //sum(cast(dB as float)) as Total,
@@ -382,11 +382,11 @@ namespace NOISE_SITE.Controllers
                         //                                max(db) as max2
 
                         //group by id,
-                        //                                SUBSTRING(TIME, 9, 2),
-                        //                                SUBSTRING(TIME, 7, 2),
+                        //                                SUBSTRING(ThoiGianThucTe, 9, 2),
+                        //                                SUBSTRING(ThoiGianThucTe, 7, 2),
                         //                                DiaDiem,
-                        //                                SUBSTRING(TIME, 5, 2),
-                        //                                SUBSTRING(TIME, 1, 4)
+                        //                                SUBSTRING(ThoiGianThucTe, 5, 2),
+                        //                                SUBSTRING(ThoiGianThucTe, 1, 4)
 
                         var dap = new SqlDataAdapter(cmd);
                         dap.Fill(ds);
@@ -396,33 +396,37 @@ namespace NOISE_SITE.Controllers
                             foreach (DataRow row in ds.Tables[0].Rows)
                             {
                                 double soluong = 0.0;
-                                double.TryParse(row["soluong"].ToString(), out soluong);
+                                ;
                                 double total = 0.0;
-                                double.TryParse(row["Total"].ToString(), out total);
+                                ;
                                 double minVal = 0.0;
-                                double.TryParse(row["min2"].ToString(), out minVal);
+                                ;
                                 double maxVal = 0.0;
-                                double.TryParse(row["max2"].ToString(), out maxVal);
+                                ;
                                 double average = 0.0;
-                                double.TryParse(row["trungbinh"].ToString(), out average);
+                                ;
 
-                                var datetime = new DateTime(int.Parse(row["year2"].ToString()), int.Parse(row["month2"].ToString()), int.Parse(row["day2"].ToString())).AddHours(int.Parse(row["hour2"].ToString())).AddHours(7);
-                                
+                                //var datetime = new DateTime(int.Parse(row["year2"].ToString()), int.Parse(row["month2"].ToString()), int.Parse(row["day2"].ToString())).AddHours(int.Parse(row["hour2"].ToString())).AddHours(7);
 
-                                dataReports.Add(new DataReport()
+                                if (double.TryParse(row["soluong"].ToString(), out soluong) && double.TryParse(row["Total"].ToString(), out total) && double.TryParse(row["min2"].ToString(), out minVal) && double.TryParse(row["max2"].ToString(), out maxVal) && double.TryParse(row["trungbinh"].ToString(), out average))
                                 {
-                                    day = datetime.Day.ToString(),
-                                    month = datetime.Month.ToString(),
-                                    DiaDiem = row["DiaDiem"].ToString(),
-                                    hour = datetime.Hour.ToString(),
-                                    MaTramDo = row["ID"].ToString(),
-                                    soluong = soluong,
-                                    total = Math.Round(total, 2),
-                                    year = datetime.Year.ToString(),
-                                    min = Math.Round(minVal, 2),
-                                    max = Math.Round(maxVal, 2),
-                                    average = Math.Round(average, 2)
-                                });
+
+                                    dataReports.Add(new DataReport()
+                                    {
+                                        //day = datetime.Day.ToString(),
+                                        month = row["month2"].ToString(),//datetime.Month.ToString(),
+                                        DiaDiem = row["DiaDiem"].ToString() == "" ? row["ID"].ToString() : row["DiaDiem"].ToString(),
+                                        hour = row["hour2"].ToString(),//datetime.Hour.ToString(),
+                                        MaTramDo = row["ID"].ToString(),
+                                        soluong = soluong,
+                                        total = Math.Round(total, 2),
+                                        year = row["year2"].ToString(),//datetime.Year.ToString(),
+                                        min = Math.Round(minVal, 2),
+                                        max = Math.Round(maxVal, 2),
+                                        average = Math.Round(average, 2)
+                                    });
+                                }
+                               
                             }
                         }
 
@@ -470,9 +474,9 @@ namespace NOISE_SITE.Controllers
                         cmd.CommandTimeout = 5 * 60 * 60;
                         cmd.CommandText = string.Format(@"select id, 
                                                         LOCATION AS DiaDiem,
-                                                        SUBSTRING(TIME,9,2) as hour2,
-                                                        SUBSTRING(TIME,5,2) as month2,
-                                                        SUBSTRING(TIME,1,4)as year2,
+                                                        SUBSTRING(ThoiGianThucTe,9,2) as hour2,
+                                                        SUBSTRING(ThoiGianThucTe,5,2) as month2,
+                                                        SUBSTRING(ThoiGianThucTe,1,4)as year2,
                                                         sum(cast(dB as float)) as Total,
                                                         count(ID) as soluong,
                                                         sum(cast(dB as float)) /count(ID) as trungbinh,
@@ -480,12 +484,12 @@ namespace NOISE_SITE.Controllers
                                                         max(db) as max2
                                                         from noise n
                                                         --inner join DMTramDo d on d.MaTramDo = n.ID
-                                                        where TIME LIKE '{0}%' 
+                                                        where ThoiGianThucTe LIKE '{0}%' 
                                                         group by id,
-                                                        SUBSTRING(TIME,9,2),
+                                                        SUBSTRING(ThoiGianThucTe,9,2),
                                                         LOCATION,
-                                                        SUBSTRING(TIME,5,2),
-                                                        SUBSTRING(TIME,1,4)
+                                                        SUBSTRING(ThoiGianThucTe,5,2),
+                                                        SUBSTRING(ThoiGianThucTe,1,4)
                                                         ", dateReport); ;//order by id
 
                         var dap = new SqlDataAdapter(cmd);
@@ -542,7 +546,7 @@ namespace NOISE_SITE.Controllers
             }
         }
 
-        public ActionResult GetReport_2(string startTime, string endTime)
+        public ActionResult GetReport_2(string startThoiGianThucTe, string endTime)
         {
             var noises = new List<NOISE>();
             DataSet ds = new DataSet();
@@ -565,9 +569,9 @@ namespace NOISE_SITE.Controllers
                         cmd.CommandTimeout = 5 * 60 * 60;
                         cmd.CommandText = string.Format(@"select id, 
                                                         LOCATION AS DiaDiem,
-                                                        SUBSTRING(TIME,9,2) as hour2,
-                                                        SUBSTRING(TIME,5,2) as month2,
-                                                        SUBSTRING(TIME,1,4)as year2,
+                                                        SUBSTRING(ThoiGianThucTe,9,2) as hour2,
+                                                        SUBSTRING(ThoiGianThucTe,5,2) as month2,
+                                                        SUBSTRING(ThoiGianThucTe,1,4)as year2,
                                                         sum(cast(dB as float)) as Total,
                                                         count(ID) as soluong,
                                                         sum(cast(dB as float)) /count(ID) as trungbinh,
@@ -575,13 +579,13 @@ namespace NOISE_SITE.Controllers
                                                         max(db) as max2
                                                         from noise n
                                                         --inner join DMTramDo d on d.MaTramDo = n.ID
-                                                        where TIME > '{0}' and TIME < '{1}' 
+                                                        where ThoiGianThucTe > '{0}' and ThoiGianThucTe < '{1}' 
                                                         group by id,
-                                                        SUBSTRING(TIME,9,2),
+                                                        SUBSTRING(ThoiGianThucTe,9,2),
                                                         LOCATION,
-                                                        SUBSTRING(TIME,5,2),
-                                                        SUBSTRING(TIME,1,4)
-                                                        ", startTime,endTime); ;//order by id
+                                                        SUBSTRING(ThoiGianThucTe,5,2),
+                                                        SUBSTRING(ThoiGianThucTe,1,4)
+                                                        ", startThoiGianThucTe,endTime); ;//order by id
 
                         var dap = new SqlDataAdapter(cmd);
                         dap.Fill(ds);
@@ -676,8 +680,8 @@ namespace NOISE_SITE.Controllers
                         cmd.CommandTimeout = 5 * 60 * 60;
                         cmd.CommandText = string.Format(@"select id, 
                                                         LOCATION AS DiaDiem,
-                                                        SUBSTRING(TIME,9,2) as hour2,
-                                                        SUBSTRING(TIME,1,4)as year2,
+                                                        SUBSTRING(ThoiGianThucTe,9,2) as hour2,
+                                                        SUBSTRING(ThoiGianThucTe,1,4)as year2,
                                                         sum(cast(dB as float)) as Total,
                                                         count(ID) as soluong,
                                                         sum(cast(dB as float)) /count(ID) as trungbinh,
@@ -685,11 +689,11 @@ namespace NOISE_SITE.Controllers
                                                         max(db) as max2
                                                         from noise n
                                                         --inner join DMTramDo d on d.MaTramDo = n.ID
-                                                        where TIME LIKE '{0}%' 
+                                                        where ThoiGianThucTe LIKE '{0}%' 
                                                         group by id,
-                                                        SUBSTRING(TIME,9,2),
+                                                        SUBSTRING(ThoiGianThucTe,9,2),
                                                         LOCATION,
-                                                        SUBSTRING(TIME,1,4)
+                                                        SUBSTRING(ThoiGianThucTe,1,4)
                                                         ", dateReport);//order by id
 
                         var dap = new SqlDataAdapter(cmd);
@@ -773,7 +777,7 @@ namespace NOISE_SITE.Controllers
                 workSheet.DefaultColWidth = 15;
 
                 workSheet.Cells.Style.Font.Name = "Times New Roman";
-                workSheet.Cells[1, 1].Value = string.Format("THỐNG KÊ MỨC ĐỘ TIẾNG ỒN CỰC ĐAI, CỰC TIỂU TẠI CÁC KHUNG THỜI GIAN NGÀY {0} THÁNG {1} NĂM {2}", day, month, year);
+                workSheet.Cells[1, 1].Value = string.Format("THỐNG KÊ MỨC ĐỘ TIẾNG ỒN CỰC ĐẠI, CỰC TIỂU TẠI CÁC KHUNG THỜI GIAN NGÀY {0} THÁNG {1} NĂM {2}", day, month, year);
 
                 cell = workSheet.Cells[1, 1];
                 cell.Style.Font.Size = 18;
@@ -1538,7 +1542,7 @@ namespace NOISE_SITE.Controllers
                 #region Header
 
                 workSheet.Cells.Style.Font.Name = "Times New Roman";
-                workSheet.Cells[1, 1].Value = string.Format("THỐNG KÊ MỨC ĐỘ TIẾNG ỒN CỰC ĐAI, CỰC TIỂU TẠI CÁC KHUNG THỜI GIAN THÁNG {0} NĂM {1}", month, year);
+                workSheet.Cells[1, 1].Value = string.Format("THỐNG KÊ MỨC ĐỘ TIẾNG ỒN CỰC ĐẠI, CỰC TIỂU TẠI CÁC KHUNG THỜI GIAN THÁNG {0} NĂM {1}", month, year);
 
                 cell = workSheet.Cells[1, 1];
                 cell.Style.Font.Size = 18;
@@ -2092,7 +2096,7 @@ namespace NOISE_SITE.Controllers
                 workSheet.DefaultColWidth = 15;
 
                 workSheet.Cells.Style.Font.Name = "Times New Roman";
-                workSheet.Cells[1, 1].Value = string.Format("THỐNG KÊ MỨC ĐỘ TIẾNG ỒN CỰC ĐAI, CỰC TIỂU TẠI CÁC KHUNG THỜI GIAN NĂM {0}", year);
+                workSheet.Cells[1, 1].Value = string.Format("THỐNG KÊ MỨC ĐỘ TIẾNG ỒN CỰC ĐẠI, CỰC TIỂU TẠI CÁC KHUNG THỜI GIAN NĂM {0}", year);
 
                 cell = workSheet.Cells[1, 1];
                 cell.Style.Font.Size = 18;

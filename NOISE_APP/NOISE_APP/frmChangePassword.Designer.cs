@@ -104,7 +104,7 @@
             this.txtRePasswd.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", 28, true, true, true, DevExpress.XtraEditors.ImageLocation.MiddleCenter, global::NOISE_APP.Properties.Resources.bouser_16x16, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, "", null, null, true),
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear)});
-            this.txtRePasswd.Properties.NullValuePrompt = "Mật khẩu";
+            this.txtRePasswd.Properties.NullValuePrompt = "Nhập lại mật khẩu";
             this.txtRePasswd.Properties.NullValuePromptShowForEmptyValue = true;
             this.txtRePasswd.Properties.PasswordChar = '*';
             this.txtRePasswd.Properties.ShowNullValuePromptWhenFocused = true;
@@ -121,8 +121,9 @@
             this.txtPwd.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", 28, true, true, true, DevExpress.XtraEditors.ImageLocation.MiddleCenter, global::NOISE_APP.Properties.Resources.bouser_16x16, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject2, "", null, null, true),
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear)});
-            this.txtPwd.Properties.NullValuePrompt = "Tên đăng nhập";
+            this.txtPwd.Properties.NullValuePrompt = "Mật khẩu";
             this.txtPwd.Properties.NullValuePromptShowForEmptyValue = true;
+            this.txtPwd.Properties.PasswordChar = '*';
             this.txtPwd.Properties.ShowNullValuePromptWhenFocused = true;
             this.txtPwd.Size = new System.Drawing.Size(344, 29);
             this.txtPwd.StyleController = this.layoutControl1;

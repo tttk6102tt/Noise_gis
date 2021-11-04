@@ -162,6 +162,7 @@ namespace NOISE_APP
                         var dap = new SqlDataAdapter(cmd);
                         dap.Fill(ds);
 
+
                         if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
                         {
                             if (txtPasswd.Text == "")
@@ -169,8 +170,10 @@ namespace NOISE_APP
                                 if (ds.Tables[0].Rows[0]["Password"].ToString() == "")
                                 {
                                     frmChangePassword frm = new frmChangePassword();
+                                    frm.UserName = txtUname.Text;
                                     if (frm.ShowDialog() == DialogResult.OK)
                                     {
+                                        _NoiseMesageBox.ShowInfoMessage("Thông báo", "Đổi mật khẩu thành công");
                                         return true;
                                     }
                                 }
@@ -211,7 +214,7 @@ namespace NOISE_APP
             //    return;
             //}
             //
-            _NoiseMesageBox.ShowSplash(this, "", "Đang đăng nhập");
+            //_NoiseMesageBox.ShowSplash(this, "", "Đang đăng nhập");
 
             if (Login(txtUname.Text, txtPasswd.Text))
             {
@@ -222,7 +225,7 @@ namespace NOISE_APP
                 _NoiseMesageBox.ShowErrorMessage("Đăng nhập thất bại! Vui lòng kiếm tra lại thông tin đăng nhập!");
 
             }
-            _NoiseMesageBox.HideSplash();
+            //_NoiseMesageBox.HideSplash();
         }
     }
 }

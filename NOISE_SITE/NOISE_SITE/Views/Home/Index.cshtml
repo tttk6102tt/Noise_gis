@@ -50,7 +50,7 @@
 
         #dv-filter {
             width: 200px;
-            top: 60px;
+            top: 70px;
             position: absolute;
             right: 25px;
             z-index: 99;
@@ -76,7 +76,6 @@
 
         #controls {
             width: 50vw;
-            /*height: 60vh;*/
             bottom: 30px;
             position: absolute;
             left: 15px;
@@ -90,7 +89,7 @@
 
         #legend {
             overflow: auto;
-            width: 25vw;
+            width: 20vw;
             height: 200px;
             max-height: 250px;
             bottom: 30px;
@@ -98,7 +97,7 @@
             right: 15px;
             z-index: 99;
             background: #fff;
-            display: none;
+            /*display: none;*/
             font-family: inherit;
             border: 1px solid lightgrey;
             opacity: 0.8;
@@ -107,7 +106,7 @@
         #BasemapToggle {
             position: absolute;
             bottom: 20px;
-            right: 20px;
+            left: 20px;
             z-index: 50;
         }
     </style>
@@ -123,12 +122,13 @@
 
 <div id="slider">
     <div class="map-box calcite" id="map">
-        <aside id="aside" class="page-sidebar"></aside>
+        @*  *@
+        <aside id="aside" class="page-sidebar is-expand "></aside>
         <div id="BasemapToggle"></div>
         <div id="measurementDiv"></div>
         @*@if (Session["Role"] != null && (Session["Role"].ToString() == "sa" || Session["Role"].ToString() == "admin"))
-            {*@
-        <div id="dv-filter" class="esri-widget" style="width:25vw;background:none">
+        {*@
+        <div id="dv-filter" class="esri-widget" style="width:20vw;background:none">
             <div id="info">
                 <div class="form-group" style="padding-left:30px;padding-right:30px;padding-top:10px">
                     <div class="row">
@@ -153,13 +153,13 @@
                                     }
                                 }
                                 @*<option value="6h-9h">6h-9h</option>
-                                    <option value="9h-11h" selected="selected">9h-11h</option>
-                                    <option value="11h-13h">11h-13h</option>*@
+                                <option value="9h-11h" selected="selected">9h-11h</option>
+                                <option value="11h-13h">11h-13h</option>*@
                             </select>
                         </div>
                     </div>
                 </div>
-                <div class="form-group" style="padding-left:30px;padding-right:30px">
+                <div class="form-group" style="padding-left:30px;padding-right:30px;display:none">
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="form-check">
@@ -178,19 +178,19 @@
                     </div>
                 </div>
                 @*@if (Session["username"] != null && Session["username"].ToString() == "admin")
-                    {
-                        <div class="form-group" style="padding-left:30px;padding-right:30px">
-                            <div class="row">
-                                <label class="control-label col-sm-6" style="box-shadow:none" for="method">Phương pháp nội suy</label>
-                                <div class="col-sm-6">
-                                    <select name="method" id="method" class="form-control">
-                                        <option value="distance" selected="selected">Theo khoảng cách</option>
-                                        <option value="barrier">Theo vật cản</option>
-                                    </select>
-                                </div>
+                {
+                    <div class="form-group" style="padding-left:30px;padding-right:30px">
+                        <div class="row">
+                            <label class="control-label col-sm-6" style="box-shadow:none" for="method">Phương pháp nội suy</label>
+                            <div class="col-sm-6">
+                                <select name="method" id="method" class="form-control">
+                                    <option value="distance" selected="selected">Theo khoảng cách</option>
+                                    <option value="barrier">Theo vật cản</option>
+                                </select>
                             </div>
                         </div>
-                    }*@
+                    </div>
+                }*@
                 <div class="form-group" style=" padding-right:15px;text-align:right">
                     <button id="noisuy" class="btn btn-primary btn-sm"><i class="glyphicon glyphicon-search"></i></button>
                 </div>
@@ -201,8 +201,8 @@
 
         </div>
         @*<div id="controls">
-                <div id="chartdiv" style="width:100%"></div>
-            </div>*@
+            <div id="chartdiv" style="width:100%"></div>
+        </div>*@
         <div id="printButton"></div>
         <div id="control-container"></div>
         <div id="legend">
@@ -231,75 +231,10 @@
                 <div class="col-sm-6">
                     <label id="toaDoY">Tọa độ Y :</label>
                 </div>
-                @*<div class="col-sm-6">
-                        <label id="district_name"></label>
-                    </div>
-                    <div class="col-sm-6">
-                        <label id="commune_name"></label>
-                    </div>*@
-                @*<div class="col-sm-6">
-                        <label>Loại tài sản trên đất</label>
-                        <select class="select2" id="loaiTaiSanGanLienVoiDat">
-                            <option value="0" selected>Chọn loại tài sản </option>
-                            <option value="1">Công trình xây dựng.</option>
-                            <option value="2">Công trình ngầm.</option>
-                            <option value="3">Hạng mục công trình xây dựng.</option>
-                            <option value="4">Rừng sản xuất là rừng trồng.</option>
-                            <option value="10">Cây lâu năm</option>
-                        </select>
-                    </div>*@
                 <div class="col-sm-12">
                     <label>Nội dung phản hồi*</label>
                     <input type="text" id="phanHoi" name="phanHoi" class="form-control">
                 </div>
-                @*<div class="col-sm-6">
-                        <label>Người cung cấp thông tin*</label>
-                        <input type="text" id="doiTuongPhatHien" name="doiTuongPhatHien" class="form-control">
-                    </div>
-                    <div class="col-sm-6">
-                        <label>Vị trí vi phạm*</label>
-                        <input type="text" id="diaDiemBienDong" name="diaDiemBienDong" class="form-control">
-                    </div>
-                    <div class="col-sm-6">
-                        <label>Ghi chú*</label>
-                        <input type="text" id="thongTinKhac" name="thongTinKhac" class="form-control">
-                    </div>*@
-                @*<div class="col-sm-12" id="file-import">
-                        <label>Tệp đính kèm</label>
-                        <div class="fileinput fileinput-new" data-provides="fileinput">
-                            <div class="input-group">
-                                <div class="form-control uneditable-input input-fixed p-t-10 p-b-10" data-trigger="fileinput">
-                                    <i class="fa fa-file fileinput-exists"></i>&nbsp;
-                                    <span class="fileinput-filename" style="width:200px"> </span>
-                                </div>
-                                <span class="input-group-addon btn default btn-file">
-                                    <span class="fileinput-new"> Chọn tệp </span>
-                                    <span class="fileinput-exists"> Thay đổi </span>
-                                    <input type="file" name="file" accept="image/png, image/jpeg, .zip,.rar,.7zip, audio/*,video/*,image/*">
-                                </span>
-                                <a href="javascript:;" class="input-group-addon btn red fileinput-exists" data-dismiss="fileinput"> Hủy bỏ </a>
-                            </div>
-                        </div>
-                    </div>*@
-                @*@if (ViewBag.Role)
-                    {
-                        <div class="col-sm-12" id="accept-info">
-                            <div class="radio">
-                                <label>
-                                    <input type="radio" name="o1" value="" id="DaDuyet">
-                                    <span class="cr"><i class="cr-icon fa fa-circle"></i></span>
-                                    Đã xác minh
-                                </label>
-                            </div>
-                            <div class="radio">
-                                <label>
-                                    <input type="radio" name="o1" value="" id="ChuaDuyet">
-                                    <span class="cr"><i class="cr-icon fa fa-circle"></i></span>
-                                    Đang xác minh
-                                </label>
-                            </div>
-                        </div>
-                    }*@
                 <div class="form-group col-sm-12">
                     <label for="message">Mã xác nhận*</label>
                     <div class="control-input">
@@ -314,8 +249,6 @@
                         <span class="text-danger" id="error-captcha" style="padding-right:10px">* Vui lòng nhập lại mã xác nhận</span>
                     </div>
                 </div>
-                @*</form>*@
-
             </div>
             <div class="modal-footer">
                 <div class="col-sm-12">
@@ -404,11 +337,11 @@
                 vgsMap.MapToolBar.ZOOM_IN,
                 vgsMap.MapToolBar.ZOOM_OUT,
                 vgsMap.MapToolBar.MEASUREMENT_AREA,
-                //vgsMap.MapToolBar.SHOW_CHART,
-                //vgsMap.MapToolBar.REPORT,
-                //vgsMap.MapToolBar.FILTER
             ];
             //
+            var bars = [
+                vgsMap.MapSidebar.CHART,
+            ]
 
             var role = '@Request.RequestContext.HttpContext.Session["Role"]';
 
@@ -419,6 +352,14 @@
             }
             if (userName != "") {
                 defaultControls.push(vgsMap.MapToolBar.DRAW_POLYGON_LAND_USING)
+                bars.push(vgsMap.MapSidebar.CHART_VIEW);
+                bars.push(vgsMap.MapSidebar.REPORT);
+                bars.push(vgsMap.MapSidebar.REPORT_MONTH);
+                bars.push(vgsMap.MapSidebar.REPORT_YEAR);
+                bars.push(vgsMap.MapSidebar.REPORT_MIN);
+                bars.push(vgsMap.MapSidebar.REPORT_MIN_MONTH);
+                bars.push(vgsMap.MapSidebar.REPORT_MIN_YEAR);
+                bars.push(vgsMap.MapSidebar.THONG_KE_PHAN_HOI);
             }
             map = $('#map').vgsMapView({
                 mapView: {
@@ -445,25 +386,7 @@
 
             var mapSidebar = $('.page-sidebar').vgsMapSidebar({
                 // layerGroups: [AppModule.DUONG_BO, AppModule.DUONG_SAT, AppModule.DUONG_THUY],
-                bars: [
-                    //vgsMap.MapSidebar.REGION,
-                    //vgsMap.MapSidebar.BASE_LAYER,
-                    //vgsMap.MapSidebar.PROTECT_LAND_RESOURCES,
-                    // vgsMap.MapSidebar.LAYER,
-                    vgsMap.MapSidebar.REPORT,
-                    vgsMap.MapSidebar.REPORT_MONTH,
-                    vgsMap.MapSidebar.REPORT_YEAR,
-                    vgsMap.MapSidebar.REPORT_MIN,
-                    vgsMap.MapSidebar.REPORT_MIN_MONTH,
-                    vgsMap.MapSidebar.REPORT_MIN_YEAR,
-                    vgsMap.MapSidebar.CHART,
-                    vgsMap.MapSidebar.CHART_VIEW,
-                    // vgsMap.MapSidebar.IMPORT,
-                    // vgsMap.MapSidebar.INFO,
-                    //vgsMap.MapSidebar.HELPER,
-                    //vgsMap.MapSidebar.LEGEND,
-
-                ],
+                bars: bars,
                 vgsMap: $('#map').data('vgsMapView')
             }).data('vgsMapSidebar');
 

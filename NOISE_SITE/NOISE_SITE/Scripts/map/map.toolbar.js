@@ -444,9 +444,9 @@
                     mMap.startDraw('point', false, function (graphic) {
                         mMap.getAgsMap().graphics.add(graphic);
                         $("#infoModal").modal();
-                        $("#toaDoX").html("Tọa độ X: " + graphic.geometry.x);// graphic.geometry.getLongitude());
-                        $("#toaDoY").html("Tọa độ Y: " + graphic.geometry.y);//graphic.geometry.getLatitude());
-
+                        $("#toaDoX").html("Tọa độ X: " + graphic.geometry.x);
+                        $("#toaDoY").html("Tọa độ Y: " + graphic.geometry.y);
+                        $("#form-submit").unbind('click');
                         $("#form-submit").on('click', function (e) {
                             App.startPageLoading({
                                 message: "Đang xử lý dữ liệu ..."
@@ -493,13 +493,7 @@
 
                             });
                         });
-                        //$("#form-dismiss").on('click', function () {
-                        //    mMap.getAgsMap().graphics.clear();
-                        //    $("#toaDoX").html("");
-                        //    $("#toaDoY").html("");
-                        //    $("#thongTinNguoiDung").val("");
-                        //    $('#captcha').click();
-                        //});
+                      
 
                         $('#infoModal').on('hidden.bs.modal', function () {
                             if (mMap.getAgsMap().graphics) {
@@ -511,183 +505,7 @@
                             $("#phanHoi").val("");
                             $('#captcha').click();
                         });
-                    });//esri.toolbars.Draw.POLYGON
-                    //mMap.startDraw(esri.toolbars.Draw.POLYGON, false, function (graphic) {
-                    //    mMap.Intersect($('#commune').val(), graphic.geometry.getCentroid()).then((res) => {
-                    //        if (res) {
-                    //            $("#form-submit").show();
-                    //            $("#form-accept").hide();
-                    //            $('#form-delete').hide();
-
-
-                    //            $("#toaDoX").html("Tọa độ X: " + graphic.geometry.getCentroid().x);
-                    //            $("#toaDoY").html("Tọa độ Y: " + graphic.geometry.getCentroid().y);
-
-                    //            $("#district_name").html("Quận/Huyện: " + res.DISTRICT);
-                    //            $("#commune_name").html("Phường/Xã: " + res.NAME_VN);
-
-                    //            $("#infoModal").modal();
-                    //            $("#form-submit").unbind('click');
-
-                    //            $("#form-submit").on('click', function (e) {
-                    //                e.preventDefault();
-                    //                App.startPageLoading({
-                    //                    message: "Đang xử lý dữ liệu ..."
-                    //                });
-                    //                $.get("/api/fileupload/checkcaptcha?__submit_captcha=" + $("input[name=__submit_captcha]").val()).done(function (r) {
-                    //                    if (!r) {
-                    //                        App.stopPageLoading();
-                    //                        $('#captcha').click();
-                    //                        $("#error-captcha").show();
-                    //                        return;
-                    //                    }
-                    //                    $("#error-captcha").hide();
-                    //                    if ($("#loaiHinhViPham").val() == 0 || !$("#loaiDatViPham").val() || !$("#doiTuongViPham").val() || !$("#doiTuongPhatHien").val()) {
-                    //                        App.stopPageLoading();
-                    //                        bootbox.alert({
-                    //                            message: "Vui lòng nhập đầy đủ thông tin!",
-                    //                            buttons: {
-                    //                                ok: {
-                    //                                    label: "Đồng ý"
-                    //                                }
-                    //                            }
-                    //                        });
-                    //                        return;
-                    //                    }
-                    //                    else {
-                    //                        if ($('input[name=file]')[0].files.length > 0) {
-                    //                            $('#form-info').ajaxSubmit({
-                    //                                success: function (xhr) {
-                    //                                    if (xhr) {
-                    //                                        graphic.setAttributes({
-                    //                                            maXa: res.COMMUNEID,
-                    //                                            maHuyen: res.PARENT_ID,
-                    //                                            UserID: globs.user_id,
-                    //                                            loaiHinhViPham: $("#loaiHinhViPham").val(),
-                    //                                            loaiDatViPham: $("#loaiDatViPham").val(),
-                    //                                            doiTuongViPham: $("#doiTuongViPham").val(),
-                    //                                            doiTuongPhatHien: $("#doiTuongPhatHien").val(),
-                    //                                            diaDiemViPham: $("#diaDiemViPham").val(),
-                    //                                            thoiDiemViPham: new Date().toLocaleDateString("vi", { year: "numeric", day: "2-digit", month: "2-digit" }),
-                    //                                            thongTinKhac: $("#thongTinKhac").val(),
-                    //                                            toaDoX: graphic.geometry.getCentroid().x,
-                    //                                            toaDoY: graphic.geometry.getCentroid().y,
-                    //                                            duLieuDinhKem: xhr,
-
-                    //                                        });
-                    //                                        mMap.getAgsMap().getLayer('doiTuongVung').applyEdits([graphic], null, null, function () {
-                    //                                            $("#form-submit").show();
-                    //                                            $("#form-accept").show();
-                    //                                            $('#form-delete').show();
-
-                    //                                            mMap.getAgsMap().graphics.add(graphic);
-                    //                                            $("#form-info").find("input[type=number]").val("");
-                    //                                            $('span.fileinput-filename').text("")
-                    //                                            $("#toaDoX").html("");
-                    //                                            $("#toaDoY").html("");
-                    //                                            $("#loaiHinhViPham").val(0);
-                    //                                            $("#loaiDatViPham").val('NNP');
-                    //                                            $("#doiTuongPhatHien").val("");
-                    //                                            $("#doiTuongViPham").val("");
-                    //                                            $("#diaDiemViPham").val("");
-                    //                                            $("#thongTinKhac").val("");
-                    //                                            $('#captcha').click();
-                    //                                            $("#infoModal").modal('hide');
-
-                    //                                            $.get("/api/fileUpload/sendEmail").done(function (xhr) {
-
-                    //                                            });
-                    //                                            App.stopPageLoading();
-                    //                                            bootbox.alert({
-                    //                                                message: 'Lưu thông tin thành công!',
-                    //                                                buttons: {
-                    //                                                    ok: {
-                    //                                                        label: "Đồng ý"
-                    //                                                    }
-                    //                                                }
-                    //                                            });
-                    //                                        });
-                    //                                    }
-                    //                                }
-                    //                            });
-                    //                        }
-                    //                        else {
-                    //                            graphic.setAttributes({
-                    //                                maXa: res.COMMUNEID,
-                    //                                maHuyen: res.PARENT_ID,
-                    //                                UserID: globs.user_id,
-                    //                                loaiHinhViPham: $("#loaiHinhViPham").val(),
-                    //                                loaiDatViPham: $("#loaiDatViPham").val(),
-                    //                                doiTuongViPham: $("#doiTuongViPham").val(),
-                    //                                doiTuongPhatHien: $("#doiTuongPhatHien").val(),
-                    //                                diaDiemViPham: $("#diaDiemViPham").val(),
-                    //                                thoiDiemViPham: new Date().toLocaleDateString("vi", { year: "numeric", day: "2-digit", month: "2-digit" }),
-                    //                                thongTinKhac: $("#thongTinKhac").val(),
-                    //                                toaDoX: graphic.geometry.getCentroid().x,
-                    //                                toaDoY: graphic.geometry.getCentroid().y,
-                    //                            });
-                    //                            mMap.getAgsMap().getLayer('doiTuongVung').applyEdits([graphic], null, null, function () {
-                    //                                $("#form-submit").show();
-                    //                                $("#form-accept").show();
-                    //                                $('#form-delete').show();
-
-                    //                                mMap.getAgsMap().graphics.add(graphic);
-                    //                                $("#form-info").find("input[type=number]").val("");
-                    //                                $('span.fileinput-filename').text("")
-                    //                                $("#toaDoX").html("");
-                    //                                $("#toaDoY").html("");
-                    //                                $("#loaiHinhViPham").val(0);
-                    //                                $("#loaiDatViPham").val('NNP');
-                    //                                $("#doiTuongPhatHien").val("");
-                    //                                $("#doiTuongViPham").val("");
-                    //                                $("#diaDiemViPham").val("");
-                    //                                $("#thongTinKhac").val("");
-                    //                                $('#captcha').click();
-                    //                                $("#infoModal").modal('hide');
-                    //                                $.get("/api/fileUpload/sendEmail").done(function (xhr) {
-
-                    //                                });
-                    //                                App.stopPageLoading();
-
-                    //                                bootbox.alert({
-                    //                                    message: 'Lưu thông tin thành công!',
-                    //                                    buttons: {
-                    //                                        ok: {
-                    //                                            label: "Đồng ý"
-                    //                                        }
-                    //                                    }
-                    //                                });
-                    //                            });
-
-                    //                        }
-                    //                    }
-                    //                });
-                    //            });
-
-                    //            $("#form-dismiss").on('click', function () {
-                    //                mMap.getAgsMap().graphics.clear();
-                    //                $("#form-info").find("input[type=number]").val("");
-                    //                $('span.fileinput-filename').text("")
-                    //                $("#toaDoX").html("");
-                    //                $("#toaDoY").html("");
-                    //                $("#loaiHinhViPham").val(0);
-                    //                $("#loaiDatViPham").val('NNP');
-                    //                $("#doiTuongPhatHien").val("");
-                    //                $("#doiTuongViPham").val("");
-                    //                $("#diaDiemViPham").val("");
-                    //                $("#thongTinKhac").val("");
-                    //                $('#captcha').click();
-
-                    //                $("#form-submit").show();
-                    //                $("#form-accept").show();
-                    //                $('#form-delete').show();
-                    //            });
-                    //        } else {
-                    //            bootbox.alert("Vui lòng tạo khu vực trong vùng thử nghiệm");
-                    //            mMap.getAgsMap().graphics.clear();
-                    //        }
-                    //    });
-                    //});
+                    });
                     break;
                 case MapControls.DRAW_POLYGON_PROTECT:
                     mMap.startDraw(esri.toolbars.Draw.POLYGON, false, function (graphic) {

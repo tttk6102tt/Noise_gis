@@ -95,19 +95,10 @@ namespace NOISE_APP
                 }
                 var thoiGianTinhToanHHMM = DateTime.Now.ToString("yyyyMMddHHmmss");// "";
 
-                //if (DateTime.Now.Minute > 30)
-                //{
-                //    thoiGianTinhToanHHMM = DateTime.Now.ToString("yyyyMMddHH") + "_" + "00" + "_" + "30";
-                //}
-                //else
-                //{
-                //    thoiGianTinhToanHHMM = DateTime.Now.ToString("yyyyMMdd") + ((DateTime.Now.Hour - 1) > 10 ? (DateTime.Now.Hour - 1).ToString() : "0" + (DateTime.Now.Hour - 1).ToString()) + "_" + "00" + "_" + "30";
-                //}
-
-
                 string thoiGianTinhToan = DateTime.Now.ToString("yyyyMMddHHmm");
-                //string filegdb = paramConfig.FirstOrDefault(s => s.TenThamSo == "FILE_GDB").GiaTri;//) btnSelectGDB.EditValue.ToString();
-                                                                                                   string filegdb = @"E:\20210825\CSDLTest\CSDL_ONhiemTiengOn.gdb";
+                string filegdb = paramConfig.FirstOrDefault(s => s.TenThamSo == "FILE_GDB").GiaTri;//) btnSelectGDB.EditValue.ToString();
+                                                                                                  // string filegdb = @"E:\20210825\CSDLTest\CSDL_ONhiemTiengOn.gdb";
+            
 
                 mGDBWsFactory = new ESRI.ArcGIS.DataSourcesGDB.FileGDBWorkspaceFactory() as IWorkspaceFactory2;
                 mGDBWs = mGDBWsFactory.OpenFromFile(filegdb, 0) as IFeatureWorkspace;
@@ -124,10 +115,13 @@ namespace NOISE_APP
 
                 mGDBRasterWs = mGDBWsFactory.OpenFromFile(filegdb, 0) as IRasterWorkspaceEx;
 
+
+                
+
                 string tempFC = paramConfig.FirstOrDefault(s => s.TenThamSo == "FC_TEMP").GiaTri;
 
                 var data = GetDataFromSever();
-
+                Save("filegdb:" + paramConfig.FirstOrDefault(s => s.TenThamSo == "FILE_GDB").GiaTri, "", "");
                 if (data.Count <= 1)
                 {
                     txtProcess.Text += "\n\nKhông đủ dữ liệu " + data.Count;
@@ -155,8 +149,8 @@ namespace NOISE_APP
                 NoiseGISCommon.AddFieldToTable(fieldsEdit, "dB", "dB", esriFieldType.esriFieldTypeDouble);
 
 
-                NoiseGISCommon.AddFieldToTable(fieldsEdit, "ngayLay", "ngayLay", esriFieldType.esriFieldTypeString);
-                NoiseGISCommon.AddFieldToTable(fieldsEdit, "gioLay", "gioLay", esriFieldType.esriFieldTypeString);
+                //NoiseGISCommon.AddFieldToTable(fieldsEdit, "ngayLay", "ngayLay", esriFieldType.esriFieldTypeString);
+                //NoiseGISCommon.AddFieldToTable(fieldsEdit, "gioLay", "gioLay", esriFieldType.esriFieldTypeString);
 
                 NoiseGISCommon.AddFieldToTable(fieldsEdit, "LONG", "LONG", esriFieldType.esriFieldTypeDouble);
                 NoiseGISCommon.AddFieldToTable(fieldsEdit, "LA", "LA", esriFieldType.esriFieldTypeDouble);
@@ -178,10 +172,10 @@ namespace NOISE_APP
                     newRow.Value[0] = item.ID;
                     newRow.Value[1] = item.DiaDiem;
                     newRow.Value[2] = item.dB;
-                    newRow.Value[3] = item.ngayLay;
-                    newRow.Value[4] = item.gioLay;
-                    newRow.Value[5] = item.LONG;
-                    newRow.Value[6] = item.LAT;
+                    //newRow.Value[3] = item.ngayLay;
+                    //newRow.Value[4] = item.gioLay;
+                    newRow.Value[3] = item.LONG;
+                    newRow.Value[4] = item.LAT;
                     newRow.Store();
                 }
 
@@ -207,8 +201,8 @@ namespace NOISE_APP
                 int TenTramOrgIdx = flDiemDuLieuSave.FeatureClass.FindField("tenDiemQuanTrac");
                 int dBOrgIdx = flDiemDuLieuSave.FeatureClass.FindField("dB");
 
-                int thoiGianOrgIdx = flBangDuLieu.FeatureClass.FindField("gioLay");
-                int ngayOrgIdx = flBangDuLieu.FeatureClass.FindField("ngayLay");
+                //int thoiGianOrgIdx = flBangDuLieu.FeatureClass.FindField("gioLay");
+                //int ngayOrgIdx = flBangDuLieu.FeatureClass.FindField("ngayLay");
 
                 int maTramDesIdx = flTramDo.FindField("ID");
                 int TenTramDesIdx = flTramDo.FindField("tenDiemQuanTrac");
@@ -235,8 +229,8 @@ namespace NOISE_APP
                         newFeature.Value[maTramDesIdx] = feature.Value[maTramOrgIdx].ToString();
                         newFeature.Value[TenTramDesIdx] = feature.Value[TenTramOrgIdx].ToString();
                         newFeature.Value[dBDesIdx] = feature.Value[dBOrgIdx].ToString();
-                        newFeature.Value[ngayDesIdx] = feature.Value[ngayOrgIdx].ToString();// DateTime.Now.AddHours(-1).ToString("MM/dd/yyyy");
-                        newFeature.Value[thoiGianDesIdx] = feature.Value[thoiGianOrgIdx].ToString();// DateTime.Now.AddHours(-2).Hour;
+                        newFeature.Value[ngayDesIdx] =  DateTime.Now.AddHours(-1).ToString("MM/dd/yyyy");//feature.Value[ngayOrgIdx].ToString();//
+                        newFeature.Value[thoiGianDesIdx] = DateTime.Now.AddHours(-1).Hour;//feature.Value[thoiGianOrgIdx].ToString();// 
                         newFeature.Shape = feature.Shape;
                         newFeature.Store();
                     }
@@ -247,7 +241,7 @@ namespace NOISE_APP
                 {
 
                 }
-                /*
+                
                 IFeatureLayer flRTemp = new FeatureLayer()
                 {
                     FeatureClass = mGDBWs.OpenFeatureClass(tempFC)
@@ -378,8 +372,8 @@ namespace NOISE_APP
                 var mxdResult = System.IO.Path.Combine(System.Configuration.ConfigurationManager.AppSettings["FOLDERMXDPATH"].ToString(), string.Format("{0}.mxd", "bando_" + DateTime.Now.AddHours(-1).ToString("yyyyMMdd") + "_" + (DateTime.Now.AddHours(-1).Hour).ToString()));
 
                 System.IO.File.Copy(mxdPath, mxdResult);
-                */
-                //NoiseGISCommon.SetDataSource(mxdResult, ((IWorkspace)mGDBWs).PathName, mGDBRasterWs.OpenRasterDataset(rasterName));
+                
+                NoiseGISCommon.SetDataSource(mxdResult, (IWorkspace)mGDBWs, mGDBRasterWs.OpenRasterDataset(rasterName), "Kết quả quan trắc tiếng ổn " + DateTime.Now.AddHours(-1).ToString("dd/MM/yyyy") + " khung giờ " + DateTime.Now.AddHours(-1).Hour + " giờ", DateTime.Now.AddHours(-1).ToString("dd/MM/yyyy"), DateTime.Now.AddHours(-1).Hour.ToString());
             }
             catch (COMException comEx)
             {
@@ -471,123 +465,7 @@ namespace NOISE_APP
                         //string endHour = "003000";
                         //var dateCal = new DateTime(2021, 09, 01);
                         var today = DateTime.Now.AddHours(-8);
-
-                        //20210610
-                        //switch (today.Hour)
-                        //{
-                        //    case 0:
-                        //        startHour = "000000";
-                        //        endHour = "003000";
-                        //        break;
-                        //    case 1:
-                        //        startHour = "010000";
-                        //        endHour = "013000";
-                        //        break;
-                        //    case 2:
-                        //        startHour = "020000";
-                        //        endHour = "023000";
-                        //        break;
-                        //    case 3:
-                        //        startHour = "030000";
-                        //        endHour = "033000";
-                        //        break;
-                        //    case 4:
-                        //        startHour = "040000";
-                        //        endHour = "043000";
-                        //        break;
-                        //    case 5:
-                        //        startHour = "090000";
-                        //        endHour = "110000";
-                        //        break;
-                        //    case 6:
-                        //        startHour = "110000";
-                        //        endHour = "130000";
-                        //        break;
-                        //    case 7:
-                        //        startHour = "130000";
-                        //        endHour = "150000";
-                        //        break;
-                        //    case 8:
-                        //        startHour = "150000";
-                        //        endHour = "170000";
-                        //        break;
-                        //    case 9:
-                        //        startHour = "070000";
-                        //        endHour = "090000";
-                        //        break;
-                        //    case 10:
-                        //        startHour = "090000";
-                        //        endHour = "110000";
-                        //        break;
-                        //    case 11:
-                        //        startHour = "110000";
-                        //        endHour = "130000";
-                        //        break;
-                        //    case 12:
-                        //        startHour = "130000";
-                        //        endHour = "150000";
-                        //        break;
-                        //    case 13:
-                        //        startHour = "150000";
-                        //        endHour = "170000";
-                        //        break;
-                        //    case 14:
-                        //        startHour = "070000";
-                        //        endHour = "090000";
-                        //        break;
-                        //    case 15:
-                        //        startHour = "090000";
-                        //        endHour = "110000";
-                        //        break;
-                        //    case 16:
-                        //        startHour = "110000";
-                        //        endHour = "130000";
-                        //        break;
-                        //    case 17:
-                        //        startHour = "130000";
-                        //        endHour = "150000";
-                        //        break;
-                        //    case 18:
-                        //        startHour = "150000";
-                        //        endHour = "170000";
-                        //        break;
-                        //    case 19:
-                        //        startHour = "070000";
-                        //        endHour = "090000";
-                        //        break;
-                        //    case 20:
-                        //        startHour = "090000";
-                        //        endHour = "110000";
-                        //        break;
-                        //    case 21:
-                        //        startHour = "110000";
-                        //        endHour = "130000";
-                        //        break;
-                        //    case 22:
-                        //        startHour = "130000";
-                        //        endHour = "150000";
-                        //        break;
-                        //    case 23:
-                        //        startHour = "150000";
-                        //        endHour = "170000";
-                        //        break;
-                        //    default:
-                        //        break;
-                        //}
-                        /*
-                        if (today.Minute < 30)
-                        {
-                            var hour = (today.Hour + 1) > 10 ? (today.Hour - 1).ToString() : "0" + (today.Hour - 1).ToString();
-                            startHour = hour + "3000";
-                            endHour = hour + "5900";
-                        }
-                        else
-                        {
-                            var hour = today.Hour > 10 ? today.Hour.ToString() : "0" + today.Hour.ToString();
-                            startHour = hour + "3000";
-                            endHour = hour + "5900";
-                        }
-                        */
+                        
 
                         string startTime = today.ToString("yyyyMMddHH") + "0000";// startHour;
                         string endTime = today.ToString("yyyyMMddHH") + "5959";// endHour;
@@ -595,32 +473,33 @@ namespace NOISE_APP
                         cmd.Connection = conn;
 
                         cmd.CommandTimeout = 5 * 60 * 60;
-                        //cmd.CommandText = string.Format(@"
-                        //        SELECT n.ID, 
-                        //                d.DiaDiem,   
-                        //                sum(CAST(n.db as numeric(9,6)))/count(n.ID) as dB,
-                        //                sum(CAST(n.LONG as numeric(9,6)))/count(n.ID) as Long,
-                        //                sum(CAST(n.LAT as numeric(9,6)))/count(n.ID) as LAT	
-                        //                FROM NOISE n INNER JOIN DMTramDo d on d.MaTramDo = n.ID  
-                        //                WHERE n.ID <> ''  AND n.dB <> '' AND (ISNUMERIC(TIME) = 1 AND (CAST(n.TIME as DECIMAL(16,2)) < {0} AND CAST(n.TIME as DECIMAL(16,2)) > {1})) 
-                        //                group by n.ID, d.DiaDiem
-                        //        ", endTime, startTime);
-                        cmd.CommandText = @" SELECT n.ID, 
-                                        d.DiaDiem,   
-                                        sum(CAST(n.db as numeric(9, 6)))/ count(n.ID) as dB,
-                                        sum(CAST(n.LONG as numeric(9, 6)))/ count(n.ID) as Long,
-                                        sum(CAST(n.LAT as numeric(9, 6)))/ count(n.ID) as LAT,	
-										  SUBSTRING(TIME, 9, 2) as hour2,
-                                                        SUBSTRING(TIME, 7, 2) as day2,
-                                                        SUBSTRING(TIME, 5, 2) as month2,
-                                                        SUBSTRING(TIME, 1, 4) as year2
-                                        FROM NOISE n INNER JOIN DMTramDo d on d.MaTramDo = n.ID
-                                       where ISNUMERIC(TIME) = 1 and ISNUMERIC(dB) = 1 and ISNUMERIC(LONG) = 1 and ISNUMERIC(LAT) = 1 and TIME > '20210915000000'
-                                        group by n.ID, d.DiaDiem,
-                                          SUBSTRING(TIME, 9, 2),
-                                                        SUBSTRING(TIME, 7, 2),
-                                                        SUBSTRING(TIME, 5, 2),
-                                                        SUBSTRING(TIME, 1, 4)";
+                        cmd.CommandText = string.Format(@"
+                                SELECT n.ID, 
+                                        n.LOCATION as DiaDiem,   
+                                        sum(CAST(n.db as numeric(9,6)))/count(n.LOCATION) as dB,
+                                        sum(CAST(n.LONG as numeric(9,6)))/count(n.LOCATION) as Long,
+                                        sum(CAST(n.LAT as numeric(9,6)))/count(n.LOCATION) as LAT	
+                                        FROM NOISE n 
+                                        --INNER JOIN DMTramDo d on d.MaTramDo = n.ID  
+                                        WHERE n.TIME < '{0}' AND n.TIME > '{1}' 
+                                        group by n.ID, n.LOCATION
+                                ", endTime, startTime);
+                        //            cmd.CommandText = @" SELECT n.ID, 
+                        //                            d.DiaDiem,   
+                        //                            sum(CAST(n.db as numeric(9, 6)))/ count(n.ID) as dB,
+                        //                            sum(CAST(n.LONG as numeric(9, 6)))/ count(n.ID) as Long,
+                        //                            sum(CAST(n.LAT as numeric(9, 6)))/ count(n.ID) as LAT,	
+                        //SUBSTRING(TIME, 9, 2) as hour2,
+                        //                                            SUBSTRING(TIME, 7, 2) as day2,
+                        //                                            SUBSTRING(TIME, 5, 2) as month2,
+                        //                                            SUBSTRING(TIME, 1, 4) as year2
+                        //                            FROM NOISE n INNER JOIN DMTramDo d on d.MaTramDo = n.ID
+                        //                           where ISNUMERIC(TIME) = 1 and ISNUMERIC(dB) = 1 and ISNUMERIC(LONG) = 1 and ISNUMERIC(LAT) = 1 and TIME > '20210915000000'
+                        //                            group by n.ID, d.DiaDiem,
+                        //                              SUBSTRING(TIME, 9, 2),
+                        //                                            SUBSTRING(TIME, 7, 2),
+                        //                                            SUBSTRING(TIME, 5, 2),
+                        //                                            SUBSTRING(TIME, 1, 4)";
 
                         var dap = new SqlDataAdapter(cmd);
                         dap.Fill(ds);
@@ -629,11 +508,11 @@ namespace NOISE_APP
                         {
                             foreach (DataRow row in ds.Tables[0].Rows)
                             {
-                                var year = Convert.ToInt16(row["year2"].ToString());
-                                var month = Convert.ToInt16(row["month2"].ToString());
-                                var day = Convert.ToInt16(row["day2"].ToString());
-                                var hour = Convert.ToInt16(row["hour2"].ToString());
-                                var datetime = new DateTime(year,month,day).AddHours(7).AddHours(hour);
+                                //var year = Convert.ToInt16(row["year2"].ToString());
+                                //var month = Convert.ToInt16(row["month2"].ToString());
+                                //var day = Convert.ToInt16(row["day2"].ToString());
+                                //var hour = Convert.ToInt16(row["hour2"].ToString());
+                                //var datetime = new DateTime(year,month,day).AddHours(7).AddHours(hour);
 
                                 result.Add(new NOISE()
                                 {
@@ -642,8 +521,8 @@ namespace NOISE_APP
                                     DiaDiem = row["DiaDiem"].ToString(),
                                     LAT = row["LAT"].ToString(),
                                     LONG = row["LONG"].ToString(),
-                                    ngayLay = datetime.ToString("MM/dd/yyyy"),
-                                    gioLay  = row["hour2"].ToString()
+                                    //ngayLay = datetime.ToString("MM/dd/yyyy"),
+                                    //gioLay  = row["hour2"].ToString()
                                 });
                             }
                         }

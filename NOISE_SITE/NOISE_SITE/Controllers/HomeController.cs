@@ -23,6 +23,7 @@ namespace NOISE_SITE.Controllers
         private readonly INguoiDungRepository _nguoiDungRepository;
         private readonly INoiseRepository _noiseRepository;
         private string _ConnectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+        private string _ConnectionString_Arcgis = ConfigurationManager.ConnectionStrings["ConnectionString_Arcgis"].ToString();
         public HomeController(NguoiDungRepository nguoiDungRepository,
             NoiseRepository noiseRepository)
         {
@@ -81,21 +82,21 @@ namespace NOISE_SITE.Controllers
                         //var tomorow = Convert.ToDouble(today.AddDays(1).ToString("yyyyMMddhhmmss"));
 
 
-                        var yesterday = Convert.ToDouble(todayNow.AddHours(-7).AddMinutes(-5).ToString("yyyyMMddhhmmss"));
-                        var tomorow = Convert.ToDouble(todayNow.AddHours(-7).ToString("yyyyMMddhhmmss"));
+                        //var yesterday = Convert.ToDouble(todayNow.AddHours(-7).AddMinutes(-5).ToString("yyyyMMddhhmmss"));
+                        //var tomorow = Convert.ToDouble(todayNow.AddHours(-7).ToString("yyyyMMddhhmmss"));
 
 
-                        var yesterHour = (todayNow.AddMinutes(-5).Hour > 10 ? todayNow.AddMinutes(-5).Hour.ToString() : "0" + todayNow.AddMinutes(-5).Hour);
-                        var yesterMi = (todayNow.AddMinutes(-5).Minute > 10 ? todayNow.AddMinutes(-5).Minute.ToString() : "0" + todayNow.AddMinutes(-5).Minute);
-                        var yesterss = (todayNow.AddMinutes(-5).Second > 10 ? todayNow.AddMinutes(-5).Second.ToString() : "0" + todayNow.AddMinutes(-5).Second);
+                        //var yesterHour = (todayNow.AddMinutes(-5).Hour > 10 ? todayNow.AddMinutes(-5).Hour.ToString() : "0" + todayNow.AddMinutes(-5).Hour);
+                        //var yesterMi = (todayNow.AddMinutes(-5).Minute > 10 ? todayNow.AddMinutes(-5).Minute.ToString() : "0" + todayNow.AddMinutes(-5).Minute);
+                        //var yesterss = (todayNow.AddMinutes(-5).Second > 10 ? todayNow.AddMinutes(-5).Second.ToString() : "0" + todayNow.AddMinutes(-5).Second);
 
-                        yesterday = Convert.ToDouble(todayNow.AddMinutes(-5).ToString("yyyyMMdd") + yesterHour + yesterMi + yesterss);
+                        //yesterday = Convert.ToDouble(todayNow.AddMinutes(-5).ToString("yyyyMMdd") + yesterHour + yesterMi + yesterss);
 
-                        var nowHour = (todayNow.Hour > 10 ? todayNow.Hour.ToString() : "0" + todayNow.Hour);
-                        var nowMi = (todayNow.Minute > 10 ? todayNow.Minute.ToString() : "0" + todayNow.Minute);
-                        var nowss = (todayNow.Second > 10 ? todayNow.Second.ToString() : "0" + todayNow.Second);
+                        //var nowHour = (todayNow.Hour > 10 ? todayNow.Hour.ToString() : "0" + todayNow.Hour);
+                        //var nowMi = (todayNow.Minute > 10 ? todayNow.Minute.ToString() : "0" + todayNow.Minute);
+                        //var nowss = (todayNow.Second > 10 ? todayNow.Second.ToString() : "0" + todayNow.Second);
 
-                        tomorow = Convert.ToDouble(todayNow.ToString("yyyyMMdd") + nowHour + nowMi + nowss);
+                        //tomorow = Convert.ToDouble(todayNow.ToString("yyyyMMdd") + nowHour + nowMi + nowss);
 
                         cmd.Connection = conn;
                         cmd.CommandTimeout = 5 * 60 * 60;
@@ -173,7 +174,136 @@ namespace NOISE_SITE.Controllers
 
         }
 
+        public class MapFinish
+        {
+            public int ID { get; set; }
+            public string MapName { get; set; }
+            public string Ngay { get; set; }
+            public string Gio { get; set; }
+        }
 
+        [HttpGet]
+        public ActionResult GetDataLastMap()
+        {
+            var mapFinish = new MapFinish();
+            DataSet ds = new DataSet();
+            using (var conn = new SqlConnection(_ConnectionString))
+            {
+                try
+                {
+                    if (conn.State == System.Data.ConnectionState.Closed)
+                    {
+                        conn.Open();
+                    }
+
+                    using (var cmd = new SqlCommand())
+                    {
+                        cmd.Connection = conn;
+                        cmd.CommandTimeout = 5 * 60 * 60;
+                        cmd.CommandText = "select top(1) * from mapfinish order by Ngay desc, Gio desc";
+
+                        var dap = new SqlDataAdapter(cmd);
+                        dap.Fill(ds);
+
+                        if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                        {
+                            foreach (DataRow row in ds.Tables[0].Rows)
+                            {
+                                mapFinish = new MapFinish()
+                                {
+                                    Gio = row["Gio"].ToString(),
+                                    MapName = row["MapName"].ToString(),
+                                    Ngay = row["Ngay"].ToString()
+                                };
+                            }
+                        }
+
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+                finally
+                {
+                    conn.Close();
+                }
+                return Json(new { data = mapFinish }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        public class ThongTinPhanHoi
+        {
+            public string ThongTinNguoiDung { get; set; }
+            public string PhanHoi { get; set; }
+            public string ThoiGianPhanHoi { get; set; }
+            public string TraLoiPhanHoi { get; set; }
+            public string ThoiGianTraLoi { get; set; }
+        }
+
+        [HttpGet]
+        public ActionResult GetPhanHoi()//int take, int skip, int page, int pageSize
+        {
+            var result = new List<ThongTinPhanHoi>();
+            DataSet ds = new DataSet();
+            using (var conn = new SqlConnection(_ConnectionString_Arcgis))
+            {
+                try
+                {
+                    if (conn.State == System.Data.ConnectionState.Closed)
+                    {
+                        conn.Open();
+                    }
+
+                    using (var cmd = new SqlCommand())
+                    {
+                        cmd.Connection = conn;
+                        cmd.CommandTimeout = 5 * 60 * 60;
+
+                        var filterUser = "(1=1)";
+                        if (Session["Role"] != null && Session["Role"].ToString() != "admin")
+                        {
+                            filterUser = string.Format("thongTinNguoiDung = '{0}'", Session["UserName"].ToString());
+                        }
+
+                        cmd.CommandText = string.Format(@"SELECT toaDoX, toaDoY, thongTinNguoiDung, phanHoi, thoiGianPhanHoi, thongTinNguoiTraLoi, traLoiPhanHoi, thoiGianTraLoi, danhGia
+                                            FROM NOISE_ARCGIS.dbo.NGUOIDUNG
+                                            Where {0}", filterUser);
+
+                        var dap = new SqlDataAdapter(cmd);
+                        dap.Fill(ds);
+
+                        if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                        {
+                            foreach (DataRow row in ds.Tables[0].Rows)
+                            {
+                                result.Add(new ThongTinPhanHoi()
+                                {
+                                    PhanHoi = row["phanHoi"].ToString(),
+                                    ThongTinNguoiDung = row["thongTinNguoiDung"].ToString(),
+                                    ThoiGianPhanHoi = row["thoiGianPhanHoi"].ToString(),
+                                    ThoiGianTraLoi = row["thoiGianTraLoi"].ToString(),
+                                    TraLoiPhanHoi = row["traLoiPhanHoi"].ToString(),
+                                });
+                            }
+                        }
+
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+                finally
+                {
+                    conn.Close();
+                }
+                return Json(new
+                {
+                    data = result.OrderBy(s => s.ThoiGianPhanHoi),
+                }, JsonRequestBehavior.AllowGet); 
+            }
+        }
         [HttpGet]
         public ActionResult GetDataStatic(string ngayTinh, string gioTinh)
         {
@@ -499,7 +629,7 @@ namespace NOISE_SITE.Controllers
 
         public ActionResult ChangePassword()
         {
-            
+
             return View();
         }
 
@@ -600,7 +730,7 @@ namespace NOISE_SITE.Controllers
                                 if (ds.Tables[0].Rows[0]["Password"].ToString() == "")
                                 {
                                     Session["UserName"] = username;
-                                    return Json(new RestBase(NOISE_SITE.Enums.EnumError.OK,username), JsonRequestBehavior.AllowGet);
+                                    return Json(new RestBase(NOISE_SITE.Enums.EnumError.OK, username), JsonRequestBehavior.AllowGet);
                                 }
                             }
 

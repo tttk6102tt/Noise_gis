@@ -24,6 +24,10 @@ namespace NOISE_APP
             LoadData();
         }
 
+        public string UserName {get;set;}
+
+        private string mUserName;
+
         private void LoadData()
         {
             this.txtPwd.KeyDown += TxtUname_KeyDown;
@@ -64,21 +68,6 @@ namespace NOISE_APP
             this.DialogResult = DialogResult.Cancel;
         }
 
-        public class ResponseData
-        {
-            public string Message { get; set; }
-            public object Data { get; set; }
-            public bool Success { get; set; }
-            public string Content { get; set; }
-            public string ErrorCode { get; set; }
-        }
-        private NguoiDung _nguoidung;
-
-        public class RestDataUser : RestData
-        {
-            public NguoiDung NguoiDung { get; set; }
-        }
-
         private bool ChangePassword(string password)
         {
             using (var conn = new SqlConnection(_ConnectionString))
@@ -95,8 +84,8 @@ namespace NOISE_APP
                         cmd.Connection = conn;
                         cmd.CommandText = string.Format(@"UPDATE [Users]
                                                            SET 
-                                                              Password = {0}
-                                                         WHERE UserName = '{1}'", GetMD5(password));
+                                                              Password = '{0}'
+                                                         WHERE UserName = '{1}'", GetMD5(password),UserName);
                         cmd.ExecuteNonQuery();
 
                     }
@@ -145,7 +134,7 @@ namespace NOISE_APP
             //
             if (ChangePassword(txtPwd.Text))
             {
-                _NoiseMesageBox.ShowInfoMessage("Thông báo", "Đổi mật khẩu thành công");
+                
                 DialogResult = DialogResult.OK;
             }
             else

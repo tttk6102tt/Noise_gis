@@ -162,7 +162,6 @@ E:\Anh_Thuy\NOISE_APP\NOISE_APP\obj\Debug\NOISE_APP.exe.licenses
 E:\Anh_Thuy\NOISE_APP\NOISE_APP\obj\Debug\NOISE_APP.exe
 E:\Anh_Thuy\NOISE_APP\NOISE_APP\obj\Debug\NOISE_APP.pdb
 E:\Anh_Thuy\NOISE_APP\NOISE_APP\bin\Debug\Mxd\temp.mxd
-E:\Anh_Thuy\NOISE_APP\NOISE_APP\obj\Debug\NOISE_APP.csprojResolveAssemblyReference.cache
 E:\Anh_Thuy\NOISE_APP\NOISE_APP\bin\Debug\DevExpress.XtraNavBar.v16.1.dll
 E:\Anh_Thuy\NOISE_APP\NOISE_APP\bin\Debug\DevExpress.XtraNavBar.v16.1.xml
 E:\Anh_Thuy\NOISE_APP\NOISE_APP\bin\Debug\de\DevExpress.XtraNavBar.v16.1.resources.dll
@@ -178,3 +177,10 @@ E:\Anh_Thuy\NOISE_APP\NOISE_APP\bin\Debug\Mxd\VN2000.mxd
 E:\Anh_Thuy\NOISE_APP\NOISE_APP\obj\Debug\NOISE_APP.Forms.frmExportGDB.resources
 E:\Anh_Thuy\NOISE_APP\NOISE_APP\obj\Debug\NOISE_APP.Forms.frmExport.resources
 E:\Anh_Thuy\NOISE_APP\NOISE_APP\bin\Debug\DevExpress.Images.v16.1.dll
+E:\Anh_Thuy\NOISE_APP\NOISE_APP\obj\Debug\NOISE_APP.frmChangePassword.resources
+E:\Anh_Thuy\NOISE_APP\NOISE_APP\bin\Debug\EPPlus.dll
+E:\Anh_Thuy\NOISE_APP\NOISE_APP\bin\Debug\Microsoft.IO.RecyclableMemoryStream.dll
+E:\Anh_Thuy\NOISE_APP\NOISE_APP\bin\Debug\EPPlus.xml
+E:\Anh_Thuy\NOISE_APP\NOISE_APP\bin\Debug\Microsoft.IO.RecyclableMemoryStream.xml
+E:\Anh_Thuy\NOISE_APP\NOISE_APP\obj\Debug\NOISE_APP.csprojResolveAssemblyReference.cache
+E:\Anh_Thuy\NOISE_APP\NOISE_APP\obj\Debug\NOISE_APP.ImportExcel.resources

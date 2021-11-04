@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormNoise));
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
             this.button1 = new System.Windows.Forms.Button();
             this.btnSelectGDB = new DevExpress.XtraEditors.ButtonEdit();
             this.label1 = new System.Windows.Forms.Label();
@@ -57,7 +57,7 @@
             this.btnSelectGDB.Location = new System.Drawing.Point(182, 177);
             this.btnSelectGDB.Name = "btnSelectGDB";
             this.btnSelectGDB.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.Default, ((System.Drawing.Image)(resources.GetObject("btnSelectGDB.Properties.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject2, "", null, null, true)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.Default, ((System.Drawing.Image)(resources.GetObject("btnSelectGDB.Properties.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, "", null, null, true)});
             this.btnSelectGDB.Size = new System.Drawing.Size(338, 22);
             this.btnSelectGDB.TabIndex = 1;
             this.btnSelectGDB.Visible = false;
@@ -108,7 +108,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.button2);
             this.Name = "FormNoise";
-            this.Text = "Tính toán, xử lý dữ liệu quan trắc tiếng ồn tự động";
+            this.Text = "Phần mềm thành lập dữ liệu tiếng ồn tự động (ANoise)";
             this.Load += new System.EventHandler(this.FormNoise_Load);
             this.Shown += new System.EventHandler(this.FormNoise_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.btnSelectGDB.Properties)).EndInit();
