@@ -182,5 +182,9 @@ E:\Anh_Thuy\NOISE_APP\NOISE_APP\bin\Debug\EPPlus.dll
 E:\Anh_Thuy\NOISE_APP\NOISE_APP\bin\Debug\Microsoft.IO.RecyclableMemoryStream.dll
 E:\Anh_Thuy\NOISE_APP\NOISE_APP\bin\Debug\EPPlus.xml
 E:\Anh_Thuy\NOISE_APP\NOISE_APP\bin\Debug\Microsoft.IO.RecyclableMemoryStream.xml
-E:\Anh_Thuy\NOISE_APP\NOISE_APP\obj\Debug\NOISE_APP.csprojResolveAssemblyReference.cache
 E:\Anh_Thuy\NOISE_APP\NOISE_APP\obj\Debug\NOISE_APP.ImportExcel.resources
+E:\Anh_Thuy\NOISE_APP\NOISE_APP\obj\Debug\NOISE_APP.FormNoisePrivate.resources
+E:\Anh_Thuy\NOISE_APP\NOISE_APP\obj\Debug\NOISE_APP.Forms.frmConfigTime.resources
+E:\Anh_Thuy\NOISE_APP\NOISE_APP\obj\Debug\NOISE_APP.FormNoisePrivateDangTuyen.resources
+E:\Anh_Thuy\NOISE_APP\NOISE_APP\obj\Debug\NOISE_APP.frmChonForm.resources
+E:\Anh_Thuy\NOISE_APP\NOISE_APP\obj\Debug\NOISE_APP.csprojResolveAssemblyReference.cache

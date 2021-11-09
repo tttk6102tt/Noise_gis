@@ -87,4 +87,3 @@ E:\Anh_Thuy\NOISE_APP\Noise.FrameWork\FrameWork.Core\bin\Debug\ESRI.ArcGIS.Geopr
 E:\Anh_Thuy\NOISE_APP\Noise.FrameWork\FrameWork.Core\bin\Debug\ESRI.ArcGIS.DataSourcesNetCDF.xml
 E:\Anh_Thuy\NOISE_APP\Noise.FrameWork\FrameWork.Core\obj\Debug\FrameWork.Core.dll
 E:\Anh_Thuy\NOISE_APP\Noise.FrameWork\FrameWork.Core\obj\Debug\FrameWork.Core.pdb
-E:\Anh_Thuy\NOISE_APP\Noise.FrameWork\FrameWork.Core\obj\Debug\FrameWork.Core.csprojResolveAssemblyReference.cache

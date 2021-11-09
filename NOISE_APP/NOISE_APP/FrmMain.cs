@@ -74,6 +74,34 @@ namespace NOISE_APP
             //frm.Show();
         }
 
+        private void tsbAutoMap_Click(object sender, EventArgs e)
+        {
+            var frm = new FormNoise();
+            frm.Show();
+        }
 
+        private void tsbImport_Click(object sender, EventArgs e)
+        {
+            var frm = new ImportExcel();
+            frm.Show();
+        }
+
+        private void tsbAutoMapTuyen_Click(object sender, EventArgs e)
+        {
+            var frm = new FormNoisePrivateDangTuyen();
+            frm.Show();
+        }
+
+        private void lậpBảnĐồDạngVùngToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frm = new FormNoisePrivate();
+            frm.Show();
+        }
+
+        private void lậpBảnĐồDạngTuyếnToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frm = new FormNoisePrivateDangTuyen();
+            frm.Show();
+        }
     }
 }

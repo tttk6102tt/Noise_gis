@@ -155,13 +155,13 @@
                 "esri/geometry/Point",
                 "esri/dijit/InfoWindow",
                 'esri/geometry/screenUtils',
-                
+
             ],
                 function (arrayUtils, InfoTemplate, Legend, Extent, esriConfig, Map, BasemapToggle, Navigation, WMSLayer, FeatureLayer, ArcGISTiledMapServiceLayer,
                     ArcGISDynamicMapServiceLayer, GraphicsLayer, SimpleLineSymbol, SimpleFillSymbol, SimpleMarkerSymbol, PictureMarkerSymbol, Color, Geometry, Query, Point,
                     InfoWindow,
                     screenUtils
-                    ) {
+                ) {
 
                     //esriConfig.defaults.geometryService = new esri.tasks.GeometryService("http://222.252.17.86:6080/arcgis/rest/services/Utilities/Geometry/GeometryServer");
                     esriConfig.defaults.geometryService = new esri.tasks.GeometryService("http://tiengontructuyen.vn/arcgis/rest/services/Utilities/Geometry/GeometryServer");
@@ -210,7 +210,7 @@ c-3 -13 -10 -20 -15 -17 -5 3 -9 1 -9 -5 0 -21 19 -20 26 1 l7 23 8 -23 c10
                     //xmin: 
                     //ymax: 
                     //ymin:
-                   var customExtentAndSR = new esri.geometry.Extent(5120900, -9998100, -583280.9042999996, 2328200, new esri.SpatialReference({ "wkid": 3405 }));
+                    var customExtentAndSR = new esri.geometry.Extent(5120900, -9998100, -583280.9042999996, 2328200, new esri.SpatialReference({ "wkid": 3405 }));
 
                     mMap = new Map(me.element.attr('id'), {
                         autoResize: true,
@@ -220,45 +220,20 @@ c-3 -13 -10 -20 -15 -17 -5 3 -9 1 -9 -5 0 -21 19 -20 26 1 l7 23 8 -23 c10
                         minScale: 600000,
                         center: [105.790473, 21.046137],
                         //extent: customExtentAndSR,
-                       
+
                         //center: [105, 21],
                         zoom: 16,
-                        //basemap: "topo"
+                        basemap: "topo"
                     });
 
                     window.map2 = mMap;
 
-                    //var toggle = new BasemapToggle({
-                    //    map: mMap,
-                    //    basemap: "satellite"
-                    //}, "BasemapToggle").startup();
+                    var toggle = new BasemapToggle({
+                        map: mMap,
+                        basemap: "satellite"
+                    }, "BasemapToggle").startup();
 
-                    //mMap.addLayer(new FeatureLayer(urlRes + `/0`, {
-                    //    mode: FeatureLayer.MODE_AUTO,
-                    //    visible: true,
-                    //    outFields: ['*'],
-                    //    displayOnPan: true,
-                    //    id: 'doiTuongVung',
-                    //}));
                     var layerInfo = [];
-                    //var url_map_nen2 = "https://services.arcgisonline.com/ArcGIS/rest/services/Specialty/DeLorme_World_Base_Map/MapServer";
-                 
-
-                    //var layer_nen2 = new ArcGISDynamicMapServiceLayer(url_map_nen2, {
-                    //    id: "BanDoNen2",
-                    //    opacity: 0,
-                    //});
-
-
-                    //// 
-                    //mMap.addLayer(layer_nen2);
-                    //layerInfo.push({
-                    //    layer: layer_nen,
-                    //    title: "Bản đồ nền"
-                    //});
-
-
-
                     var url_map_nen = "http://tiengontructuyen.vn/arcgis/rest/services/BanDoNen/VN2000_Nen/MapServer";
                     //var layerInfo = [];
 
@@ -273,16 +248,59 @@ c-3 -13 -10 -20 -15 -17 -5 3 -9 1 -9 -5 0 -21 19 -20 26 1 l7 23 8 -23 c10
                         layer: layer_nen,
                         title: "Bản đồ nền"
                     });
+                    $.get("/Home/GetDataLastMap", (xhr) => {
+
+                        $("#legend").empty();
+
+
+
+                        var tenbando = "bando_" + xhr.data.Ngay + "_" + (xhr.data.Gio < 10 ? "0" + xhr.data.Gio : xhr.data.Gio);
+
+                        //  tenbando = "USA";
+                        var url_map = "http://tiengontructuyen.vn/arcgis/rest/services/RasterNoise/" + tenbando + "/MapServer";
+
+                        //layerInfo = layerInfo.filter(s => s.ID != "BanDoNoiSuy");
+                        var layer = new ArcGISDynamicMapServiceLayer(url_map, {
+                            id: "LastBanDoNoiSuy",
+                            opacity: 0.6,
+                        });
+                        var layerInfo = [];
+
+                        mMap.addLayer(layer);
+                        layerInfo.push({
+                            layer: layer,
+                            title: "Bản đồ nội suy",
+                            ID: "LastBanDoNoiSuy"
+                        });
+
+                        me._beginIdentifyRaster(mMap, url_map);
+
+
+                        //var ngaydoMMddYYYY = xhr.data.Ngay.substring(4, 6) + "/" + xhr.data.Ngay.substring(6, 8) + "/" + xhr.data.Ngay.substring(0, 4);
+
+                        //let time_filter = `ngayQuanTrac = '${ngaydoMMddYYYY}' AND thoiGianQuanTrac = ${xhr.data.Gio}`;
+
+                        //me.loadTramDo(time_filter);
+
+
+                        var id = generateUUID();
+
+                        $('<div class="legends-container" style="padding:10px;" id="' + id + '" />').appendTo($("#legend"));
+                        new Legend({
+                            map: me.getAgsMap(),
+                            layerInfos: layerInfo
+                        }, id).startup();
+
+
+                    });
+
+
 
                     me.initMeasurement(mMap);
 
-
-                    //me._beginIdentify(mMap);
                     me._beginDrawer(mMap);
 
                     regionSymbol = new SimpleFillSymbol().setColor(null).outline.setColor("blue");
-
-                    //tramDoSymbol = new SimpleMarkerSymbol();
 
                     tramDoSymbol = new SimpleMarkerSymbol({
                         "color": [255, 255, 255, 64],
@@ -303,10 +321,6 @@ c-3 -13 -10 -20 -15 -17 -5 3 -9 1 -9 -5 0 -21 19 -20 26 1 l7 23 8 -23 c10
                     mNavigation = new Navigation(mMap);
 
 
-                    //tramDoGL = new GraphicsLayer({
-                    //    id: "regions"
-                    //});
-                    //mMap.addLayer(tramDoGL);
 
                     // fit boundary
                     function generateUUID() { // Public Domain/MIT
@@ -379,29 +393,35 @@ c-3 -13 -10 -20 -15 -17 -5 3 -9 1 -9 -5 0 -21 19 -20 26 1 l7 23 8 -23 c10
                             thoigian_from = ngaydoMMddYYYY + ' 23:00:00';
                             thoigian_to = ngaydoMMddYYYY + ' 23:59:59';
                         }
-                        
+
                         time_filter = `ngayQuanTrac = '${ngaydoMMddYYYY}' AND thoiGianQuanTrac = ${document.getElementById('khunggio').value}`;
 
                         //var bando_ngay = m.toString() + day.toString() + year.toString();
                         //var tenbando = "bando_" + bando_ngay + "_" + khunggio.replace("-", "_");
+                        var month = ngaydoSplit[1];
+                        var day = ngaydoSplit[0];
+
+                        var tenbando_dangtuyen = $("#drTuyen").val() + ngaydoSplit[2] + month + day + "_" + khunggio;
+
 
                         if (khunggio < 10) {
                             khunggio = "0" + khunggio
                         }
-                        var month = ngaydoSplit[1];
                         //if (month < 10) {
                         //    month = "0" + month;
                         //}
-                        var day = ngaydoSplit[0];
                         //if (day < 10) {
                         //    day = "0" + day;
                         //}
                         var tenbando = "bando_" + ngaydoSplit[2] + month + day + "_" + khunggio;
 
+
+
+
                         //  tenbando = "USA";
                         var url_map = "http://tiengontructuyen.vn/arcgis/rest/services/RasterNoise/" + tenbando + "/MapServer";
 
-
+                        var url_map_dang_tuyen = "http://tiengontructuyen.vn/arcgis/rest/services/Raster_Tuyen/" + tenbando_dangtuyen + "/MapServer";
 
                         // 
                         // add Feature
@@ -418,7 +438,7 @@ c-3 -13 -10 -20 -15 -17 -5 3 -9 1 -9 -5 0 -21 19 -20 26 1 l7 23 8 -23 c10
                         //    definitionExpression: time_filter,
                         //});
 
-                     
+
 
                         function pointToExtent(map, point, toleranceInPixel) {
                             var pixelWidth = map.extent.getWidth() / map.width;
@@ -458,7 +478,6 @@ c-3 -13 -10 -20 -15 -17 -5 3 -9 1 -9 -5 0 -21 19 -20 26 1 l7 23 8 -23 c10
 
                         if (mMap.getLayer('TramDo')) {
                             mMap.removeLayer(mMap.getLayer('TramDo'));
-                           
                         }
                         var layerInfo = [];
                         if ($("#checkTram").is(":checked")) {
@@ -472,9 +491,19 @@ c-3 -13 -10 -20 -15 -17 -5 3 -9 1 -9 -5 0 -21 19 -20 26 1 l7 23 8 -23 c10
 
                             me.loadTramDo(time_filter);
                         }
+
+                        if (mMap.getLayer('LastBanDoNoiSuy')) {
+                            mMap.removeLayer(mMap.getLayer('LastBanDoNoiSuy'));
+
+                        }
+
                         if (mMap.getLayer('BanDoNoiSuy')) {
                             mMap.removeLayer(mMap.getLayer('BanDoNoiSuy'));
-                            
+
+                        }
+                        if (mMap.getLayer('BanDoNoiSuyDangTuyen')) {
+                            mMap.removeLayer(mMap.getLayer('BanDoNoiSuyDangTuyen'));
+
                         }
 
                         if ($("#checkRas").is(":checked")) {
@@ -488,8 +517,25 @@ c-3 -13 -10 -20 -15 -17 -5 3 -9 1 -9 -5 0 -21 19 -20 26 1 l7 23 8 -23 c10
                             layerInfo.push({
                                 layer: layer,
                                 title: "Bản đồ nội suy",
-                                ID:"BanDoNoiSuy"
+                                ID: "BanDoNoiSuy"
                             });
+                            me._beginIdentifyRaster(mMap, url_map);
+                        }
+                        if ($("#checkRasTuyen").is(":checked")) {
+                            layerInfo = layerInfo.filter(s => s.ID != "BanDoNoiSuyDangTuyen");
+                            var layerDangTuyen = new ArcGISDynamicMapServiceLayer(url_map_dang_tuyen, {
+                                id: "BanDoNoiSuyDangTuyen",
+                                opacity: 0.6,
+                            });
+
+                            mMap.addLayer(layerDangTuyen);
+                            layerInfo.push({
+                                layer: layerDangTuyen,
+                                title: "Bản đồ nội suy dạng tuyến",
+                                ID: "BanDoNoiSuyDangTuyen"
+                            });
+
+                            me._beginIdentifyRaster(mMap, url_map_dang_tuyen);
                         }
                         var id = generateUUID();
                         $('<div class="legends-container" style="padding:10px;" id="' + id + '" />').appendTo($("#legend"));
@@ -499,7 +545,7 @@ c-3 -13 -10 -20 -15 -17 -5 3 -9 1 -9 -5 0 -21 19 -20 26 1 l7 23 8 -23 c10
                                 layerInfos: layerInfo
                             }, id).startup();
                         }
-                      
+
                     });
                 });
             $(this.element).data('vgsMapView', this);
@@ -729,9 +775,90 @@ c-3 -13 -10 -20 -15 -17 -5 3 -9 1 -9 -5 0 -21 19 -20 26 1 l7 23 8 -23 c10
             });
         },
 
-        //_onInitEditting: function (evt) {
+        _beginIdentifyRaster: function (map, url_map) {
+            require(["dojo/_base/array",
+                'esri/InfoTemplate',
+                "esri/dijit/Legend",
+                "esri/geometry/Extent",
+                "esri/config",
+                "esri/map",
+                "esri/dijit/BasemapToggle",
+                "esri/toolbars/navigation",
+                "esri/layers/WMSLayer",
+                "esri/layers/FeatureLayer",
+                "esri/layers/ArcGISTiledMapServiceLayer",
+                "esri/layers/ArcGISDynamicMapServiceLayer",
+                "esri/layers/GraphicsLayer",
+                "esri/symbols/SimpleLineSymbol",
+                "esri/symbols/SimpleFillSymbol",
+                "esri/symbols/SimpleMarkerSymbol",
+                "esri/symbols/PictureMarkerSymbol",
+                "esri/Color", "esri/tasks/geometry",
+                "esri/tasks/query",
+                "esri/geometry/Point",
+                "esri/dijit/InfoWindow",
+                'esri/geometry/screenUtils',
+                "esri/dijit/Popup",
+                "esri/tasks/IdentifyTask", "esri/tasks/IdentifyParameters",
+                "dojo/domReady!"
+            ],
+                function (arrayUtils, InfoTemplate, Legend, Extent, esriConfig, Map, BasemapToggle, Navigation, WMSLayer, FeatureLayer, ArcGISTiledMapServiceLayer,
+                    ArcGISDynamicMapServiceLayer, GraphicsLayer, SimpleLineSymbol, SimpleFillSymbol, SimpleMarkerSymbol, PictureMarkerSymbol, Color, Geometry, Query, Point,
+                    InfoWindow,
+                    screenUtils, Popup, IdentifyTask, IdentifyParameters,
+                    domConstruct
+                ) {
+                    //let map = mMap;
 
-        //},
+                    var identifyTask, identifyParams;
+                    var parcelsURL = url_map;//"http://tiengontructuyen.vn/arcgis/rest/services/RasterNoise/bando_20211028_20/MapServer";
+                    identifyTask = new IdentifyTask(parcelsURL);
+
+                    identifyParams = new IdentifyParameters();
+                    identifyParams.tolerance = 1;
+                    identifyParams.returnGeometry = true;
+                    identifyParams.layerIds = [0];
+                    identifyParams.layerOption = IdentifyParameters.LAYER_OPTION_ALL;
+                    identifyParams.width = map.width;
+                    identifyParams.height = map.height;
+                    map.on("click", executeIdentifyTask);
+
+                    function executeIdentifyTask(event) {
+                        identifyParams.geometry = event.mapPoint;
+                        identifyParams.mapExtent = map.extent;
+
+                        var deferred = identifyTask
+                            .execute(identifyParams);
+                        deferred.addCallback(function (response) {
+                            console.log(response);
+                            // response is an array of identify result objects
+                            // Let's return an array of features.
+                            return arrayUtils.map(response, function (result) {
+                                console.log(result);
+                                var feature = result.feature;
+                                var layerName = result.layerName;
+                                //alert(result);
+                                feature.attributes.layerName = layerName;
+                                var taxParcelTemplate = new InfoTemplate('Giá trị tiếng ồn',
+                                    "Giá trị : " + parseFloat(feature.attributes['Pixel Value']).toFixed(2) + "(dBA)");
+                                feature.setInfoTemplate(taxParcelTemplate);
+                                // feature.setInfoTemplate("Pixel Value is : " + feature.attributes['Pixel Value']);
+                                feature.setInfoTemplate(taxParcelTemplate);
+                                return feature;
+                            });
+                        });
+
+                        // InfoWindow expects an array of features from each deferred
+                        // object that you pass. If the response from the task execution
+                        // above is not an array of features, then you need to add a callback
+                        // like the one above to post-process the response and return an
+                        // array of features.
+                        map.infoWindow.setFeatures([deferred]);
+
+                        map.infoWindow.show(event.mapPoint);//
+                    }
+                });
+        },
 
         _onIdentifyDrawComplete: function (evt) {
             var that = this;
@@ -978,8 +1105,8 @@ c-3 -13 -10 -20 -15 -17 -5 3 -9 1 -9 -5 0 -21 19 -20 26 1 l7 23 8 -23 c10
                 //        //tramDoGL.add(tramDoGraphic);
                 //        map.graphics.add(new esri.Graphic(results.features[i].geometry, tramDoSymbol));
                 //    }
-                   
-                   
+
+
                 //}
 
                 map.graphics.clear();
@@ -996,7 +1123,7 @@ c-3 -13 -10 -20 -15 -17 -5 3 -9 1 -9 -5 0 -21 19 -20 26 1 l7 23 8 -23 c10
                     graphic.setSymbol(mHighLightSymbol);
 
                     var attributes = graphic.attributes;
-                   
+
                     //var date = new Date(attributes.ngayQuanTrac);
                     //var hour = date.getHours() > 9 ? date.getHours() : "0" + date.getHours();
                     //var minute = date.getMinutes() > 9 ? date.getMinutes() : "0" + date.getMinutes();
@@ -1007,8 +1134,8 @@ c-3 -13 -10 -20 -15 -17 -5 3 -9 1 -9 -5 0 -21 19 -20 26 1 l7 23 8 -23 c10
 
 
                     var infoTemplate = new InfoTemplate(`<b>Địa điểm</b> : ${attributes.tenDiemQuanTrac} <br />`);
-                                    //<b>Thời gian thu thập: ${strDate} <br />
-                                    //<b>Giá trị độ ồn</b> : ${attributes.dB}`);
+                    //<b>Thời gian thu thập: ${strDate} <br />
+                    //<b>Giá trị độ ồn</b> : ${attributes.dB}`);
 
                     //Set the infoTemplate.
                     graphic.setInfoTemplate(infoTemplate);
@@ -1016,7 +1143,7 @@ c-3 -13 -10 -20 -15 -17 -5 3 -9 1 -9 -5 0 -21 19 -20 26 1 l7 23 8 -23 c10
                     //Add graphic to the map graphics layer.
                     map.graphics.add(graphic);
                 }
-               
+
             });
             $deferred.resolve();
         });
@@ -1050,15 +1177,15 @@ c-3 -13 -10 -20 -15 -17 -5 3 -9 1 -9 -5 0 -21 19 -20 26 1 l7 23 8 -23 c10
             "dojo/parser",
         ], function (dom, Units, Measurement, parser) {
 
-                parser.parse() 
+            parser.parse()
 
-                window.Unit_1 = Units;
+            window.Unit_1 = Units;
             m_Measurement = new Measurement({
                 map: map,
                 defaultAreaUnit: Units.SQUARE_METERS,
                 defaultLengthUnit: Units.METERS
             }, dom.byId("measurementDiv"));//"measurementDiv"
-                m_Measurement.deactivate = function () {
+            m_Measurement.deactivate = function () {
                 if (m_Measurement.activeTool) {
                     m_Measurement.setTool(m_Measurement.activeTool, false);
                 }
@@ -1077,8 +1204,8 @@ c-3 -13 -10 -20 -15 -17 -5 3 -9 1 -9 -5 0 -21 19 -20 26 1 l7 23 8 -23 c10
                     if (tool)
                         m_Measurement.setTool(tool.toolName, false);
                 }
-                };
-                window.measurement = m_Measurement;
+            };
+            window.measurement = m_Measurement;
             m_Measurement.startup();
         });
     };

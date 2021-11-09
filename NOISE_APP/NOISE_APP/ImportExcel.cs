@@ -132,7 +132,7 @@ namespace NOISE_APP
 
                                 string query = string.Format("'{0}','{1}','{2}','{3}','{4}','','','',N'{5}'", ID, TIME, LAT, LONG, dB, LOCATION);
                                
-                                Create(query);
+                                //Create(query);
                             }
                             catch (Exception ex)
                             {

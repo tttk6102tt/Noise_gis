@@ -46,8 +46,8 @@ E:\Anh_Thuy\NOISE_APP\Noise.Common.GIS\bin\Debug\ESRI.ArcGIS.Output.xml
 E:\Anh_Thuy\NOISE_APP\Noise.Common.GIS\bin\Debug\ESRI.ArcGIS.Geoprocessing.xml
 E:\Anh_Thuy\NOISE_APP\Noise.Common.GIS\bin\Debug\ESRI.ArcGIS.Animation.xml
 E:\Anh_Thuy\NOISE_APP\Noise.Common.GIS\bin\Debug\ESRI.ArcGIS.DataSourcesNetCDF.xml
-E:\Anh_Thuy\NOISE_APP\Noise.Common.GIS\obj\Debug\Noise.Common.GIS.csprojResolveAssemblyReference.cache
 E:\Anh_Thuy\NOISE_APP\Noise.Common.GIS\bin\Debug\ESRI.ArcGIS.DataSourcesGDB.dll
 E:\Anh_Thuy\NOISE_APP\Noise.Common.GIS\bin\Debug\ESRI.ArcGIS.GeoAnalyst.dll
 E:\Anh_Thuy\NOISE_APP\Noise.Common.GIS\bin\Debug\ESRI.ArcGIS.DataSourcesGDB.xml
 E:\Anh_Thuy\NOISE_APP\Noise.Common.GIS\bin\Debug\ESRI.ArcGIS.GeoAnalyst.xml
+E:\Anh_Thuy\NOISE_APP\Noise.Common.GIS\obj\Debug\Noise.Common.GIS.csprojResolveAssemblyReference.cache

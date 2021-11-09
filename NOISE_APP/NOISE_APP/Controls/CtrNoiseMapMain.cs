@@ -75,13 +75,12 @@ namespace NOISE_APP.Controls
 
         public List<string> COMExceptionString = new List<string>();
         #endregion
-        private string _ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+        private string _ConnectionString = "";//  System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
         #region Constructor
         public CtrNoiseMapMain()
         {
             InitializeComponent();
-            //
-
+          
         }
         #endregion
 
@@ -260,79 +259,6 @@ namespace NOISE_APP.Controls
         #region Private
         private bool LoadMap()
         {
-
-            //mForm = (XtraForm)this.ParentForm;
-            ////
-            //mGDBWsFactory = new ESRI.ArcGIS.DataSourcesGDB.FileGDBWorkspaceFactory() as IWorkspaceFactory2;
-            //mGDBWs = mGDBWsFactory.OpenFromFile(_MolarMain.Instance.GDBPath, 0) as IFeatureWorkspace;
-            //mGDBWsName = (IWorkspaceName2)((IDataset)mGDBWs).FullName;
-            //mGDBWsEdit = (IWorkspaceEdit2)mGDBWs;
-            ////
-            //mInMemWsFactory = new ESRI.ArcGIS.DataSourcesGDB.InMemoryWorkspaceFactory() as IWorkspaceFactory2;
-            //mInMemWsName = mInMemWsFactory.Create("", $"{MolarGISCommon.RandomWsName(3)}_Ws", null, 0) as IWorkspaceName2;
-            //mInMemWs = (mInMemWsName as IName).Open() as IFeatureWorkspace;
-            ////
-            //// mInMemRasterWsFactory = new esriArcGISUri.data() as IWorkspaceFactory2;
-            //mInMemRasterWsName = mInMemWsFactory.Create("", $"{MolarGISCommon.RandomWsName(3)}_Ws", null, 0) as IWorkspaceName2;
-            //mInMemRasterWs = (mInMemRasterWsName as IName).Open() as IRasterWorkspaceEx;
-            ////
-            //mGDBRasterWs = mGDBWsFactory.OpenFromFile(_MolarMain.Instance.GDBPath, 0) as IRasterWorkspaceEx;
-            ////
-            //IFeatureLayer duongDiaGioiCapHuyen = new FeatureLayer()
-            //{
-            //    FeatureClass = mGDBWs.OpenFeatureClass("DuongDiaGioiCapHuyen"),
-            //    Name = "Đường địa giới cấp Huyện"
-            //};
-            //IFeatureLayer duongDiaGioiCapXa = new FeatureLayer()
-            //{
-            //    FeatureClass = mGDBWs.OpenFeatureClass("DuongDiaGioiCapXa"),
-            //    Name = "Đường địa giới cấp Xã"
-            //};
-            //IFeatureLayer diaPhanHuyen = new FeatureLayer()
-            //{
-            //    FeatureClass = mGDBWs.OpenFeatureClass("DiaPhanCapHuyen"),
-            //    Name = "Địa phận Huyện"
-            //};
-            //IFeatureLayer diaPhanXa = new FeatureLayer()
-            //{
-            //    FeatureClass = mGDBWs.OpenFeatureClass("PhanVungDiaHinh"),
-            //    Name = "Địa phận Xã"
-            //};
-            //IFeatureLayer vungThuyHe = new FeatureLayer()
-            //{
-            //    FeatureClass = mGDBWs.OpenFeatureClass("VungThuyHe"),
-            //    Name = "Vùng thủy hệ"
-            //};
-            ////
-            //mBaseLayerGroup = new GroupLayer();
-            //mBaseLayerGroup.Add(vungThuyHe);
-            //mBaseLayerGroup.Add(diaPhanXa);
-            //mBaseLayerGroup.Add(diaPhanHuyen);
-            //mBaseLayerGroup.Add(duongDiaGioiCapXa);
-            //mBaseLayerGroup.Add(duongDiaGioiCapHuyen);
-            //mBaseLayerGroup.Name = "Bản đồ nền";
-            //axMap.AddLayer(mBaseLayerGroup, 0);
-            ////
-            //(diaPhanHuyen as IGeoFeatureLayer).Renderer = (IFeatureRenderer)new SimpleRenderer()
-            //{
-            //    Symbol = (ISymbol)new SimpleFillSymbol()
-            //    {
-            //        Outline = new SimpleLineSymbol()
-            //        {
-            //            Style = esriSimpleLineStyle.esriSLSSolid,
-            //            Width = 4,
-            //            Color = CommonUtils.GetIColor(255, 190, 232)
-            //        },
-            //        Style = esriSimpleFillStyle.esriSFSNull
-            //    }
-            //};
-            //(diaPhanXa as IGeoFeatureLayer).Renderer = (IFeatureRenderer)new SimpleRenderer()
-            //{
-            //    Symbol = (ISymbol)new SimpleFillSymbol()
-            //    {
-            //        Style = esriSimpleFillStyle.esriSFSNull
-            //    }
-            //};
             //
             mToolBarActions = new ToolbarUtilites(axMap);
             //
@@ -410,7 +336,7 @@ namespace NOISE_APP.Controls
             //
             //dockMapConfig.Dock = dockIdentify.Dock = DevExpress.XtraBars.Docking.DockingStyle.Float;
             //dockMapConfig.Hide();
-            dockIdentify.Hide();
+            //dockIdentify.Hide();
             //
             return true;
         }
@@ -1290,12 +1216,7 @@ namespace NOISE_APP.Controls
                                     Save("Tính toán", ex.Message, ex.InnerException.Message);
                                 }
                             }
-                            if (LoadMap() && LoadTOC() && LoadData() && LoadTreeMap())
-                            {
-                                BindEvents();
-                            }
-                            else
-                                _NoiseMesageBox.ShowErrorMessage("Đã xảy ra lỗi khi tải bản đồ!");
+                          
 
                         }
                         catch (COMException comEx)
@@ -1570,6 +1491,14 @@ namespace NOISE_APP.Controls
 
         }
 
-     
+        private void CtrNoiseMapMain_Load(object sender, EventArgs e)
+        {
+            if (LoadMap() && LoadTOC() && LoadData() && LoadTreeMap())
+            {
+                BindEvents();
+            }
+            else
+                _NoiseMesageBox.ShowErrorMessage("Đã xảy ra lỗi khi tải bản đồ!");
+        }
     }
 }

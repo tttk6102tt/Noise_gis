@@ -93,4 +93,3 @@ E:\Anh_Thuy\NOISE_APP\Noise.FrameWork\FrameWork\bin\Debug\ESRI.ArcGIS.DataSource
 E:\Anh_Thuy\NOISE_APP\Noise.FrameWork\FrameWork\bin\Debug\ESRI.ArcGIS.GeoAnalyst.xml
 E:\Anh_Thuy\NOISE_APP\Noise.FrameWork\FrameWork\obj\Debug\FrameWork.dll
 E:\Anh_Thuy\NOISE_APP\Noise.FrameWork\FrameWork\obj\Debug\FrameWork.pdb
-E:\Anh_Thuy\NOISE_APP\Noise.FrameWork\FrameWork\obj\Debug\FrameWork.csprojResolveAssemblyReference.cache

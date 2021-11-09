@@ -268,6 +268,18 @@
     <Compile Include="Enums\EnumMap.cs" />
     <Compile Include="Enums\EnumReport.cs" />
     <Compile Include="Enums\EnumRoles.cs" />
+    <Compile Include="FormNoisePrivateDangTuyen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormNoisePrivateDangTuyen.Designer.cs">
+      <DependentUpon>FormNoisePrivateDangTuyen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormNoisePrivate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormNoisePrivate.Designer.cs">
+      <DependentUpon>FormNoisePrivate.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormNoise.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -285,6 +297,12 @@
     </Compile>
     <Compile Include="Forms\FrmAttributesTable.Designer.cs">
       <DependentUpon>FrmAttributesTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmConfigTime.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmConfigTime.Designer.cs">
+      <DependentUpon>frmConfigTime.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmExportGDB.cs">
       <SubType>Form</SubType>
@@ -309,6 +327,12 @@
     </Compile>
     <Compile Include="Forms\frmIdentify.Designer.cs">
       <DependentUpon>frmIdentify.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmChonForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmChonForm.Designer.cs">
+      <DependentUpon>frmChonForm.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmConfig.cs">
       <SubType>Form</SubType>
@@ -384,6 +408,12 @@
     <EmbeddedResource Include="Controls\NoiseMap\CtrIdentify.resx">
       <DependentUpon>CtrIdentify.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormNoisePrivateDangTuyen.resx">
+      <DependentUpon>FormNoisePrivateDangTuyen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormNoisePrivate.resx">
+      <DependentUpon>FormNoisePrivate.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormNoise.resx">
       <DependentUpon>FormNoise.cs</DependentUpon>
     </EmbeddedResource>
@@ -392,6 +422,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmAttributesTable.resx">
       <DependentUpon>FrmAttributesTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmConfigTime.resx">
+      <DependentUpon>frmConfigTime.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmExportGDB.resx">
       <DependentUpon>frmExportGDB.cs</DependentUpon>
@@ -404,6 +437,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmIdentify.resx">
       <DependentUpon>frmIdentify.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmChonForm.resx">
+      <DependentUpon>frmChonForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmConfig.resx">
       <DependentUpon>FrmConfig.cs</DependentUpon>
@@ -511,6 +547,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ref\RestSharp.dll" />
+    <None Include="Resources\2784e08b2b69e337ba78.jpg" />
     <None Include="Resources\zoomout_32x32.png" />
     <None Include="Resources\zoomout_16x16.png" />
     <None Include="Resources\zoomin_32x32.png" />

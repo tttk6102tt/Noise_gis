@@ -73,6 +73,16 @@ namespace NOISE_APP.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _2784e08b2b69e337ba78 {
+            get {
+                object obj = ResourceManager.GetObject("2784e08b2b69e337ba78", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap add_16x16 {
             get {
                 object obj = ResourceManager.GetObject("add_16x16", resourceCulture);

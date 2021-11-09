@@ -31,8 +31,8 @@
             this.components = new System.ComponentModel.Container();
             this.marqueeProgressBarControl1 = new DevExpress.XtraEditors.MarqueeProgressBarControl();
             this.lblStatus = new DevExpress.XtraEditors.LabelControl();
-            this.pictureEdit2 = new DevExpress.XtraEditors.PictureEdit();
             this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
+            this.pictureEdit2 = new DevExpress.XtraEditors.PictureEdit();
             ((System.ComponentModel.ISupportInitialize)(this.marqueeProgressBarControl1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit2.Properties)).BeginInit();
             this.SuspendLayout();
@@ -56,11 +56,15 @@
             this.lblStatus.TabIndex = 7;
             this.lblStatus.Text = "Đang khởi tạo...";
             // 
+            // defaultLookAndFeel1
+            // 
+            this.defaultLookAndFeel1.LookAndFeel.SkinName = "Office 2007 Blue";
+            // 
             // pictureEdit2
             // 
             this.pictureEdit2.Cursor = System.Windows.Forms.Cursors.Default;
             this.pictureEdit2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pictureEdit2.EditValue = global::NOISE_APP.Properties.Resources.logo_2;
+            this.pictureEdit2.EditValue = global::NOISE_APP.Properties.Resources._2784e08b2b69e337ba78;
             this.pictureEdit2.Location = new System.Drawing.Point(0, 0);
             this.pictureEdit2.Name = "pictureEdit2";
             this.pictureEdit2.Properties.AllowFocused = false;
@@ -69,12 +73,8 @@
             this.pictureEdit2.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.pictureEdit2.Properties.ShowMenu = false;
             this.pictureEdit2.Properties.ZoomAccelerationFactor = 1D;
-            this.pictureEdit2.Size = new System.Drawing.Size(362, 161);
+            this.pictureEdit2.Size = new System.Drawing.Size(362, 153);
             this.pictureEdit2.TabIndex = 9;
-            // 
-            // defaultLookAndFeel1
-            // 
-            this.defaultLookAndFeel1.LookAndFeel.SkinName = "Office 2007 Blue";
             // 
             // _Splash
             // 

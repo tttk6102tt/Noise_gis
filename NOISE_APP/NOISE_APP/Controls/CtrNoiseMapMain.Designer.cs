@@ -403,14 +403,14 @@
             this.bsiSystem.Caption = "Hệ thống";
             this.bsiSystem.Id = 34;
             this.bsiSystem.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.bsiAddLayer),
-            new DevExpress.XtraBars.LinkPersistInfo(this.bbConfigPhanVung, true),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.Caption, this.bbiLoadMap, "Tải bản đồ (MXD)", true, true, false, 0),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.None, false, this.bsiAddLayer, false),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.None, false, this.bbConfigPhanVung, true),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.Caption, this.bbiLoadMap, "Tải bản đồ (MXD)", true),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.bbExportShapeFile, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbExportGDB),
-            new DevExpress.XtraBars.LinkPersistInfo(this.bsiExportMap),
-            new DevExpress.XtraBars.LinkPersistInfo(this.bbiPrint, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.bbiExit, true)});
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.None, false, this.bsiExportMap, false),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.None, false, this.bbiPrint, true),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.None, false, this.bbiExit, true)});
             this.bsiSystem.Name = "bsiSystem";
             // 
             // bsiAddLayer
@@ -531,34 +531,35 @@
             this.bbiExit.Glyph = global::NOISE_APP.Properties.Resources.close_16x16;
             this.bbiExit.Id = 45;
             this.bbiExit.Name = "bbiExit";
+            this.bbiExit.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             // 
             // barDockControlTop
             // 
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(904, 60);
+            this.barDockControlTop.Size = new System.Drawing.Size(904, 49);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 462);
-            this.barDockControlBottom.Size = new System.Drawing.Size(904, 27);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 463);
+            this.barDockControlBottom.Size = new System.Drawing.Size(904, 26);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 60);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 402);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 49);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 414);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(904, 60);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 402);
+            this.barDockControlRight.Location = new System.Drawing.Point(904, 49);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 414);
             // 
             // icArcToolbar
             // 
@@ -611,18 +612,18 @@
             this.dockTOC.Dock = DevExpress.XtraBars.Docking.DockingStyle.Left;
             this.dockTOC.ID = new System.Guid("161a135d-8c88-4cb5-8846-70d3428e1281");
             this.dockTOC.Image = global::NOISE_APP.Properties.Resources.stackedlayout_16x16;
-            this.dockTOC.Location = new System.Drawing.Point(0, 60);
+            this.dockTOC.Location = new System.Drawing.Point(0, 49);
             this.dockTOC.Name = "dockTOC";
             this.dockTOC.Options.ShowCloseButton = false;
             this.dockTOC.OriginalSize = new System.Drawing.Size(279, 200);
-            this.dockTOC.Size = new System.Drawing.Size(279, 402);
+            this.dockTOC.Size = new System.Drawing.Size(279, 414);
             this.dockTOC.Text = "Lớp dữ liệu";
             // 
             // dockMapListContainer
             // 
-            this.dockMapListContainer.Location = new System.Drawing.Point(4, 24);
+            this.dockMapListContainer.Location = new System.Drawing.Point(3, 24);
             this.dockMapListContainer.Name = "dockMapListContainer";
-            this.dockMapListContainer.Size = new System.Drawing.Size(270, 374);
+            this.dockMapListContainer.Size = new System.Drawing.Size(272, 387);
             this.dockMapListContainer.TabIndex = 0;
             // 
             // imgCollection
@@ -638,11 +639,11 @@
             this.pnMap.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.pnMap.Controls.Add(this.pnMapFixMargin);
             this.pnMap.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnMap.Location = new System.Drawing.Point(279, 60);
+            this.pnMap.Location = new System.Drawing.Point(279, 49);
             this.pnMap.Margin = new System.Windows.Forms.Padding(8);
             this.pnMap.Name = "pnMap";
             this.pnMap.Padding = new System.Windows.Forms.Padding(2);
-            this.pnMap.Size = new System.Drawing.Size(625, 402);
+            this.pnMap.Size = new System.Drawing.Size(625, 414);
             this.pnMap.TabIndex = 28;
             // 
             // pnMapFixMargin
@@ -652,7 +653,7 @@
             this.pnMapFixMargin.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnMapFixMargin.Location = new System.Drawing.Point(2, 2);
             this.pnMapFixMargin.Name = "pnMapFixMargin";
-            this.pnMapFixMargin.Size = new System.Drawing.Size(621, 398);
+            this.pnMapFixMargin.Size = new System.Drawing.Size(621, 410);
             this.pnMapFixMargin.TabIndex = 0;
             // 
             // axLicense
@@ -670,7 +671,7 @@
             this.axMap.Location = new System.Drawing.Point(2, 2);
             this.axMap.Name = "axMap";
             this.axMap.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axMap.OcxState")));
-            this.axMap.Size = new System.Drawing.Size(617, 394);
+            this.axMap.Size = new System.Drawing.Size(617, 406);
             this.axMap.TabIndex = 29;
             // 
             // controlContainer2
@@ -741,6 +742,7 @@
             this.Controls.Add(this.barDockControlTop);
             this.Name = "CtrNoiseMapMain";
             this.Size = new System.Drawing.Size(904, 489);
+            this.Load += new System.EventHandler(this.CtrNoiseMapMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dockMain)).EndInit();
             this.dockLegend.ResumeLayout(false);
             this.dockIdentify.ResumeLayout(false);

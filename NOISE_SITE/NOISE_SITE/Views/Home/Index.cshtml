@@ -85,13 +85,13 @@
             font-family: inherit;
             border: 1px solid lightgrey;
             opacity: 0.8;
-        }
+        }   
 
         #legend {
             overflow: auto;
-            width: 20vw;
-            height: 200px;
-            max-height: 250px;
+            width: 15vw;
+            height: 40vh;
+            max-height: 400px;
             bottom: 30px;
             position: absolute;
             right: 15px;
@@ -159,16 +159,28 @@
                         </div>
                     </div>
                 </div>
-                <div class="form-group" style="padding-left:30px;padding-right:30px;display:none">
+                <div class="form-group" style="padding-left:30px;padding-right:30px;">
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="" id="checkRas" checked>
                                 <label class="form-check-label" for="checkRas">
-                                    Lớp dữ liệu độ ồn
+                                    Lớp dữ liệu độ ồn dạng vùng
                                 </label>
                             </div>
                             <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="checkRasTuyen" checked>
+                                <label class="form-check-label" for="checkRasTuyen">
+                                    Lớp dữ liệu độ ồn dạng tuyến
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                @*<label class="form-check-label" for="checkRasTuyen">
+                                    Tuyến
+                                </label>*@
+                                <input class="form-control" value="" id="drTuyen" >
+                            </div>
+                            <div class="form-check" style="display:none">
                                 <input class="form-check-input" type="checkbox" id="checkTram" checked>
                                 <label class="form-check-label" for="checkTram">
                                     Lớp dữ liệu trạm đo
@@ -329,6 +341,38 @@
             $("#ngaydo").kendoDatePicker({
                 value: new Date(),
                 format: 'dd/MM/yyyy'
+            });
+
+            $("#drTuyen").kendoDropDownList({
+                dataSource: [{
+                    text: "Tô Hiệu",
+                    value:"ToHieu"
+                },
+                    {
+                        text: "Hoàng Quốc Việt",
+                        value: "HoangQuocViet"
+                    }   ,
+                    {
+                        text: "Nguyễn Phong Sắc",
+                        value: "NguyenPhongSac"
+                    },
+                    {
+                        text: "Phố Nghĩa Tân",
+                        value: "NghiaTan"
+                    }
+                ],
+                dataTextField: "text",
+                dataValueField: "value",
+                //animation: {
+                //    close: {
+                //        effects: "fadeOut zoom:out",
+                //        duration: 300
+                //    },
+                //    open: {
+                //        effects: "fadeIn zoom:in",
+                //        duration: 300
+                //    }
+                //}
             });
 
             var defaultControls = [
